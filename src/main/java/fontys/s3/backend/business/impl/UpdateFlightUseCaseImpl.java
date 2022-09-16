@@ -3,7 +3,6 @@ package fontys.s3.backend.business.impl;
 import fontys.s3.backend.business.UpdateFlightUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
 import fontys.s3.backend.domain.UpdateFlightRequest;
-import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import lombok.AllArgsConstructor;
@@ -15,8 +14,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class UpdateFlightUseCaseImpl implements UpdateFlightUseCase {
     private final FlightRepository flightRepository;
-    private final AirportRepository airportRepository;
-
     @Override
     public void updateFlight(UpdateFlightRequest request) {
         Optional<FlightEntity> flightOptional = flightRepository.findById(request.getFlightNumber());
