@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
 import java.sql.Timestamp;
 
 @Data
@@ -13,9 +12,7 @@ import java.sql.Timestamp;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateFlightRequest {
-    @NotBlank
     private String flightNumber;
-    @NotBlank
     private String airline;
     private String originCode;
     private String destinationCode;

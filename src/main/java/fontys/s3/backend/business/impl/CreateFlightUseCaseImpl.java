@@ -1,11 +1,9 @@
 package fontys.s3.backend.business.impl;
 
-import fontys.s3.backend.business.AirportValidator;
 import fontys.s3.backend.business.CreateFlightUseCase;
 import fontys.s3.backend.business.exception.FlightNumberAlreadyExistsException;
 import fontys.s3.backend.domain.CreateFlightRequest;
 import fontys.s3.backend.domain.CreateFlightResponse;
-import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import lombok.AllArgsConstructor;
@@ -15,8 +13,7 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
     private final FlightRepository flightRepository;
-    private final AirportRepository airportRepository;
-    private final AirportValidator airportValidator;
+    //private final AirportValidator airportValidator;
 
     @Override
     public CreateFlightResponse CreateFlight(CreateFlightRequest request) {
@@ -24,7 +21,7 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
             throw new FlightNumberAlreadyExistsException();
         }
 
-        airportValidator.validAirport(request.getOriginCode());
+        //airportValidator.validAirport(request.getOriginCode());
 
         FlightEntity saveFlight = saveNewFlight(request);
 
