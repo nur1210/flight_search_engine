@@ -9,12 +9,12 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 @Service
 @AllArgsConstructor
-public class GetCountyUseCaseImpl implements GetAirportUseCase {
+public class GetAirportUseCaseImpl implements GetAirportUseCase {
 
     private AirportRepository airportRepository;
 
     @Override
-    public Optional<Airport> getAirport(String airportCode) {
-        return airportRepository.findById(airportCode).map(AirportConverter::convert);
+    public Optional<Airport> getAirport(String iata) {
+        return airportRepository.findById(iata).map(AirportConverter::convert);
     }
 }
