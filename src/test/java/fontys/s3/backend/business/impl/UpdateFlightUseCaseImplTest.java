@@ -57,7 +57,7 @@ class UpdateFlightUseCaseImplTest {
                 .flightNumber("FR23")
                 .localDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .utcDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
-                .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
+                .localArrivalTime(Timestamp.valueOf("2021-01-01 03:00:00"))
                 .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .economicPrice(100)
                 .businessPrice(200)
