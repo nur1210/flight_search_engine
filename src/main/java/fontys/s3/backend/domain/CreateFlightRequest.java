@@ -1,5 +1,6 @@
 package fontys.s3.backend.domain;
 
+import fontys.s3.backend.persistence.entity.AirportEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,10 +15,12 @@ import java.sql.Timestamp;
 public class CreateFlightRequest {
     private String flightNumber;
     private String airline;
-    private String originCode;
-    private String destinationCode;
-    private Timestamp flightTime;
-    private Timestamp landTime;
+    private AirportEntity departureAirport;
+    private AirportEntity arrivalAirport;
+    private Timestamp localDepartureTime;
+    private Timestamp utcDepartureTime;
+    private Timestamp localArrivalTime;
+    private Timestamp utcArrivalTime;
     private double economicPrice;
     private double businessPrice;
 }

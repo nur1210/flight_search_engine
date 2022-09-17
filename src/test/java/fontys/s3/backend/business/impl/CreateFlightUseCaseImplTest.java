@@ -3,6 +3,7 @@ package fontys.s3.backend.business.impl;
 import fontys.s3.backend.domain.CreateFlightRequest;
 import fontys.s3.backend.domain.CreateFlightResponse;
 import fontys.s3.backend.persistence.FlightRepository;
+import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
@@ -35,13 +36,23 @@ class CreateFlightUseCaseImplTest {
     @Test
     void createFlight() {
         //Arrange
+        AirportEntity airport = AirportEntity.builder()
+                .iata("AMS")
+                .city("Amsterdam")
+                .cityCode("AMS")
+                .country("Netherlands")
+                .countryCode("NL")
+                .build();
+
         flightEntity = FlightEntity.builder()
                 .flightNumber("FR123")
                 .airline("KLM")
-                .originCode("AMS")
-                .destinationCode("LHR")
-                .flightTime(Timestamp.valueOf("2021-01-01 00:00:00"))
-                .landTime(Timestamp.valueOf("2021-01-01 00:00:00"))
+                .departureAirport(airport)
+                .arrivalAirport(airport)
+                .localDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
+                .utcDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
+                .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
+                .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .economicPrice(100)
                 .businessPrice(200)
                 .build();
@@ -51,10 +62,12 @@ class CreateFlightUseCaseImplTest {
         CreateFlightRequest request = CreateFlightRequest.builder()
                 .flightNumber(flightEntity.getFlightNumber())
                 .airline(flightEntity.getAirline())
-                .originCode(flightEntity.getOriginCode())
-                .destinationCode(flightEntity.getDestinationCode())
-                .flightTime(flightEntity.getFlightTime())
-                .landTime(flightEntity.getLandTime())
+                .departureAirport(flightEntity.getDepartureAirport())
+                .arrivalAirport(flightEntity.getArrivalAirport())
+                .localDepartureTime(flightEntity.getLocalDepartureTime())
+                .utcDepartureTime(flightEntity.getUtcDepartureTime())
+                .localArrivalTime(flightEntity.getLocalArrivalTime())
+                .utcArrivalTime(flightEntity.getUtcArrivalTime())
                 .economicPrice(flightEntity.getEconomicPrice())
                 .businessPrice(flightEntity.getBusinessPrice())
                 .build();

@@ -14,10 +14,12 @@ import java.sql.Timestamp;
 public class Flight {
     private String flightNumber;
     private String airline;
-    private String originCode;
-    private String destinationCode;
-    private Timestamp flightTime;
-    private Timestamp landTime;
+    private Airport departureAirport;
+    private Airport arrivalAirport;
+    private Timestamp localDepartureTime;
+    private Timestamp utcDepartureTime;
+    private Timestamp localArrivalTime;
+    private Timestamp utcArrivalTime;
     private double economicPrice;
     private double businessPrice;
 }

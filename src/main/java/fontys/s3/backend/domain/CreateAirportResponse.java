@@ -6,5 +6,5 @@ import lombok.Data;
 @Data
 @Builder
 public class CreateAirportResponse {
-    private String airportCode;
+    private String iata;
 }

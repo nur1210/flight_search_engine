@@ -14,13 +14,12 @@ public class UpdateAirportUseCaseImpl implements UpdateAirportUseCase {
 
     @Override
     public void UpdateAirport(UpdateAirportRequest request) {
-        AirportEntity airport = airportRepository.findById(request.getInitials()).orElseThrow(() -> new RuntimeException("COUNTRY_NOT_FOUND"));
+        AirportEntity airport = airportRepository.findById(request.getIata()).orElseThrow(() -> new RuntimeException("COUNTRY_NOT_FOUND"));
         updateFields(request, airport);
     }
 
     private void updateFields(UpdateAirportRequest request, AirportEntity airport) {
-        airport.setAirportCode(request.getInitials());
-        airport.setName(request.getName());
+        airport.setIata(request.getIata());
         airportRepository.save(airport);
     }
 }

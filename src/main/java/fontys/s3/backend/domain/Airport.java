@@ -10,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Airport {
-    private String airportCode;
-    private String name;
-    private Address address;
+    private String iata;
+    private String city;
+    private String cityCode;
+    private String country;
+    private String countryCode;
 }

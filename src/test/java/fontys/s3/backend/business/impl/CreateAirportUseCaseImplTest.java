@@ -2,9 +2,7 @@ package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.domain.CreateAirportRequest;
 import fontys.s3.backend.domain.CreateAirportResponse;
-import fontys.s3.backend.persistence.AddressRepository;
 import fontys.s3.backend.persistence.AirportRepository;
-import fontys.s3.backend.persistence.entity.AddressEntity;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
@@ -23,45 +21,40 @@ class CreateAirportUseCaseImplTest {
 
     @Mock
     AirportRepository airportRepository;
-    @Mock
-    AddressRepository addressRepository;
     @InjectMocks
     CreateAirportUseCaseImpl useCase;
 
     @Before
     public void setUp() {
         airportRepository = Mockito.mock(AirportRepository.class);
-        addressRepository = Mockito.mock(AddressRepository.class);
-        useCase = new CreateAirportUseCaseImpl(airportRepository, addressRepository);
+        useCase = new CreateAirportUseCaseImpl(airportRepository);
     }
 
     @Test
     void createAirport() {
         //Arrange
-        AddressEntity address = AddressEntity.builder()
-                .id(1L)
-                .street("street")
-                .city("city")
-                .country("country")
-                .build();
         AirportEntity airport = AirportEntity.builder()
-                .airportCode("AMS")
-                .name("Amsterdam Airport Schiphol")
-                .address(address)
+                .iata("AMS")
+                .city("Amsterdam")
+                .cityCode("AMS")
+                .country("Netherlands")
+                .countryCode("NL")
                 .build();
         when(airportRepository.save(any())).thenReturn(airport);
 
         //Act
         CreateAirportRequest request = CreateAirportRequest.builder()
-                .airportCode("AMS")
-                .name("Amsterdam Airport Schiphol")
-                .address(address)
+                .iata("AMS")
+                .city("Amsterdam")
+                .cityCode("AMS")
+                .country("Netherlands")
+                .countryCode("NL")
                 .build();
 
         CreateAirportResponse response = useCase.createAirport(request);
 
         //Assert
-        Assertions.assertEquals("AMS", response.getAirportCode());
-        Assertions.assertEquals(airport.getAirportCode(), response.getAirportCode());
+        Assertions.assertEquals("AMS", response.getIata());
+        Assertions.assertEquals(airport.getIata(), response.getIata());
     }
 }

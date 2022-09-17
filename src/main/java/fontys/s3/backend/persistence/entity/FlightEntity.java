@@ -26,33 +26,54 @@ public class FlightEntity {
     )
     private String airline;
 
-    @Column(
-            name = "origin_code",
+/*    @Column(
+            name = "departure_airport_iata",
             nullable = false,
             columnDefinition = "TEXT",
             length = 3
     )
-    private String originCode;
+    @JoinColumn(referencedColumnName = "iata")*/
+@JoinColumn(referencedColumnName = "iata")
+@ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
+    private AirportEntity departureAirport;
 
-    @Column(
-            name = "destination_code",
+/*    @Column(
+            name = "arrival_airport_iata",
             nullable = false,
             columnDefinition = "TEXT",
             length = 3
-    )
-    private String destinationCode;
+    )*/
+    @JoinColumn(referencedColumnName = "iata")
+    @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
+    private AirportEntity arrivalAirport;
 
     @Column(
-            name = "departure_time",
-            columnDefinition = "TIMESTAMP"
+            name = "local_departure_time",
+            columnDefinition = "TIMESTAMP",
+            insertable = false,
+            updatable = false
     )
-    private Timestamp flightTime;
+    private Timestamp localDepartureTime;
 
     @Column(
-            name = "landing_time",
+            name = "utc_departure_time",
+            columnDefinition = "TIMESTAMP",
+            insertable = false,
+            updatable = false
+    )
+    private Timestamp utcDepartureTime;
+
+    @Column(
+            name = "local_arrival_time",
             columnDefinition = "TIMESTAMP"
     )
-    private Timestamp landTime;
+    private Timestamp localArrivalTime;
+
+    @Column(
+            name = "utc_departure_time",
+            columnDefinition = "TIMESTAMP"
+    )
+    private Timestamp utcArrivalTime;
 
     @Column(
             name = "economic_price",
@@ -65,7 +86,6 @@ public class FlightEntity {
             columnDefinition = "double precision"
     )
     private double businessPrice;
-
 
     public String getFlightNumber() {
         return flightNumber;
@@ -83,36 +103,52 @@ public class FlightEntity {
         this.airline = airline;
     }
 
-    public String getOriginCode() {
-        return originCode;
+    public AirportEntity getDepartureAirport() {
+        return departureAirport;
     }
 
-    public void setOriginCode(String originCode) {
-        this.originCode = originCode;
+    public void setDepartureAirport(AirportEntity departureAirport) {
+        this.departureAirport = departureAirport;
     }
 
-    public String getDestinationCode() {
-        return destinationCode;
+    public AirportEntity getArrivalAirport() {
+        return arrivalAirport;
     }
 
-    public void setDestinationCode(String destinationCode) {
-        this.destinationCode = destinationCode;
+    public void setArrivalAirport(AirportEntity arrivalAirport) {
+        this.arrivalAirport = arrivalAirport;
     }
 
-    public Timestamp getFlightTime() {
-        return flightTime;
+    public Timestamp getLocalDepartureTime() {
+        return localDepartureTime;
     }
 
-    public void setFlightTime(Timestamp flightTime) {
-        this.flightTime = flightTime;
+    public void setLocalDepartureTime(Timestamp localDepartureTime) {
+        this.localDepartureTime = localDepartureTime;
     }
 
-    public Timestamp getLandTime() {
-        return landTime;
+    public Timestamp getUtcDepartureTime() {
+        return utcDepartureTime;
     }
 
-    public void setLandTime(Timestamp landTime) {
-        this.landTime = landTime;
+    public void setUtcDepartureTime(Timestamp utcDepartureTime) {
+        this.utcDepartureTime = utcDepartureTime;
+    }
+
+    public Timestamp getLocalArrivalTime() {
+        return localArrivalTime;
+    }
+
+    public void setLocalArrivalTime(Timestamp localArrivalTime) {
+        this.localArrivalTime = localArrivalTime;
+    }
+
+    public Timestamp getUtcArrivalTime() {
+        return utcArrivalTime;
+    }
+
+    public void setUtcArrivalTime(Timestamp utcArrivalTime) {
+        this.utcArrivalTime = utcArrivalTime;
     }
 
     public double getEconomicPrice() {

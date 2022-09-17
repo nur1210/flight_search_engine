@@ -1,16 +1,16 @@
 create sequence user_sequence start 1 increment 1;
 
-    create table users (
-       id int8 not null,
-        email TEXT not null,
-        first_name TEXT not null,
-        last_name TEXT not null,
-        password TEXT not null,
-        primary key (id)
-    );
+create table users (
+                       id int8 not null,
+                       email TEXT not null,
+                       first_name TEXT not null,
+                       last_name TEXT not null,
+                       password TEXT not null,
+                       primary key (id)
+);
 
-    alter table if exists users 
-       add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email);
+alter table if exists users
+    add constraint UK_6dotkott2kjsp8vw4d0m25fb7 unique (email);
 
 CREATE TABLE users
 (

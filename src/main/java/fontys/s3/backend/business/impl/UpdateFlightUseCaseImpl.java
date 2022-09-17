@@ -26,10 +26,13 @@ public class UpdateFlightUseCaseImpl implements UpdateFlightUseCase {
     }
 
     private void updateFields(UpdateFlightRequest request, FlightEntity flight) {
-        flight.setFlightTime(request.getFlightTime());
-        flight.setLandTime(request.getLandTime());
+        flight.setLocalDepartureTime(request.getLocalDepartureTime());
+        flight.setUtcDepartureTime(request.getUtcDepartureTime());
+        flight.setLocalArrivalTime(request.getLocalArrivalTime());
+        flight.setUtcArrivalTime(request.getUtcArrivalTime());
         flight.setEconomicPrice(request.getEconomicPrice());
         flight.setBusinessPrice(request.getBusinessPrice());
+
 
         flightRepository.save(flight);
     }

@@ -13,42 +13,71 @@ import javax.persistence.*;
 @Table(name = "airports")
 public class AirportEntity {
     @Id
-    @Column(name = "airport_code",
+    @Column(name = "iata",
             nullable = false,
             columnDefinition = "TEXT",
             length = 3)
-    private String airportCode;
+    private String iata;
 
-    @Column(name = "name",
+    @Column(name = "city",
             nullable = false,
             columnDefinition = "TEXT")
-    private String name;
+    private String city;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id")
-    private AddressEntity address;
+    @Column(name = "city_code",
+            nullable = false,
+            columnDefinition = "TEXT",
+            length = 3)
+    private String cityCode;
 
-    public String getAirportCode() {
-        return airportCode;
+    @Column(name = "country",
+            nullable = false,
+            columnDefinition = "TEXT")
+    private String country;
+
+    @Column(name = "country_code",
+            nullable = false,
+            columnDefinition = "TEXT",
+            length = 2)
+    private String countryCode;
+
+    public String getIata() {
+        return iata;
     }
 
-    public void setAirportCode(String airportCode) {
-        this.airportCode = airportCode;
+    public void setIata(String iata) {
+        this.iata = iata;
     }
 
-    public String getName() {
-        return name;
+    public String getCity() {
+        return city;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCity(String city) {
+        this.city = city;
     }
 
-    public AddressEntity getAddress() {
-        return address;
+    public String getCityCode() {
+        return cityCode;
     }
 
-    public void setAddress(AddressEntity address) {
-        this.address = address;
+    public void setCityCode(String cityCode) {
+        this.cityCode = cityCode;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCountryCode() {
+        return countryCode;
+    }
+
+    public void setCountryCode(String countryCode) {
+        this.countryCode = countryCode;
     }
 }

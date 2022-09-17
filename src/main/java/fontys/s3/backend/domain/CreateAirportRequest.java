@@ -1,6 +1,5 @@
 package fontys.s3.backend.domain;
 
-import fontys.s3.backend.persistence.entity.AddressEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,7 +10,9 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateAirportRequest {
-    private String airportCode;
-    private String name;
-    private AddressEntity address;
+    private String iata;
+    private String city;
+    private String cityCode;
+    private String country;
+    private String countryCode;
 }

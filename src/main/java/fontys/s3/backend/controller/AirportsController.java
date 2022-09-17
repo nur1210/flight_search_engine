@@ -22,9 +22,9 @@ public class AirportsController {
     private final UpdateAirportUseCase updateAirportUseCase;
 
 
-    @GetMapping("{initials}")
-    public ResponseEntity<Airport> getAirport(@PathVariable(value = "initials") final String initials){
-        final Optional<Airport> airportOptional = getAirportUseCase.getAirport(initials);
+    @GetMapping("{iata}")
+    public ResponseEntity<Airport> getAirport(@PathVariable(value = "iata") final String iata){
+        final Optional<Airport> airportOptional = getAirportUseCase.getAirport(iata);
         if (airportOptional.isEmpty()){
             return ResponseEntity.notFound().build();
         }
@@ -43,16 +43,16 @@ public class AirportsController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @DeleteMapping("{initials}")
-    public ResponseEntity<Void> deleteAirport(@PathVariable String initials){
-        deleteAirportUseCase.deleteAirport(initials);
+    @DeleteMapping("{iata}")
+    public ResponseEntity<Void> deleteAirport(@PathVariable String iata){
+        deleteAirportUseCase.deleteAirport(iata);
         return ResponseEntity.noContent().build();
     }
 
-    @PutMapping("{initials}")
-    public ResponseEntity<Void> updateCountry(@PathVariable("initials") String initials,
+    @PutMapping("{iata}")
+    public ResponseEntity<Void> updateCountry(@PathVariable("iata") String iata,
                                               @RequestBody @Valid UpdateAirportRequest request){
-        request.setInitials(initials);
+        request.setIata(iata);
         updateAirportUseCase.UpdateAirport(request);
         return ResponseEntity.noContent().build();
     }

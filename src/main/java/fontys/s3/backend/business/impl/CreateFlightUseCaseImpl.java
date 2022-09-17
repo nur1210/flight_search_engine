@@ -13,15 +13,12 @@ import org.springframework.stereotype.Service;
 @AllArgsConstructor
 public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
     private final FlightRepository flightRepository;
-    //private final AirportValidator airportValidator;
 
     @Override
     public CreateFlightResponse CreateFlight(CreateFlightRequest request) {
         if (flightRepository.existsById(request.getFlightNumber())) {
             throw new FlightNumberAlreadyExistsException();
         }
-
-        //airportValidator.validAirport(request.getOriginCode());
 
         FlightEntity saveFlight = saveNewFlight(request);
 
@@ -34,13 +31,16 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
         FlightEntity newFlight = FlightEntity.builder()
                 .flightNumber(request.getFlightNumber())
                 .airline(request.getAirline())
-                .originCode(request.getOriginCode())
-                .destinationCode(request.getDestinationCode())
-                .flightTime(request.getFlightTime())
-                .landTime(request.getLandTime())
+                .departureAirport(request.getDepartureAirport())
+                .arrivalAirport(request.getArrivalAirport())
+                .localDepartureTime(request.getLocalDepartureTime())
+                .utcDepartureTime(request.getUtcDepartureTime())
+                .localArrivalTime(request.getLocalArrivalTime())
+                .utcArrivalTime(request.getUtcArrivalTime())
                 .economicPrice(request.getEconomicPrice())
                 .businessPrice(request.getBusinessPrice())
                 .build();
+
         return flightRepository.save(newFlight);
     }
 }

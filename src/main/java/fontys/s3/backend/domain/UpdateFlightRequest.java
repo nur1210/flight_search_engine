@@ -15,8 +15,10 @@ import java.sql.Timestamp;
 public class UpdateFlightRequest {
     @NotBlank
     private String flightNumber;
-    private Timestamp flightTime;
-    private Timestamp landTime;
+    private Timestamp localDepartureTime;
+    private Timestamp utcDepartureTime;
+    private Timestamp localArrivalTime;
+    private Timestamp utcArrivalTime;
     private double economicPrice;
     private double businessPrice;
 }
