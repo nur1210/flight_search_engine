@@ -49,17 +49,13 @@ public class FlightEntity {
 
     @Column(
             name = "local_departure_time",
-            columnDefinition = "TIMESTAMP",
-            insertable = false,
-            updatable = false
+            columnDefinition = "TIMESTAMP"
     )
     private Timestamp localDepartureTime;
 
     @Column(
             name = "utc_departure_time",
-            columnDefinition = "TIMESTAMP",
-            insertable = false,
-            updatable = false
+            columnDefinition = "TIMESTAMP"
     )
     private Timestamp utcDepartureTime;
 
@@ -70,7 +66,7 @@ public class FlightEntity {
     private Timestamp localArrivalTime;
 
     @Column(
-            name = "utc_departure_time",
+            name = "utc_arrival_time",
             columnDefinition = "TIMESTAMP"
     )
     private Timestamp utcArrivalTime;
