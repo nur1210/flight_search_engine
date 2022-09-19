@@ -41,20 +41,20 @@ public class FlightsController {
     }
 
     @DeleteMapping("{flightNumber}")
-    public ResponseEntity<Void> deleteStudent(@PathVariable String flightNumber) {
+    public ResponseEntity<Void> deleteFlight(@PathVariable String flightNumber) {
         deleteFlightUseCase.deleteFlight(flightNumber);
         return ResponseEntity.noContent().build();
     }
 
     @PostMapping()
-    public ResponseEntity<CreateFlightResponse> createStudent(@RequestBody @Valid CreateFlightRequest request) {
+    public ResponseEntity<CreateFlightResponse> createFlight(@RequestBody @Valid CreateFlightRequest request) {
         CreateFlightResponse response = createFlightUseCase.CreateFlight(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("{flightNumber}")
-    public ResponseEntity<Void> updateStudent(@PathVariable("flightNumber") String flightNumber,
-                                              @RequestBody @Valid UpdateFlightRequest request) {
+    public ResponseEntity<Void> updateFlight(@PathVariable("flightNumber") String flightNumber,
+                                             @RequestBody @Valid UpdateFlightRequest request) {
         request.setFlightNumber(flightNumber);
         updateFlightUseCase.updateFlight(request);
         return ResponseEntity.noContent().build();
