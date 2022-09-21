@@ -1,7 +1,5 @@
 package fontys.s3.backend.domain;
 
-import fontys.s3.backend.persistence.entity.JSONCountryFromEntity;
-import fontys.s3.backend.persistence.entity.JSONCountryToEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -19,11 +17,11 @@ public class CreateFlightRequest {
     private String flyFrom;
     private String cityFrom;
     private String cityCodeFrom;
-    private JSONCountryFromEntity countryFrom;
+    private JSONCountryFrom countryFrom;
     private String flyTo;
     private String cityTo;
     private String cityCodeTo;
-    private JSONCountryToEntity countryTo;
+    private JSONCountryTo countryTo;
     private Timestamp local_departure;
     private Timestamp utc_departure;
     private Timestamp local_arrival;

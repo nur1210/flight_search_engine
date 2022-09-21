@@ -26,23 +26,10 @@ public class FlightEntity {
     )
     private String airline;
 
-/*    @Column(
-            name = "departure_airport_iata",
-            nullable = false,
-            columnDefinition = "TEXT",
-            length = 3
-    )
-    @JoinColumn(referencedColumnName = "iata")*/
 @JoinColumn(referencedColumnName = "iata")
 @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
     private AirportEntity departureAirport;
 
-/*    @Column(
-            name = "arrival_airport_iata",
-            nullable = false,
-            columnDefinition = "TEXT",
-            length = 3
-    )*/
     @JoinColumn(referencedColumnName = "iata")
     @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
     private AirportEntity arrivalAirport;
@@ -72,16 +59,17 @@ public class FlightEntity {
     private Timestamp utcArrivalTime;
 
     @Column(
-            name = "economic_price",
+            name = "price",
             columnDefinition = "double precision"
     )
-    private double economicPrice;
+    private double price;
+
 
     @Column(
-            name = "business_price",
-            columnDefinition = "double precision"
+            name = "available_seats",
+            columnDefinition = "integer"
     )
-    private double businessPrice;
+    private long availableSeats;
 
     public String getFlightNumber() {
         return flightNumber;
@@ -147,19 +135,19 @@ public class FlightEntity {
         this.utcArrivalTime = utcArrivalTime;
     }
 
-    public double getEconomicPrice() {
-        return economicPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setEconomicPrice(double economicPrice) {
-        this.economicPrice = economicPrice;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
-    public double getBusinessPrice() {
-        return businessPrice;
+    public long getAvailableSeats() {
+        return availableSeats;
     }
 
-    public void setBusinessPrice(double businessPrice) {
-        this.businessPrice = businessPrice;
+    public void setAvailableSeats(long availableSeats) {
+        this.availableSeats = availableSeats;
     }
 }
