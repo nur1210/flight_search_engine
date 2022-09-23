@@ -15,7 +15,7 @@ public class GetFlightUseCaseImpl implements GetFlightUseCase {
     private FlightRepository flightRepository;
 
     @Override
-    public Optional<Flight> getFlight(String flightNumber) {
-        return flightRepository.findById(flightNumber).map(FlightConverter::convert);
+    public Optional<Flight> getFlight(long flightId) {
+        return flightRepository.findById(flightId).map(FlightConverter::convert);
     }
 }

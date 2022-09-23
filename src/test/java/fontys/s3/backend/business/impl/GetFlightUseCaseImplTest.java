@@ -52,8 +52,7 @@ class GetFlightUseCaseImplTest {
                 .utcDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
-                .economicPrice(100)
-                .businessPrice(200)
+                .price(100)
                 .build();
         when(flightRepository.findById(any())).thenReturn(Optional.of(flightEntity));
         //Act

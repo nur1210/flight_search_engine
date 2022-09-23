@@ -2,8 +2,6 @@ package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.domain.CreateFlightRequest;
 import fontys.s3.backend.domain.CreateFlightResponse;
-import fontys.s3.backend.domain.JSONCountryFrom;
-import fontys.s3.backend.domain.JSONCountryTo;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
@@ -55,8 +53,7 @@ class CreateFlightUseCaseImplTest {
                 .utcDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
-                .economicPrice(100)
-                .businessPrice(200)
+                .price(100)
                 .build();
         when(flightRepository.save(any())).thenReturn(flightEntity);
 
@@ -82,8 +79,7 @@ class CreateFlightUseCaseImplTest {
                 .utc_departure(flightEntity.getUtcDepartureTime())
                 .local_arrival(flightEntity.getLocalArrivalTime())
                 .utc_arrival(flightEntity.getUtcArrivalTime())
-                .economicPrice(flightEntity.getEconomicPrice())
-                .businessPrice(flightEntity.getBusinessPrice())
+                .economicPrice(flightEntity.getPrice())
                 .build();
 
 

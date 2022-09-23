@@ -19,10 +19,11 @@ public class FlightRepositoryCustomImpl implements FlightRepositoryCustom {
         this.flightRepositoryBasic = flightRepositoryBasic;
     }
     public List<FlightEntity> FindAllFlightsFromOriginCodeToDestinationCode(String departureAirportIATA, String arrivalAirportIATA) {
-        return flightRepositoryBasic.findAll()
+        /*return flightRepositoryBasic.findAll()
                 .stream()
                 .filter(flightEntity -> flightEntity.getDepartureAirport().getIata().equals(departureAirportIATA))
                 .filter(flightEntity -> flightEntity.getArrivalAirport().getIata().equals(arrivalAirportIATA))
-                .toList();
+                .toList();*/
+        return null;
     }
 }

@@ -1,31 +1,20 @@
 package fontys.s3.backend.domain;
 
+import fontys.s3.backend.persistence.entity.RouteEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateFlightRequest {
-    private long flight_no;
-    private String airline;
-    private String flyFrom;
-    private String cityFrom;
-    private String cityCodeFrom;
-    private JSONCountryFrom countryFrom;
-    private String flyTo;
-    private String cityTo;
-    private String cityCodeTo;
-    private JSONCountryTo countryTo;
-    private Timestamp local_departure;
-    private Timestamp utc_departure;
-    private Timestamp local_arrival;
-    private Timestamp utc_arrival;
-    private double economicPrice;
-    private double businessPrice;
+    private long id;
+    private List<RouteEntity> routes;
+    private double price;
+    private long availableSeats;
 }

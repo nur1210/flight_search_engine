@@ -9,16 +9,10 @@ final class FlightConverter {
 
     public static Flight convert(FlightEntity flight) {
         return Flight.builder()
-                .flightNumber(flight.getFlightNumber())
-                .airline(flight.getAirline())
-                .departureAirport(AirportConverter.convert(flight.getDepartureAirport()))
-                .arrivalAirport(AirportConverter.convert(flight.getArrivalAirport()))
-                .localDepartureTime(flight.getLocalDepartureTime())
-                .utcDepartureTime(flight.getUtcDepartureTime())
-                .localArrivalTime(flight.getLocalArrivalTime())
-                .utcArrivalTime(flight.getUtcArrivalTime())
-                .economicPrice(flight.getEconomicPrice())
-                .businessPrice(flight.getBusinessPrice())
+                .id(flight.getId())
+                .route(flight.getRoute().stream().map(RouteConverter::convert).toList())
+                .price(flight.getPrice())
+                .availableSeats(flight.getAvailableSeats())
                 .build();
     }
 }

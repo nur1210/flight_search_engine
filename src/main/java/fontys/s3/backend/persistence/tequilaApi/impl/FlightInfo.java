@@ -1,4 +1,4 @@
-package fontys.s3.backend.persistence.tequila.impl;
+package fontys.s3.backend.persistence.tequilaApi.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;

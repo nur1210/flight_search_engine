@@ -11,7 +11,7 @@ public class DeleteFlightUseCaseImpl implements DeleteFlightUseCase {
     private final FlightRepository flightRepository;
 
     @Override
-    public void deleteFlight(String flightNumber) {
-        this.flightRepository.deleteById(flightNumber);
+    public void deleteFlight(long flightId) {
+        this.flightRepository.deleteById(flightId);
     }
 }

@@ -5,18 +5,14 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.List;
+import java.sql.Timestamp;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Flight {
-    private long id;
-    private List<Route> route;
-    private double price;
-    private long availableSeats;
-/*    private String flightNumber;
+public class Route {
+    private long flightNumber;
     private String airline;
     private Airport departureAirport;
     private Airport arrivalAirport;
@@ -24,6 +20,4 @@ public class Flight {
     private Timestamp utcDepartureTime;
     private Timestamp localArrivalTime;
     private Timestamp utcArrivalTime;
-    private double price;
-    private long availableSeats;*/
 }

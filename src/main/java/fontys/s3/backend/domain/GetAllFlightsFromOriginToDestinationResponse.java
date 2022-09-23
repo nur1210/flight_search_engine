@@ -5,11 +5,12 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @Builder
-@NoArgsConstructor
 @AllArgsConstructor
-public class JSONCountryFrom {
-    private String code;
-    private String name;
+@NoArgsConstructor
+public class GetAllFlightsFromOriginToDestinationResponse {
+    private List<Flight> flights;
 }

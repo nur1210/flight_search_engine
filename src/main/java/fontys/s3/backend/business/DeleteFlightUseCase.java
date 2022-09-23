@@ -1,5 +1,5 @@
 package fontys.s3.backend.business;
 
 public interface DeleteFlightUseCase {
-    void deleteFlight(String flightNumber);
+    void deleteFlight(long flightId);
 }

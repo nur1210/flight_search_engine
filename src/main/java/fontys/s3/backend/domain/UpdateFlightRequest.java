@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
-import java.sql.Timestamp;
 
 @Data
 @Builder
@@ -14,11 +13,7 @@ import java.sql.Timestamp;
 @AllArgsConstructor
 public class UpdateFlightRequest {
     @NotBlank
-    private String flightNumber;
-    private Timestamp localDepartureTime;
-    private Timestamp utcDepartureTime;
-    private Timestamp localArrivalTime;
-    private Timestamp utcArrivalTime;
-    private double economicPrice;
-    private double businessPrice;
+    private long flightId;
+    private double price;
+    private long availableSeats;
 }

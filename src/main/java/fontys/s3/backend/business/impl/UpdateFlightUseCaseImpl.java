@@ -16,9 +16,9 @@ public class UpdateFlightUseCaseImpl implements UpdateFlightUseCase {
     private final FlightRepository flightRepository;
     @Override
     public void updateFlight(UpdateFlightRequest request) {
-        Optional<FlightEntity> flightOptional = flightRepository.findById(request.getFlightNumber());
+        Optional<FlightEntity> flightOptional = flightRepository.findById(request.getFlightId());
         if (flightOptional.isEmpty()) {
-            throw new InvalidFlightException("FLIGHT_NUMBER_INVALID");
+            throw new InvalidFlightException("FLIGHT_ID_INVALID");
         }
 
         FlightEntity flight = flightOptional.get();
@@ -26,13 +26,8 @@ public class UpdateFlightUseCaseImpl implements UpdateFlightUseCase {
     }
 
     private void updateFields(UpdateFlightRequest request, FlightEntity flight) {
-        flight.setLocalDepartureTime(request.getLocalDepartureTime());
-        flight.setUtcDepartureTime(request.getUtcDepartureTime());
-        flight.setLocalArrivalTime(request.getLocalArrivalTime());
-        flight.setUtcArrivalTime(request.getUtcArrivalTime());
-        flight.setEconomicPrice(request.getEconomicPrice());
-        flight.setBusinessPrice(request.getBusinessPrice());
-
+        flight.setPrice(request.getPrice());
+        flight.setAvailableSeats(request.getAvailableSeats());
 
         flightRepository.save(flight);
     }
