@@ -15,7 +15,6 @@ import java.util.Optional;
 @AllArgsConstructor
 public class FlightsController {
     private final GetFlightUseCase getFlightUseCase;
-    private final GetAllFlightsFromOriginToDestinationUseCase getFlightsUseCase;
     private final DeleteFlightUseCase deleteFlightUseCase;
     private final CreateFlightUseCase createFlightUseCase;
     private final UpdateFlightUseCase updateFlightUseCase;
@@ -29,7 +28,7 @@ public class FlightsController {
         return ResponseEntity.ok().body(flightOptional.get());
     }
 
-    @GetMapping
+/*    @GetMapping
     public ResponseEntity<GetAllFlightsFromOriginToDestinationResponse> getAllFlights(@RequestParam(value = "fly_from", required = false) String flyFrom,
                                                                                     @RequestParam(value = "fly_to", required = false) String flyTo,
                                                                                     @RequestParam(value = "date_from", required = false) String dateFrom,
@@ -60,7 +59,7 @@ public class FlightsController {
                 .build();
         GetAllFlightsFromOriginToDestinationResponse response = getFlightsUseCase.getFlights(request);
         return ResponseEntity.ok(response);
-    }
+    }*/
 
     @DeleteMapping("{flightId}")
     public ResponseEntity<Void> deleteFlight(@PathVariable long flightId) {

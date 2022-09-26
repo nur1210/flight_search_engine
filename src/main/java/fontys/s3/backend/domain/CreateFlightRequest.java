@@ -13,7 +13,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateFlightRequest {
-    private long id;
+    //private long id;
     private List<RouteEntity> routes;
     private double price;
     private long availableSeats;

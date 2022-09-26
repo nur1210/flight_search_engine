@@ -5,6 +5,7 @@ import fontys.s3.backend.domain.CreateFlightResponse;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
+import fontys.s3.backend.persistence.entity.RouteEntity;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -15,6 +16,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
@@ -44,8 +47,8 @@ class CreateFlightUseCaseImplTest {
                 .countryCode("NL")
                 .build();
 
-        flightEntity = FlightEntity.builder()
-                .flightNumber("FR123")
+        RouteEntity route = RouteEntity.builder()
+                .flightNumber(1234)
                 .airline("FR")
                 .departureAirport(airport)
                 .arrivalAirport(airport)
@@ -53,39 +56,29 @@ class CreateFlightUseCaseImplTest {
                 .utcDepartureTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
-                .price(100)
                 .build();
+        List<RouteEntity> routes = new ArrayList<>();
+        routes.add(route);
+
+        flightEntity = FlightEntity.builder()
+                .route(routes)
+                .price(100)
+                .availableSeats(2)
+                .build();
+
         when(flightRepository.save(any())).thenReturn(flightEntity);
 
         //Act
         CreateFlightRequest request = CreateFlightRequest.builder()
-                .flight_no(123)
-                .airline(flightEntity.getAirline())
-                .flyFrom(flightEntity.getDepartureAirport().getIata())
-                .cityFrom(flightEntity.getDepartureAirport().getCity())
-                .cityCodeFrom(flightEntity.getDepartureAirport().getCityCode())
-                .countryFrom(JSONCountryFrom.builder()
-                        .code(flightEntity.getDepartureAirport().getCountryCode())
-                        .name(flightEntity.getDepartureAirport().getCountry())
-                        .build())
-                .flyTo(flightEntity.getArrivalAirport().getIata())
-                .cityTo(flightEntity.getArrivalAirport().getCity())
-                .cityCodeTo(flightEntity.getArrivalAirport().getCityCode())
-                .countryTo(JSONCountryTo.builder()
-                        .code(flightEntity.getArrivalAirport().getCountryCode())
-                        .name(flightEntity.getArrivalAirport().getCountry())
-                        .build())
-                .local_departure(flightEntity.getLocalDepartureTime())
-                .utc_departure(flightEntity.getUtcDepartureTime())
-                .local_arrival(flightEntity.getLocalArrivalTime())
-                .utc_arrival(flightEntity.getUtcArrivalTime())
-                .economicPrice(flightEntity.getPrice())
+                .routes(flightEntity.getRoute())
+                .price(flightEntity.getPrice())
+                .availableSeats(flightEntity.getAvailableSeats())
                 .build();
 
 
         CreateFlightResponse response = useCase.CreateFlight(request);
 
         //Assert
-        Assertions.assertEquals(response.getFlightNumber(), flightEntity.getFlightNumber());
+        Assertions.assertEquals(response.getFlightId(), flightEntity.getId());
     }
 }

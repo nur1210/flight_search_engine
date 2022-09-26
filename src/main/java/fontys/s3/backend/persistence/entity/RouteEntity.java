@@ -13,7 +13,6 @@ import java.sql.Timestamp;
 @Entity(name = "route")
 @Table(name = "routes")
 public class RouteEntity {
-    //TODO: add flightEntity manyToOne and FlightEntity oneToMany
     @Id
     @Column(name = "flight_number",
             columnDefinition = "integer")

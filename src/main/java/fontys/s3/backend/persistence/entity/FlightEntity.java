@@ -36,15 +36,6 @@ public class FlightEntity {
     @OneToMany (targetEntity = RouteEntity.class,
             cascade = CascadeType.ALL)
     private List<RouteEntity> route;
-
-/*    @JoinColumn(referencedColumnName = "iata")
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
-    private AirportEntity departureAirport;
-
-    @JoinColumn(referencedColumnName = "iata")
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
-    private AirportEntity arrivalAirport;*/
-
     @Column(
             name = "price",
             columnDefinition = "double precision"
@@ -57,6 +48,9 @@ public class FlightEntity {
             columnDefinition = "integer"
     )
     private long availableSeats;
+
+    @ManyToMany(mappedBy = "userFlights")
+    private List<UserEntity> passengers;
 
     public long getId() {
         return id;
@@ -88,5 +82,13 @@ public class FlightEntity {
 
     public void setAvailableSeats(long availableSeats) {
         this.availableSeats = availableSeats;
+    }
+
+    public List<UserEntity> getPassengers() {
+        return passengers;
+    }
+
+    public void setPassengers(List<UserEntity> passengers) {
+        this.passengers = passengers;
     }
 }

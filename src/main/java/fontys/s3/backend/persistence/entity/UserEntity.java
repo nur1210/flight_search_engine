@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+import java.util.List;
+
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Builder
@@ -64,6 +66,14 @@ public class UserEntity {
     )
     private String password;
 
+    @ManyToMany
+    @JoinTable(
+            name = "user_flight",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "flight_id")
+    )
+    private List<FlightEntity> userFlights;
+
     public long getId() {
         return id;
     }
@@ -98,5 +108,13 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<FlightEntity> getUserFlights() {
+        return userFlights;
+    }
+
+    public void setUserFlights(List<FlightEntity> flights) {
+        this.userFlights = flights;
     }
 }

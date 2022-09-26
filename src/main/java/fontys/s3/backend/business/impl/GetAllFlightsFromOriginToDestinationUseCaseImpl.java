@@ -21,7 +21,7 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
     private FlightRepository flightRepository;
     private GetFlightInfoRepository flightInfoRepository;
     @Override
-    public GetAllFlightsFromOriginToDestinationResponse getFlights(final GetAllFlightsFromOriginToDestinationRequest request) {
+    public GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
         List<FlightEntity> results;
         Map<String, Object> params = new HashMap<>();
         //TODO move to own class

@@ -1,7 +1,6 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.CreateFlightUseCase;
-import fontys.s3.backend.business.exception.FlightNumberAlreadyExistsException;
 import fontys.s3.backend.domain.CreateFlightRequest;
 import fontys.s3.backend.domain.CreateFlightResponse;
 import fontys.s3.backend.persistence.FlightRepository;
@@ -16,9 +15,6 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
 
     @Override
     public CreateFlightResponse CreateFlight(CreateFlightRequest request) {
-        if (flightRepository.existsById(request.getId())) {
-            throw new FlightNumberAlreadyExistsException();
-        }
 
         FlightEntity saveFlight = saveNewFlight(request);
 
@@ -29,7 +25,6 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
 
     private FlightEntity saveNewFlight(CreateFlightRequest request) {
         FlightEntity newFlight = FlightEntity.builder()
-                .id(request.getId())
                 .route(request.getRoutes())
                 .price(request.getPrice())
                 .availableSeats(request.getAvailableSeats())
