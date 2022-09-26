@@ -34,7 +34,7 @@ public class FlightEntity {
     private long id;
 
     @OneToMany (targetEntity = RouteEntity.class,
-            cascade = CascadeType.ALL)
+    cascade = CascadeType.ALL)
     private List<RouteEntity> route;
     @Column(
             name = "price",

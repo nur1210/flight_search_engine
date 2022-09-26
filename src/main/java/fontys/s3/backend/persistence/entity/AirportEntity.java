@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Builder
 @NoArgsConstructor
@@ -40,6 +41,17 @@ public class AirportEntity {
             columnDefinition = "TEXT",
             length = 2)
     private String countryCode;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "arrivalAirport",
+            orphanRemoval = true)
+    private List<RouteEntity> arrivalRoutes;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "departureAirport",
+            orphanRemoval = true)
+    private List<RouteEntity> departureRoutes;
+
 
     public String getIata() {
         return iata;

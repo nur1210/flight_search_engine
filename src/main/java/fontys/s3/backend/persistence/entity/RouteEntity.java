@@ -25,12 +25,14 @@ public class RouteEntity {
     )
     private String airline;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    //@Cascade(CascadeType.ALL)
     @JoinColumn(referencedColumnName = "iata")
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
     private AirportEntity departureAirport;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    //@Cascade(CascadeType.SAVE_UPDATE)
     @JoinColumn(referencedColumnName = "iata")
-    @ManyToOne(cascade = CascadeType.ALL, targetEntity = AirportEntity.class)
     private AirportEntity arrivalAirport;
 
     @Column(
@@ -56,6 +58,10 @@ public class RouteEntity {
             columnDefinition = "TIMESTAMP"
     )
     private Timestamp utcArrivalTime;
+
+/*    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(referencedColumnName = "id")
+    private FlightEntity flight;*/
 
     public long getFlightNumber() {
         return flightNumber;
@@ -120,4 +126,12 @@ public class RouteEntity {
     public void setUtcArrivalTime(Timestamp utcArrivalTime) {
         this.utcArrivalTime = utcArrivalTime;
     }
+
+/*    public FlightEntity getFlight() {
+        return flight;
+    }
+
+    public void setFlight(FlightEntity flight) {
+        this.flight = flight;
+    }*/
 }

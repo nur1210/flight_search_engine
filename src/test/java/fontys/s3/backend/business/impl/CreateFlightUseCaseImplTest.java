@@ -70,7 +70,7 @@ class CreateFlightUseCaseImplTest {
 
         //Act
         CreateFlightRequest request = CreateFlightRequest.builder()
-                .routes(flightEntity.getRoute())
+                .route(flightEntity.getRoute())
                 .price(flightEntity.getPrice())
                 .availableSeats(flightEntity.getAvailableSeats())
                 .build();
