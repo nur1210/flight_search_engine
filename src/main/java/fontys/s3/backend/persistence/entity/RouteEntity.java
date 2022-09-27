@@ -25,14 +25,12 @@ public class RouteEntity {
     )
     private String airline;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    //@Cascade(CascadeType.ALL)
-    @JoinColumn(referencedColumnName = "iata")
+@ManyToOne
+@JoinColumn(name = "departure_airport_iata")
     private AirportEntity departureAirport;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    //@Cascade(CascadeType.SAVE_UPDATE)
-    @JoinColumn(referencedColumnName = "iata")
+    @ManyToOne
+    @JoinColumn(name = "arrival_airport_iata")
     private AirportEntity arrivalAirport;
 
     @Column(
@@ -59,9 +57,9 @@ public class RouteEntity {
     )
     private Timestamp utcArrivalTime;
 
-/*    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(referencedColumnName = "id")
-    private FlightEntity flight;*/
+    private FlightEntity flight;
 
     public long getFlightNumber() {
         return flightNumber;

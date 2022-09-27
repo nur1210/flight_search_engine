@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/flights")
 @AllArgsConstructor
 public class FlightsController {

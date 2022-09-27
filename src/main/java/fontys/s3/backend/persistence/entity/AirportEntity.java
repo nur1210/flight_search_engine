@@ -4,8 +4,10 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Builder
 @NoArgsConstructor
@@ -19,6 +21,13 @@ public class AirportEntity {
             columnDefinition = "TEXT",
             length = 3)
     private String iata;
+
+    @Column(
+            name = "name",
+            nullable = false,
+            columnDefinition = "TEXT"
+    )
+    private String name;
 
     @Column(name = "city",
             nullable = false,
@@ -41,16 +50,6 @@ public class AirportEntity {
             columnDefinition = "TEXT",
             length = 2)
     private String countryCode;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "arrivalAirport",
-            orphanRemoval = true)
-    private List<RouteEntity> arrivalRoutes;
-
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "departureAirport",
-            orphanRemoval = true)
-    private List<RouteEntity> departureRoutes;
 
 
     public String getIata() {
