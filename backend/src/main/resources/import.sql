@@ -184,7 +184,7 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('AS
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASF','Astrakhan Arpt','ASF','Astrakhan','RUSSIA','RU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASH','Boire Field Arpt','ASH','Nashua','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASJ','Amami O Shima Arpt','ASJ','Amami O Shima','JAPAN','JP');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASK','Yamoussoukro Arpt','ASK','Yamoussouro','COTE D\'IVOIRE','CI');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASK','Yamoussoukro Arpt','ASK','Yamoussouro','COTE DIVOIRE','CI');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASL','Harrison County Arpt','ASL','Marshall','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASM','Asmara Intl Arpt','ASM','Asmara','ERITREA','ER');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ASN','Talladega Arpt','ASN','Talladega','UNITED STATES','US');
@@ -628,7 +628,7 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('CH
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PWK','Pal Waukee Arpt','CHI','Chicago','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RFD','Chicago Rockford Arpt','CHI','Chicago','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('DPA','Dupage County Arpt','CHI','Chicago','UNITED STATES','US');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ORD','O\'Hare Intl Arpt','CHI','Chicago','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ORD','OHare Intl Arpt','CHI','Chicago','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('MDW','Midway','CHI','Chicago','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('CHO','Charlottesville Albemarle Arpt','CHO','Charlottesville','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('CHQ','Souda Arpt','CHQ','Chania','GREECE','GR');
@@ -1110,7 +1110,7 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RS
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNA','Lungi Intl Arpt','FNA','Freetown','SIERRA LEONE','SL');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNC','Madeira Arpt','FNC','Funchal','PORTUGAL','PT');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNI','Nimes Airport','FNI','Nimes','FRANCE','FR');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNJ','Sunan Arpt','FNJ','Pyongyang','KOREA, DEMOCRATIC PEOPLE\'S REPUBLIC OF','KP');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNJ','Sunan Arpt','FNJ','Pyongyang','KOREA, DEMOCRATIC PEOPLES REPUBLIC OF','KP');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('QWF','Fort Collins Bus Service','FNL','Ft Collins','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FNL','Municipal Airport','FNL','Ft Collins','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('QWH','Loveland Bus Service','FNL','Ft Collins','UNITED STATES','US');
@@ -2030,7 +2030,7 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZL
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWN','Warrington B Q Rail Station','LPL','Liverpool','UNITED KINGDOM','GB');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPO','La Porte Arpt','LPO','La Porte','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPP','Lappeenranta Arpt','LPP','Lappeenranta','FINLAND','FI');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPQ','Louangphrabang Arpt','LPQ','Louangphrabang','LAO PEOPLE\'S DEMOCRATIC REPUBLIC','LA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPQ','Louangphrabang Arpt','LPQ','Louangphrabang','LAO PEOPLES DEMOCRATIC REPUBLIC','LA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPS','Lopez Island Arpt','LPS','Lopez Island','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPT','Lampang Arpt','LPT','Lampang','THAILAND','TH');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('LPX','Liepaya Arpt','LPX','Liepaja','LATVIA','LV');
@@ -2787,7 +2787,7 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PK
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PKU','Simpang Tiga Arpt','PKU','Pekanbaru','INDONESIA','ID');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PKV','Pskov Arpt','PKV','Pskov','RUSSIA','RU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PKW','Selebi Phikwe Arpt','PKW','Selebi Phikwe','BOTSWANA','BW');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PKZ','Pakse Arpt','PKZ','Pakse','LAO PEOPLE\'S DEMOCRATIC REPUBLIC','LA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PKZ','Pakse Arpt','PKZ','Pakse','LAO PEOPLES DEMOCRATIC REPUBLIC','LA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PLD','Playa Samara Arpt','PLD','Playa Samara','COSTA RICA','CR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PLH','Roborough Arpt','PLH','Plymouth','UNITED KINGDOM','GB');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PLJ','Placencia Arpt','PLJ','Placencia','BELIZE','BZ');
@@ -3379,7 +3379,1029 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ST
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('STT','Cyril E King Arpt','STT','St Thomas','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('STW','Stavropol Arpt','STW','Stavropol','RUSSIA','RU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('STX','Alexander Hamilton Arpt','STX','St Croix','UNITED STATES','US');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('STY','Salto Arpt','STY','Salto','URUGUAY','UY');
+INSERT INTO airports (iata, name, city_code, city, country, country_code)
+VALUES ('STY', 'Salto Arpt', 'STY', 'Salto', 'URUGUAY', 'UY'),
+       ('SUA', 'Witham Field', 'SUA', 'Stuart', 'UNITED STATES', 'US'),
+       ('SUB', 'Juanda Arpt', 'SUB', 'Surabaya', 'INDONESIA', 'ID'),
+       ('SUE', 'Door Country Arpt', 'SUE', 'Sturgeon Bay', 'UNITED STATES', 'US'),
+       ('SUF', 'S Eufemia Arpt', 'SUF', 'Lamezia Terme', 'ITALY', 'IT'),
+       ('SUH', 'Sur Arpt', 'SUH', 'Sur Om', 'OMAN', 'OM'),
+       ('SUM', 'Sumter Municipal Arpt', 'SUM', 'Sumter', 'UNITED STATES', 'US'),
+       ('SUN', 'Friedman Memorial', 'SUN', 'Sun Valley', 'UNITED STATES', 'US'),
+       ('SUU', 'Travis AFB', 'SUU', 'Fairfield', 'UNITED STATES', 'US'),
+       ('SUV', 'Nausori Airport', 'SUV', 'Suva', 'FIJI', 'FJ'),
+       ('SUW', 'Richard I Bong Arpt', 'SUW', 'Superior', 'UNITED STATES', 'US'),
+       ('SUX', 'Sioux Gateway Arpt', 'SUX', 'Sioux City', 'UNITED STATES', 'US'),
+       ('SVB', 'Sambava Arpt', 'SVB', 'Sambava', 'MADAGASCAR', 'MG'),
+       ('SVC', 'Grant County Airport', 'SVC', 'Silver City', 'UNITED STATES', 'US'),
+       ('SVD', 'Arnos Vale Arpt', 'SVD', 'St Vincent', 'SAINT VINCENT AND THE GRENADINES', 'VC'),
+       ('ZWC', 'Stavanger Rail Station', 'SVG', 'Stavanger', 'NORWAY', 'NO'),
+       ('XOQ', 'Sira Rail Station', 'SVG', 'Stavanger', 'NORWAY', 'NO'),
+       ('XKC', 'Sandnes Rail Station', 'SVG', 'Stavanger', 'NORWAY', 'NO'),
+       ('SVG', 'Sola Airport', 'SVG', 'Stavanger', 'NORWAY', 'NO'),
+       ('SVH', 'Statesville Municipal Arpt', 'SVH', 'Statesville', 'UNITED STATES', 'US'),
+       ('SVJ', 'Helle', 'SVJ', 'Svolvaer', 'NORWAY', 'NO'),
+       ('SVL', 'Savonlinna Arpt', 'SVL', 'Savonlinna', 'FINLAND', 'FI'),
+       ('SVQ', 'San Pablo Arpt', 'SVQ', 'Sevilla', 'SPAIN', 'ES'),
+       ('SVU', 'Savusavu Airport', 'SVU', 'Savusavu', 'FIJI', 'FJ'),
+       ('SVX', 'Koltsovo Arpt', 'SVX', 'Ekaterinburg', 'RUSSIA', 'RU'),
+       ('SVZ', 'San Antonio Arpt', 'SVZ', 'San Antonio', 'VENEZUELA', 'VE'),
+       ('SWA', 'Shantou Airport', 'SWA', 'Shantou', 'CHINA', 'CN'),
+       ('SWD', 'Seward Airport', 'SWD', 'Seward', 'UNITED STATES', 'US'),
+       ('SWF', 'Stewart Airport', 'SWF', 'Newburgh', 'UNITED STATES', 'US'),
+       ('SWH', 'Swan Hill Arpt', 'SWH', 'Swan Hill', 'AUSTRALIA', 'AU'),
+       ('SWI', 'Swindon Rail Station', 'SWI', 'Swindon', 'UNITED KINGDOM', 'GB'),
+       ('XWS', 'Swindon Rail Station', 'SWI', 'Swindon', 'UNITED KINGDOM', 'GB'),
+       ('SWO', 'Searcy Fld', 'SWO', 'Stillwater', 'UNITED STATES', 'US'),
+       ('SWS', 'Fairwood Comm', 'SWS', 'Swansea', 'UNITED KINGDOM', 'GB'),
+       ('SWT', 'Strezhevoy Airport', 'SWT', 'Strezhevoy Airport', 'RUSSIA', 'RU'),
+       ('SWU', 'Su Won Arpt', 'SWU', 'Su Won', 'KOREA, REPUBLIC OF', 'KR'),
+       ('SXB', 'Enzheim Arpt', 'SXB', 'Strasbourg', 'FRANCE', 'FR'),
+       ('XER', 'Strasbourg Bus Service', 'SXB', 'Strasbourg', 'FRANCE', 'FR'),
+       ('SXE', 'Sale Arpt', 'SXE', 'Sale', 'AUSTRALIA', 'AU'),
+       ('SXL', 'Collooney', 'SXL', 'Sligo', 'IRELAND', 'IE'),
+       ('SXM', 'Princ Juliana Arpt', 'SXM', 'St Maarten', 'NETHERLANDS ANTILLES', 'AN'),
+       ('SXR', 'Srinagar Arpt', 'SXR', 'Srinagar', 'INDIA', 'IN'),
+       ('SXZ', 'Siirt Airport', 'SXZ', 'Siirt Airport', 'TURKEY', 'TR'),
+       ('RSE', 'Au Rose Bay Arpt', 'SYD', 'Sydney', 'AUSTRALIA', 'AU'),
+       ('SYD', 'Sydney Kingsford Smith Arpt', 'SYD', 'Sydney', 'AUSTRALIA', 'AU'),
+       ('LBH', 'Palm Beach Arpt', 'SYD', 'Sydney', 'AUSTRALIA', 'AU'),
+       ('SYO', 'Shonai Arpt', 'SYO', 'Shonai', 'JAPAN', 'JP'),
+       ('SYR', 'Hancock Intl', 'SYR', 'Syracuse', 'UNITED STATES', 'US'),
+       ('SYX', 'Sanya Arpt', 'SYX', 'Sanya', 'CHINA', 'CN'),
+       ('SYY', 'Stornoway Arpt', 'SYY', 'Stornoway', 'UNITED KINGDOM', 'GB'),
+       ('SYZ', 'Shiraz Arpt', 'SYZ', 'Shiraz', 'IRAN', 'IR'),
+       ('SZC', 'Guanacaste Arpt', 'SZC', 'Santa Cruz', 'COSTA RICA', 'CR'),
+       ('SZD', 'Sheffield City Arpt', 'SZD', 'Sheffield', 'UNITED KINGDOM', 'GB'),
+       ('SZG', 'W A Mozart Arpt', 'SZG', 'Salzburg', 'AUSTRIA', 'AT'),
+       ('SZJ', 'Siguanea Arpt', 'SZJ', 'Siguanea', 'CUBA', 'CU'),
+       ('SZK', 'Skukuza Arpt', 'SZK', 'Skukuza', 'SOUTH AFRICA', 'ZA'),
+       ('SZO', 'Shanzhou Arpt', 'SZO', 'Shanzhou', 'CHINA', 'CN'),
+       ('SZP', 'Santa Paula Arpt', 'SZP', 'Santa Paula', 'UNITED STATES', 'US'),
+       ('SZR', 'Stara Zagora Arpt', 'SZR', 'Stara Zagora', 'BULGARIA', 'BG'),
+       ('SZT', 'San Cristobal Arpt', 'SZT', 'San Cristobal De Las Casas', 'MEXICO', 'MX'),
+       ('SZV', 'Suzhou Arpt', 'SZV', 'Suzhou', 'CHINA', 'CN'),
+       ('SZX', 'Shenzhen Arpt', 'SZX', 'Shenzhen', 'CHINA', 'CN'),
+       ('SZY', 'Mazury Arpt', 'SZY', 'Szymany', 'POLAND', 'PL'),
+       ('SZZ', 'Goleniow Arpt', 'SZZ', 'Szczecin', 'POLAND', 'PL'),
+       ('TAB', 'Crown Point Arpt', 'TAB', 'Tobago', 'TRINIDAD AND TOBAGO', 'TT'),
+       ('TAC', 'D Z Romualdez Arpt', 'TAC', 'Tacloban', 'PHILIPPINES', 'PH'),
+       ('TAE', 'Daegu Arpt', 'TAE', 'Daegu', 'KOREA, REPUBLIC OF', 'KR'),
+       ('TAG', 'Tagbilaran Arpt', 'TAG', 'Tagbilaran', 'PHILIPPINES', 'PH'),
+       ('TAH', 'Tanna Arpt', 'TAH', 'Tanna', 'VANUATU', 'VU'),
+       ('TAK', 'Takamatsu Arpt', 'TAK', 'Takamatsu', 'JAPAN', 'JP'),
+       ('TAL', 'Ralph Calhoun Arpt', 'TAL', 'Tanana', 'UNITED STATES', 'US'),
+       ('TAM', 'General F Javier Mina', 'TAM', 'Tampico', 'MEXICO', 'MX'),
+       ('TAO', 'Liuting Arpt', 'TAO', 'Qingdao', 'CHINA', 'CN'),
+       ('TAP', 'Tapachula Arpt', 'TAP', 'Tapachula', 'MEXICO', 'MX'),
+       ('TAR', 'M A Grottag Arpt', 'TAR', 'Taranto', 'ITALY', 'IT'),
+       ('TAS', 'Vostochny Arpt', 'TAS', 'Tashkent', 'UZBEKISTAN', 'UZ'),
+       ('TAT', 'Poprad Tatry Arpt', 'TAT', 'Poprad Tatry', 'SLOVAKIA', 'SK'),
+       ('TAY', 'Tartu Arpt', 'TAY', 'Tartu', 'ESTONIA', 'EE'),
+       ('TAZ', 'Dashoguz Arpt', 'TAZ', 'Dashoguz', 'TURKMENISTAN', 'TM'),
+       ('TBB', 'Tuy Hoa Arpt', 'TBB', 'Tuy Hoa', 'VIET NAM', 'VN'),
+       ('TBG', 'Tabubil Arpt', 'TBG', 'Tububil', 'PAPUA NEW GUINEA', 'PG'),
+       ('TBJ', 'Tabarka Arpt', 'TBJ', 'Tabarka', 'TUNISIA', 'TN'),
+       ('TBN', 'Forney Field', 'TBN', 'Ft Leonard Wood', 'UNITED STATES', 'US'),
+       ('TBO', 'Tabora Arpt', 'TBO', 'Tabora', 'TANZANIA', 'TZ'),
+       ('TBP', 'Tumbes Arpt', 'TBP', 'Tumbes', 'PERU', 'PE'),
+       ('TBS', 'Novo Alexeyevka Arpt', 'TBS', 'Tbilisi', 'GEORGIA', 'GE'),
+       ('TBT', 'Tabatinga Intl Arpt', 'TBT', 'Tabatinga', 'BRAZIL', 'BR'),
+       ('TBU', 'Tongatapu Intl', 'TBU', 'Nuku Alofa', 'TONGA', 'TO'),
+       ('TBW', 'Tambov Arpt', 'TBW', 'Tambov', 'RUSSIA', 'RU'),
+       ('TBZ', 'Tabriz International Arpt', 'TBZ', 'Tabriz', 'IRAN', 'IR'),
+       ('TCA', 'Tennant Creek Arpt', 'TCA', 'Tennant Creek', 'AUSTRALIA', 'AU'),
+       ('TCB', 'Treasure Cay Arpt', 'TCB', 'Treasure Cay', 'BAHAMAS', 'BS'),
+       ('TCE', 'Tulcea Arpt', 'TCE', 'Tulcea', 'ROMANIA', 'RO'),
+       ('TFS', 'Reina Sofia Arpt', 'TCI', 'Tenerife', 'SPAIN', 'ES'),
+       ('TFN', 'Tenerife Norte Los Rodeos Arpt', 'TCI', 'Tenerife', 'SPAIN', 'ES'),
+       ('TCL', 'Van De Graff Arpt', 'TCL', 'Tuscaloosa', 'UNITED STATES', 'US'),
+       ('TCN', 'Tehuacan Arpt', 'TCN', 'Tehuacan', 'MEXICO', 'MX'),
+       ('TCP', 'Ras An Naqb Arpt', 'TCP', 'Taba', 'EGYPT', 'EG'),
+       ('TCR', 'Tuticorin Arpt', 'TCR', 'Tuticorin', 'INDIA', 'IN'),
+       ('TCU', 'Thaba Nchu Arpt', 'TCU', 'Thaba Nchu', 'SOUTH AFRICA', 'ZA'),
+       ('TCW', 'Tocumwal Arpt', 'TCW', 'Tocumwal', 'AUSTRALIA', 'AU'),
+       ('TDD', 'Trinidad Arpt', 'TDD', 'Trinidad', 'BOLIVIA', 'BO'),
+       ('TDK', 'Taldy Kurgan Arpt', 'TDK', 'Taldy Kurgan', 'KAZAKHSTAN', 'KZ'),
+       ('TDL', 'Tandil Arpt', 'TDL', 'Tandil', 'ARGENTINA', 'AR'),
+       ('TDX', 'Trat Arpt', 'TDX', 'Trat', 'THAILAND', 'TH'),
+       ('TEA', 'Tela Arpt', 'TEA', 'Tela', 'HONDURAS', 'HN'),
+       ('TEB', 'Teterboro Arpt', 'TEB', 'Teterboro', 'UNITED STATES', 'US'),
+       ('TEC', 'Telemaco Borba Arpt', 'TEC', 'Telemaco Borba', 'BRAZIL', 'BR'),
+       ('TED', 'Thisted Arpt', 'TED', 'Thisted', 'DENMARK', 'DK'),
+       ('TEN', 'Tongren Arpt', 'TEN', 'Tongren', 'CHINA', 'CN'),
+       ('TEQ', 'Corlu Airport Information', 'TEQ', 'Corlu', 'TURKEY', 'TR'),
+       ('TER', 'Lajes Arpt', 'TER', 'Terceira', 'PORTUGAL', 'PT'),
+       ('TET', 'Matunda Arpt', 'TET', 'Tete', 'MOZAMBIQUE', 'MZ'),
+       ('TEU', 'Manapouri Airport', 'TEU', 'Te Anau', 'NEW ZEALAND', 'NZ'),
+       ('TEX', 'Telluride Municipal Arpt', 'TEX', 'Telluride', 'UNITED STATES', 'US'),
+       ('TFF', 'Tefe Arpt', 'TFF', 'Tefe', 'BRAZIL', 'BR'),
+       ('TGD', 'Golubovci Arpt', 'TGD', 'Podgorica', 'MONTENEGRO', 'ME'),
+       ('TGG', 'Sultan Mahmood Arpt', 'TGG', 'Kuala Terengganu', 'MALAYSIA', 'MY'),
+       ('TGM', 'Tirgu Mures Arpt', 'TGM', 'Tirgu Mures', 'ROMANIA', 'RO'),
+       ('TGN', 'La Trobe Traralgon Arpt', 'TGN', 'Traralgon', 'AUSTRALIA', 'AU'),
+       ('TGO', 'Tongliao Arpt', 'TGO', 'Tongliao', 'CHINA', 'CN'),
+       ('TGT', 'Tanga Arpt', 'TGT', 'Tanga', 'TANZANIA', 'TZ'),
+       ('TGU', 'Toncontin Arpt', 'TGU', 'Tegucigalpa', 'HONDURAS', 'HN'),
+       ('TGZ', 'Llano San Juan Arpt', 'TGZ', 'Tuxtla Gutierrez', 'MEXICO', 'MX'),
+       ('THA', 'Northern Arpt', 'THA', 'Tullahoma', 'UNITED STATES', 'US'),
+       ('THC', 'Tchien Arpt', 'THC', 'Tchien', 'LIBERIA', 'LR'),
+       ('THE', 'Teresina Arpt', 'THE', 'Teresina', 'BRAZIL', 'BR'),
+       ('THG', 'Thangool Arpt', 'THG', 'Thangool', 'AUSTRALIA', 'AU'),
+       ('THN', 'Trollhattan Arpt', 'THN', 'Trollhattan', 'SWEDEN', 'SE'),
+       ('THP', 'Hot Springs', 'THP', 'Thermopolis', 'UNITED STATES', 'US'),
+       ('THR', 'Mehrabad Arpt', 'THR', 'Teheran', 'IRAN', 'IR'),
+       ('IKA', 'Imam Khomeini Arpt', 'THR', 'Teheran', 'IRAN', 'IR'),
+       ('THS', 'Sukhothai Arpt', 'THS', 'Sukhothai', 'THAILAND', 'TH'),
+       ('THV', 'York Arpt', 'THV', 'York', 'UNITED STATES', 'US'),
+       ('TIA', 'Rinas Arpt', 'TIA', 'Tirana', 'ALBANIA', 'AL'),
+       ('TIF', 'Taif Airport', 'TIF', 'Taif', 'SAUDI ARABIA', 'SA'),
+       ('TIG', 'Tingwon Arpt', 'TIG', 'Tingwon', 'PAPUA NEW GUINEA', 'PG'),
+       ('TIH', 'Tikehau Arpt', 'TIH', 'Tikehau', 'FRENCH POLYNESIA', 'PF'),
+       ('TIJ', 'Gen Abelardo Rodriguez', 'TIJ', 'Tijuana', 'MEXICO', 'MX'),
+       ('TIM', 'Timika Arpt', 'TIM', 'Timika', 'INDONESIA', 'ID'),
+       ('TIP', 'Tripoli Intl Arpt', 'TIP', 'Tripoli', 'LIBYAN ARAB JAMAHIRIYA', 'LY'),
+       ('TIQ', 'Tinian Arpt', 'TIQ', 'Tinian', 'NORTHERN MARIANA ISLANDS', 'MP'),
+       ('TIR', 'Tirupati Arpt', 'TIR', 'Tirupati', 'INDIA', 'IN'),
+       ('TIS', 'Thursday Island Arpt', 'TIS', 'Thursday Island', 'AUSTRALIA', 'AU'),
+       ('TIU', 'Timaru Arpt', 'TIU', 'Timaru', 'NEW ZEALAND', 'NZ'),
+       ('TIV', 'Tivat Arpt', 'TIV', 'Tivat', 'MONTENEGRO', 'ME'),
+       ('TIW', 'Tacoma Industrial Arpt', 'TIW', 'Tacoma', 'UNITED STATES', 'US'),
+       ('TIX', 'Space Center Executive Arpt', 'TIX', 'Titusville', 'UNITED STATES', 'US'),
+       ('TIZ', 'Tari Arpt', 'TIZ', 'Tari', 'PAPUA NEW GUINEA', 'PG'),
+       ('TJA', 'Tarija Arpt', 'TJA', 'Tarija', 'BOLIVIA', 'BO'),
+       ('TJK', 'TOKAT HAVALIMANI', 'TJK', 'TOKAT HAVALIMANI', 'TURKEY', 'TR'),
+       ('TJM', 'Tyumen Arpt', 'TJM', 'Tyumen', 'RUSSIA', 'RU'),
+       ('TJQ', 'Bulutumbang Arpt', 'TJQ', 'Tanjung Pandan', 'INDONESIA', 'ID'),
+       ('TKF', 'Truckee Arpt', 'TKF', 'Truckee', 'UNITED STATES', 'US'),
+       ('TKG', 'Branti Arpt', 'TKG', 'Bandar Lampung', 'INDONESIA', 'ID'),
+       ('TKJ', 'Tok Arpt', 'TKJ', 'Tok Ak', 'UNITED STATES', 'US'),
+       ('TKK', 'Truk Arpt', 'TKK', 'Truk', 'MICRONESIA, FEDERATED STATES OF', 'FM'),
+       ('TKM', 'El Peten Arpt', 'TKM', 'Tikal', 'GUATEMALA', 'GT'),
+       ('TKN', 'Tokunoshima Arpt', 'TKN', 'Tokunoshima', 'JAPAN', 'JP'),
+       ('TKQ', 'Kigoma Arpt', 'TKQ', 'Kigoma', 'TANZANIA', 'TZ'),
+       ('TKS', 'Tokushima Arpt', 'TKS', 'Tokushima', 'JAPAN', 'JP'),
+       ('TKU', 'Turku Arpt', 'TKU', 'Turku', 'FINLAND', 'FI'),
+       ('TLC', 'Morelos Arpt', 'TLC', 'Toluca', 'MEXICO', 'MX'),
+       ('TLD', 'Limpopo Valley Arpt', 'TLD', 'Tuli Block', 'BOTSWANA', 'BW'),
+       ('TLE', 'Tulear Arpt', 'TLE', 'Tulear', 'MADAGASCAR', 'MG'),
+       ('TLH', 'Tallahassee Municipal', 'TLH', 'Tallahassee', 'UNITED STATES', 'US'),
+       ('TLL', 'Ulemiste Arpt', 'TLL', 'Tallinn', 'ESTONIA', 'EE'),
+       ('TLM', 'Zenata Arpt', 'TLM', 'Tlemcen', 'ALGERIA', 'DZ'),
+       ('TLN', 'Le Palyvestre Arpt', 'TLN', 'Toulon', 'FRANCE', 'FR'),
+       ('TLR', 'Mefford Field', 'TLR', 'Tulare', 'UNITED STATES', 'US'),
+       ('TLS', 'Blagnac Arpt', 'TLS', 'Toulouse', 'FRANCE', 'FR'),
+       ('TLV', 'Ben Gurion Intl Arpt', 'TLV', 'Tel Aviv', 'ISRAEL', 'IL'),
+       ('SDV', 'Dov Airport', 'TLV', 'Tel Aviv', 'ISRAEL', 'IL'),
+       ('TMA', 'Henry Tift Myers Arpt', 'TMA', 'Tifton', 'UNITED STATES', 'US'),
+       ('TMG', 'Tomanggong Arpt', 'TMG', 'Tomanggong', 'MALAYSIA', 'MY'),
+       ('TML', 'Tamale Arpt', 'TML', 'Tamale', 'GHANA', 'GH'),
+       ('TMM', 'Tamatave Arpt', 'TMM', 'Tamatave', 'MADAGASCAR', 'MG'),
+       ('TMP', 'Tampere Pirkkala Arpt', 'TMP', 'Tampere', 'FINLAND', 'FI'),
+       ('TMS', 'Sao Tome Intl Arpt', 'TMS', 'Sao Tome Is', 'SAO TOME AND PRINCIPE', 'ST'),
+       ('TMT', 'Trombetas Arpt', 'TMT', 'Trombetas', 'BRAZIL', 'BR'),
+       ('TMU', 'Tambor Arpt', 'TMU', 'Tambor', 'COSTA RICA', 'CR'),
+       ('TMW', 'Tamworth Arpt', 'TMW', 'Tamworth', 'AUSTRALIA', 'AU'),
+       ('TMZ', 'Thames Arpt', 'TMZ', 'Thames', 'NEW ZEALAND', 'NZ'),
+       ('TNA', 'Jinan Arpt', 'TNA', 'Jinan', 'CHINA', 'CN'),
+       ('TND', 'Trinidad CU Arpt', 'TND', 'Trinidad', 'CUBA', 'CU'),
+       ('TNE', 'Tanega Shima Arpt', 'TNE', 'Tanega Shima', 'JAPAN', 'JP'),
+       ('TNF', 'Toussus Le Noble Arpt', 'TNF', 'Toussus Le Noble', 'FRANCE', 'FR'),
+       ('TNG', 'Boukhalef Arpt', 'TNG', 'Tangier', 'MOROCCO', 'MA'),
+       ('TNN', 'Tainan Arpt', 'TNN', 'Tainan', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('TNO', 'Tamarindo Arpt', 'TNO', 'Tamarindo', 'COSTA RICA', 'CR'),
+       ('TNR', 'Ivato Arpt', 'TNR', 'Tananarive', 'MADAGASCAR', 'MG'),
+       ('TNU', 'Municipal Newton Arpt', 'TNU', 'Newton', 'UNITED STATES', 'US'),
+       ('TOB', 'Tobruk Arpt', 'TOB', 'Tobruk', 'LIBYAN ARAB JAMAHIRIYA', 'LY'),
+       ('TOD', 'Tioman Arpt', 'TOD', 'Tioman', 'MALAYSIA', 'MY'),
+       ('TOE', 'Tozeur Arpt', 'TOE', 'Tozeur', 'TUNISIA', 'TN'),
+       ('TOF', 'Tomsk Arpt', 'TOF', 'Tomsk', 'RUSSIA', 'RU'),
+       ('TOG', 'Togiak Village Arpt', 'TOG', 'Togiak', 'UNITED STATES', 'US'),
+       ('TOH', 'Torres Airstrip', 'TOH', 'Torres', 'VANUATU', 'VU'),
+       ('TOL', 'Toledo Express Arpt', 'TOL', 'Toledo', 'UNITED STATES', 'US'),
+       ('TOP', 'Phillip Billard Arpt', 'TOP', 'Topeka', 'UNITED STATES', 'US'),
+       ('FOE', 'Forbes Field', 'TOP', 'Topeka', 'UNITED STATES', 'US'),
+       ('TOR', 'Torrington Minicipal Arpt', 'TOR', 'Torrington', 'UNITED STATES', 'US'),
+       ('TOS', 'Tromso Langnes Arpt', 'TOS', 'Tromso', 'NORWAY', 'NO'),
+       ('RAD', 'Road Town Arpt', 'TOV', 'Tortola Westend', 'VIRGIN ISLANDS, BRITISH', 'VG'),
+       ('TOW', 'Toledo Arpt', 'TOW', 'Toledo', 'BRAZIL', 'BR'),
+       ('TOX', 'Tobolsk Arpt', 'TOX', 'Tobolsk', 'RUSSIA', 'RU'),
+       ('TOY', 'Toyama Arpt', 'TOY', 'Toyama', 'JAPAN', 'JP'),
+       ('TPA', 'Tampa Intl', 'TPA', 'Tampa', 'UNITED STATES', 'US'),
+       ('TPF', 'Peter O Knight Arpt', 'TPA', 'Tampa', 'UNITED STATES', 'US'),
+       ('PIE', 'St Petersburg Clearwater Arpt', 'TPA', 'Tampa', 'UNITED STATES', 'US'),
+       ('TPE', 'Taiwan Taoyuan Intl Arpt', 'TPE', 'Taipei', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('TSA', 'Sung Shan Arpt', 'TPE', 'Taipei', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('TPH', 'Tonopah Arpt', 'TPH', 'Tonopah', 'UNITED STATES', 'US'),
+       ('TPL', 'Temple Arpt', 'TPL', 'Temple', 'UNITED STATES', 'US'),
+       ('TPQ', 'Tepic Arpt', 'TPQ', 'Tepic', 'MEXICO', 'MX'),
+       ('TPR', 'Tom Price', 'TPR', 'Tom Price', 'AUSTRALIA', 'AU'),
+       ('TPS', 'Birgi Arpt', 'TPS', 'Trapani', 'ITALY', 'IT'),
+       ('TQR', 'San Domino Island Arpt', 'TQR', 'San Domino Island', 'ITALY', 'IT'),
+       ('TRC', 'Francisco Sarabia Arpt', 'TRC', 'Torreon', 'MEXICO', 'MX'),
+       ('XOD', 'Oppdal Rail Station', 'TRD', 'Trondheim', 'NORWAY', 'NO'),
+       ('XZT', 'Trondheim Rail Station', 'TRD', 'Trondheim', 'NORWAY', 'NO'),
+       ('TRD', 'Trondheim Vaernes Arpt', 'TRD', 'Trondheim', 'NORWAY', 'NO'),
+       ('TRE', 'Tiree Arpt', 'TRE', 'Tiree', 'UNITED KINGDOM', 'GB'),
+       ('TRG', 'Tauranga Arpt', 'TRG', 'Tauranga', 'NEW ZEALAND', 'NZ'),
+       ('TRI', 'Tri City Regional Arpt', 'TRI', 'Bristol', 'UNITED STATES', 'US'),
+       ('TRK', 'Tarakan Arpt', 'TRK', 'Tarakan', 'INDONESIA', 'ID'),
+       ('TRL', 'Terrell Field Arpt', 'TRL', 'Terrell', 'UNITED STATES', 'US'),
+       ('TRN', 'Torino Caselle Arpt', 'TRN', 'Turin', 'ITALY', 'IT'),
+       ('TRO', 'Taree Arpt', 'TRO', 'Taree', 'AUSTRALIA', 'AU'),
+       ('TRS', 'Ronchi Dei Legionari Arpt', 'TRS', 'Trieste', 'ITALY', 'IT'),
+       ('TRU', 'Trujillo Arpt', 'TRU', 'Trujillo', 'PERU', 'PE'),
+       ('TRV', 'Thiruvananthapuram Arpt', 'TRV', 'Thiruvananthapuram', 'INDIA', 'IN'),
+       ('TRW', 'Bonriki Arpt', 'TRW', 'Tarawa', 'KIRIBATI', 'KI'),
+       ('TRZ', 'Tiruchirapally Civil Arpt', 'TRZ', 'Tiruchirappali', 'INDIA', 'IN'),
+       ('TSE', 'Astana Arpt', 'TSE', 'Astana', 'KAZAKHSTAN', 'KZ'),
+       ('TSF', 'Treviso Arpt', 'TSF', 'Treviso', 'ITALY', 'IT'),
+       ('TSJ', 'Tsushima Arpt', 'TSJ', 'Tsushima', 'JAPAN', 'JP'),
+       ('TSM', 'Taos Airport', 'TSM', 'Taos', 'UNITED STATES', 'US'),
+       ('TSN', 'Tianjin Airport', 'TSN', 'Tianjin', 'CHINA', 'CN'),
+       ('TSR', 'Timisoara Arpt', 'TSR', 'Timisoara', 'ROMANIA', 'RO'),
+       ('TST', 'Trang Arpt', 'TST', 'Trang', 'THAILAND', 'TH'),
+       ('TSV', 'Townsville Arpt', 'TSV', 'Townsville', 'AUSTRALIA', 'AU'),
+       ('TTB', 'Arbatax Arpt', 'TTB', 'Tortoli', 'ITALY', 'IT'),
+       ('TTD', 'Troutdale Arpt', 'TTD', 'Troutdale', 'UNITED STATES', 'US'),
+       ('TTJ', 'Tottori Arpt', 'TTJ', 'Tottori', 'JAPAN', 'JP'),
+       ('TTN', 'Trenton Mercer Arpt', 'TTN', 'Trenton', 'UNITED STATES', 'US'),
+       ('TRX', 'Trenton Airport', 'TTN', 'Trenton', 'UNITED STATES', 'US'),
+       ('TTQ', 'Tortuquero Arpt', 'TTQ', 'Tortuquero', 'COSTA RICA', 'CR'),
+       ('TTT', 'Taitung Arpt', 'TTT', 'Taitung', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('TUC', 'Benjamin Matienzo Airport', 'TUC', 'Tucuman', 'ARGENTINA', 'AR'),
+       ('TUF', 'Saint Symphorien Arpt', 'TUF', 'Tours', 'FRANCE', 'FR'),
+       ('XSH', 'Tours Rail Station', 'TUF', 'Tours', 'FRANCE', 'FR'),
+       ('TUG', 'Tuguegarao Arpt', 'TUG', 'Tuguegarao', 'PHILIPPINES', 'PH'),
+       ('TUI', 'Turaif Arpt', 'TUI', 'Turaif', 'SAUDI ARABIA', 'SA'),
+       ('TUK', 'Turbat Arpt', 'TUK', 'Turbat', 'PAKISTAN', 'PK'),
+       ('TUL', 'Tulsa Intl', 'TUL', 'Tulsa', 'UNITED STATES', 'US'),
+       ('TUN', 'Carthage Arpt', 'TUN', 'Tunis', 'TUNISIA', 'TN'),
+       ('TUO', 'Taupo Arpt', 'TUO', 'Taupo', 'NEW ZEALAND', 'NZ'),
+       ('TUP', 'C D Lemons Municipal Arpt', 'TUP', 'Tupelo', 'UNITED STATES', 'US'),
+       ('TUR', 'Tucurui Arpt', 'TUR', 'Tucurui', 'BRAZIL', 'BR'),
+       ('TUS', 'Tucson Intl Arpt', 'TUS', 'Tucson', 'UNITED STATES', 'US'),
+       ('TUU', 'Tabuk Arpt', 'TUU', 'Tabuk', 'SAUDI ARABIA', 'SA'),
+       ('TUY', 'Tulum Arpt', 'TUY', 'Tulum', 'MEXICO', 'MX'),
+       ('TVC', 'Cherry Capital Arpt', 'TVC', 'Traverse City', 'UNITED STATES', 'US'),
+       ('TVF', 'Thief River Falls Numicipal', 'TVF', 'Thief River Falls', 'UNITED STATES', 'US'),
+       ('TVL', 'Lake Tahoe Arpt', 'TVL', 'Lake Tahoe', 'UNITED STATES', 'US'),
+       ('TVU', 'Matei Arpt', 'TVU', 'Taveuni', 'FIJI', 'FJ'),
+       ('TWA', 'Twin Hills Arpt', 'TWA', 'Twin Hills', 'UNITED STATES', 'US'),
+       ('TWB', 'Toowoomba Arpt', 'TWB', 'Toowoomba', 'AUSTRALIA', 'AU'),
+       ('TWF', 'Twin Falls City County Arpt', 'TWF', 'Twin Falls', 'UNITED STATES', 'US'),
+       ('TWU', 'Tawau Arpt', 'TWU', 'Tawau', 'MALAYSIA', 'MY'),
+       ('TXG', 'Taichung Arpt', 'TXG', 'Taichung', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('RMQ', 'Ching Chuan Kang', 'TXG', 'Taichung', 'TAIWAN, PROVINCE OF CHINA', 'TW'),
+       ('TXK', 'Texarkana Municipal', 'TXK', 'Texarkana', 'UNITED STATES', 'US'),
+       ('TXN', 'Tunxi Arpt', 'TXN', 'Tunxi', 'CHINA', 'CN'),
+       ('TYD', 'Tynda Airport', 'TYD', 'Tynda Airport', 'RUSSIA', 'RU'),
+       ('TYN', 'Taiyuan Arpt', 'TYN', 'Taiyuan', 'CHINA', 'CN'),
+       ('HND', 'Haneda Arpt', 'TYO', 'Tokyo', 'JAPAN', 'JP'),
+       ('NRT', 'Narita', 'TYO', 'Tokyo', 'JAPAN', 'JP'),
+       ('TYR', 'Pounds Field', 'TYR', 'Tyler', 'UNITED STATES', 'US'),
+       ('TYS', 'McGhee Tyson Arpt', 'TYS', 'Knoxville', 'UNITED STATES', 'US'),
+       ('TZL', 'Tuzla Intl Arpt', 'TZL', 'Tuzla', 'BOSNIA AND HERZEGOVINA', 'BA'),
+       ('TZN', 'South Andros Arpt', 'TZN', 'South Andros', 'BAHAMAS', 'BS'),
+       ('TZX', 'Trabzon Arpt', 'TZX', 'Trabzon', 'TURKEY', 'TR'),
+       ('UA', 'UDJ', 'UA', 'UDJ', 'UKRAINE', 'UA'),
+       ('UAC', 'San Luis Rio Colorado Municipal', 'UAC', 'San Luis Rio Colorado', 'MEXICO', 'MX'),
+       ('UAK', 'Narsarsuaq Arpt', 'UAK', 'Narsarsuaq', 'GREENLAND', 'GL'),
+       ('UAQ', 'San Juan Arpt', 'UAQ', 'San Juan', 'ARGENTINA', 'AR'),
+       ('UAS', 'Samburu Airstrip', 'UAS', 'Samburu', 'KENYA', 'KE'),
+       ('UBA', 'Uberaba Airport', 'UBA', 'Uberaba', 'BRAZIL', 'BR'),
+       ('UBJ', 'Ube Airport', 'UBJ', 'Ube Jp', 'JAPAN', 'JP'),
+       ('UBP', 'Muang Ubon Arpt', 'UBP', 'Ubon Ratchathani', 'THAILAND', 'TH'),
+       ('UBS', 'Lowndes Cty Arpt', 'UBS', 'Columbus', 'UNITED STATES', 'US'),
+       ('GTR', 'Golden Arpt', 'UBS', 'Columbus', 'UNITED STATES', 'US'),
+       ('UCA', 'Oneida County Arpt', 'UCA', 'Utica', 'UNITED STATES', 'US'),
+       ('UCK', 'Lutsk Arpt', 'UCK', 'Lutsk', 'UKRAINE', 'UA'),
+       ('UCT', 'Ukhta Airport', 'UCT', 'Ukhta Airport', 'RUSSIA', 'RU'),
+       ('UDD', 'Bermuda Dunes Arpt', 'UDD', 'Palm Desert', 'UNITED STATES', 'US'),
+       ('UDE', 'Volkel Arpt', 'UDE', 'Uden', 'NETHERLANDS', 'NL'),
+       ('UDI', 'Eduardo Gomes Airprt', 'UDI', 'Uberlandia', 'BRAZIL', 'BR'),
+       ('UDJ', 'Uzhhorod International Airport', 'UDJ', 'Uzhhorod International Airport', 'UKRAINE', 'UA'),
+       ('UDN', 'Campoformido Arpt', 'UDN', 'Udine', 'ITALY', 'IT'),
+       ('UDR', 'Maharana Pratap Arpt', 'UDR', 'Udaipur', 'INDIA', 'IN'),
+       ('UEE', 'Queenstown Arpt', 'UEE', 'Queenstown', 'AUSTRALIA', 'AU'),
+       ('UEO', 'Kumejima Arpt', 'UEO', 'Kume Jima', 'JAPAN', 'JP'),
+       ('UFA', 'Ufa Arpt', 'UFA', 'Ufa RU', 'RUSSIA', 'RU'),
+       ('UGC', 'Urgench Arpt', 'UGC', 'Urgench', 'UZBEKISTAN', 'UZ'),
+       ('UGN', 'Memorial Arpt', 'UGN', 'Waukegan', 'UNITED STATES', 'US'),
+       ('UHE', 'Uherske Hradiste Kunovice Arpt', 'UHE', 'Uherske Hradiste', 'CZECH REPUBLIC', 'CZ'),
+       ('UIH', 'Qui Nhon Arpt', 'UIH', 'Qui Nhon', 'VIET NAM', 'VN'),
+       ('UII', 'Utila Arpt', 'UII', 'Utila', 'HONDURAS', 'HN'),
+       ('UIK', 'Ust-Ilimsk Airport', 'UIK', 'Ust-Ilimsk Airport', 'RUSSIA', 'RU'),
+       ('UIN', 'Baldwin Field', 'UIN', 'Quincy', 'UNITED STATES', 'US'),
+       ('UIO', 'Mariscal Arpt', 'UIO', 'Quito', 'ECUADOR', 'EC'),
+       ('UIP', 'Pluguffan Arpt', 'UIP', 'Quimper', 'FRANCE', 'FR'),
+       ('UIR', 'Quirindi Arpt', 'UIR', 'Quirindi', 'AUSTRALIA', 'AU'),
+       ('UKB', 'Kobe Arpt', 'UKB', 'Kobe', 'JAPAN', 'JP'),
+       ('UKI', 'Ukiah Arpt', 'UKI', 'Ukiah', 'UNITED STATES', 'US'),
+       ('UKK', 'Ust Kamenogorsk Arpt', 'UKK', 'Ust Kamenogorsk', 'KAZAKHSTAN', 'KZ'),
+       ('UKS', 'Belbek Arpt', 'UKS', 'Sevastopol', 'UKRAINE', 'UA'),
+       ('UKT', 'Upper Bucks Arpt', 'UKT', 'Quakertown', 'UNITED STATES', 'US'),
+       ('UKX', 'Ust-Kut Airport', 'UKX', 'Ust-Kut Airport', 'RUSSIA', 'RU'),
+       ('UKY', 'Kyoto Arpt', 'UKY', 'Kyoto', 'JAPAN', 'JP'),
+       ('ULM', 'New Ulm Arpt', 'ULM', 'New Ulm', 'UNITED STATES', 'US'),
+       ('ULN', 'Buyant Uhaa Airport', 'ULN', 'Ulaanbaatar', 'MONGOLIA', 'MN'),
+       ('ULP', 'Quilpie Arpt', 'ULP', 'Quilpie', 'AUSTRALIA', 'AU'),
+       ('ULV', 'Ulyanovsk Baratayeveka Airport', 'ULV', 'Baratayeveka', 'RUSSIA', 'RU'),
+       ('ULY', 'Ulyanovsk Arpt', 'ULY', 'Ulyanovsk', 'RUSSIA', 'RU'),
+       ('UME', 'Umea Airport', 'UME', 'Umea', 'SWEDEN', 'SE'),
+       ('UMU', 'Ernesto Geisel Arpt', 'UMU', 'Umuarama', 'BRAZIL', 'BR'),
+       ('UMY', 'Sumy Arpt', 'UMY', 'Sumy', 'UKRAINE', 'UA'),
+       ('UNA', 'Una Airport', 'UNA', 'Una BR', 'BRAZIL', 'BR'),
+       ('UNI', 'Union Island Arpt', 'UNI', 'Union Island', 'SAINT VINCENT AND THE GRENADINES', 'VC'),
+       ('UNK', 'Unalakleet Arpt', 'UNK', 'Unalakleet', 'UNITED STATES', 'US'),
+       ('UNN', 'Ranong Arpt', 'UNN', 'Ranong', 'THAILAND', 'TH'),
+       ('UNT', 'Baltasound Arpt', 'UNT', 'Unst', 'UNITED KINGDOM', 'GB'),
+       ('UOX', 'University Oxford', 'UOX', 'University Oxford', 'UNITED STATES', 'US'),
+       ('UPG', 'Hasanudin Arpt', 'UPG', 'Ujung Pandang', 'INDONESIA', 'ID'),
+       ('UPN', 'Uruapan Arpt', 'UPN', 'Uruapan', 'MEXICO', 'MX'),
+       ('URA', 'Uralsk Arpt', 'URA', 'Uralsk', 'KAZAKHSTAN', 'KZ'),
+       ('URC', 'Urumqi Arpt', 'URC', 'Urumqi', 'CHINA', 'CN'),
+       ('URE', 'Kuressaare Arpt', 'URE', 'Kuressaare', 'ESTONIA', 'EE'),
+       ('URG', 'Ruben Berta Arpt', 'URG', 'Uruguaina', 'BRAZIL', 'BR'),
+       ('URJ', 'Urai Airport', 'URJ', 'Urai Airport', 'RUSSIA', 'RU'),
+       ('URO', 'Boos Airport', 'URO', 'Rouen', 'FRANCE', 'FR'),
+       ('URS', 'Kursk Arpt', 'URS', 'Kursk', 'RUSSIA', 'RU'),
+       ('URT', 'Surat Thani Arpt', 'URT', 'Surat Thani', 'THAILAND', 'TH'),
+       ('URY', 'Gurayat Arpt', 'URY', 'Gurayat', 'SAUDI ARABIA', 'SA'),
+       ('USH', 'Islas Malvinas Arpt', 'USH', 'Ushuaia', 'ARGENTINA', 'AR'),
+       ('USK', 'Usinsk Arpt', 'USK', 'Usinsk', 'RUSSIA', 'RU'),
+       ('USL', 'Useless Loop Arpt', 'USL', 'Useless Loop', 'AUSTRALIA', 'AU'),
+       ('USM', 'Koh Samui Arpt', 'USM', 'Koh Samui', 'THAILAND', 'TH'),
+       ('USN', 'Ulsan Arpt', 'USN', 'Ulsan', 'KOREA, REPUBLIC OF', 'KR'),
+       ('USQ', 'Usak Airport', 'USQ', 'Usak', 'TURKEY', 'TR'),
+       ('USS', 'Sancti Spiritus Arpt', 'USS', 'Sancti Spiritus', 'CUBA', 'CU'),
+       ('UST', 'St Augustine Arpt', 'UST', 'St Augustine', 'UNITED STATES', 'US'),
+       ('UTA', 'Mutare Arpt', 'UTA', 'Mutare', 'ZIMBABWE', 'ZW'),
+       ('ZYU', 'Utrecht Rail Station', 'UTC', 'Utrecht', 'NETHERLANDS', 'NL'),
+       ('UTH', 'Udon Thani Arpt', 'UTH', 'Udon Thani', 'THAILAND', 'TH'),
+       ('UTN', 'Upington Airport', 'UTN', 'Upington', 'SOUTH AFRICA', 'ZA'),
+       ('UTP', 'U Tapao Arpt', 'UTP', 'U Tapao', 'THAILAND', 'TH'),
+       ('UTT', 'Umtata Arpt', 'UTT', 'Umtata', 'SOUTH AFRICA', 'ZA'),
+       ('UTW', 'Queenstown Airport', 'UTW', 'Queenstown', 'SOUTH AFRICA', 'ZA'),
+       ('UUA', 'Bugulma Airport', 'UUA', 'Bugulma Airport', 'RUSSIA', 'RU'),
+       ('UUD', 'Ulan Ude Arpt', 'UUD', 'Ulan Ude', 'RUSSIA', 'RU'),
+       ('UUS', 'Yuzhno Sakhalinsk Arpt', 'UUS', 'Yuzhno Sakhalinsk', 'RUSSIA', 'RU'),
+       ('UVA', 'Garner Field', 'UVA', 'Uvalde', 'UNITED STATES', 'US'),
+       ('UVF', 'Hewanorra Arpt', 'UVF', 'Vieux Fort St Lucia', 'SAINT LUCIA', 'LC'),
+       ('UVL', 'Kharga Arpt', 'UVL', 'Kharga', 'EGYPT', 'EG'),
+       ('WIE', 'Air Base', 'UWE', 'Wiesbaden', 'GERMANY', 'DE'),
+       ('UYL', 'Nyala Arpt', 'UYL', 'Nyala', 'SUDAN', 'SD'),
+       ('VAA', 'Vaasa Arpt', 'VAA', 'Vaasa', 'FINLAND', 'FI'),
+       ('XHK', 'Gare de Valence TGV', 'VAF', 'Valence', 'FRANCE', 'FR'),
+       ('VAF', 'Chabeuil Airport', 'VAF', 'Valence', 'FRANCE', 'FR'),
+       ('VAG', 'Maj Brig Trompowsky Arpt', 'VAG', 'Varginha', 'BRAZIL', 'BR'),
+       ('VAI', 'Vanimo Arpt', 'VAI', 'Vanimo', 'PAPUA NEW GUINEA', 'PG'),
+       ('VAN', 'Van Arpt', 'VAN', 'Van TR', 'TURKEY', 'TR'),
+       ('VAR', 'Varna', 'VAR', 'Varna', 'BULGARIA', 'BG'),
+       ('VAS', 'Sivas Arpt', 'VAS', 'Sivas', 'TURKEY', 'TR'),
+       ('VAV', 'Lupepau U Arpt', 'VAV', 'Vava U', 'TONGA', 'TO'),
+       ('VAW', 'Vardoe Luftan', 'VAW', 'Vardoe', 'NORWAY', 'NO'),
+       ('VBY', 'Visby Airport', 'VBY', 'Visby', 'SWEDEN', 'SE'),
+       ('VCA', 'Can Tho Arpt', 'VCA', 'Can Tho', 'VIET NAM', 'VN'),
+       ('VCE', 'Marco Polo Arpt', 'VCE', 'Venice', 'ITALY', 'IT'),
+       ('VCL', 'Chulai Arpt', 'VCL', 'Tamky', 'VIET NAM', 'VN'),
+       ('VCT', 'Victoria Regional Arpt', 'VCT', 'Victoria', 'UNITED STATES', 'US'),
+       ('VCV', 'George AFB', 'VCV', 'Victorville', 'UNITED STATES', 'US'),
+       ('VDA', 'Ovda Arpt', 'VDA', 'Ovda', 'ISRAEL', 'IL'),
+       ('VDB', 'Valdres Arpt', 'VDB', 'Fagernes', 'NORWAY', 'NO'),
+       ('VDC', 'Vitoria Da Conquista Arpt', 'VDC', 'Vitoria Da Conquista', 'BRAZIL', 'BR'),
+       ('VDE', 'Hierro Arpt', 'VDE', 'Valverde', 'SPAIN', 'ES'),
+       ('VDI', 'Vidalia Municipal Arpt', 'VDI', 'Vidalia', 'UNITED STATES', 'US'),
+       ('VDM', 'Viedma Arpt', 'VDM', 'Viedma', 'ARGENTINA', 'AR'),
+       ('VDS', 'Vadso', 'VDS', 'Vadso', 'NORWAY', 'NO'),
+       ('VDZ', 'Valdez Municipal Arpt', 'VDZ', 'Valdez', 'UNITED STATES', 'US'),
+       ('VEJ', 'Vejle Arpt', 'VEJ', 'Vejle', 'DENMARK', 'DK'),
+       ('VEL', 'Vernal Municipal', 'VEL', 'Vernal', 'UNITED STATES', 'US'),
+       ('VER', 'Las Bajadas General Heriberto Jara', 'VER', 'Veracruz', 'MEXICO', 'MX'),
+       ('VEY', 'Vestmannaeyjar Arpt', 'VEY', 'Vestmannaeyjar', 'ICELAND', 'IS'),
+       ('VFA', 'Victoria Falls Arpt', 'VFA', 'Victoria Falls', 'ZIMBABWE', 'ZW'),
+       ('VGA', 'Vijayawada Arpt', 'VGA', 'Vijayawada', 'INDIA', 'IN'),
+       ('VGD', 'Vologda Arpt', 'VGD', 'Vologda', 'RUSSIA', 'RU'),
+       ('VGO', 'Vigo Airport', 'VGO', 'Vigo', 'SPAIN', 'ES'),
+       ('VHM', 'Vilhelmina Arpt', 'VHM', 'Vilhelmina', 'SWEDEN', 'SE'),
+       ('VHN', 'Culberson Cty Arpt', 'VHN', 'Van Horn', 'UNITED STATES', 'US'),
+       ('VHY', 'Charmeil Arpt', 'VHY', 'Vichy', 'FRANCE', 'FR'),
+       ('VIB', 'Villa Constitucion Arpt', 'VIB', 'Villa Constitucion', 'MEXICO', 'MX'),
+       ('VIC', 'Vicenza Arpt', 'VIC', 'Vicenza', 'ITALY', 'IT'),
+       ('VDD', 'Vienna Danubepier Arpt', 'VIE', 'Vienna', 'AUSTRIA', 'AT'),
+       ('VIE', 'Vienna Intl Arpt', 'VIE', 'Vienna', 'AUSTRIA', 'AT'),
+       ('VIF', 'Vieste Arpt', 'VIF', 'Vieste', 'ITALY', 'IT'),
+       ('VIG', 'El Vigia Arpt', 'VIG', 'El Vigia', 'VENEZUELA', 'VE'),
+       ('VII', 'Vinh City Arpt', 'VII', 'Vinh City', 'VIET NAM', 'VN'),
+       ('VIJ', 'Virgin Gorda Arpt', 'VIJ', 'Virgin Gorda', 'VIRGIN ISLANDS, BRITISH', 'VG'),
+       ('VIL', 'Dakhla Airport', 'VIL', 'Dakhla', 'MOROCCO', 'MA'),
+       ('VIN', 'Vinnitsa Arpt', 'VIN', 'Vinnitsa', 'UKRAINE', 'UA'),
+       ('VIS', 'Visalia Municipal', 'VIS', 'Visalia', 'UNITED STATES', 'US'),
+       ('VIT', 'Vitoria Arpt', 'VIT', 'Vitoria', 'SPAIN', 'ES'),
+       ('VIX', 'Eurico Sales Arpt', 'VIX', 'Vitoria', 'BRAZIL', 'BR'),
+       ('VJI', 'Virginia Highlands Arpt', 'VJI', 'Abingdon', 'UNITED STATES', 'US'),
+       ('VKG', 'Rach Gia Arpt', 'VKG', 'Rach Gia', 'VIET NAM', 'VN'),
+       ('VKS', 'Vicksburg Arpt', 'VKS', 'Vicksburg', 'UNITED STATES', 'US'),
+       ('VKT', 'Vorkuta Airport', 'VKT', 'Vorkuta', 'RUSSIA', 'RU'),
+       ('VLC', 'Valencia Arpt', 'VLC', 'Valencia', 'SPAIN', 'ES'),
+       ('VLD', 'Valdosta Regional', 'VLD', 'Valdosta', 'UNITED STATES', 'US'),
+       ('VLG', 'Villa Gesell Arpt', 'VLG', 'Villa Gesell', 'ARGENTINA', 'AR'),
+       ('VLI', 'Bauerfield Arpt', 'VLI', 'Port Vila', 'VANUATU', 'VU'),
+       ('VLL', 'Valladolid Arpt', 'VLL', 'Valladolid', 'SPAIN', 'ES'),
+       ('VLN', 'Valenica Arpt', 'VLN', 'Valencia', 'VENEZUELA', 'VE'),
+       ('VLO', 'Stolport Arpt', 'VLO', 'Vallejo', 'UNITED STATES', 'US'),
+       ('VLU', 'Velikiye Luki Airport', 'VLU', 'Velikiye Luki Airport', 'RUSSIA', 'RU'),
+       ('VLV', 'Carvajal Arpt', 'VLV', 'Valera', 'VENEZUELA', 'VE'),
+       ('VLY', 'Anglesey Arpt', 'VLY', 'Anglesey', 'UNITED KINGDOM', 'GB'),
+       ('VME', 'Villa Mercedes Arpt', 'VME', 'Villa Mercedes', 'ARGENTINA', 'AR'),
+       ('VMI', 'Inc Arpt', 'VMI', 'Vallemi', 'PARAGUAY', 'PY'),
+       ('VNC', 'Venice Municipal Airport', 'VNC', 'Venice', 'UNITED STATES', 'US'),
+       ('VNE', 'Muecon Arpt', 'VNE', 'Vannes', 'FRANCE', 'FR'),
+       ('VNO', 'Vilnius Arpt', 'VNO', 'Vilnius', 'LITHUANIA', 'LT'),
+       ('VNS', 'Lal Bahadur Shastri Arpt', 'VNS', 'Varanasi', 'INDIA', 'IN'),
+       ('VNT', 'Ventspils Intl Arpt', 'VNT', 'Ventspils', 'LATVIA', 'LV'),
+       ('VNX', 'Vilanculos Arpt', 'VNX', 'Vilanculos', 'MOZAMBIQUE', 'MZ'),
+       ('VOG', 'Volgograd Arpt', 'VOG', 'Volgograd', 'RUSSIA', 'RU'),
+       ('VOL', 'Nea Anchialos Arpt', 'VOL', 'Volos', 'GREECE', 'GR'),
+       ('VOZ', 'Voronezh Arpt', 'VOZ', 'Voronezh', 'RUSSIA', 'RU'),
+       ('VPS', 'Ft Walton Beach Arpt', 'VPS', 'Valparaiso', 'UNITED STATES', 'US'),
+       ('EGI', 'Duke Field', 'VPS', 'Valparaiso', 'UNITED STATES', 'US'),
+       ('VPZ', 'Porter County', 'VPZ', 'Valparaiso', 'UNITED STATES', 'US'),
+       ('VQS', 'Vieques Arpt', 'VQS', 'Vieques', 'UNITED STATES', 'US'),
+       ('VRA', 'Juan Gualberto Gomez Arpt', 'VRA', 'Varadero', 'CUBA', 'CU'),
+       ('VRB', 'Vero Beach Municipal Arpt', 'VRB', 'Vero Beach', 'UNITED STATES', 'US'),
+       ('VRK', 'Varkaus', 'VRK', 'Varkaus', 'FINLAND', 'FI'),
+       ('VRL', 'Vila Real Arpt', 'VRL', 'Vila Real', 'PORTUGAL', 'PT'),
+       ('VRN', 'Verona Airport', 'VRN', 'Verona', 'ITALY', 'IT'),
+       ('VBS', 'Montichiari Arpt', 'VRN', 'Verona', 'ITALY', 'IT'),
+       ('VRO', 'Kawama Arpt', 'VRO', 'Matanzas', 'CUBA', 'CU'),
+       ('VSA', 'Capt Carlos Rovirosa Perez', 'VSA', 'Villahermosa', 'MEXICO', 'MX'),
+       ('VSE', 'Viseu Arpt', 'VSE', 'Viseu', 'PORTUGAL', 'PT'),
+       ('VSG', 'Lugansk Arpt', 'VSG', 'Lugansk', 'UKRAINE', 'UA'),
+       ('XYX', 'Sala Rail Station', 'VST', 'Vasteras', 'SWEDEN', 'SE'),
+       ('VTB', 'Vitebsk Arpt', 'VTB', 'Vitebsk', 'BELARUS', 'BY'),
+       ('VTE', 'Wattay Arpt', 'VTE', 'Vientiane', 'LAO PEOPLES DEMOCRATIC REPUBLIC','LA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VTZ','Vishakhapatnam','VTZ','Vishakhapatanam','INDIA','IN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VUP','Valledupar Arpt','VUP','Valleduper','COLOMBIA','CO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VUS','Velikiy Ustyug Airport','VUS','Velikiy Ustyug Airport','RUSSIA','RU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VVO','Vladivostok Arpt','VVO','Vladivostok','RUSSIA','RU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VXE','San Pedro Airport','VXE','Sao Vicente','CAPE VERDE','CV');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VXO','Vaxjo Airport','VXO','Vaxjo','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VYD','Vryheid Arpt','VYD','Vryheid','SOUTH AFRICA','ZA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VYS','Illinois Valley Regional Arpt','VYS','Peru','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAG','Wanganui Arpt','WAG','Wanganui','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAL','Wallops Arpt','WAL','Chincoteague','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('DCA','Ronald Reagan National Arpt','WAS','Washington','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('IAD','Washington Dulles Intl','WAS','Washington','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAT','Waterford Arpt','WAT','Waterford','IRELAND','IE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAW','Warsaw Intl Arpt','WAW','Warsaw','POLAND','PL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAY','Green County Airport','WAY','Waynesburg','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WAZ','Warwick Arpt','WAZ','Warwick','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WBU','Boulder Municipal Arpt','WBU','Boulder','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WDG','Woodring Municipal','WDG','Enid','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WDH','Hosea Kutako International Arpt','WDH','Windhoek','NAMIBIA','NA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ERS','Eros Arpt','WDH','Windhoek','NAMIBIA','NA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEA','Parker County Airport','WEA','Weatherford','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEF','Weifang Arpt','WEF','Weifang','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEH','Weihai Arpu','WEH','Weihai','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEI','Weipa Arpt','WEI','Weipa','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEL','Welkom Arpt','WEL','Welkom','SOUTH AFRICA','ZA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEW','Wee Waa Airport','WEW','Wee Waa','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WEX','Castlebridge Arpt','WEX','Wexford','IRELAND','IE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WGA','Forrest Hill Arpt','WGA','Wagga Wagga','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WGE','Walgett Arpt','WGE','Walgett','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WGO','Winchester Arpt','WGO','Winchester','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WGT','Wangaratta','WGT','Wangaratta','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WHK','Whakatane Arpt','WHK','Whakatane','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WHL','Welshpool Arpt','WHL','Welshpool','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WIC','Wick Arpt','WIC','Wick','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WJF','Williams J Fox Arpt','WJF','Lancaster','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RZH','Quartz Hill Arpt','WJF','Lancaster','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WKA','Wanaka Arpt','WKA','Wanaka','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WKJ','Hokkaido Arpt','WKJ','Wakkanai','JAPAN','JP');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WLD','Arkansas City Arpt','WLD','Winfield','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WLG','Wellington Arpt','WLG','Wellington','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WLK','Selawik Arpt','WLK','Selawik','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WMB','Warrnambool Arpt','WMB','Warrnambool','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WMC','Winnemucca Municipal Arpt','WMC','Winnemucca','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WMH','Mountain Home Arpt','WMH','Mountain Home','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WMI','Warsaw-Modlin Mazovia Airport','WMI','Warsaw-Modlin Mazovia Airport','POLAND','PL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WNP','Naga Arpt','WNP','Naga','PHILIPPINES','PH');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WNR','Windorah Arpt','WNR','Windorah','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WNS','Nawabshah Arpt','WNS','Nawabshah','PAKISTAN','PK');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WNZ','Wenzhou Arpt','WNZ','Wenzhou','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WOL','Wollongong Arpt','WOL','Wollongong','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WPA','Puerto Aisen Arpt','WPA','Puerto Aisen','CHILE','CL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WRE','Whangarei Arpt','WRE','Whangarei','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WRG','Wrangell Seaplane Base','WRG','Wrangell','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WRL','Worland Municipal','WRL','Worland','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WRO','Strachowice','WRO','Wroclaw','POLAND','PL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WRY','Westray Arpt','WRY','Westray','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WST','Westerly Municipal','WST','Westerly','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WSY','Whitsunday Airstrip','WSY','Airlie Beach','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WSZ','Westport Airport','WSZ','Westport','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WUH','Wuhan Arpt','WUH','Wuhan','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WUN','Wiluna Arpt','WUN','Wiluna','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WUS','Wuyishan Arpt','WUS','Wuyishan','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WUU','Wau Arpt','WUU','Wau City','SUDAN','SD');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WUX','Wuxi Arpt','WUX','Wuxi','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WVB','Rooikop Arpt','WVB','Walvis Bay','NAMIBIA','NA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WVI','Watsonville Municipal Arpt','WVI','Watsonville','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WVL','Robert La Fleur Arpt','WVL','Waterville','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WVN','Wilhelmshaven Arpt','WVN','Wilhelmshaven','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WWD','Cape May Arpt','WWD','Cape May','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WWK','Boram Arpt','WWK','Wewak','PAPUA NEW GUINEA','PG');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WWR','West Woodward Arpt','WWR','Woodward','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WWT','Newtok Arpt','WWT','Newtok','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WXF','Wether Field Raf','WXF','Braintree','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WXN','Wanxian Arpt','WXN','Wanxian','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WYA','Whyalla Arpt','WYA','Whyalla','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WYN','Wyndham Arpt','WYN','Wyndham','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('WYS','West Yellowstone Arpt','WYS','West Yellowstone','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAL','Alamos Arpt','XAL','Alamos','MEXICO','MX');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAP','Chapeco Arpt','XAP','Chapeco','BRAZIL','BR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAW','Capreol Rail Station','XAW','Capreol','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAZ','Campbellton Rail Station','XAZ','Campbellton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XBR','Brockville Arpt','XBR','Brockville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XBW','Killineq Arpt','XBW','Killineq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XCH','Christmas Island Arpt','XCH','Christmas Island','CHRISTMAS ISLAND','CX');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XCI','Chambord Rail Station','XCI','Chambord','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XCM','Chatham Airport','XCM','Chatham','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XCO','Colac Arpt','XCO','Colac','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDK','Dunkerque Arpt','XDK','Dunkerque','FRANCE','FR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDL','Chandler Rail Station','XDL','Chandler','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDM','Drummondville Rail Station','XDM','Drummondville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDO','Grande-Riviere Rail Station','XDO','Grande Riviere','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDU','Hervey Rail Station','XDU','Hervey','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XED','Railway Service','XED','Disneyland Paris Rail','FRANCE','FR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEE','Lac Edouard Rail Station','XEE','Lac Edouard','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEH','Ladysmith Rail Station','XEH','Ladysmith','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEJ','Langford Rail Station','XEJ','Langford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEK','Melville Rail Station','XEK','Melville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEL','New Carlisle Rail Station','XEL','New Carlisle','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEM','New Richmond Rail Station','XEM','New Richmond','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFD','Stratford Rail Station','XFD','Stratford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFE','Parent Rail Station','XFE','Parent','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFG','Perce Rail Station','XFG','Perce','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFI','Port-Daniel Rail Station','XFI','Port Daniel','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFK','Senneterre Rail Station','XFK','Senneterre','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFL','Shawinigan Rail Station','XFL','Shawinigan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFM','Shawnigan Rail Station','XFM','Shawnigan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFN','Xiangfan Arpt','XFN','Xiangfan','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFO','Taschereau Rail Station','XFO','Taschereau','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFQ','Weymont Rail Station','XFQ','Weymont','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFS','Alexandria Rail Station','XFS','Alexandria','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFV','Brantford Rail Station','XFV','Brantford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGC','Lund C Rail Station','XGC','Lund C','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGJ','Cobourg Rail Station','XGJ','Cobourg','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGK','Coteau Rail Station','XGK','Coteau','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGR','Kangiqsualujjuaq Arpt','XGR','Kangiqsualujjuaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGW','Gananoque Rail Station','XGW','Gananoque','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XGY','Grimsby Rail Station','XGY','Grimsby','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XHF','Honefoss Rail Station','XHF','Honefoss','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XHM','Georgetown Rail Station','XHM','Georgetown','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XHQ','Hopa Artvin','XHQ','Hopa','TURKEY','TR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XHS','Chemainus Rail Station','XHS','Chemainus','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIA','Guelph Rail Station','XIA','Guelph','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIB','Ingersoll Rail Station','XIB','Ingersoll','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIC','Xichang Arpt','XIC','Xichang','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XID','Maxville Rail Station','XID','Maxville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIF','Napanee Rail Station','XIF','Napanee','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XII','Prescott Rail Station','XII','Prescott','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIM','Saint Hyacinthe Rail Station','XIM','Saint Hyacinthe','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIO','St Marys Rail Station','XIO','St Marys','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XIP','Woodstock Rail Station','XIP','Woodstock','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XJL','Joliette Rail Station','XJL','Joliette','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XJQ','Jonquiere Rail Station','XJQ','Jonquiere','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XKH','Xieng Khouang Arpt','XKH','Xieng Khouang','LAO PEOPLE\'S DEMOCRATIC REPUBLIC',
+        'LA'),
+       ('XKJ', 'Steinkjer Rail Station', 'XKJ', 'Steinkjer', 'NORWAY', 'NO'),
+       ('XKG', 'Grong Rail Station', 'XKJ', 'Steinkjer', 'NORWAY', 'NO'),
+       ('XKV', 'Sackville Rail Station', 'XKV', 'Sackville', 'CANADA', 'CA'),
+       ('XLP', 'Matapedia Rail Station', 'XLP', 'Matapedia', 'CANADA', 'CA'),
+       ('XLV', 'Niagara Falls Rail Station', 'XLV', 'Niagara Falls', 'CANADA', 'CA'),
+       ('XLY', 'Aldershot Rail Station', 'XLY', 'Aldershot', 'CANADA', 'CA'),
+       ('XLZ', 'Truro Rail Station', 'XLZ', 'Truro', 'CANADA', 'CA'),
+       ('XMB', 'M\'Bahiakro Arpt','XMB','M\'Bahiakro', 'COTE D\'IVOIRE','CI');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XMN','Xiamen Intl Airport','XMN','Xiamen','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XMY','Yam Island Arpt','XMY','Yam Island','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XNM','Nottingham Rail Station','XNM','Nottingham','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XNN','Xining Arpt','XNN','Xining','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XNT','Xingtai Airport','XNT','Xingtai','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XOK','Oakville Rail Station','XOK','Oakville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XON','Carleton Rail Station','XON','Carleton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XOR','Otta Rail Station','XOR','Otta','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPB','Parksville Rail Station','XPB','Parksville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPH','Port Hope Rail Station','XPH','Port Hope','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPK','Pukatawagan Rail Station','XPK','Pukatawagan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPL','Palmerola Air Base','XPL','Comayagua','HONDURAS','HN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPN','Brampton Rail Station','XPN','Brampton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPT','Preston Rail Station','XPT','Preston','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XPX','Pointe-aux-Trembles Rail Station','XPX','Pointe Aux Trembles','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XQG','Berwick Rail Station','XQG','Berwick Upon Tweed','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XQP','Quepos Arpt','XQP','Quepos','COSTA RICA','CR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XQU','Qualicum Arpt','XQU','Qualicum','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XRD','Rail Station Egersund','XRD','Egersund','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XRG','Rugeley Rail Station','XRG','Rugeley','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XRP','Pine Ridge Rail Station','XRP','Riviere A Pierre','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XRU','Rugby Rail Station','XRU','Rugby','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XRY','La Parra Arpt','XRY','Jerez De La Frontera','SPAIN','ES');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XSC','South Caicos Intl Arpt','XSC','South Caicos','TURKS AND CAICOS ISLANDS','TC');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XSR','Salisbury Rail Station','XSR','Salisbury','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XSS','Soissons Railway Station','XSS','Soissons','FRANCE','FR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XTG','Thargomindah Arpt','XTG','Thargomindah','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XTY','Strathroy Rail Station','XTY','Strathroy','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XUG','Holmestrand Railway','XUG','Holmestrand','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XUZ','Xuzhou Arpt','XUZ','Xuzhou','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XVA','Stockport Rail Station','XVA','Stockport','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XVH','Peterborough Rail Station','XVH','Peterborough','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XVJ','Stevenage Rail Station','XVJ','Stevenage','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XVV','Belleville Rail Station','XVV','Belleville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XVW','Belleville Rail Station','XVW','Wolverhampton','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWA','Watford Rail Station','XWA','Watford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWD','Wakefield Westgate Rail Station','XWD','Wakefield Westgate','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWF','Falun Railway Service','XWF','Falun','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XJF','Falun Bus Service','XWF','Falun','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWH','Stroke on Trent Rail Station','XWH','Stoke On Trent','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWV','Varberg Rail Station','XWV','Varberg','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XWY','Wyoming Rail Station','XWY','Wyoming','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XXA','Alvesta Railway Service','XXA','Alvesta','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XXD','Degerfors Rail Station','XXD','Degerfors','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XXL','Lillehammer Rail Station','XXL','Lille Hammer','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XXM','Mjolby Rail Station','XXM','Mjolby','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XYN','Kristinehamn Rail Station','XYN','Kristinehamn','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XYP','Railway Service','XYP','Avesta Krylbo','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XYY','Arvika Rail Station','XYY','Arvika','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XYZ','Harnosand Rail Station','XYZ','Harnosand','SWEDEN','SE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZB','Casselman Rail Station','XZB','Casselman','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZC','Glencoe Rail Station','XZC','Glencoe','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZD','Kongsvinger Rail Station','XZD','Kongsvinger','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZJ','Off Line Point','XZJ','Rail','JAPAN','JP');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZK','Amherst Rail Station','XZK','Amherst','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZP','Off Line Point','XZP','Pass','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAG','Fort Frances Municipal','YAG','Fort Frances','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAK','Yakutat Arpt','YAK','Yakutat','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAM','Sault Ste Marie Arpt','YAM','Sault Ste Marie','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('NSI','Nsimalen Arpt','YAO','Yaounde','CAMEROON','CM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAO','Yaounde Airport','YAO','Yaounde','CAMEROON','CM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAP','Yap Arpt','YAP','Yap Fm','MICRONESIA,
+        FEDERATED STATES OF','FM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAT','Attawapiskat Arpt','YAT','Attawapiskat','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAY','St Anthony Arpt','YAY','St Anthony','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YAZ','Tofino Arpt','YAZ','Tofino','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBA','Banff Arpt','YBA','Banff','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBB','Kugaaruk Arpt','YBB','Pelly Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBC','Baie Comeau Arpt','YBC','Baie Comeau','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBD','New Westminster Rail Station','YBD','New Westminster','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBG','Bagotville Arpt','YBG','Bagotville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBK','Baker Lake Arpt','YBK','Baker Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBL','Campbell River Municipal','YBL','Campbell River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHH','Harbor Airport','YBL','Campbell River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBP','Yibin Airport','YBP','Yibin','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBR','Brandon Municipal Arpt','YBR','Brandon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBW','Bedwell Harbor Arpt','YBW','Bedwell Harbor','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBX','Blanc Sablon Arpt','YBX','Blanc Sablon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCA','Courtenay Rail Station','YCA','Courtenay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCB','Cambridge Bay Arpt','YCB','Cambridge Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCC','Cornwall Regional Arpt','YCC','Cornwall','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZNA','Harbour Seaplane Base','YCD','Nanaimo','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCD','Nanaimo Arpt','YCD','Nanaimo','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCG','Ralph West Arpt','YCG','Castlegar','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEY','Newcastle Rail Station','YCH','Miramichi','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCH','Miramichi Arpt','YCH','Miramichi','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCK','Colville Municipal','YCK','Colville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCL','Charlo Municipal Arpt','YCL','Charlo','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCM','St Catharines Rail Station','YCM','St Catherines','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCN','Cochrane Rail Station','YCN','Cochrane','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCO','Kugluktuk Arpt','YCO','Kugluktuk Coppermine','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCS','Chesterfield Inlet Arpt','YCS','Chesterfield Inlet','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCU','Yun Cheng Arpt','YCU','Yun Cheng','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCW','Chilliwack Arpt','YCW','Chilliwack','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCY','Clyde River','YCY','Clyde River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YCZ','Fairmont Springs Arpt','YCZ','Fairmont Springs','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDA','Dawson City Arpt','YDA','Dawson City','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDF','Deer Lake Municipal','YDF','Deer Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDL','Dease Lake Arpt','YDL','Dease Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDN','Dauphin Rail Station','YDN','Dauphin','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDP','Nain Arpt','YDP','Nain','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDQ','Dawson Creek Arpt','YDQ','Dawson Creek','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXD','Edmonton Municipal Arpt','YEA','Edmonton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YED','Namao Field','YEA','Edmonton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEG','Edmonton Intl Arpt','YEA','Edmonton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XZL','Edmonton Rail Station','YEA','Edmonton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEB','Bar River Arpt','YEB','Bar River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEH','Asaloyeh Arpt','YEH','Asaloyeh','IRAN','IR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEK','Arviat Arpt','YEK','Arviat','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEL','Elliot Lake Arpt','YEL','Elliot Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEN','Estevan Arpt','YEN','Estevan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YER','Fort Severn Arpt','YER','Fort Severn','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YET','Edson Arpt','YET','Edson','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEV','Inuvik Mike Zubko Arpt','YEV','Inuvik','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YEY','Amos Rail Station','YEY','Amos','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YFB','Iqaluit Arpt','YFB','Iqaluit','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YFC','Fredericton Municipal','YFC','Fredericton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YFO','Flin Flon Municipal Arpt','YFO','Flin Flon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YFX','Fox Harbour Arpt','YFX','Fox Harbour','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGJ','Miho Arpt','YGJ','Yonago','JAPAN','JP');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGK','Norman Rodgers Arpt','YGK','Kingston','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEG','Kingston Rail Station','YGK','Kingston','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGL','La Grande Municipal Arpt','YGL','La Grande','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGP','Gaspe Municipal Arpt','YGP','Gaspe','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDD','Gaspe Rail Station','YGP','Gaspe','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGR','House Harbour Arpt','YGR','Iles De Madeleine','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGT','Igloolik Arpt','YGT','Igloolik','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGV','Havre St Pierre Municipal Arpt','YGV','Havre St Pierre','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGW','Kuujjuaraapik Arpt','YGW','Poste De La Baleine','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YGX','Gillam Rail Station','YGX','Gillam','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHA','Port Hope Simpson Arpt','YHA','Port Hope Simpson','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHB','Hudson Bay Rail Station','YHB','Hudson Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHD','Dryden Municipal','YHD','Dryden','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHE','Hope Arpt','YHE','Hope','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHF','Hearst Municipal Arpt','YHF','Hearst','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHG','Charlottetown Municipal Arpt','YHG','Charlottetown','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHK','Gjoa Haven Arpt','YHK','Gjoa Haven','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHM','Civic Airport','YHM','Hamilton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHN','Hornepayne Rail Station','YHN','Hornepayne','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHO','Hopedale Arpt','YHO','Hopedale','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHR','Chevery Arpt','YHR','Chevery','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHS','Sechelt Arpt','YHS','Sechelt','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHY','Hay River Municipal Arpt','YHY','Hay River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHZ','Halifax Intl','YHZ','Halifax','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDG','Halifax Rail Station','YHZ','Halifax','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIB','Atikokan Municipal Arpt','YIB','Atikokan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIF','Pakuashipi Arpt','YIF','Pakuashipi','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIH','Yichang Arpt','YIH','Yichang','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIK','Ivujivik Arpt','YIK','Ivujivik','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIO','Pond Inlet Arpt','YIO','Pond Inlet','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YIW','Yiwu Arpt','YIW','Yiwu','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YJA','Jasper Airport','YJA','Jasper','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDH','Jasper Rail Station','YJA','Jasper','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YJT','Stephenville Municipal','YJT','Stephenville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKA','Davie Fulton Arpt','YKA','Kamloops','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKF','Kitchener Waterloo Regional','YKF','Kitchener','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKG','Kangirsuk Arpt','YKG','Kangirsuk','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKL','Schefferville Arpt','YKL','Schefferville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKM','Yakima Terminal Arpt','YKM','Yakima','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKN','Chan Gurney Municipal','YKN','Yankton','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKQ','Waskaganish Arpt','YKQ','Waskaganish','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKS','Yakutsk Arpt','YKS','Yakutsk','RUSSIA','RU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKU','Chisasibi Arpt','YKU','Chisasibi','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKX','Kirkland Lake Municipal Arpt','YKX','Kirkland','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLC','Kimmirut Lake Harbour Arpt','YLC','Kimmirut Lake Harbour','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLD','Chapleau Rail Station','YLD','Chapleau','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLI','Ylivieska Arpt','YLI','Ylivieska','FINLAND','FI');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLJ','Meadow Lake Arpt','YLJ','Meadow Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLL','Lloydminster Arpt','YLL','Lloydminster','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLQ','La Tuque Rail Station','YLQ','La Tuque','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLW','Ellison Field','YLW','Kelowna','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YLY','Langley Regional Arpt','YLY','Langley','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMB','Merritt Arpt','YMB','Merritt','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YME','Matane Airport','YME','Matane','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMG','Manitouwadge Municipal Arpt','YMG','Manitouwadge','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMH','Marys Harbour Arpt','YMH','Marys Harbour','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMI','Minaki Rail Station','YMI','Minaki','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMM','Ft McMurray Municipal Arpt','YMM','Ft McMurray','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMN','Makkovik Arpt','YMN','Makkovik','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMO','Moosonee Arpt','YMO','Moosonee','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XLM','Saint Lambert Rail Station','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMX','Mirabel Intl Arpt','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMY','Montreal Downtown Rail Station','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YHU','St Hubert Arpt','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAX','Dorval Rail Station','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YUL','Pierre Elliott Trudeau Intl Arpt','YMQ','Montreal','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMT','Chibougamau Arpt','YMT','Chibougamau','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNA','Natashquan Arpt','YNA','Natashquan','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNB','Yanbo Arpt','YNB','Yanbo','SAUDI ARABIA','SA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YND','Gatineau Hull Municipal Arpt','YND','Gatineau Hull','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNG','Youngstown Municipal','YNG','Youngstown','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNJ','Yanji Arpt','YNJ','Yanji','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNN','Yandi Arpt','YNN','Yandicoogina','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNP','Natuashish Arpt','YNP','Natuashish','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNT','Laishan Arpt','YNT','Yantai','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YNZ','Yancheng Arpt','YNZ','Yancheng','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOD','Cold Lake Arpt','YOD','Cold Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOJ','Footner Lake Arpt','YOJ','High Level','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOO','Oshawa Municipal Arpt','YOO','Oshawa','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOP','Rainbow Lake Arpt','YOP','Rainbow Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOS','Billy Bishop Regional Arpt','YOS','Owen Sound','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOT','Yotvata Arpt','YOT','Yotvata','ISRAEL','IL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YOW','Ottawa Intl Arpt','YOW','Ottawa','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDS','Ottawa Rail Station','YOW','Ottawa','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPA','Prince Albert Municipal Arpt','YPA','Prince Albert','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPB','Port Alberni Arpt','YPB','Port Alberni','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPD','Parry Sound Municipal Arpt','YPD','Parry Sound','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPE','Municipal Peace River','YPE','Peace River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPF','Esquimalt Rail Station','YPF','Esquimalt','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPG','Portage La Prairie Rail Station','YPG','Portage La Prairie','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPH','Inukjuak Arpt','YPH','Inukjuak','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPJ','Aupaluk Arpt','YPJ','Aupaluk','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPL','Pickle Lake Arpt','YPL','Pickle Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPM','Pikangikum Arpt','YPM','St Pierre','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPN','Port Menier Arpt','YPN','Port Menier','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPQ','Peterborough Arpt','YPQ','Peterborough','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPR','Digby Island Arpt','YPR','Prince Rupert','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDW','Prince Rupert Rail Station','YPR','Prince Rupert','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZSW','Seal Cove Arpt','YPR','Prince Rupert','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPS','Port Hawkesbury Arpt','YPS','Port Hawkesbury','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPW','Westview Arpt','YPW','Powell River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPX','Povungnituk Arpt','YPX','Puvirnituq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YPZ','Burns Lake Rail Station','YPZ','Burns Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQA','Muskoka Arpt','YQA','Muskoka','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XLJ','Quebec City Rail Station','YQB','Quebec','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFZ','Charny Rail Station','YQB','Quebec','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQB','Quebec Intl','YQB','Quebec','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XFY','Sainte-Foy Rail Station','YQB','Quebec','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XLK','Levis Rail Station','YQB','Quebec','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQC','Quaqtaq Arpt','YQC','Quaqtaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDZ','The Pas Rail Station','YQD','The Pas','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQD','The Pas Municipal Arpt','YQD','The Pas','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEC','Windsor Rail Station','YQG','Windsor','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQG','Windsor Intl Arpt','YQG','Windsor','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQH','Watson Lake Arpt','YQH','Watson Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQI','Municipal Yarmouth','YQI','Yarmouth','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQK','Kenora Arpt','YQK','Kenora','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQL','Lethbridge Arpt','YQL','Lethbridge','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQM','Moncton Municipal','YQM','Moncton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDP','Moncton Rail Station','YQM','Moncton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQN','Nakina Rail Station','YQN','Nakina','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQQ','Royal Canadian Air Force Station','YQQ','Comox','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQR','Regina Municipal','YQR','Regina','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YMJ','Moose Jaw Arpt','YQR','Regina','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQS','Pembroke Area Municipal Arpt','YQS','St Thomas','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQT','Thunder Bay Arpt','YQT','Thunder Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQU','Grande Prairie Arpt','YQU','Grande Prairie','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQV','Yorkton Airport','YQV','Yorkton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQW','North Battleford Arpt','YQW','North Battleford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQX','Gander International','YQX','Gander','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQY','Sydney Airport','YQY','Sydney','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQZ','Quesnel Arpt','YQZ','Quesnel','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRB','Resolute Arpt','YRB','Resolute','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRF','Cartwright Arpt','YRF','Cartwright','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRG','Rigolet Arpt','YRG','Rigolet','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRI','Riviere Du Loup Arpt','YRI','Riviere Du Loup','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRJ','Roberval Airport','YRJ','Roberval','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRL','Federal Red Lake','YRL','Red Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRQ','Three Rivers Arpt','YRQ','Trois Rivieres','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YRT','Rankin Inlet Arpt','YRT','Rankin Inlet','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSB','Sudbury Municipal Arpt','YSB','Sudbury','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDY','Sudbury Junction Rail Station','YSB','Sudbury','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSC','Sherbrooke Airport','YSC','Sherbrooke','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSH','Smith Falls Rail Station','YSH','Smith Falls','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSJ','St John Municipal','YSJ','St John','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSK','Sanikiluaq Arpt','YSK','Sanikiluaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSL','Edmunston Arpt','YSL','St Leonard','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSM','Ft Smith Municipal Arpt','YSM','Ft Smith','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSN','Salmon Arm Municipal','YSN','Salmon Arm','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSO','Postville Arpt','YSO','Postville','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YSP','Marathon Municipal Arpt','YSP','Marathon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YST','St Therese Pt Municipal','YST','St Theris Point','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTA','Pembroke And Area','YTA','Pembroke','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTD','Thicket Portage Rail Station','YTD','Thicket Portage','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTE','Cape Dorset Arpt','YTE','Cape Dorset','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTF','Alma Municipal Arpt','YTF','Alma','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTH','Thompson Arpt','YTH','Thompson','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTJ','Terrace Bay Municipal Arpt','YTJ','Terrace Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTL','Big Trout Arpt','YTL','Big Trout','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTM','International Airport','YTM','Mont Tremblant','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YBZ','Toronto Downtown Rail Station','YTO','Toronto','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYZ','Lester B Pearson Intl','YTO','Toronto','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTZ','Toronto City Centre Airport','YTO','Toronto','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKZ','Buttonville Arpt','YTO','Toronto','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XLQ','Guildwood Rail Station','YTO','Toronto','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTQ','Tasiujaq Arpt','YTQ','Tasiujaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTR','Trenton Municipal Arpt','YTR','Trenton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YTS','Timmins Municipal Arpt','YTS','Timmins','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YUD','Umiujaq Arpt','YUD','Umiujaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YUM','Yuma Intl','YUM','Yuma','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YUX','Hall Beach Arpt','YUX','Hall Beach','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YUY','Rouyn Noranda Arpt','YUY','Rouyn Noranda','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVA','Iconi Arpt','YVA','Moroni','COMOROS','KM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('HAH','Prince Said Ibrahim In','YVA','Moroni','COMOROS','KM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVB','Municipal Bonaventure','YVB','Bonaventure','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVE','Vernon Municipal Arpt','YVE','Vernon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVG','Vermilion Arpt','YVG','Vermilion','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVM','Qikiqtarjuaq Arpt','YVM','Qikiqtarjuaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVO','Val d Or Municipal Arpt','YVO','Val D Or','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVP','Kuujjuaq Arpt','YVP','Kuujjuaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVQ','Norman Wells Municipal Arpt','YVQ','Norman Wells','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVR','Vancouver Intl Arpt','YVR','Vancouver','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YDT','Boundary Bay Arpt','YVR','Vancouver','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('CXH','Coal Harbor Sea Plane Arpt','YVR','Vancouver','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEA','Vancouver Rail Station','YVR','Vancouver','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YVZ','Deer Lake Arpt','YVZ','Deer Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWB','Kangiqsujuaq Arpt','YWB','Kangiqsujuaq','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XEF','Winnipeg Rail Station','YWG','Winnipeg','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWG','Winnipeg Intl Arpt','YWG','Winnipeg','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWK','Wabush Arpt','YWK','Wabush','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWL','Williams Lake Municipal','YWL','Williams Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWR','White River Rail Station','YWR','White River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWS','Whistler Arpt','YWS','Whistler','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXC','Cranbrook Municipal','YXC','Cranbrook','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YKY','Kindersley Arpt','YXE','Saskatoon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXE','Saskatoon Municipal','YXE','Saskatoon','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXH','Medicine Hat Airport','YXH','Medicine Hat','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXJ','Ft St John Municipal Arpt','YXJ','Ft St John','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXK','Rimouski Municipal Arpt','YXK','Rimouski','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXL','Sioux Lookout Arpt','YXL','Sioux Lookout','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXN','Whale Cove Arpt','YXN','Whale Cove','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXP','Pangnirtung Arpt','YXP','Pangnirtung','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDV','Prince George Rail Station','YXS','Prince George','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXS','Prince George Municipal','YXS','Prince George','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXT','Terrace Municipal Arpt','YXT','Terrace','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDQ','London Rail Station','YXU','London','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXU','London Municipal','YXU','London','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXX','Abbotsford Arpt','YXX','Abbotsford','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXY','Whitehorse Arpt','YXY','Whitehorse','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YXZ','Municipal Wawa','YXZ','Wawa','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYB','North Bay Municipal','YYB','North Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYC','Calgary Intl Arpt','YYC','Calgary','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YQF','Red Deer Arpt','YYC','Calgary','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYD','Smithers Municipal','YYD','Smithers','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYE','Ft Nelson Municipal Arpt','YYE','Fort Nelson','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYF','Penticton Municipal Arpt','YYF','Penticton','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYG','Charlottetown Municipal','YYG','Charlottetown','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYH','Taloyoak Arpt','YYH','Taloyoak','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYI','Rivers Rail Station','YYI','Rivers','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYJ','Victoria Intl Arpt','YYJ','Victoria','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YWH','Inner Harbor Sea Plane Arpt','YYJ','Victoria','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYL','Lynn Lake Rail Station','YYL','Lynn Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYN','Swift Current Arpt','YYN','Swift Current','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XAD','Churchill Rail Station','YYQ','Churchill','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYQ','Churchill Arpt','YYQ','Churchill','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYR','Municipal Goose Bay','YYR','Goose Bay','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYT','St Johns Arpt','YYT','St Johns','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYU','Japuskasing Municipal Arpt','YYU','Kapuskasing','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYW','Armstrong Rail Station','YYW','Armstromg','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YYY','Mont Joli Arpt','YYY','Mont Joli','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZA','Ashcroft Rail Station','YZA','Ashcroft','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZF','Yellowknife Arpt','YZF','Yellowknife','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZG','Salluit Arpt','YZG','Salluit','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZP','Federal Airport','YZP','Sandspit','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZR','Sarnia Airport','YZR','Sarnia','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XDX','Sarina Rail Station','YZR','Sarnia','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZS','Coral Harbour Arpt','YZS','Coral Harbour','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZT','Port Hardy Municipal','YZT','Port Hardy','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZV','Sept Iles Municipal Arpt','YZV','Sept Iles','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZX','Greenwood Arpt','YZX','Greenwood','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('YZZ','Trail Arpt','YZZ','Trail','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZAD','Zadar Arpt','ZAD','Zadar','CROATIA','HR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZAG','Zagreb Arpt','ZAG','Zagreb','CROATIA','HR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZAL','Pichoy','ZAL','Valdivia','CHILE','CL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZAO','Laberandie Arpt','ZAO','Cahors','FRANCE','FR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZAZ','Zaragoza Airport','ZAZ','Zaragoza','SPAIN','ES');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBD','Jiang Men Ferry','ZBD','Jiang Men','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBF','Bathurst Arpt','ZBF','Bathurst','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBL','Biloela Arpt','ZBL','Biloela','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBM','Bromont Regional Arpt','ZBM','Bromont','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBW','Atibaia Arpt','ZBW','Atibaia','BRAZIL','BR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZBZ','Xin Hui Ferry Arpt','ZBZ','Xin Hui','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZCL','Zacatecas Airport','ZCL','Zacatecas','MEXICO','MX');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZCO','Manquehue Arpt','ZCO','Temuco','CHILE','CL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZCU','She Kou Ferry','ZCU','She Kou','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZEC','Secunda Arpt','ZEC','Secunda','SOUTH AFRICA','ZA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZFI','Chesterfield Bus Station','ZFI','Chesterfield','UNITED KINGDOM','GB');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZFV','Philadelphia Rail Station','ZFV','Philadelphia Rail Station','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZGS','Gethsemanie Arpt','ZGS','Gethsemanie','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZHA','Zhanjiang Airport','ZHA','Zhangjiang','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZHO','Houston Bus Station','ZHO','Houston','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZIG','Ziguinchor Arpt','ZIG','Ziguinchor','SENEGAL','SN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZIH','Zihuatanejo Intl','ZIH','Zihuatanejo','MEXICO','MX');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZJN','Swan River Municipal Arpt','ZJN','Swan River','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZKG','Kegaska Arpt','ZKG','Kegaska','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZLO','Manzanillo Arpt','ZLO','Manzanillo','MEXICO','MX');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZLT','La Tabatiere Arpt','ZLT','La Tabatiere','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZNE','Newman Airport','ZNE','Newman','AUSTRALIA','AU');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('IGS','Ingolstadt Arpt','ZNQ','Ingolstadt','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZNZ','Kisauni Arpt','ZNZ','Zanzibar','TANZANIA','TZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZOS','Canal Balo Arpt','ZOS','Osorno','CHILE','CL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZPC','Pucon Arpt','ZPC','Pucon','CHILE','CL');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZPE','Osnabrueck Rail Service','ZPE','Osnabruck','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZPP','Rail Station Reutlingen','ZPP','Reutlingen','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZQF','Trier Arpt','ZQF','Trier','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZQN','Frankton Airport','ZQN','Queenstown','NEW ZEALAND','NZ');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZQS','Queen Charlotte Island Arpt','ZQS','Queen Charlotte Island','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZQW','Zweibruecken Arpt','ZQW','Zweibruecken','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZRH','Zurich Airport','ZRH','Zurich','SWITZERLAND','CH');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZSA','San Salvador Arpt','ZSA','San Salvador','BAHAMAS','BS');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZSE','St Pierre Dela Reunion Arpt','ZSE','St Pierre Dela Reunion','REUNION','RE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZSG','Sonneberg Railway Station','ZSG','Sonneberg','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZSJ','Sandy Lake Arpt','ZSJ','Sandy Lake','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SZW','Parchim Arpt','ZSR','Schwerin','GERMANY','DE');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZTB','Tete A La Baleine Arpt','ZTB','Tete A La Baleine','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZTH','Zakinthos Arpt','ZTH','Zakinthos','GREECE','GR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZUH','Zhuhai Arpt','ZUH','Zhuhai','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZUM','Churchhill Falls Arpt','ZUM','Churchhill Falls','CANADA','CA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZVD','Drangedal Rail Station','ZVD','Drangedal','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZXO','Fauske Rail Station','ZXO','Fauske','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZXU','Rygge Rail Station','ZXU','Rygge','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZXX','Rade Rail Station','ZXX','Rade','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYI','Zunyi Arpt','ZYI','Zunyi','CHINA','CN');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYL','Sylhet Osmany Arpt','ZYL','Sylhet','BANGLADESH','BD');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYP','New York Penn STN','ZYP','New York Penn STN','UNITED STATES','US');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYV','Vegarshei Rail Station','ZYV','Vegarshei','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYW','Sandvika Rail Station','ZYW','Sandvika','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZYY','Marnardal Rail Station','ZYY','Marnardal','NORWAY','NO');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('ZZV','Zanesville Arpt','ZZV','Zanesville','UNITED STATES','US');;
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SUA','Witham Field','SUA','Stuart','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SUB','Juanda Arpt','SUB','Surabaya','INDONESIA','ID');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SUE','Door Country Arpt','SUE','Sturgeon Bay','UNITED STATES','US');
@@ -3414,7 +4436,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XW
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SWO','Searcy Fld','SWO','Stillwater','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SWS','Fairwood Comm','SWS','Swansea','UNITED KINGDOM','GB');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SWT','Strezhevoy Airport','SWT','Strezhevoy Airport','RUSSIA','RU');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SWU','Su Won Arpt','SWU','Su Won','KOREA, REPUBLIC OF','KR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SWU','Su Won Arpt','SWU','Su Won','KOREA,
+        REPUBLIC OF','KR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SXB','Enzheim Arpt','SXB','Strasbourg','FRANCE','FR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XER','Strasbourg Bus Service','SXB','Strasbourg','FRANCE','FR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SXE','Sale Arpt','SXE','Sale','AUSTRALIA','AU');
@@ -3445,7 +4468,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SZ
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('SZZ','Goleniow Arpt','SZZ','Szczecin','POLAND','PL');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAB','Crown Point Arpt','TAB','Tobago','TRINIDAD AND TOBAGO','TT');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAC','D Z Romualdez Arpt','TAC','Tacloban','PHILIPPINES','PH');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAE','Daegu Arpt','TAE','Daegu','KOREA, REPUBLIC OF','KR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAE','Daegu Arpt','TAE','Daegu','KOREA,
+        REPUBLIC OF','KR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAG','Tagbilaran Arpt','TAG','Tagbilaran','PHILIPPINES','PH');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAH','Tanna Arpt','TAH','Tanna','VANUATU','VU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TAK','Takamatsu Arpt','TAK','Takamatsu','JAPAN','JP');
@@ -3535,7 +4559,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TJ
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKF','Truckee Arpt','TKF','Truckee','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKG','Branti Arpt','TKG','Bandar Lampung','INDONESIA','ID');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKJ','Tok Arpt','TKJ','Tok Ak','UNITED STATES','US');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKK','Truk Arpt','TKK','Truk','MICRONESIA, FEDERATED STATES OF','FM');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKK','Truk Arpt','TKK','Truk','MICRONESIA,
+        FEDERATED STATES OF','FM');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKM','El Peten Arpt','TKM','Tikal','GUATEMALA','GT');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKN','Tokunoshima Arpt','TKN','Tokunoshima','JAPAN','JP');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TKQ','Kigoma Arpt','TKQ','Kigoma','TANZANIA','TZ');
@@ -3567,7 +4592,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TN
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNE','Tanega Shima Arpt','TNE','Tanega Shima','JAPAN','JP');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNF','Toussus Le Noble Arpt','TNF','Toussus Le Noble','FRANCE','FR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNG','Boukhalef Arpt','TNG','Tangier','MOROCCO','MA');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNN','Tainan Arpt','TNN','Tainan','TAIWAN, PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNN','Tainan Arpt','TNN','Tainan','TAIWAN,
+        PROVINCE OF CHINA','TW');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNO','Tamarindo Arpt','TNO','Tamarindo','COSTA RICA','CR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNR','Ivato Arpt','TNR','Tananarive','MADAGASCAR','MG');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TNU','Municipal Newton Arpt','TNU','Newton','UNITED STATES','US');
@@ -3582,15 +4608,18 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TO
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('FOE','Forbes Field','TOP','Topeka','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TOR','Torrington Minicipal Arpt','TOR','Torrington','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TOS','Tromso Langnes Arpt','TOS','Tromso','NORWAY','NO');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RAD','Road Town Arpt','TOV','Tortola Westend','VIRGIN ISLANDS, BRITISH','VG');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RAD','Road Town Arpt','TOV','Tortola Westend','VIRGIN ISLANDS,
+        BRITISH ','VG');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TOW','Toledo Arpt','TOW','Toledo','BRAZIL','BR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TOX','Tobolsk Arpt','TOX','Tobolsk','RUSSIA','RU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TOY','Toyama Arpt','TOY','Toyama','JAPAN','JP');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPA','Tampa Intl','TPA','Tampa','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPF','Peter O Knight Arpt','TPA','Tampa','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('PIE','St Petersburg Clearwater Arpt','TPA','Tampa','UNITED STATES','US');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPE','Taiwan Taoyuan Intl Arpt','TPE','Taipei','TAIWAN, PROVINCE OF CHINA','TW');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TSA','Sung Shan Arpt','TPE','Taipei','TAIWAN, PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPE','Taiwan Taoyuan Intl Arpt','TPE','Taipei','TAIWAN,
+        PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TSA','Sung Shan Arpt','TPE','Taipei','TAIWAN,
+        PROVINCE OF CHINA','TW');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPH','Tonopah Arpt','TPH','Tonopah','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPL','Temple Arpt','TPL','Temple','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TPQ','Tepic Arpt','TPQ','Tepic','MEXICO','MX');
@@ -3627,7 +4656,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TT
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TTN','Trenton Mercer Arpt','TTN','Trenton','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TRX','Trenton Airport','TTN','Trenton','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TTQ','Tortuquero Arpt','TTQ','Tortuquero','COSTA RICA','CR');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TTT','Taitung Arpt','TTT','Taitung','TAIWAN, PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TTT','Taitung Arpt','TTT','Taitung','TAIWAN,
+        PROVINCE OF CHINA','TW');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TUC','Benjamin Matienzo Airport','TUC','Tucuman','ARGENTINA','AR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TUF','Saint Symphorien Arpt','TUF','Tours','FRANCE','FR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XSH','Tours Rail Station','TUF','Tours','FRANCE','FR');
@@ -3650,8 +4680,10 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TW
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TWB','Toowoomba Arpt','TWB','Toowoomba','AUSTRALIA','AU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TWF','Twin Falls City County Arpt','TWF','Twin Falls','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TWU','Tawau Arpt','TWU','Tawau','MALAYSIA','MY');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TXG','Taichung Arpt','TXG','Taichung','TAIWAN, PROVINCE OF CHINA','TW');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RMQ','Ching Chuan Kang','TXG','Taichung','TAIWAN, PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TXG','Taichung Arpt','TXG','Taichung','TAIWAN,
+        PROVINCE OF CHINA','TW');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('RMQ','Ching Chuan Kang','TXG','Taichung','TAIWAN,
+        PROVINCE OF CHINA','TW');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TXK','Texarkana Municipal','TXK','Texarkana','UNITED STATES','US');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TXN','Tunxi Arpt','TXN','Tunxi','CHINA','CN');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('TYD','Tynda Airport','TYD','Tynda Airport','RUSSIA','RU');
@@ -3731,7 +4763,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('US
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USK','Usinsk Arpt','USK','Usinsk','RUSSIA','RU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USL','Useless Loop Arpt','USL','Useless Loop','AUSTRALIA','AU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USM','Koh Samui Arpt','USM','Koh Samui','THAILAND','TH');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USN','Ulsan Arpt','USN','Ulsan','KOREA, REPUBLIC OF','KR');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USN','Ulsan Arpt','USN','Ulsan','KOREA,
+        REPUBLIC OF','KR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USQ','Usak Airport','USQ','Usak','TURKEY','TR');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('USS','Sancti Spiritus Arpt','USS','Sancti Spiritus','CUBA','CU');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('UST','St Augustine Arpt','UST','St Augustine','UNITED STATES','US');
@@ -3792,7 +4825,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VI
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIF','Vieste Arpt','VIF','Vieste','ITALY','IT');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIG','El Vigia Arpt','VIG','El Vigia','VENEZUELA','VE');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VII','Vinh City Arpt','VII','Vinh City','VIET NAM','VN');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIJ','Virgin Gorda Arpt','VIJ','Virgin Gorda','VIRGIN ISLANDS, BRITISH','VG');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIJ','Virgin Gorda Arpt','VIJ','Virgin Gorda','VIRGIN ISLANDS,
+        BRITISH ','VG');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIL','Dakhla Airport','VIL','Dakhla','MOROCCO','MA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIN','Vinnitsa Arpt','VIN','Vinnitsa','UKRAINE','UA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VIS','Visalia Municipal','VIS','Visalia','UNITED STATES','US');
@@ -3839,7 +4873,8 @@ INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VS
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VSG','Lugansk Arpt','VSG','Lugansk','UKRAINE','UA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('XYX','Sala Rail Station','VST','Vasteras','SWEDEN','SE');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VTB','Vitebsk Arpt','VTB','Vitebsk','BELARUS','BY');
-INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VTE','Wattay Arpt','VTE','Vientiane','LAO PEOPLE\'S DEMOCRATIC REPUBLIC','LA');
+INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VTE','Wattay Arpt','VTE','Vientiane','LAO PEOPLE\'S DEMOCRATIC REPUBLIC',
+        'LA');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VTZ','Vishakhapatnam','VTZ','Vishakhapatanam','INDIA','IN');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VUP','Valledupar Arpt','VUP','Valleduper','COLOMBIA','CO');
 INSERT INTO airports (iata,name,city_code,city,country,country_code) VALUES ('VUS','Velikiy Ustyug Airport','VUS','Velikiy Ustyug Airport','RUSSIA','RU');
