@@ -55,7 +55,7 @@ const extractAirport = (place) => {
         }
 
         if (types.includes("administrative_area_level_1")) {
-            airport.ciry = value;
+            airport.city = value;
         }
 
         if (types.includes("country")) {
@@ -131,14 +131,14 @@ const OriginInput = ({ setOrigin }) => {
     }
 
     const FindClosestAirport = ({ latitude: lat, longitude: lng}) => {
-        const URL = `https://cors-anywhere.herokuapp.com/${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=500&type=airport`;
+        const URL = `https://cors-anywhere.herokuapp.com/${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=5000&type=airport`;
         fetch(URL)
             .then(data=> {
             return data.json()
         }).then(jsonData => {
             console.log(jsonData)
-            const place = jsonData.results;
-            const _airport = extractAirport(place);
+            let place = jsonData.results;
+            let _airport = extractAirport(place);
             console.log(_airport);
         }).catch(error=> {
             console.log(error);

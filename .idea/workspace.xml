@@ -5,95 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="227fc97a-1517-4cfa-9774-ff226e75e0e6" name="Changes" comment="import.sql">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitlab-ci.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project Plan.docx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/create.sql" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/.env" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/.env" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/OriginInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/OriginInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/components/RouteRow.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/components/RouteRow.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontend/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/BackendApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/AirportValidator.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/CreateAirportUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/CreateFlightUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/DeleteAirportUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/DeleteFlightUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/GetAirportUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/GetAirportsUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/GetAllFlightsFromOriginToDestinationUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/GetCheapestFlightUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/GetFlightUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/UpdateAirportUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/UpdateFlightUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/exception/AirportInitialsAlreadyExistException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/exception/FlightNumberAlreadyExistsException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/exception/InvalidAirportException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/exception/InvalidFlightException.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/AirportConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/AirportValidatorImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/CreateAirportUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/CreateFlightUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/DeleteAirportUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/DeleteFlightUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/FlightConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/GetAirportUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/GetAllAirportsUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/GetAllFlightsFromOriginToDestinationUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/GetFlightUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/RouteConverter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/UpdateAirportUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/business/impl/UpdateFlightUseCaseImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/configuration/exceptionhandler/RestCustomExceptionHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/configuration/logging/RequestLoggingFilterConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/controller/AirportsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/controller/FlightsController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/controller/TequilaApiController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/Airport.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/CreateAirportRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/CreateAirportResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/CreateFlightRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/CreateFlightResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/Flight.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetAirportsResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetAllAirportsResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetAllFlightsFromOriginToDestinationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetAllFlightsFromOriginToDestinationResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetCheapestFlightRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/GetCheapestFlightResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/Route.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/UpdateAirportRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/UpdateFlightRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/domain/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/AirportRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/FlightRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/FlightRepositoryBasic.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/FlightRepositoryCustom.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/entity/AirportEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/entity/FlightEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/entity/RouteEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/entity/UserEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/impl/FlightRepositoryCustomImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/tequilaApi/GetFlightInfoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/tequilaApi/impl/FlightInfo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/fontys/s3/backend/persistence/tequilaApi/impl/GetFlightInfoRepositoryImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/import.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fontys/s3/backend/BackendApplicationTests.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fontys/s3/backend/business/impl/CreateAirportUseCaseImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fontys/s3/backend/business/impl/CreateFlightUseCaseImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fontys/s3/backend/business/impl/GetFlightUseCaseImplTest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/fontys/s3/backend/business/impl/UpdateFlightUseCaseImplTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -149,7 +66,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/frontend" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -181,31 +98,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,
-    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nur Nechushtan/Downloads/amadeus_java_flight_api-main/amadeus_java_flight_api-main&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;database.query.execution&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;4f9724b3204f4d9eb05b2dfda8b89bfd&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "last_opened_file_path": "C:/Users/Nur Nechushtan/Documents/Fontys/Semester 3/Individual Project/Backend/backend",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "database.query.execution",
+    "spring.configuration.checksum": "4f9724b3204f4d9eb05b2dfda8b89bfd"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;postgresql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="fontys.s3.backend.persistence.entity" />
@@ -448,6 +365,7 @@
       <workItem from="1664790169634" duration="592000" />
       <workItem from="1664867387935" duration="631000" />
       <workItem from="1664883831242" duration="1412000" />
+      <workItem from="1664887740364" duration="619000" />
     </task>
     <task id="LOCAL-00001" summary="First commit">
       <created>1663273279191</created>
