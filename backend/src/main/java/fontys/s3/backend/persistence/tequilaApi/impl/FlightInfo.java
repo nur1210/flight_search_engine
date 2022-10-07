@@ -24,6 +24,7 @@ public class FlightInfo {
         private CountryTo countryTo;
         private Fare fare;
         private Availability availability;
+        private String deep_link;
     }
 
     @Setter

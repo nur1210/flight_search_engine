@@ -1,4 +1,4 @@
-const DepartureDateInput = ({setDepartureDate}) => {
+const DepartureDateInput = ({onChange, title}) => {
 
     return (
         <div id="departure-date" className="mb-2">
@@ -6,7 +6,7 @@ const DepartureDateInput = ({setDepartureDate}) => {
                 id="departure-date-label"
                 htmlFor="departure-date-input"
                 className="form-label">
-                Departure date
+                {title}
             </label>
             <div className="input-group">
                   <span className="input-group-text">
@@ -17,7 +17,7 @@ const DepartureDateInput = ({setDepartureDate}) => {
                     className="form-control"
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
-                    onChange={(e) => setDepartureDate(e.target.value)}
+                    onChange={(e) => onChange(e.target.value)}
                 />
             </div>
         </div>

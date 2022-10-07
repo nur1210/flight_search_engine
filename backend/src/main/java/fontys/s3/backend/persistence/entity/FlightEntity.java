@@ -33,8 +33,8 @@ public class FlightEntity {
     )
     private long id;
 
-    @OneToMany (targetEntity = RouteEntity.class,
-    cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = RouteEntity.class,
+            cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_id")
     private List<RouteEntity> route;
     @Column(
@@ -49,6 +49,12 @@ public class FlightEntity {
             columnDefinition = "integer"
     )
     private long availableSeats;
+
+    @Column(
+            name = "deep_link",
+            columnDefinition = "text"
+    )
+    private String deepLink;
 
     @ManyToMany(mappedBy = "userFlights")
     private List<UserEntity> passengers;
@@ -83,6 +89,14 @@ public class FlightEntity {
 
     public void setAvailableSeats(long availableSeats) {
         this.availableSeats = availableSeats;
+    }
+
+    public String getDeepLink() {
+        return deepLink;
+    }
+
+    public void setDeepLink(String deepLink) {
+        this.deepLink = deepLink;
     }
 
     public List<UserEntity> getPassengers() {

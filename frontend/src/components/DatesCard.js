@@ -9,8 +9,8 @@ const DatesCard = ({ setFlightType, setDepartureDate, setReturnDate }) => {
                 <div className="card-body">
                     <h5 className="card-title">Dates</h5>
                     <FlightTypeInput setFlightType={setFlightType}/>
-                    <DepartureDateInput setDepartureDate={setDepartureDate}/>
-                    <ReturnDateInput setReturnDate={setReturnDate}/>
+                    <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
+                    <DepartureDateInput onChange={setReturnDate} title={"Arrival date"}/>
                 </div>
             </div>
         </div>

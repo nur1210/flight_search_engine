@@ -13,6 +13,7 @@ final class FlightConverter {
                 .route(flight.getRoute().stream().map(RouteConverter::convert).toList())
                 .price(flight.getPrice())
                 .availableSeats(flight.getAvailableSeats())
+                .deepLink(flight.getDeepLink())
                 .build();
     }
 }

@@ -1,15 +1,6 @@
 import {useState} from "react";
 import tequilaService from "../services/TequilaService";
 import FlightsList from "./FlightsList";
-import OriginInput from "./OriginInput";
-import DestinationInput from "./DestinationInput";
-import FlightTypeInput from "./FlightTypeInput";
-import ReturnDateInput from "./ReturnDateInput";
-import DepartureDateInput from "./DepartureDateInput";
-import TravelClassInput from "./TravelClassInput";
-import AdultsInput from "./AdultsInput";
-import ChildrenInput from "./ChildrenInput";
-import InfantsInput from "./InfantsInput";
 import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
@@ -50,7 +41,7 @@ const SearchForm = () => {
                 <LocationsCard setOrigin={setOrigin} setDestination={setDestination}/>
                 <div className="row">
                     <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate}/>
-                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} adults={adults} setAdults={setAdults} children={children} setChildren={setChildren} infants={infants} setInfants={setInfants}/>
+                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} setChildren={setChildren} setInfants={setInfants}/>
                 </div>
                 <button id="search-button" className="w-100 btn btn-dark" type="submit">Search</button>
             </div>

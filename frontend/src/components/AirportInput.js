@@ -25,15 +25,13 @@ function loadAsyncScript(src) {
 const extractAirport = (place) => {
 
     const airport = {
-        iata: "",
         name: "",
         city: "",
         country: "",
         plain() {
-            const iata = this.iata ? this.iata + ", " : "";
             const name = this.name ? this.name + ", " : "";
             const city = this.city ? this.city + ", " : "";
-            return iata + name + city + this.country;
+            return name + city + this.country;
         }
     }
 
@@ -46,15 +44,12 @@ const extractAirport = (place) => {
         const types = component.types;
         const value = component.long_name;
 
-        if (types.includes("locality")) {
-            airport.city = value;
-        }
 
         if (types.includes("name")) {
             airport.name = value;
         }
 
-        if (types.includes("administrative_area_level_1")) {
+        if (types.includes("locality")) {
             airport.city = value;
         }
 
@@ -67,7 +62,7 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const OriginInput = ({ setOrigin }) => {
+const AirportInput = ({ onChange, title }) => {
 
     const searchInput = useRef(null);
     const [airport, setAirport] = useState({});
@@ -124,15 +119,36 @@ const OriginInput = ({ setOrigin }) => {
     const findMyLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-                //reverseGeocode(position.coords);
-                FindClosestAirport(position.coords);
+                reverseGeocode(position.coords);
+                FindClosestAirport(position.coords).then(r => {
+                    console.log(r);
+                    setAirport(r);
+                    searchInput.current.value = r.plain();
+                });
             })
         }
     }
 
-    const FindClosestAirport = ({ latitude: lat, longitude: lng}) => {
-        const URL = `https://cors-anywhere.herokuapp.com/${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=5000&type=airport`;
-        fetch(URL)
+    async function FindClosestAirport ({ latitude: lat, longitude: lng}) {
+        const URL = `${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=5000&type=airport`;
+        await fetch(URL, {
+            baseURL: "http://localhost:3000",
+            headers: {
+                "Content-type": "application/json",
+                "Access-Control-Allow-Origin":  "http://localhost:3000",
+                'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE',
+                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
+                'Access-Control-Allow-Credentials': true
+            }
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const airport = extractAirport(data.results[0]);
+                return airport;
+            })
+        }
+/*        }))
             .then(data=> {
             return data.json()
         }).then(jsonData => {
@@ -143,7 +159,7 @@ const OriginInput = ({ setOrigin }) => {
         }).catch(error=> {
             console.log(error);
         })
-    }
+    }*/
 
 
     // load map script after mounted
@@ -154,10 +170,10 @@ const OriginInput = ({ setOrigin }) => {
     return (
     <div className="mb-2">
         <label
-            id="origin-label"
-            htmlFor="origin-input"
+            id="Airport-label"
+            htmlFor="Airport-input"
             className="form-label">
-            Origin
+            {title}
         </label>
         <div className="input-group">
                   <span className="input-group-text">
@@ -166,16 +182,16 @@ const OriginInput = ({ setOrigin }) => {
             <input
                 type="text"
                 className="form-control"
-                list="origin-options"
-                id="origin-input"
+                list="Airport-options"
+                id="Airport-input"
                 placeholder="Location"
-                aria-describedby="origin-label"
+                aria-describedby="Airport-label"
                 ref={searchInput}
-                onChange={(e) => setOrigin(e.target.value)}
+                onChange={(e) => onChange(e.target.value)}
             />
             <button onClick={findMyLocation}><GpsFixed /></button>
-            <datalist id="origin-options"></datalist>
+            <datalist id="Airport-options"></datalist>
         </div>
     </div>
     )}
-export default OriginInput;
+export default AirportInput;

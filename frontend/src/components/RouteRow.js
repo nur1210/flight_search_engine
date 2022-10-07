@@ -1,21 +1,24 @@
 import FlightDurationLabel from "./FlightDurationLabel";
+import { TableCell, TableRow } from "@mui/material";
 
-const RouteRow = (props) => {
+export default function BasicTable(props) {
     return (
-        <tr>
-            {props.route.map((route) => {
-                return (
-                    <td key={route.flightNumber}>{route.departureAirport.iata}
-                        <span className="arrow">→</span>
-                        {route.arrivalAirport.iata}
-                        <br/>
-                        <FlightDurationLabel departureUTC={route.utcDepartureTime} arrivalUTC={route.utcArrivalTime}/>
-                    </td>
-                )
-            })
-            }
-            <td>{props.price}</td>
-        </tr>
-    )
+        <TableRow
+            key={props.id}
+            sx={{'&:last-child td, &:last-child th': {border: 0}}}
+        >
+            {props.route.map((route) => (
+                <TableCell align={"center"}>
+                    <label>Airline: {route.airline}</label>
+                    <br/>
+                    {route.departureAirport.iata}
+                    <span className="arrow">→</span>
+                    {route.arrivalAirport.iata}
+                    <br/>
+                    <FlightDurationLabel departureUTC={route.utcDepartureTime} arrivalUTC={route.utcArrivalTime}/>
+                </TableCell>
+            ))}
+            <TableCell align={"center"}>{props.price}</TableCell>
+        </TableRow>
+    );
 }
-export default RouteRow;

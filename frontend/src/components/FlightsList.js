@@ -1,29 +1,30 @@
-import {useEffect} from "react";
-import RouteRow from "./RouteRow";
+import BasicTable from "./RouteRow";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 
 
 const FlightsList = ({flights}) => {
 
     return (
-        <div>
-            <h1>Available flights</h1>
-            <table>
-                <thead>
-                <tr>
-                    <th>Outbound</th>
-                    <th>Return</th>
-                    <th>Price</th>
-                </tr>
-                </thead>
-                <tbody>
-                {
-                    flights.map((flight) => {
-                        console.log(flight);
-                        return <RouteRow key={flight.id} route={flight.route} price={flight.price}/>
-                    })
-                }
-                </tbody>
-            </table>
+        <div className={"justify-content-center align-content-center"}>
+            <TableContainer>
+                <Table sx={{minWidth: 650}} aria-label="simple table">
+                    <TableHead>
+                        <TableRow>
+                            <TableCell align={"center"}>Outbound</TableCell>
+                            <TableCell align={"center"}>Return</TableCell>
+                            <TableCell align={"center"}>Price</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {
+                            flights.map((flight) => {
+                                console.log(flight);
+                                return <BasicTable key={flight.id} route={flight.route} price={flight.price}/>
+                            })
+                        }
+                    </TableBody>
+                </Table>
+            </TableContainer>
         </div>
     );
 }

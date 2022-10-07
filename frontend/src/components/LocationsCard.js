@@ -1,4 +1,4 @@
-import OriginInput from "./OriginInput";
+import AirportInput from "./AirportInput";
 import DestinationInput from "./DestinationInput";
 
 const LocationsCard = ({ setOrigin, setDestination }) => {
@@ -8,10 +8,10 @@ const LocationsCard = ({ setOrigin, setDestination }) => {
                 <h5 className="card-title">Locations</h5>
                 <div className="row">
                     <div className="col-sm">
-                        <OriginInput setOrigin={setOrigin}/>
+                        <AirportInput onChange={setOrigin} title={"Origin"}/>
                     </div>
                     <div className="col-sm">
-                        <DestinationInput setDestination={setDestination}/>
+                        <AirportInput onChange={setDestination} title={"Destination"}/>
                     </div>
                 </div>
             </div>
