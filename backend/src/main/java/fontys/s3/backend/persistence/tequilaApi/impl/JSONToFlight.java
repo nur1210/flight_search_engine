@@ -6,15 +6,17 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.net.URL;
 import java.sql.Timestamp;
 
 @Setter
 @Getter
 @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class FlightInfo {
+public class JSONToFlight {
     @NonNull
     private Data[] data;
+
 
     @Setter
     @Getter
@@ -24,7 +26,7 @@ public class FlightInfo {
         private CountryTo countryTo;
         private Fare fare;
         private Availability availability;
-        private String deep_link;
+        private URL deep_link;
     }
 
     @Setter
@@ -67,6 +69,12 @@ public class FlightInfo {
     @Setter
     @Getter
     static class Availability {
-        private int seats;
+        private long seats;
+    }
+
+    @Setter
+    @Getter
+    static class DeepLink {
+        private String deep_link;
     }
 }

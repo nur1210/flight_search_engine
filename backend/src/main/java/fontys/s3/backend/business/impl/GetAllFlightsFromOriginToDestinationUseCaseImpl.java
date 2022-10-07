@@ -6,7 +6,7 @@ import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationResponse;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
-import fontys.s3.backend.persistence.tequilaApi.GetFlightInfoRepository;
+import fontys.s3.backend.persistence.tequilaApi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
@@ -19,7 +19,7 @@ import java.util.Map;
 @AllArgsConstructor
 public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFlightsFromOriginToDestinationUseCase {
     private FlightRepository flightRepository;
-    private GetFlightInfoRepository flightInfoRepository;
+    private TequilaFlightsRepository flightInfoRepository;
     @Override
     public GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
         List<FlightEntity> results;

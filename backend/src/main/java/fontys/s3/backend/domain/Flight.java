@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.net.URL;
 import java.util.List;
 
 @Data
@@ -16,5 +17,5 @@ public class Flight {
     private List<Route> route;
     private double price;
     private long availableSeats;
-    private String deepLink;
+    private URL deepLink;
 }

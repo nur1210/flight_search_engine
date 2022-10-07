@@ -120,16 +120,16 @@ const AirportInput = ({ onChange, title }) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 reverseGeocode(position.coords);
-                FindClosestAirport(position.coords).then(r => {
+/*                FindClosestAirport(position.coords).then(r => {
                     console.log(r);
                     setAirport(r);
                     searchInput.current.value = r.plain();
-                });
+                });*/
             })
         }
     }
 
-    async function FindClosestAirport ({ latitude: lat, longitude: lng}) {
+/*    async function FindClosestAirport ({ latitude: lat, longitude: lng}) {
         const URL = `${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=5000&type=airport`;
         await fetch(URL, {
             baseURL: "http://localhost:3000",
@@ -147,7 +147,7 @@ const AirportInput = ({ onChange, title }) => {
                 const airport = extractAirport(data.results[0]);
                 return airport;
             })
-        }
+        }*/
 /*        }))
             .then(data=> {
             return data.json()

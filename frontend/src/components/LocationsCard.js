@@ -1,5 +1,4 @@
 import AirportInput from "./AirportInput";
-import DestinationInput from "./DestinationInput";
 
 const LocationsCard = ({ setOrigin, setDestination }) => {
     return(

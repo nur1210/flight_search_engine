@@ -3,7 +3,7 @@ package fontys.s3.backend.persistence.tequilaApi.impl;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
-import fontys.s3.backend.persistence.tequilaApi.GetFlightInfoRepository;
+import fontys.s3.backend.persistence.tequilaApi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -21,7 +21,7 @@ import java.util.Map;
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetFlightInfoRepositoryImpl implements GetFlightInfoRepository {
+public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
     private static final String API_KEY = "91DK_D7GvsoeTQ8fUDHwIV8jaBfOr5kP";
     private String URL = "https://tequila-api.kiwi.com/v2/search?fly_from={fly_from}&fly_to={fly_to}&date_from={date_from}&date_to={date_to}&return_from={return_from}&return_to={return_to}&flight_type={flight_type}&adults={adults}&selected_cabins={selected_cabins}&curr={curr}&locale={locale}&max_stopovers={max_stopovers}&max_sector_stopovers={max_sector_stopovers}";
 
@@ -33,15 +33,15 @@ public class GetFlightInfoRepositoryImpl implements GetFlightInfoRepository {
 
             HttpHeaders headers = new HttpHeaders();
             headers.add("apikey", API_KEY);
-            HttpEntity<FlightInfo> entity = new HttpEntity<>(headers);
-            ResponseEntity<FlightInfo> responseEntity = restTemplate.exchange(
+            HttpEntity<JSONToFlight> entity = new HttpEntity<>(headers);
+            ResponseEntity<JSONToFlight> responseEntity = restTemplate.exchange(
                     URL,
                     HttpMethod.GET,
                     entity,
-                    FlightInfo.class,
+                    JSONToFlight.class,
                     params);
 
-            FlightInfo flightInfo = responseEntity.getBody();
+            JSONToFlight flightInfo = responseEntity.getBody();
 
 
             for (var flight : flightInfo.getData()) {
