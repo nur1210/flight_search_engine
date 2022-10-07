@@ -2,7 +2,6 @@ package fontys.s3.backend.persistence.tequilaApi.impl;
 
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.tequilaApi.TequilaAirportsRepository;
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -15,7 +14,6 @@ import java.util.Arrays;
 
 @Component
 @NoArgsConstructor
-@AllArgsConstructor
 public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository {
 
     private final String BaseUrl = "https://api.tequila.kiwi.com/locations";

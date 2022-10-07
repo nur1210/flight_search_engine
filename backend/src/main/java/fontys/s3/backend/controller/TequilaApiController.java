@@ -15,7 +15,7 @@ public class TequilaApiController {
     private final GetAllFlightsFromOriginToDestinationUseCase getAllFlightsFromOriginToDestinationUseCase;
 
 
-    @GetMapping
+    @GetMapping("/flights")
     public ResponseEntity<GetAllFlightsFromOriginToDestinationResponse> getAllFlightsFromOriginToDestination(@RequestParam(value = "fly_from", required = false) String flyFrom,
                                                                                       @RequestParam(value = "fly_to", required = false) String flyTo,
                                                                                       @RequestParam(value = "date_from", required = false) String dateFrom,
@@ -46,5 +46,7 @@ public class TequilaApiController {
                 .build();
         GetAllFlightsFromOriginToDestinationResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
         return ResponseEntity.ok(response);
+
+
     }
 }
