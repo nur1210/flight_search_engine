@@ -27,6 +27,8 @@ const extractAirport = (place) => {
     const airport = {
         city: "",
         country: "",
+        lat: "",
+        lng: "",
         plain() {
             const city = this.city ? this.city + ", " : "";
             return city + this.country;
@@ -51,10 +53,19 @@ const extractAirport = (place) => {
         }
 
     });
+
+    if (Object.prototype.hasOwnProperty.call(place.geometry.viewport, "Cb")) {
+        airport.lat = place.geometry.viewport.Cb.hi
+        console.log(airport.lat);
+
+        airport.lng = place.geometry.viewport.Va.hi
+        console.log(airport.lng);
+    }
+
     return airport;
 }
 
-const AirportInput = ({ onChange, title }) => {
+const AirportInput = ({onChange, title}) => {
 
     const searchInput = useRef(null);
     const [airport, setAirport] = useState({});
@@ -63,7 +74,7 @@ const AirportInput = ({ onChange, title }) => {
     // init gmap script
     const initMapScript = () => {
         // if script already loaded
-        if(window.google) {
+        if (window.google) {
             return Promise.resolve();
         }
         const src = `${mapApiJs}?key=${apiKey}&libraries=places&v=weekly`;
@@ -75,8 +86,13 @@ const AirportInput = ({ onChange, title }) => {
     const onChangeAddress = (autocomplete) => {
         const place = autocomplete.getPlace();
         console.log(place);
+        const _airport = extractAirport(place);
         setAirport(extractAirport(place));
         console.log(airport);
+        tequilaService.getAirportByCords(_airport.lat, _airport.lng).then((data) => {
+            console.log(data);
+            onChange(data.data.airport.iata);
+        })
     }
 
     // init autocomplete
@@ -90,9 +106,7 @@ const AirportInput = ({ onChange, title }) => {
     }
 
 
-
-
-    const reverseGeocode = ({ latitude: lat, longitude: lng}) => {
+    const reverseGeocode = ({latitude: lat, longitude: lng}) => {
         const url = `${geocodeJson}?key=${apiKey}&latlng=${lat},${lng}`;
         searchInput.current.value = "Getting your location...";
         fetch(url)
@@ -121,37 +135,37 @@ const AirportInput = ({ onChange, title }) => {
     }
 
 
-
     // load map script after mounted
     useEffect(() => {
         initMapScript().then(() => initAutocomplete())
     }, []);
 
     return (
-    <div className="mb-2">
-        <label
-            id="Airport-label"
-            htmlFor="Airport-input"
-            className="form-label">
-            {title}
-        </label>
-        <div className="input-group">
+        <div className="mb-2">
+            <label
+                id="Airport-label"
+                htmlFor="Airport-input"
+                className="form-label">
+                {title}
+            </label>
+            <div className="input-group">
                   <span className="input-group-text">
                       <i className="bi-pin-map"></i>
                   </span>
-            <input
-                type="text"
-                className="form-control"
-                list="Airport-options"
-                id="Airport-input"
-                placeholder="Location"
-                aria-describedby="Airport-label"
-                ref={searchInput}
-                onChange={(e) => onChange(e.target.value)}
-            />
-            <button onClick={findMyLocation}><GpsFixed /></button>
-            <datalist id="Airport-options"></datalist>
+                <input
+                    type="text"
+                    className="form-control"
+                    list="Airport-options"
+                    id="Airport-input"
+                    placeholder="Location"
+                    aria-describedby="Airport-label"
+                    ref={searchInput}
+                    //onChange={(e) => onChange(e.target.value)}
+                />
+                <button onClick={findMyLocation}><GpsFixed/></button>
+                <datalist id="Airport-options"></datalist>
+            </div>
         </div>
-    </div>
-    )}
+    )
+}
 export default AirportInput;
