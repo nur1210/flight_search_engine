@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.util.List;
 
 import static javax.persistence.GenerationType.SEQUENCE;
@@ -55,7 +54,7 @@ public class FlightEntity {
             name = "deep_link",
             columnDefinition = "text"
     )
-    private URL deepLink;
+    private String deepLink;
 
     @ManyToMany(mappedBy = "userFlights")
     private List<UserEntity> passengers;
@@ -92,11 +91,11 @@ public class FlightEntity {
         this.availableSeats = availableSeats;
     }
 
-    public URL getDeepLink() {
+    public String getDeepLink() {
         return deepLink;
     }
 
-    public void setDeepLink(URL deepLink) {
+    public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
     }
 

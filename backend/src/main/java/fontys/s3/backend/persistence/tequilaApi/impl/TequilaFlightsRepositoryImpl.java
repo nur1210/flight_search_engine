@@ -74,6 +74,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                         .route(routes)
                         .price(flight.getFare().getAdults())
                         .availableSeats(flight.getAvailability().getSeats())
+                        .deepLink(flight.getDeep_link())
                         .build());
             }
             return flights;

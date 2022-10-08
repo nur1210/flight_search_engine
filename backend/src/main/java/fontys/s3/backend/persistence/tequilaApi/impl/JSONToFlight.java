@@ -6,7 +6,6 @@ import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
-import java.net.URL;
 import java.sql.Timestamp;
 
 @Setter
@@ -26,7 +25,7 @@ public class JSONToFlight {
         private CountryTo countryTo;
         private Fare fare;
         private Availability availability;
-        private URL deep_link;
+        private String deep_link;
     }
 
     @Setter
