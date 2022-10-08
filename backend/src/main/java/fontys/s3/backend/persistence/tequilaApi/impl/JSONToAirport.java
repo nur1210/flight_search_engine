@@ -18,7 +18,6 @@ public class JSONToAirport {
         private String code;
         private String name;
         private City city;
-        private Country country;
     }
 
     @Setter
@@ -26,6 +25,7 @@ public class JSONToAirport {
     static class City {
         private String name;
         private String code;
+        private Country country;
     }
 
     @Setter

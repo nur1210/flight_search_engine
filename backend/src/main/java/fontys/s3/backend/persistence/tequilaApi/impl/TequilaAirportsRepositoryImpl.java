@@ -48,10 +48,11 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
 
         return AirportEntity.builder()
                 .iata(airport.getCode())
+                .name(airport.getName())
                 .city(airport.getCity().getName())
                 .cityCode(airport.getCity().getCode())
-                .country(airport.getCountry().getName())
-                .countryCode(airport.getCountry().getCode())
+                .country(airport.getCity().getCountry().getName())
+                .countryCode(airport.getCity().getCountry().getCode())
                 .build();
     }
 }
