@@ -1,10 +1,10 @@
 import {useEffect, useRef, useState} from "react";
 import {GpsFixed} from "@mui/icons-material";
+import tequilaService from "../services/TequilaService";
 
 const apiKey = 'AIzaSyAkKp4RUwFXPYyslYaxYSxbRVCiSdhw78E';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
 const geocodeJson = 'https://maps.googleapis.com/maps/api/geocode/json';
-const nearbySearchJson = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 
 
 // load google map api js
@@ -25,13 +25,11 @@ function loadAsyncScript(src) {
 const extractAirport = (place) => {
 
     const airport = {
-        name: "",
         city: "",
         country: "",
         plain() {
-            const name = this.name ? this.name + ", " : "";
             const city = this.city ? this.city + ", " : "";
-            return name + city + this.country;
+            return city + this.country;
         }
     }
 
@@ -44,11 +42,6 @@ const extractAirport = (place) => {
         const types = component.types;
         const value = component.long_name;
 
-
-        if (types.includes("name")) {
-            airport.name = value;
-        }
-
         if (types.includes("locality")) {
             airport.city = value;
         }
@@ -58,7 +51,6 @@ const extractAirport = (place) => {
         }
 
     });
-    console.log(airport);
     return airport;
 }
 
@@ -92,7 +84,7 @@ const AirportInput = ({ onChange, title }) => {
         if (!searchInput.current) return;
 
         const autocomplete = new window.google.maps.places.Autocomplete(searchInput.current);
-        //autocomplete.setFields(["address_component", "geometry"]);
+        autocomplete.setFields(["address_component", "geometry"]);
         autocomplete.setTypes(['airport']);
         autocomplete.addListener("place_changed", () => onChangeAddress(autocomplete));
     }
@@ -112,6 +104,10 @@ const AirportInput = ({ onChange, title }) => {
                 setAirport(_airport);
                 searchInput.current.value = _airport.plain();
                 console.log(_airport);
+                tequilaService.getAirportByCity(_airport.city).then(airport => {
+                    console.log(airport);
+                    onChange(airport.data.airport.iata);
+                });
             })
     }
 
@@ -120,46 +116,10 @@ const AirportInput = ({ onChange, title }) => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 reverseGeocode(position.coords);
-/*                FindClosestAirport(position.coords).then(r => {
-                    console.log(r);
-                    setAirport(r);
-                    searchInput.current.value = r.plain();
-                });*/
             })
         }
     }
 
-/*    async function FindClosestAirport ({ latitude: lat, longitude: lng}) {
-        const URL = `${nearbySearchJson}?key=${apiKey}&location=${lat},${lng}&radius=5000&type=airport`;
-        await fetch(URL, {
-            baseURL: "http://localhost:3000",
-            headers: {
-                "Content-type": "application/json",
-                "Access-Control-Allow-Origin":  "http://localhost:3000",
-                'Access-Control-Allow-Methods':'GET, POST, OPTIONS, PUT, PATCH, DELETE',
-                'Access-Control-Allow-Headers': 'X-Requested-With,content-type',
-                'Access-Control-Allow-Credentials': true
-            }
-        })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                const airport = extractAirport(data.results[0]);
-                return airport;
-            })
-        }*/
-/*        }))
-            .then(data=> {
-            return data.json()
-        }).then(jsonData => {
-            console.log(jsonData)
-            let place = jsonData.results;
-            let _airport = extractAirport(place);
-            console.log(_airport);
-        }).catch(error=> {
-            console.log(error);
-        })
-    }*/
 
 
     // load map script after mounted

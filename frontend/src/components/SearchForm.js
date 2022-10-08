@@ -24,7 +24,7 @@ const SearchForm = () => {
     };
 
     const retrieveFlights = () => {
-        tequilaService.getAll(origin, destination, departureDate, returnDate, flightType, adults, children, infants, travelClass)
+        tequilaService.getAllFlights(origin, destination, departureDate, returnDate, flightType, adults, children, infants, travelClass)
             .then(response => {
                 setFlights(response.data.flights);
                 console.log(response.data);
