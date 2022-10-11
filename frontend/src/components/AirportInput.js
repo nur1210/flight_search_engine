@@ -155,15 +155,15 @@ const AirportInput = ({onChange, title}) => {
                 <input
                     type="text"
                     className="form-control"
-                    list="Airport-options"
+                    list={`Airport-options-${title}`}
                     id="Airport-input"
                     placeholder="Location"
                     aria-describedby="Airport-label"
                     ref={searchInput}
-                    //onChange={(e) => onChange(e.target.value)}
+                    onChange={initAutocomplete}
                 />
                 <button onClick={findMyLocation}><GpsFixed/></button>
-                <datalist id="Airport-options"></datalist>
+                <datalist id={`Airport-options-${title}`}></datalist>
             </div>
         </div>
     )

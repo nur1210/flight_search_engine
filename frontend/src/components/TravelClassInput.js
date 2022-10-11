@@ -12,8 +12,8 @@ const TravelClassInput = ({ travelClass, setTravelClass }) => {
 
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
+        console.log(e.target.value);
         setTravelClass(e.target.value);
-        console.log(travelClass);
     }
 
 
@@ -29,7 +29,7 @@ const TravelClassInput = ({ travelClass, setTravelClass }) => {
                 className="form-select"
                 id="travel-class-select"
                 aria-describedby="travel-class-label"
-                value={selectedOption.value}
+                value={selectedOption}
                 onChange={handleChange}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>

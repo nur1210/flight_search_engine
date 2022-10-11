@@ -3,6 +3,9 @@ import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "
 
 
 const FlightsList = ({flights}) => {
+    if (!flights) {
+        return null;
+    }
 
     return (
         <div className={"justify-content-center align-content-center"}>
@@ -11,7 +14,7 @@ const FlightsList = ({flights}) => {
                     <TableHead>
                         <TableRow>
                             <TableCell align={"center"}>Outbound</TableCell>
-                            <TableCell align={"center"}>Return</TableCell>
+                            {flights[0].route.length > 1 ? <TableCell align={"center"}>Return</TableCell> : null}
                             <TableCell align={"center"}>Price</TableCell>
                         </TableRow>
                     </TableHead>
@@ -19,7 +22,7 @@ const FlightsList = ({flights}) => {
                         {
                             flights.map((flight) => {
                                 console.log(flight);
-                                return <BasicTable key={flight.id} route={flight.route} price={flight.price}/>
+                                return <BasicTable key={flight.id} route={flight.route} price={flight.price} link={flight.deepLink}/>
                             })
                         }
                     </TableBody>

@@ -1,7 +1,8 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const FlightTypeInput = ({ setFlightType }) => {
     const options = [
+        { value: '', text: "Select Flight Type" },
         { value: 'oneway', text: 'One Way' },
         { value: 'round', text: 'Round Trip' }
     ];
@@ -10,9 +11,10 @@ const FlightTypeInput = ({ setFlightType }) => {
 
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
-        console.log(selectedOption);
+        console.log(e.target.value);
         setFlightType(e.target.value);
     }
+
 
     return (
         <div className="mb-2">
@@ -26,15 +28,13 @@ const FlightTypeInput = ({ setFlightType }) => {
                 id="flight-type-select"
                 className="form-select"
                 aria-describedby="flight-type-label"
-                value={selectedOption.value}
+                value={selectedOption}
                 onChange={handleChange}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.text}
                     </option>
                 ))}
-{/*                <option value="oneway" onChange={(e) => setFlightType(e.target.value)}>One-way</option>
-                <option value="round" onChange={(e) => setFlightType(e.target.value)}>Round-trip</option>*/}
             </select>
         </div>
     )}
