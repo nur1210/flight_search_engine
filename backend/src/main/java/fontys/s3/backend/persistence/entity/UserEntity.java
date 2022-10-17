@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 import java.util.List;
+import java.util.Set;
 
 import static javax.persistence.GenerationType.SEQUENCE;
 
@@ -66,6 +67,10 @@ public class UserEntity {
     )
     private String password;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    private Set<UserRoleEntity> userRoles;
+
     @ManyToMany
     @JoinTable(
             name = "user_flight",
@@ -108,6 +113,14 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public Set<UserRoleEntity> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(Set<UserRoleEntity> userRoles) {
+        this.userRoles = userRoles;
     }
 
     public List<FlightEntity> getUserFlights() {

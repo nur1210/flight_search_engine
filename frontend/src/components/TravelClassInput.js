@@ -2,6 +2,7 @@ import {useState} from "react";
 
 const TravelClassInput = ({ travelClass, setTravelClass }) => {
     const options = [
+        { value: '', text: 'Select flight class'},
         { value: 'M', text: 'Economy' },
         { value: 'W', text: 'Premium Economy' },
         { value: 'C', text: 'Business' },

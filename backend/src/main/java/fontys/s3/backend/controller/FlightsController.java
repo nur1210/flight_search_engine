@@ -11,7 +11,7 @@ import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/flights")
 @AllArgsConstructor
 public class FlightsController {
@@ -70,7 +70,7 @@ public class FlightsController {
 
     @PostMapping()
     public ResponseEntity<CreateFlightResponse> createFlight(@RequestBody @Valid CreateFlightRequest request) {
-        CreateFlightResponse response = createFlightUseCase.CreateFlight(request);
+        CreateFlightResponse response = createFlightUseCase.createFlight(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

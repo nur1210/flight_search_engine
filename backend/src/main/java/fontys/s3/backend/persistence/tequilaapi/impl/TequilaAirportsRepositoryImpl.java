@@ -1,8 +1,8 @@
-package fontys.s3.backend.persistence.tequilaApi.impl;
+package fontys.s3.backend.persistence.tequilaapi.impl;
 
 import fontys.s3.backend.business.exception.InvalidAirportException;
 import fontys.s3.backend.persistence.entity.AirportEntity;
-import fontys.s3.backend.persistence.tequilaApi.TequilaAirportsRepository;
+import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -17,19 +17,19 @@ import java.util.Arrays;
 @NoArgsConstructor
 public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository {
 
-    private final String BaseUrl = "https://api.tequila.kiwi.com/locations";
+    private static final String BASE_URL = "https://api.tequila.kiwi.com/locations";
     private static final String API_KEY = "91DK_D7GvsoeTQ8fUDHwIV8jaBfOr5kP";
 
 
     @Override
     public AirportEntity getAirportByCity(String city) {
-        String url = BaseUrl + "/query?term=" + city + "&location_types=airport&limit=1&active_only=true";
+        String url = BASE_URL + "/query?term=" + city + "&location_types=airport&limit=1&active_only=true";
         return getAirportEntity(url);
     }
 
     @Override
     public AirportEntity getAirportByCords(String lat, String lon) {
-        String url = BaseUrl + "/radius?lat=" + lat + "&lon=" + lon + "&radius=250&locale=en-US&location_types=airport&limit=1&active_only=true" ;
+        String url = BASE_URL + "/radius?lat=" + lat + "&lon=" + lon + "&radius=250&locale=en-US&location_types=airport&limit=1&active_only=true" ;
         return getAirportEntity(url);
     }
 
@@ -41,10 +41,8 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
         ResponseEntity<JSONToAirport> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, JSONToAirport.class);
         JSONToAirport airportInfo = responseEntity.getBody();
 
-        var airport = Arrays.stream(airportInfo.getLocations()).findFirst().orElse(null);
-        if (airport == null) {
-            throw new InvalidAirportException();
-        }
+        assert airportInfo != null;
+        var airport = Arrays.stream(airportInfo.getLocations()).findFirst().orElseThrow(InvalidAirportException::new);
 
         return AirportEntity.builder()
                 .iata(airport.getCode())

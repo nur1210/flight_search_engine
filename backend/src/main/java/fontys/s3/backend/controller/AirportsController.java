@@ -53,7 +53,7 @@ public class AirportsController {
     public ResponseEntity<Void> updateCountry(@PathVariable("iata") String iata,
                                               @RequestBody @Valid UpdateAirportRequest request){
         request.setIata(iata);
-        updateAirportUseCase.UpdateAirport(request);
+        updateAirportUseCase.updateAirport(request);
         return ResponseEntity.noContent().build();
     }
 

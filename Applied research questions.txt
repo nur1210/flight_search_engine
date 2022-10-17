@@ -15,3 +15,5 @@ How to get the best performance from an ORM like JPA/Hibernate?
 	Which annotations should be used
 	Does lombok impact the performance when used with JPA (Document analysis, Benchmark test)
 	 
+	 
+	 sqp_7cdcf9351bce2b5b07cb9d0abfe32c93826c4dae

@@ -2,6 +2,7 @@ plugins {
     id 'org.springframework.boot' version '2.7.3'
     id 'io.spring.dependency-management' version '1.0.13.RELEASE'
     id 'java'
+    id 'org.sonarqube' version '3.4.0.2513'
 }
 
 group = 'fontys.s3'
@@ -25,6 +26,12 @@ dependencies {
     implementation 'ch.qos.logback:logback-classic:1.2.11'
     implementation 'org.postgresql:postgresql:42.5.0'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa:2.7.3'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'net.logstash.logback:logstash-logback-encoder:7.1.1'
+    implementation 'org.springdoc:springdoc-openapi-ui:1.6.7'
+    implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
     testImplementation 'junit:junit:4.13.1'
     testImplementation 'junit:junit:4.13.1'
     compileOnly 'org.projectlombok:lombok'
@@ -32,8 +39,16 @@ dependencies {
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     annotationProcessor 'org.projectlombok:lombok'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
 }
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+sonarqube {
+    properties {
+        property "sonar.host.url", System.getenv("http://localhost:9000")
+        property "sonar.login", System.getenv("sqp_7cdcf9351bce2b5b07cb9d0abfe32c93826c4dae")
+    }
 }

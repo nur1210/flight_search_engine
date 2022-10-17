@@ -125,11 +125,4 @@ public class RouteEntity {
         this.utcArrivalTime = utcArrivalTime;
     }
 
-/*    public FlightEntity getFlight() {
-        return flight;
-    }
-
-    public void setFlight(FlightEntity flight) {
-        this.flight = flight;
-    }*/
 }

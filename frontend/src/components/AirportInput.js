@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
-import {GpsFixed} from "@mui/icons-material";
 import tequilaService from "../services/TequilaService";
+import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 
 const apiKey = 'AIzaSyAkKp4RUwFXPYyslYaxYSxbRVCiSdhw78E';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
@@ -54,12 +54,12 @@ const extractAirport = (place) => {
 
     });
 
-    if (Object.prototype.hasOwnProperty.call(place.geometry.viewport, "Cb")) {
-        airport.lat = place.geometry.viewport.Cb.hi
-        console.log(airport.lat);
-
-        airport.lng = place.geometry.viewport.Va.hi
+    if (Object.prototype.hasOwnProperty.call(place.geometry.viewport, "Fa")) {
+        airport.lng = place.geometry.viewport.Fa.hi
         console.log(airport.lng);
+
+        airport.lat = place.geometry.viewport.ab.hi
+        console.log(airport.lat);
     }
 
     return airport;
@@ -162,7 +162,7 @@ const AirportInput = ({onChange, title}) => {
                     ref={searchInput}
                     onChange={initAutocomplete}
                 />
-                <button onClick={findMyLocation}><GpsFixed/></button>
+                <button className={"btn"} onClick={findMyLocation}><GpsFixedIcon/></button>
                 <datalist id={`Airport-options-${title}`}></datalist>
             </div>
         </div>

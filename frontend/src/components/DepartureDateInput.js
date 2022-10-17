@@ -1,4 +1,4 @@
-const DepartureDateInput = ({onChange, title}) => {
+const DepartureDateInput = ({onChange, title, disabled}) => {
 
     return (
         <div id="departure-date" className="mb-2">
@@ -18,6 +18,7 @@ const DepartureDateInput = ({onChange, title}) => {
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
                     onChange={(e) => onChange(e.target.value)}
+                    disabled={disabled}
                 />
             </div>
         </div>

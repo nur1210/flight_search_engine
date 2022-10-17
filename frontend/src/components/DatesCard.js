@@ -1,16 +1,19 @@
 import FlightTypeInput from "./FlightTypeInput";
 import DepartureDateInput from "./DepartureDateInput";
-import ReturnDateInput from "./ReturnDateInput";
+import {useState} from "react";
 
 const DatesCard = ({ setFlightType, setDepartureDate, setReturnDate }) => {
+    const [hasDepartureDate, setHasDepartureDate] = useState(true);
+    const [hasReturnDate, setHasReturnDate] = useState(true);
+
     return(
         <div className="mb-2 col">
             <div className="h-100 card">
                 <div className="card-body">
                     <h5 className="card-title">Dates</h5>
-                    <FlightTypeInput setFlightType={setFlightType}/>
-                    <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
-                    <DepartureDateInput onChange={setReturnDate} title={"Arrival date"}/>
+                    <FlightTypeInput setFlightType={setFlightType} setHasDepartureDate={setHasDepartureDate} setHasReturnDate={setHasReturnDate}/>
+                    <DepartureDateInput onChange={setDepartureDate} title={"Departure date"} disabled={hasDepartureDate}/>
+                    <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={hasReturnDate}/>
                 </div>
             </div>
         </div>

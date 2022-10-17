@@ -5,7 +5,7 @@ import fontys.s3.backend.domain.Flight;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationResponse;
 import fontys.s3.backend.persistence.entity.FlightEntity;
-import fontys.s3.backend.persistence.tequilaApi.TequilaFlightsRepository;
+import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;

@@ -14,7 +14,7 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
     private final FlightRepository flightRepository;
 
     @Override
-    public CreateFlightResponse CreateFlight(CreateFlightRequest request) {
+    public CreateFlightResponse createFlight(CreateFlightRequest request) {
 
         FlightEntity saveFlight = saveNewFlight(request);
 

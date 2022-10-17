@@ -76,7 +76,7 @@ class CreateFlightUseCaseImplTest {
                 .build();
 
 
-        CreateFlightResponse response = useCase.CreateFlight(request);
+        CreateFlightResponse response = useCase.createFlight(request);
 
         //Assert
         Assertions.assertEquals(response.getFlightId(), flightEntity.getId());

@@ -3,7 +3,7 @@ package fontys.s3.backend.business.impl;
 import fontys.s3.backend.business.GetAirportByCityUseCase;
 import fontys.s3.backend.domain.GetAirportByCityRequest;
 import fontys.s3.backend.domain.GetAirportResponse;
-import fontys.s3.backend.persistence.tequilaApi.TequilaAirportsRepository;
+import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

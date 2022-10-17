@@ -1,5 +1,4 @@
 import './App.css';
-import FlightsList from './pages/flightSearchPage.js';
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import SearchForm from "./components/SearchForm";
 
@@ -22,3 +21,4 @@ function App() {
 }
 
 export default App;
+

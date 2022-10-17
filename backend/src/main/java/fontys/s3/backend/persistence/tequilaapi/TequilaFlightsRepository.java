@@ -1,4 +1,4 @@
-package fontys.s3.backend.persistence.tequilaApi;
+package fontys.s3.backend.persistence.tequilaapi;
 
 import fontys.s3.backend.persistence.entity.FlightEntity;
 

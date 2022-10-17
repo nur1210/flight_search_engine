@@ -1,9 +1,9 @@
-package fontys.s3.backend.persistence.tequilaApi.impl;
+package fontys.s3.backend.persistence.tequilaapi.impl;
 
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
-import fontys.s3.backend.persistence.tequilaApi.TequilaFlightsRepository;
+import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -14,16 +14,14 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 @NoArgsConstructor
 @AllArgsConstructor
 public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
     private static final String API_KEY = "91DK_D7GvsoeTQ8fUDHwIV8jaBfOr5kP";
-    private String URL = "https://tequila-api.kiwi.com/v2/search?fly_from={fly_from}&fly_to={fly_to}&date_from={date_from}&date_to={date_to}&return_from={return_from}&return_to={return_to}&flight_type={flight_type}&adults={adults}&selected_cabins={selected_cabins}&curr={curr}&locale={locale}&max_stopovers={max_stopovers}&max_sector_stopovers={max_sector_stopovers}";
+    private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={fly_from}&fly_to={fly_to}&date_from={date_from}&date_to={date_to}&return_from={return_from}&return_to={return_to}&flight_type={flight_type}&adults={adults}&selected_cabins={selected_cabins}&curr={curr}&locale={locale}&max_stopovers={max_stopovers}&max_sector_stopovers={max_sector_stopovers}";
 
     @Override
     public List<FlightEntity> getFlightsInfo(Map<String, Object> params) {
@@ -35,7 +33,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
             headers.add("apikey", API_KEY);
             HttpEntity<JSONToFlight> entity = new HttpEntity<>(headers);
             ResponseEntity<JSONToFlight> responseEntity = restTemplate.exchange(
-                    URL,
+                    url,
                     HttpMethod.GET,
                     entity,
                     JSONToFlight.class,
@@ -44,7 +42,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
             JSONToFlight flightInfo = responseEntity.getBody();
 
 
-            for (var flight : flightInfo.getData()) {
+            for (var flight : Objects.requireNonNull(flightInfo).getData()) {
                 List<RouteEntity> routes = new ArrayList<>();
                 for (var route : flight.getRoute()) {
                     routes.add(RouteEntity.builder()
@@ -79,7 +77,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
             }
             return flights;
         } catch (HttpClientErrorException e) {
-            return null;
+            return Collections.emptyList();
         }
     }
 }

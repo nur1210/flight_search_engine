@@ -1,4 +1,11 @@
 const AdultsInput = ({ onChange, title }) => {
+
+    let value;
+    if (title === 'Adults') {
+        value = 1;
+    } else {
+        value = 0;
+    }
     return(
         <div className="mb-2">
             <div className="input-group">
@@ -7,6 +14,7 @@ const AdultsInput = ({ onChange, title }) => {
                     type="number"
                     min="0"
                     max="9"
+                    value={value}
                     className="form-control"
                     id="adults-input"
                     aria-describedby="adults-label"
