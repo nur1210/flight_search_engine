@@ -1,11 +1,5 @@
-const AdultsInput = ({ onChange, title }) => {
+const AdultsInput = ({ onChange, passengers, title }) => {
 
-    let value;
-    if (title === 'Adults') {
-        value = 1;
-    } else {
-        value = 0;
-    }
     return(
         <div className="mb-2">
             <div className="input-group">
@@ -14,7 +8,7 @@ const AdultsInput = ({ onChange, title }) => {
                     type="number"
                     min="0"
                     max="9"
-                    value={value}
+                    value={passengers}
                     className="form-control"
                     id="adults-input"
                     aria-describedby="adults-label"

@@ -4,6 +4,9 @@ import FlightsList from "./FlightsList";
 import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
+import {z} from 'zod';
+import {logDOM} from "@testing-library/react";
+
 
 const SearchForm = () => {
         const [origin, setOrigin] = useState('');
@@ -20,6 +23,8 @@ const SearchForm = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        z.date().min(new Date(Date.now()), {message: "Departure date must be in the future"}).safeParse(departureDate);
+        z.date().min(new Date(departureDate), {message: "Return date must be after departure date"}).safeParse(returnDate);
         retrieveFlights();
     };
 
@@ -41,7 +46,7 @@ const SearchForm = () => {
                 <LocationsCard setOrigin={setOrigin} setDestination={setDestination}/>
                 <div className="row">
                     <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate}/>
-                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} setChildren={setChildren} setInfants={setInfants}/>
+                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults} setChildren={setChildren} children={children} setInfants={setInfants} indants={infants}/>
                 </div>
                 <button id="search-button" className="w-100 btn btn-dark" type="submit">Search</button>
             </div>

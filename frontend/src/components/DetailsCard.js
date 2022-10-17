@@ -9,9 +9,9 @@ const DetailsCard = (props) => {
                     <h5 className="card-title">Details</h5>
                     <TravelClassInput travelClass={props.travelClass} setTravelClass={props.setTravelClass}/>
                     <label className="form-label">Passengers</label>
-                    <AdultsInput onChange={props.setAdults} title={"Adults"}/>
-                    <AdultsInput onChange={props.setChildren} title={"Children"}/>
-                    <AdultsInput onChange={props.setInfants} title={"Infants"}/>
+                    <AdultsInput onChange={props.setAdults} passengers={props.adults} title={"Adults"}/>
+                    <AdultsInput onChange={props.setChildren} passengers={props.children} title={"Children"}/>
+                    <AdultsInput onChange={props.setInfants} passengers={props.indants} title={"Infants"}/>
                 </div>
             </div>
         </div>
