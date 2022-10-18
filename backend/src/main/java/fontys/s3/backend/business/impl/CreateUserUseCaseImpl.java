@@ -4,10 +4,14 @@ import fontys.s3.backend.business.CreateUserUseCase;
 import fontys.s3.backend.domain.CreateUserRequest;
 import fontys.s3.backend.domain.CreateUserResponse;
 import fontys.s3.backend.persistence.UserRepository;
+import fontys.s3.backend.persistence.entity.RoleEnum;
 import fontys.s3.backend.persistence.entity.UserEntity;
+import fontys.s3.backend.persistence.entity.UserRoleEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.Set;
 
 @Service
 @AllArgsConstructor
@@ -34,11 +38,12 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .password(encodedPassword)
                 .build();
 
-        return userRepository.save(newUser);
-/*        newUser.setUserRoles(Set.of(
-                UserRole.builder()
+        newUser.setUserRoles(Set.of(
+                UserRoleEntity.builder()
                         .user(newUser)
-                        .role(RoleEnum.STUDENT)
-}*/
+                        .role(RoleEnum.USER)
+                        .build()));
+        return userRepository.save(newUser);
+
     }
 }

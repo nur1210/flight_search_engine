@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -44,14 +45,14 @@ public class LoginUseCaseImpl implements LoginUseCase {
 
     private String generateAccessToken(UserEntity user) {
         Long userId = user != null ? user.getId() : null;
-        /*List<String> roles = user.getUserRoles().stream()
+        List<String> roles = user.getUserRoles().stream()
                 .map(userRole -> userRole.getRole().toString())
-                .toList();*/
+                .toList();
 
         return accessTokenEncoder.encode(
                 AccessToken.builder()
                         .subject(Objects.requireNonNull(user).getEmail())
-                        //.roles(roles)
+                        .roles(roles)
                         .userId(userId)
                         .build());
     }

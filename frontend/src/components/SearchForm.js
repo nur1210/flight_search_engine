@@ -5,7 +5,6 @@ import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {z} from 'zod';
-import {logDOM} from "@testing-library/react";
 
 
 const SearchForm = () => {
