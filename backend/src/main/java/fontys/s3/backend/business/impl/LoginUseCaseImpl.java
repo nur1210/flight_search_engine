@@ -13,6 +13,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Service
@@ -33,18 +34,17 @@ public class LoginUseCaseImpl implements LoginUseCase {
             throw new InvalidCredentialsException();
         }
 
-        String accessToken = generateAccessToken(user);
+        Map<String, String> accessTokens = generateTokens(user);
 
         return LoginResponse.builder()
-                .accessToken(accessToken)
+                .tokens(accessTokens)
                 .build();
     }
 
     private boolean matchesPassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
     }
-
-    private String generateAccessToken(UserEntity user) {
+    private Map<String, String> generateTokens(UserEntity user) {
         Long userId = user != null ? user.getId() : null;
         List<String> roles = user.getUserRoles().stream()
                 .map(userRole -> userRole.getRole().toString())

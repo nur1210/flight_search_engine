@@ -2,7 +2,9 @@ package fontys.s3.backend.business;
 
 import fontys.s3.backend.domain.AccessToken;
 
+import java.util.Map;
+
 public interface AccessTokenEncoder {
-    String encode(AccessToken accessToken);
+    Map<String, String> encode(AccessToken accessToken);
 
 }

@@ -32,7 +32,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
     }
 
     @Override
-    public String encode(AccessToken accessToken) {
+    public Map<String, String> encode(AccessToken accessToken) {
         Map<String, Object> claimsMap = new HashMap<>();
         if (!CollectionUtils.isEmpty(accessToken.getRoles())) {
             claimsMap.put("roles", accessToken.getRoles());
@@ -42,13 +42,27 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
         }
 
         Instant now = Instant.now();
-        return Jwts.builder()
+        String access_token = Jwts.builder()
                 .setSubject(accessToken.getSubject())
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(now.plus(30, ChronoUnit.MINUTES)))
                 .addClaims(claimsMap)
                 .signWith(key)
                 .compact();
+
+        String refresh_token = Jwts.builder()
+                .setSubject(accessToken.getSubject())
+                .setIssuedAt(Date.from(now))
+                .setExpiration(Date.from(now.plus(30, ChronoUnit.DAYS)))
+                .addClaims(claimsMap)
+                .signWith(key)
+                .compact();
+
+        Map<String, String> tokens = new HashMap<>();
+        tokens.put("access_token", access_token);
+        tokens.put("refresh_token", refresh_token);
+
+        return tokens;
     }
 
     @Override
