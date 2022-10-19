@@ -19,7 +19,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 @Component
-public class AuthenticationRequestFilter extends OncePerRequestFilter {
+public class AuthorizationRequestFilter extends OncePerRequestFilter {
 
     private final static String SPRING_SECURITY_ROLE_PREFIX = "ROLE_";
 
@@ -29,6 +29,7 @@ public class AuthenticationRequestFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
             throws ServletException, IOException {
+
 
         final String requestTokenHeader = request.getHeader("Authorization");
         if (requestTokenHeader == null || !requestTokenHeader.startsWith("Bearer ")) {

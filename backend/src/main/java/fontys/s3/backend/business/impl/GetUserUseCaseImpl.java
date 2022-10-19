@@ -22,7 +22,7 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
     public Optional<User> getUser(long userId) {
         if (!requestToken.hasRole(RoleEnum.ADMIN.name())) {
             if (requestToken.getUserId() != userId) {
-                throw new UnauthorizedDataAccessException("STUDENT_ID_NOT_FROM_LOGGED_IN_USER");
+                throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
             }
         }
         return userRepository.findById(userId).map(UserConverter::convert);

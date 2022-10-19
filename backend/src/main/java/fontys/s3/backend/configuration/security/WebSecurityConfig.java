@@ -1,6 +1,5 @@
 package fontys.s3.backend.configuration.security;
 
-import fontys.s3.backend.configuration.security.auth.CustomAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,7 +25,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .formLogin().disable();
         httpSecurity.sessionManagement().sessionCreationPolicy(STATELESS);
-        httpSecurity.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+        //httpSecurity.addFilter(new CustomAuthenticationFilter(authenticationManagerBean()));
+        //httpSecurity.addFilterBefore(new AuthorizationRequestFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 
      @Override

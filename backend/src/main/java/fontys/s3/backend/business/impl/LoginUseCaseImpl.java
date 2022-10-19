@@ -34,6 +34,7 @@ public class LoginUseCaseImpl implements LoginUseCase {
         }
 
         String accessToken = generateAccessToken(user);
+
         return LoginResponse.builder()
                 .accessToken(accessToken)
                 .build();

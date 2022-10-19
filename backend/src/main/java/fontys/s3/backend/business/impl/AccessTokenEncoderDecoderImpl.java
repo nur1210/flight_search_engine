@@ -28,7 +28,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
 
     public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-        this.key = Keys.hmacShaKeyFor(keyBytes);
+        key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     @Override
