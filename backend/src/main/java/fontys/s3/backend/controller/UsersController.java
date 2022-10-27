@@ -2,6 +2,7 @@ package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.CreateUserUseCase;
 import fontys.s3.backend.business.GetUserUseCase;
+import fontys.s3.backend.configuration.security.auth.AuthorizationRequestFilter;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
 import fontys.s3.backend.domain.CreateUserRequest;
 import fontys.s3.backend.domain.CreateUserResponse;
@@ -12,11 +13,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
+@CrossOrigin(origins = "http://localhost:3000")
 @RequiredArgsConstructor
 public class UsersController {
     private final GetUserUseCase getUserUseCase;
@@ -61,4 +65,10 @@ public class UsersController {
         updateUserUseCase.updateUser(request);
         return ResponseEntity.noContent().build();
     }*/
+
+    @GetMapping("/refreshToken")
+    public void refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        String requestTokenHeader = request.getHeader("Authorization");
+        AuthorizationRequestFilter authorizationRequestFilter = new AuthorizationRequestFilter();
+    }
 }

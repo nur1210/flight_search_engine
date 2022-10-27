@@ -54,7 +54,6 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                 .setSubject(accessToken.getSubject())
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(now.plus(30, ChronoUnit.DAYS)))
-                .addClaims(claimsMap)
                 .signWith(key)
                 .compact();
 
@@ -79,7 +78,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                     .userId(claims.get("userId", Long.class))
                     .build();
         } catch (JwtException e) {
-            throw new InvalidAccessTokenException(e.getMessage());
+            throw new InvalidAccessTokenException("INVALID_ACCESS_TOKEN");
         }
     }
 }

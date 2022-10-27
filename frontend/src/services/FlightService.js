@@ -1,4 +1,4 @@
-import http from "../http-common";
+import http from "../api/axios";
 
 const getAll = () => {
     return http.get("/flights");
