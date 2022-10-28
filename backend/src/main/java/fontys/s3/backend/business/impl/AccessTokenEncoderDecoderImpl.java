@@ -4,12 +4,15 @@ import fontys.s3.backend.business.AccessTokenDecoder;
 import fontys.s3.backend.business.AccessTokenEncoder;
 import fontys.s3.backend.business.exception.InvalidAccessTokenException;
 import fontys.s3.backend.domain.AccessToken;
+import fontys.s3.backend.persistence.RefreshTokenRepository;
+import fontys.s3.backend.persistence.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -26,13 +29,19 @@ import java.util.Map;
 public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, AccessTokenDecoder {
     private final Key key;
 
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private RefreshTokenRepository refreshTokenRepository;
+
+
     public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
         key = Keys.hmacShaKeyFor(keyBytes);
     }
 
     @Override
-    public Map<String, String> encode(AccessToken accessToken) {
+    public String encode(AccessToken accessToken) {
         Map<String, Object> claimsMap = new HashMap<>();
         if (!CollectionUtils.isEmpty(accessToken.getRoles())) {
             claimsMap.put("roles", accessToken.getRoles());
@@ -42,7 +51,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
         }
 
         Instant now = Instant.now();
-        String access_token = Jwts.builder()
+        return Jwts.builder()
                 .setSubject(accessToken.getSubject())
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(now.plus(30, ChronoUnit.MINUTES)))
@@ -50,18 +59,27 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                 .signWith(key)
                 .compact();
 
-        String refresh_token = Jwts.builder()
+/*        String refresh_token = Jwts.builder()
                 .setSubject(accessToken.getSubject())
                 .setIssuedAt(Date.from(now))
                 .setExpiration(Date.from(now.plus(30, ChronoUnit.DAYS)))
                 .signWith(key)
                 .compact();
 
-        Map<String, String> tokens = new HashMap<>();
-        tokens.put("access_token", access_token);
-        tokens.put("refresh_token", refresh_token);
+        //TODO not here
+        RefreshTokenEntity refreshToken = RefreshTokenEntity.builder()
+                .token(refresh_token)
+                .expiryDate(now.plus(30, ChronoUnit.DAYS))
+                .user(userRepository.findByEmail(accessToken.getSubject()).get())
+                .build();
 
-        return tokens;
+        refreshTokenRepository.save(refreshToken);*/
+
+/*        Map<String, String> tokens = new HashMap<>();
+        tokens.put("access_token", access_token);
+        tokens.put("refresh_token", refresh_token);*/
+
+        //return tokens;
     }
 
     @Override

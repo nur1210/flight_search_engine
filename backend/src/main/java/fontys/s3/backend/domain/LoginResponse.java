@@ -5,12 +5,16 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Map;
+import java.util.List;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
-    private Map<String, String> tokens;
+    //private Map<String, String> tokens;
+    private String accessToken;
+    private long userId;
+    private String email;
+    private List<String> roles;
 }
