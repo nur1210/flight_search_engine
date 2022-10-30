@@ -1,10 +1,14 @@
 package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.LoginUseCase;
+import fontys.s3.backend.configuration.security.jwt.JwtUtils;
+import fontys.s3.backend.configuration.security.services.RefreshTokenService;
 import fontys.s3.backend.domain.LoginRequest;
 import fontys.s3.backend.domain.LoginResponse;
 import fontys.s3.backend.persistence.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,12 +22,18 @@ import javax.validation.Valid;
 public class AuthController {
 
     private final LoginUseCase loginUseCase;
+    private final RefreshTokenService refreshTokenService;
+    private final JwtUtils jwtUtils;
     private final RefreshTokenRepository refreshTokenRepository;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
         LoginResponse loginResponse = loginUseCase.login(loginRequest);
-        return ResponseEntity.ok(loginResponse);
+        var refreshToken = refreshTokenService.createRefreshToken(loginRequest.getEmail());
+        ResponseCookie cookie = jwtUtils.generateRefreshTokenCookie(refreshToken.getToken());
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(loginResponse);
     }
 
     @PostMapping("/refresh")

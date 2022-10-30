@@ -1,3 +1,4 @@
+/*
 package fontys.s3.backend.configuration.security;
 
 import fontys.s3.backend.persistence.UserRepository;
@@ -29,3 +30,4 @@ public class UserDetailsServiceConfig implements UserDetailsService {
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(), authorities);
     }
 }
+*/

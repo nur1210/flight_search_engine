@@ -14,7 +14,6 @@ import org.springframework.stereotype.Service;
 
 import java.security.Key;
 import java.time.Instant;
-import java.util.Date;
 
 @Service
 public class RefreshTokenEncoderDecoderImpl implements RefreshTokenDecoder {
@@ -33,10 +32,10 @@ public class RefreshTokenEncoderDecoderImpl implements RefreshTokenDecoder {
             Claims claims = (Claims) jwt.getBody();
 
             long userId = claims.get("userId", Long.class);
-            Date expiration = claims.get("exp", Date.class);
+            Instant expiration = claims.get("exp", Instant.class);
 
             //if token is not expired create new access token
-            if(expiration.after(Date.from(Instant.now()))) {
+            if(expiration.compareTo(Instant.now()) < 0) {
                 throw new InvalidAccessTokenException("REFRESH_TOKEN_EXPIRED");
             }
 
