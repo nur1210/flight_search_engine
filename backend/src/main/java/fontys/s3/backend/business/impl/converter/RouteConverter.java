@@ -1,9 +1,9 @@
-package fontys.s3.backend.business.impl;
+package fontys.s3.backend.business.impl.converter;
 
 import fontys.s3.backend.domain.Route;
 import fontys.s3.backend.persistence.entity.RouteEntity;
 
-public class RouteConverter {
+public final class RouteConverter {
     private RouteConverter() {
     }
 

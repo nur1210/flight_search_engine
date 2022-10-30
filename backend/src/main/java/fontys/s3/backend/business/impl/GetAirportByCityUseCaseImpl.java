@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.GetAirportByCityUseCase;
+import fontys.s3.backend.business.impl.converter.AirportConverter;
 import fontys.s3.backend.domain.GetAirportByCityRequest;
 import fontys.s3.backend.domain.GetAirportResponse;
 import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;

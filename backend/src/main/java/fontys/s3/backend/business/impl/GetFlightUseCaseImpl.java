@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.GetFlightUseCase;
+import fontys.s3.backend.business.impl.converter.FlightConverter;
 import fontys.s3.backend.domain.Flight;
 import fontys.s3.backend.persistence.FlightRepository;
 import lombok.AllArgsConstructor;

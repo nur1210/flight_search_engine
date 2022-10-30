@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.GetAirportUseCase;
+import fontys.s3.backend.business.impl.converter.AirportConverter;
 import fontys.s3.backend.domain.Airport;
 import fontys.s3.backend.persistence.AirportRepository;
 import lombok.AllArgsConstructor;

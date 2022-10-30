@@ -2,6 +2,7 @@ package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.GetUserUseCase;
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
+import fontys.s3.backend.business.impl.converter.UserConverter;
 import fontys.s3.backend.domain.AccessToken;
 import fontys.s3.backend.domain.User;
 import fontys.s3.backend.persistence.UserRepository;

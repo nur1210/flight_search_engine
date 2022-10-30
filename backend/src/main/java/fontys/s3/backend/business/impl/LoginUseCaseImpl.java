@@ -58,11 +58,6 @@ public class LoginUseCaseImpl implements LoginUseCase {
                 .email(user.getEmail())
                 .roles(roles)
                 .build();
-/*        Map<String, String> accessTokens = generateTokens(user);
-
-        return LoginResponse.builder()
-                .tokens(accessTokens)
-                .build();*/
     }
 
     private boolean matchesPassword(String rawPassword, String encodedPassword) {

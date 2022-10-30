@@ -1,6 +1,7 @@
 package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.LoginUseCase;
+import fontys.s3.backend.business.LogoutUseCase;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.RefreshTokenService;
 import fontys.s3.backend.domain.LoginRequest;
@@ -22,6 +23,7 @@ import javax.validation.Valid;
 public class AuthController {
 
     private final LoginUseCase loginUseCase;
+    private final LogoutUseCase logoutUseCase;
     private final RefreshTokenService refreshTokenService;
     private final JwtUtils jwtUtils;
     private final RefreshTokenRepository refreshTokenRepository;
@@ -36,26 +38,35 @@ public class AuthController {
                 .body(loginResponse);
     }
 
-    @PostMapping("/refresh")
-    public ResponseEntity<?> refreshToken(HttpServletRequest request) {
-        String refreshToken = request.getCookies()[0].getValue();
+    @PostMapping("/logout")
+    public ResponseEntity<Void> logout(HttpServletRequest request) {
+        logoutUseCase.logout(request);
+        ResponseCookie cookie = jwtUtils.getCleanRefreshTokenCookie();
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .build();
+    }
 
-/*        if ((refreshToken != null) && (refreshToken.length() > 0)) {
-            return refreshTokenRepository.findByToken(refreshToken)
+/*    @PostMapping("/refresh")
+    public ResponseEntity<?> refreshToken(HttpServletRequest request) {
+        String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
+
+        if ((refreshToken != null) && (refreshToken.length() > 0)) {
+            return refreshTokenService.findByToken(refreshToken)
                     .map(refreshTokenService::verifyExpiration)
                     .map(RefreshToken::getUser)
                     .map(user -> {
                         ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user);
 
                         return ResponseEntity.ok()
+                                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
                                 .header(HttpHeaders.SET_COOKIE, refreshToken)
                                 .body(new MessageResponse("Token is refreshed successfully!"));
                     })
                     .orElseThrow(() -> new TokenRefreshException(refreshToken,
                             "Refresh token is not in database!"));
-        }*/
+        }
 
-        return ResponseEntity.ok()
-                .body(refreshToken);
-    }
+        return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
+    }*/
 }

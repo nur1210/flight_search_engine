@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.GetAllFlightsFromOriginToDestinationUseCase;
+import fontys.s3.backend.business.impl.converter.FlightConverter;
 import fontys.s3.backend.domain.Flight;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationResponse;
