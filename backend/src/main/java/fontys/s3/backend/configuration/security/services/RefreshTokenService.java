@@ -1,6 +1,7 @@
 package fontys.s3.backend.configuration.security.services;
 
 import fontys.s3.backend.business.exception.RefreshTokenException;
+import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.persistence.RefreshTokenRepository;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.RefreshTokenEntity;
@@ -25,6 +26,8 @@ public class RefreshTokenService {
     @Autowired
     private UserRepository userRepository;
     private final Key key;
+    @Autowired
+    private JwtUtils jwtUtils;
 
     public RefreshTokenService(@Value("${jwt.secret}") String jwtSecret) {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSecret);

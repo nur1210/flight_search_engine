@@ -2,11 +2,11 @@ package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.LoginUseCase;
 import fontys.s3.backend.business.LogoutUseCase;
+import fontys.s3.backend.business.RefreshTokenUseCase;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.RefreshTokenService;
 import fontys.s3.backend.domain.LoginRequest;
 import fontys.s3.backend.domain.LoginResponse;
-import fontys.s3.backend.persistence.RefreshTokenRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -24,9 +24,9 @@ public class AuthController {
 
     private final LoginUseCase loginUseCase;
     private final LogoutUseCase logoutUseCase;
+    private final RefreshTokenUseCase refreshTokenUseCase;
     private final RefreshTokenService refreshTokenService;
     private final JwtUtils jwtUtils;
-    private final RefreshTokenRepository refreshTokenRepository;
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
@@ -47,26 +47,14 @@ public class AuthController {
                 .build();
     }
 
-/*    @PostMapping("/refresh")
+    @PostMapping("/refresh")
     public ResponseEntity<?> refreshToken(HttpServletRequest request) {
-        String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
+        String refreshToken = jwtUtils.getRefreshTokenFromCookie(request);
+        String newAccessToken = refreshTokenUseCase.refreshAccessToken(refreshToken);
+        ResponseCookie cookie = jwtUtils.generateRefreshTokenCookie(refreshToken);
 
-        if ((refreshToken != null) && (refreshToken.length() > 0)) {
-            return refreshTokenService.findByToken(refreshToken)
-                    .map(refreshTokenService::verifyExpiration)
-                    .map(RefreshToken::getUser)
-                    .map(user -> {
-                        ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user);
-
-                        return ResponseEntity.ok()
-                                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                                .header(HttpHeaders.SET_COOKIE, refreshToken)
-                                .body(new MessageResponse("Token is refreshed successfully!"));
-                    })
-                    .orElseThrow(() -> new TokenRefreshException(refreshToken,
-                            "Refresh token is not in database!"));
-        }
-
-        return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
-    }*/
+        return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                .body(newAccessToken);
+    }
 }

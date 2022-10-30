@@ -1,6 +1,6 @@
 package fontys.s3.backend.configuration.security.jwt;
 
-import fontys.s3.backend.configuration.security.services.UserDetailsImpl;
+import fontys.s3.backend.persistence.entity.UserEntity;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -8,8 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
@@ -18,10 +17,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Component
 public class JwtUtils {
@@ -36,26 +32,26 @@ public class JwtUtils {
         key = Keys.hmacShaKeyFor(keyBytes);
     }
 
-    public String generateAccessToken(Authentication authentication) {
+    public String generateAccessToken(UserEntity user) {
 
-        UserDetailsImpl userPrincipal = (UserDetailsImpl) authentication.getPrincipal();
-        List<String> roles = userPrincipal.getAuthorities().stream()
-                .map(GrantedAuthority::getAuthority).toList();
+        Collection<String> roles = new ArrayList<>();
+        user.getUserRoles().forEach(role -> {
+            roles.add(new SimpleGrantedAuthority(role.getRole().name()).getAuthority());
+        });
+
 
         Map<String, Object> claimsMap = new HashMap<>();
         if (!roles.isEmpty()) {
             claimsMap.put("roles", roles);
+            claimsMap.put("userId", user.getId());
         }
 
-        if (userPrincipal.getId() != null) {
-            claimsMap.put("userId", userPrincipal.getId());
-        }
 
         Instant now = Instant.now();
         return Jwts.builder()
-                .setSubject((userPrincipal.getUsername()))
+                .setSubject((user.getEmail()))
                 .setIssuedAt(Date.from(now))
-                .setExpiration(Date.from(now.plus(+30, ChronoUnit.MINUTES)))
+                .setExpiration(Date.from(now.plus(+ 30, ChronoUnit.SECONDS)))
                 .addClaims(claimsMap)
                 .signWith(key)
                 .compact();

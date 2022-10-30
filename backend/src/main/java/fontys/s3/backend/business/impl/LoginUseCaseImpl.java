@@ -46,14 +46,14 @@ public class LoginUseCaseImpl implements LoginUseCase {
                 new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
 
         SecurityContextHolder.getContext().setAuthentication(authentication);
-        String jwt = jwtUtils.generateAccessToken(authentication);
+        String accessToken = jwtUtils.generateAccessToken(user);
 
         UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority).toList();
 
         return LoginResponse.builder()
-                .accessToken(jwt)
+                .accessToken(accessToken)
                 .userId(user.getId())
                 .email(user.getEmail())
                 .roles(roles)
