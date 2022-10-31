@@ -1,5 +1,6 @@
 stages:
   - build
+  - sonarqube_stage
   - test
 build:
   stage: build
@@ -10,4 +11,9 @@ test:
   stage: test
   script:
     - ./gradlew test
+    - ./gradlew.bat --stop
+sonarqube_ci_stanza:
+  stage: sonarqube_stage
+  script:
+    - ./gradlew sonarqube
     - ./gradlew.bat --stop

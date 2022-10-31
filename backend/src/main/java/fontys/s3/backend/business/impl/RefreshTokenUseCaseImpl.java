@@ -24,6 +24,6 @@ public class RefreshTokenUseCaseImpl implements RefreshTokenUseCase {
                     .map(RefreshTokenEntity::getUser)
                     .map(jwtUtils::generateAccessToken).get();
         }
-        throw new RefreshTokenException("Refresh token is not in database");
+        throw new RefreshTokenException(refreshToken, "Refresh token is not in database");
     }
 }
