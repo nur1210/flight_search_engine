@@ -5,6 +5,7 @@ import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.persistence.RefreshTokenRepository;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.RefreshTokenEntity;
+import fontys.s3.backend.persistence.entity.UserEntity;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -48,13 +49,17 @@ public class RefreshTokenService {
                 .compact();
 
         RefreshTokenEntity refreshToken = new RefreshTokenEntity();
+        Optional<UserEntity> user = userRepository.findByEmail(email);
+        if (user.isPresent()) {
+            refreshToken.setUser(user.get());
+            refreshToken.setExpiryDate(Instant.from(now.plus(+30, ChronoUnit.DAYS)));
+            refreshToken.setToken(token);
 
-        refreshToken.setUser(userRepository.findByEmail(email).get());
-        refreshToken.setExpiryDate(Instant.from(now.plus(+30, ChronoUnit.DAYS)));
-        refreshToken.setToken(token);
-
-        refreshToken = refreshTokenRepository.save(refreshToken);
-        return refreshToken;
+            refreshToken = refreshTokenRepository.save(refreshToken);
+            return refreshToken;
+        } else {
+            return null;
+        }
     }
 
     public RefreshTokenEntity verifyExpiration(RefreshTokenEntity token) {
@@ -67,6 +72,7 @@ public class RefreshTokenService {
 
     @Transactional
     public void deleteByUserId(Long userId) {
-        refreshTokenRepository.deleteByUser(userRepository.findById(userId).get());
+        Optional<UserEntity> user = userRepository.findById(userId);
+        user.ifPresent(userEntity -> refreshTokenRepository.deleteByUser(userEntity));
     }
 }

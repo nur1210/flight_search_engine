@@ -18,7 +18,7 @@ public class LogoutUseCaseImpl implements LogoutUseCase {
     @Override
     public void logout(HttpServletRequest request) {
         String refreshToken = jwtUtils.getRefreshTokenFromCookie(request);
-        var token = refreshTokenService.findByToken(refreshToken).get();
-            refreshTokenService.deleteByUserId(token.getUser().getId());
+        var token = refreshTokenService.findByToken(refreshToken);
+        token.ifPresent(refreshTokenEntity -> refreshTokenService.deleteByUserId(refreshTokenEntity.getUser().getId()));
     }
 }

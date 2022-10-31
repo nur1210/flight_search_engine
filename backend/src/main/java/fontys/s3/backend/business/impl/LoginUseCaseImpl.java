@@ -5,7 +5,6 @@ import fontys.s3.backend.business.LoginUseCase;
 import fontys.s3.backend.business.exception.InvalidCredentialsException;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.UserDetailsImpl;
-import fontys.s3.backend.domain.AccessToken;
 import fontys.s3.backend.domain.LoginRequest;
 import fontys.s3.backend.domain.LoginResponse;
 import fontys.s3.backend.persistence.UserRepository;
@@ -20,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +32,8 @@ public class LoginUseCaseImpl implements LoginUseCase {
 
     @Override
     public LoginResponse login(LoginRequest loginRequest) {
-        UserEntity user = userRepository.findByEmail(loginRequest.getEmail()).isPresent() ? userRepository.findByEmail(loginRequest.getEmail()).get() : null;
+        Optional<UserEntity> optional = userRepository.findByEmail(loginRequest.getEmail());
+        UserEntity user = optional.orElse(null);
         if (user == null) {
             throw new InvalidCredentialsException();
         }
@@ -62,18 +62,5 @@ public class LoginUseCaseImpl implements LoginUseCase {
 
     private boolean matchesPassword(String rawPassword, String encodedPassword) {
         return passwordEncoder.matches(rawPassword, encodedPassword);
-    }
-    private String generateAccessToken(UserEntity user) {
-        Long userId = user != null ? user.getId() : null;
-        List<String> roles = user.getUserRoles().stream()
-                .map(userRole -> userRole.getRole().toString())
-                .toList();
-
-        return accessTokenEncoder.encode(
-                AccessToken.builder()
-                        .subject(Objects.requireNonNull(user).getEmail())
-                        .roles(roles)
-                        .userId(userId)
-                        .build());
     }
 }
