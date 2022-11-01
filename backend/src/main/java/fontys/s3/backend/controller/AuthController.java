@@ -7,6 +7,7 @@ import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.RefreshTokenService;
 import fontys.s3.backend.domain.LoginRequest;
 import fontys.s3.backend.domain.LoginResponse;
+import fontys.s3.backend.domain.RefreshResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseCookie;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequiredArgsConstructor
 public class AuthController {
 
@@ -47,14 +48,16 @@ public class AuthController {
                 .build();
     }
 
-    @PostMapping("/refresh")
-    public ResponseEntity<?> refreshToken(HttpServletRequest request) {
+    @GetMapping("/refresh")
+    public ResponseEntity<RefreshResponse> refreshToken(HttpServletRequest request) {
         String refreshToken = jwtUtils.getRefreshTokenFromCookie(request);
-        String newAccessToken = refreshTokenUseCase.refreshAccessToken(refreshToken);
+        RefreshResponse response = RefreshResponse.builder()
+                .accessToken(refreshTokenUseCase.refreshAccessToken(refreshToken))
+                .build();
         ResponseCookie cookie = jwtUtils.generateRefreshTokenCookie(refreshToken);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.SET_COOKIE, cookie.toString())
-                .body(newAccessToken);
+                .body(response);
     }
 }

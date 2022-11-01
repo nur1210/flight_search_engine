@@ -1,22 +1,20 @@
-import React from 'react';
 import useAuth from "./useAuth";
+import AuthService from "../services/AuthService";
 
 const UseRefreshToken = () => {
     const { setAuth } = useAuth();
 
     const refresh = async () => {
-        const response = await fetch('http://localhost:3001/refresh', {
-            withCredentials: true
-        });
+        const response = await AuthService.refresh();
         setAuth(prev => {
             console.log(JSON.stringify(prev));
-            console.log(JSON.stringify(response.data.access_token));
+            console.log(JSON.stringify(response.data.accessToken));
             return {
                 ...prev,
-                access_token: response.data.access_token
+                accessToken: response.data.accessToken
             }
             });
-        return response.data.access_token;
+        return response.data.accessToken;
     };
     return refresh;
 };

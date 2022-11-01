@@ -32,9 +32,10 @@ const Login = () => {
         try {
             const response = await AuthService.login(email, pwd);
             console.log(response);
-            const accessToken = response.data.access_token;
+            const accessToken = response.data.accessToken;
+            const roles = response.data.roles;
             console.log(accessToken);
-            setAuth({ email, pwd, accessToken });
+            setAuth({ email, roles, accessToken });
             setEmail('');
             setPwd('');
             navigate(from, { replace: true });

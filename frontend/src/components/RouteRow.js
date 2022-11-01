@@ -1,11 +1,10 @@
 import FlightDurationLabel from "./FlightDurationLabel";
 import { TableCell, TableRow } from "@mui/material";
-import button from "bootstrap/js/src/button";
 
 export default function BasicTable(props) {
     return (
             <TableRow
-                type={button}
+                type={"button"}
                 onClick={() => redirectToBooking(props.link)}
                 key={props.id}
                 sx={{'&:last-child td, &:last-child th': {border: 0}}}

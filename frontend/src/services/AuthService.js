@@ -1,7 +1,7 @@
-import http from "../api/axios";
+import axios from "../api/axios";
 
 const login = async (email, password) => {
-    const response = await http.post("/auth/login",
+    return await axios.post("/auth/login",
         JSON.stringify({email, password}),
         {
             headers: {
@@ -9,11 +9,18 @@ const login = async (email, password) => {
                 "withCredentials": true
             },
         });
-    return response.data;
+}
+
+const refresh = async () => {
+    return await axios.get("/auth/refresh",
+        {
+            withCredentials: true
+        });
 }
 
 const AuthService = {
     login,
+    refresh
 };
 
 export default AuthService;
