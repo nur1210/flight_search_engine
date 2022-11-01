@@ -58,28 +58,6 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
                 .addClaims(claimsMap)
                 .signWith(key)
                 .compact();
-
-/*        String refresh_token = Jwts.builder()
-                .setSubject(accessToken.getSubject())
-                .setIssuedAt(Date.from(now))
-                .setExpiration(Date.from(now.plus(30, ChronoUnit.DAYS)))
-                .signWith(key)
-                .compact();
-
-        //TODO not here
-        RefreshTokenEntity refreshToken = RefreshTokenEntity.builder()
-                .token(refresh_token)
-                .expiryDate(now.plus(30, ChronoUnit.DAYS))
-                .user(userRepository.findByEmail(accessToken.getSubject()).get())
-                .build();
-
-        refreshTokenRepository.save(refreshToken);*/
-
-/*        Map<String, String> tokens = new HashMap<>();
-        tokens.put("access_token", access_token);
-        tokens.put("refresh_token", refresh_token);*/
-
-        //return tokens;
     }
 
     @Override

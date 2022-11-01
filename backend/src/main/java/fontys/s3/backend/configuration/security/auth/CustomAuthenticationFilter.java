@@ -28,7 +28,6 @@ import java.util.stream.Collectors;
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
     private final AuthenticationManager authenticationManager;
-    //private final AccessTokenEncoder accessTokenEncoder;
 
     @Override
     public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response) throws AuthenticationException {
@@ -61,8 +60,7 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
                         .map(GrantedAuthority::getAuthority)
                         .collect(Collectors.toList()))
                 .sign(algorithm);
-/*        response.setHeader("access_token", access_token);
-        response.setHeader("refresh_token", refresh_token);*/
+
 
         Map<String, String> tokens = new HashMap<>();
         tokens.put("access_token", access_token);

@@ -1,7 +1,5 @@
 package fontys.s3.backend.persistence.impl;
 
-import fontys.s3.backend.persistence.FlightRepositoryBasic;
-import fontys.s3.backend.persistence.FlightRepositoryCustom;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import org.springframework.stereotype.Component;
 
