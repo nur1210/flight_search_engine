@@ -1,11 +1,12 @@
 package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.CreateUserUseCase;
+import fontys.s3.backend.business.GetAllUsersUseCase;
 import fontys.s3.backend.business.GetUserUseCase;
-import fontys.s3.backend.configuration.security.auth.AuthorizationRequestFilter;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
 import fontys.s3.backend.domain.CreateUserRequest;
 import fontys.s3.backend.domain.CreateUserResponse;
+import fontys.s3.backend.domain.GetAllUsersResponse;
 import fontys.s3.backend.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,18 +14,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
-@CrossOrigin(origins = "http://localhost:3000")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 @RequiredArgsConstructor
 public class UsersController {
     private final GetUserUseCase getUserUseCase;
-    //private final GetUsersUseCase getUsersUseCase;
+    private final GetAllUsersUseCase getAllUsersUseCase;
     //private final DeleteUserUseCase deleteUserUseCase;
     private final CreateUserUseCase createUserUseCase;
     //private final UpdateUserUseCase updateUserUseCase;
@@ -39,13 +38,15 @@ public class UsersController {
         }
         return ResponseEntity.ok().body(userOptional.get());
     }
-
-/*    @GetMapping
-    public ResponseEntity<GetAllUsersResponse> getAllUsers(@RequestParam(value = "country", required = false) String countryCode) {
-        GetAllUsersRequest request = new GetAllUsersRequest();
-        request.setCountryCode(countryCode);
-        return ResponseEntity.ok(getUsersUseCase.getUsers(request));
-    }*/
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_ADMIN"})
+    @GetMapping
+    public ResponseEntity<GetAllUsersResponse> getAllUsers() {
+        GetAllUsersResponse response = GetAllUsersResponse.builder()
+                .users(getAllUsersUseCase.getAllUsers())
+                .build();
+        return ResponseEntity.ok(response);
+    }
 
 /*    @DeleteMapping("{userId}")
     public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
@@ -65,10 +66,4 @@ public class UsersController {
         updateUserUseCase.updateUser(request);
         return ResponseEntity.noContent().build();
     }*/
-
-    @GetMapping("/refreshToken")
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) {
-        String requestTokenHeader = request.getHeader("Authorization");
-        AuthorizationRequestFilter authorizationRequestFilter = new AuthorizationRequestFilter();
-    }
 }

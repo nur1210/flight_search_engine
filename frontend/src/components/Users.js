@@ -11,13 +11,13 @@ const Users = () => {
         const getUsers = async () => {
             try {
                 const response = await UserService.getAll({signal: controller.signal});
-                console.log(response.data);
-                isMounted && setUsers(response.data);
+                console.log(response.data.users);
+                isMounted && setUsers(response.data.users);
             } catch (error) {
                 console.log(error);
             }
         };
-        getUsers();
+        getUsers().then(r => console.log(r));
 
         return () => {
             isMounted = false;
@@ -32,12 +32,12 @@ const Users = () => {
                 ? (
                     <ul>
                         {users.map((user, i) => (
-                            <li key={i}>{user?.name}
+                            <li key={i}>{user?.firstName}
                             </li>))}
                     </ul>
                 ) : (
                     <p>No users found</p>
-                )}
+                )
             }
         </article>
     );

@@ -1,8 +1,7 @@
 import axios from "../api/axios";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 const getAll = () => {
-    return useAxiosPrivate.get("/users");
+    return axios.get("/users");
 }
 
 const get = id => {

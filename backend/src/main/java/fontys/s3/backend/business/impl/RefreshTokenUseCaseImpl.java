@@ -19,10 +19,11 @@ public class RefreshTokenUseCaseImpl implements RefreshTokenUseCase {
     @Override
     public String refreshAccessToken(String refreshToken) {
         if ((refreshToken != null) && (refreshToken.length() > 0)) {
-            return refreshTokenService.findByToken(refreshToken)
+            String newAccessToken = refreshTokenService.findByToken(refreshToken)
                     .map(refreshTokenService::verifyExpiration)
                     .map(RefreshTokenEntity::getUser)
                     .map(jwtUtils::generateAccessToken).get();
+            return newAccessToken;
         }
         throw new RefreshTokenException(refreshToken, "Refresh token is not in database");
     }

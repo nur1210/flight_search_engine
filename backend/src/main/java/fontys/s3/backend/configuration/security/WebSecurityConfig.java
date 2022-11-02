@@ -34,6 +34,11 @@ public class WebSecurityConfig {
         return new AuthTokenFilter();
     }
 
+
+/*    @Bean
+    public AuthorizationRequestFilter authorizationRequestFilter() {
+        return new AuthorizationRequestFilter();
+    }*/
 /*    @Bean
     public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
         authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
@@ -65,10 +70,11 @@ public class WebSecurityConfig {
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 /*                .authorizeRequests(auth -> {
-                    auth.antMatchers("/users").permitAll();
+                    auth.antMatchers("/").permitAll();
                     auth.antMatchers("/login").permitAll();
+                    auth.antMatchers("/users").hasRole("ADMIN");
                     auth.anyRequest().authenticated();
-                })*/
+                });*/
 
         httpSecurity.authenticationProvider(authenticationProvider());
 
