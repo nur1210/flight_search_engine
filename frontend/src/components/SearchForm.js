@@ -5,7 +5,6 @@ import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {z} from 'zod';
-import useRefreshToken from "../hooks/useRefreshToken";
 
 
 const SearchForm = () => {
@@ -19,7 +18,6 @@ const SearchForm = () => {
         const [children, setChildren] = useState(0);
         const [infants, setInfants] = useState(0);
         const [flights, setFlights] = useState([]);
-        const refresh = useRefreshToken();
 
 
     const handleSubmit = (e) => {
@@ -49,7 +47,6 @@ const SearchForm = () => {
                     <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate}/>
                     <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults} setChildren={setChildren} children={children} setInfants={setInfants} indants={infants}/>
                 </div>
-                <button onClick={() => refresh()}>refresh</button>
                 <button id="search-button" className="w-100 btn btn-dark" type="submit">Search</button>
             </div>
         </form>

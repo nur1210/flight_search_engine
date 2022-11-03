@@ -1,8 +1,12 @@
 import {useEffect, useState} from "react";
 import UserService from "../services/UserService";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import userService from "../services/UserService";
 
 const Users = () => {
     const [users, setUsers] = useState();
+    const axiosPrivate = useAxiosPrivate();
+
 
     useEffect(() => {
         let isMounted = true;
@@ -10,7 +14,7 @@ const Users = () => {
 
         const getUsers = async () => {
             try {
-                const response = await UserService.getAll({signal: controller.signal});
+                const response = await userService.getAll({signal: controller.signal});
                 console.log(response.data.users);
                 isMounted && setUsers(response.data.users);
             } catch (error) {

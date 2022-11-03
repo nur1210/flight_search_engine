@@ -8,7 +8,7 @@ const UseRefreshToken = () => {
         const response = await AuthService.refresh();
         setAuth(prev => {
             console.log(JSON.stringify(prev));
-            console.log(JSON.stringify(response.data.accessToken));
+            console.log(response.data.accessToken);
             return {
                 ...prev,
                 accessToken: response.data.accessToken

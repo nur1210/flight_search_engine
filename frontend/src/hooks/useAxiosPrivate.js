@@ -1,7 +1,7 @@
 import useRefreshToken from "./useRefreshToken";
 import useAuth from "./useAuth";
-import {axiosPrivate} from "../api/axios";
 import {useEffect} from "react";
+import {axiosPrivate} from "../api/axios";
 
 const useAxiosPrivate = () => {
     const refresh = useRefreshToken();
@@ -26,6 +26,7 @@ const useAxiosPrivate = () => {
                     prevRequest.retry = true;
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                    console.log('newAccessToken', newAccessToken);
                     return axiosPrivate(prevRequest);
                 }
                 return Promise.reject(error);

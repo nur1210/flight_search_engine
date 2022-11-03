@@ -40,7 +40,7 @@ public class UsersController {
     }
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<GetAllUsersResponse> getAllUsers() {
         GetAllUsersResponse response = GetAllUsersResponse.builder()
                 .users(getAllUsersUseCase.getAllUsers())

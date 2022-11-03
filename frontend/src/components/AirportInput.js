@@ -54,13 +54,12 @@ const extractAirport = (place) => {
 
     });
 
-    if (Object.prototype.hasOwnProperty.call(place.geometry.viewport, "Fa")) {
-        airport.lng = place.geometry.viewport.Fa.hi
+        const cords = place.geometry.viewport;
+        airport.lng = Object.values(cords)[1].hi
         console.log(airport.lng);
 
-        airport.lat = place.geometry.viewport.ab.hi
+        airport.lat = Object.values(cords)[0].hi
         console.log(airport.lat);
-    }
 
     return airport;
 }

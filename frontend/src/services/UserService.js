@@ -1,23 +1,23 @@
-import axios from "../api/axios";
+import axios, {axiosPrivate} from "../api/axios";
 
-const getAll = () => {
-    return axios.get("/users");
+const getAll = async () => {
+    return await axiosPrivate.get("/users");
 }
 
-const get = id => {
-    return axios.get(`/users/${id}`);
+const get = async id => {
+    return await axios.get(`/users/${id}`);
 }
 
-const create = data => {
-    return axios.post('/users', data);
+const create = async data => {
+    return await axios.post('/users', data);
 }
 
-const update = (id, data) => {
-    return axios.put(`/users/${id}`, data);
+const update = async (id, data) => {
+    return await axios.put(`/users/${id}`, data);
 }
 
-const remove = id => {
-    return axios.delete(`/users/${id}`);
+const remove = async id => {
+    return await axios.delete(`/users/${id}`);
 }
 
 const UserService = {

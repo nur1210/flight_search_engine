@@ -11,6 +11,13 @@ const login = async (email, password) => {
         });
 }
 
+const logout = async () => {
+    return await axios.post("/auth/logout",
+        {
+            withCredentials: true
+        });
+}
+
 const refresh = async () => {
     return await axios.get("/auth/refresh",
         {
@@ -20,6 +27,7 @@ const refresh = async () => {
 
 const AuthService = {
     login,
+    logout,
     refresh
 };
 
