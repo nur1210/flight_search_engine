@@ -15,9 +15,9 @@ function App() {
                 <Route element={<PersistLogin/>}>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/users" element={<Users/>}/>
-                </Route>
                     <Route path="/" element={<SearchForm/>}/>
                     <Route path="/search-results" element={<SearchResults/>}/>
+                </Route>
             </Routes>
         </div>
     );
