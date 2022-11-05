@@ -13,11 +13,11 @@ function App() {
             <Navbar/>
             <Routes>
                 <Route element={<PersistLogin/>}>
-                    <Route path="/login" element={<Login/>}/>
                     <Route path="/users" element={<Users/>}/>
-                    <Route path="/" element={<SearchForm/>}/>
-                    <Route path="/search-results" element={<SearchResults/>}/>
                 </Route>
+                    <Route path="/" element={<SearchForm/>}/>
+                    <Route path="/login" element={<Login/>}/>
+                    <Route path="/search-results" element={<SearchResults/>}/>
             </Routes>
         </div>
     );
