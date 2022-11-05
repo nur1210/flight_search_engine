@@ -1,11 +1,8 @@
 import {useEffect, useState} from "react";
-import UserService from "../services/UserService";
-import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import userService from "../services/UserService";
 
 const Users = () => {
     const [users, setUsers] = useState();
-    const axiosPrivate = useAxiosPrivate();
 
 
     useEffect(() => {

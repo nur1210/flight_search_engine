@@ -5,6 +5,8 @@ import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {z} from 'zod';
+import {createSearchParams, Link, useNavigate} from "react-router-dom";
+
 
 
 const SearchForm = () => {
@@ -18,6 +20,24 @@ const SearchForm = () => {
         const [children, setChildren] = useState(0);
         const [infants, setInfants] = useState(0);
         const [flights, setFlights] = useState([]);
+
+
+    const navigate = useNavigate();
+    const params = {
+        origin: origin,
+        destination: destination,
+        flightType: flightType,
+        departureDate: departureDate,
+        returnDate: returnDate,
+        travelClass: travelClass,
+        adults: adults,
+        children: children,
+        infants: infants
+    }
+    const post = () => navigate({
+        pathname: '/search-results',
+        search: `?${createSearchParams(params)}`
+    });
 
 
     const handleSubmit = (e) => {
@@ -47,13 +67,13 @@ const SearchForm = () => {
                     <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate}/>
                     <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults} setChildren={setChildren} children={children} setInfants={setInfants} indants={infants}/>
                 </div>
-                <button id="search-button" className="w-100 btn btn-dark" type="submit">Search</button>
+                <button id="search-button" onClick={post} className="w-100 btn btn-dark" type="submit">Search</button>
             </div>
         </form>
-    <div>
+{/*    <div>
         <FlightsList flights={flights}/>
+    </div>*/}
     </div>
-    </div>
-    )};
+    )   };
 
 export default SearchForm;

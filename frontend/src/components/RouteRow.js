@@ -3,11 +3,9 @@ import { TableCell, TableRow } from "@mui/material";
 
 export default function BasicTable(props) {
     return (
-            <TableRow
-                type={"button"}
+            <tr
                 onClick={() => redirectToBooking(props.link)}
                 key={props.id}
-                sx={{'&:last-child td, &:last-child th': {border: 0}}}
             >
                 {props.route.map((route) => (
                     <TableCell align={"center"}>
@@ -21,7 +19,7 @@ export default function BasicTable(props) {
                     </TableCell>
                 ))}
                 <TableCell align={"center"}>{props.price}</TableCell>
-            </TableRow>
+            </tr>
     );
 }
 

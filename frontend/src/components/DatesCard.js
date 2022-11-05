@@ -11,7 +11,11 @@ const DatesCard = ({ setFlightType, setDepartureDate, setReturnDate }) => {
             <div className="h-100 card">
                 <div className="card-body">
                     <h5 className="card-title">Dates</h5>
-                    <FlightTypeInput setFlightType={setFlightType} setHasDepartureDate={setHasDepartureDate} setHasReturnDate={setHasReturnDate}/>
+                    {
+                        setFlightType
+                            ? <FlightTypeInput setFlightType={setFlightType} setHasDepartureDate={setHasDepartureDate} setHasReturnDate={setHasReturnDate} />
+                            : null
+                    }
                     <DepartureDateInput onChange={setDepartureDate} title={"Departure date"} disabled={hasDepartureDate}/>
                     <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={hasReturnDate}/>
                 </div>

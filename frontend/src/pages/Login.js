@@ -34,8 +34,9 @@ const Login = () => {
             console.log(response);
             const accessToken = response.data.accessToken;
             const roles = response.data.roles;
+            const loggedIn = true;
             console.log(accessToken);
-            setAuth({ email, roles, accessToken });
+            setAuth({ email, roles, accessToken, loggedIn });
             setEmail('');
             setPwd('');
             navigate(from, { replace: true });

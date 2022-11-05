@@ -4,22 +4,20 @@ import SearchForm from "./components/SearchForm";
 import Login from "./pages/Login";
 import Users from "./components/Users";
 import PersistLogin from "./components/PersistLogin";
+import Navbar from "./components/Navbar";
+import SearchResults from "./components/SearchResults";
 
 function App() {
     return (
         <div className="App">
-            <nav className="navbar navbar-expand navbar-dark bg-dark">
-                <a href="/" className="navbar-brand">
-                    FlyAway
-                </a>
-                <div className="navbar-nav mr-auto"></div>
-            </nav>
+            <Navbar/>
             <Routes>
                 <Route element={<PersistLogin/>}>
-                    <Route path="/" element={<SearchForm/>}/>
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/users" element={<Users/>}/>
                 </Route>
+                    <Route path="/" element={<SearchForm/>}/>
+                    <Route path="/search-results" element={<SearchResults/>}/>
             </Routes>
         </div>
     );
