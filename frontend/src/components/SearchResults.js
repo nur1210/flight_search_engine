@@ -7,10 +7,10 @@ import {Col, Row} from "react-bootstrap";
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
-    const [departureDate, setDepartureDate] = useState();
-    const [returnDate, setReturnDate] = useState();
-    const [flights, setFlights] = useState();
     const params = Object.fromEntries(searchParams.entries());
+    const [departureDate, setDepartureDate] = useState(params.departureDate);
+    const [returnDate, setReturnDate] = useState(params.returnDate);
+    const [flights, setFlights] = useState();
 
 
     useEffect(() => {
@@ -31,22 +31,31 @@ function SearchResults() {
 
 
     useEffect(() => {
+        console.log(params);
         params.departureDate = departureDate;
         setSearchParams(params);
-        getFlights().then(r => {
+/*        getFlights().then(r => {
             setFlights(r);
-        });
-    }, [setDepartureDate]);
+        });*/
+    }, [departureDate]);
 
 
     useEffect(() => {
-        console.log(searchParams)
+        console.log(params);
         params.returnDate = returnDate;
         setSearchParams(params);
+/*        getFlights().then(r => {
+            setFlights(r);
+        });*/
+    }, [returnDate]);
+
+
+    useEffect(() => {
+        console.log(params)
         getFlights().then(r => {
             setFlights(r);
         });
-    }, [setReturnDate]);
+    }, [searchParams]);
 
 
     const getFlights = async () => {

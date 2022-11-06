@@ -4,18 +4,22 @@ import Navbar from 'react-bootstrap/Navbar';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import useLogout from "../hooks/useLogout";
 import useAuth from "../hooks/useAuth";
+import {Link, useLocation, useNavigate} from "react-router-dom";
 
 function DarkNavbar() {
     const signOut = useLogout();
-    const { auth } = useAuth();
+    const {auth} = useAuth();
 
     return (
         <>
             {[false].map((expand) => (
                 <Navbar key={expand} bg="light" expand={expand} className="mb-3">
                     <Container fluid>
-                        <Navbar.Brand href="/">FlyAway</Navbar.Brand>
-                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />
+                        <Navbar.Brand>
+                            <Link to="/" className="text-decoration-none text-dark">
+                                <h3 className="display-12">FlyAway</h3></Link>
+                        </Navbar.Brand>
+                        <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`}/>
                         <Navbar.Offcanvas
                             id={`offcanvasNavbar-expand-${expand}`}
                             aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
@@ -33,11 +37,26 @@ function DarkNavbar() {
                                             <Nav.Link onClick={signOut}>Logout</Nav.Link>
                                             :
                                             <>
-                                                <Nav.Link href="/login">Login</Nav.Link>
-                                                <Nav.Link href="/register">Register</Nav.Link>
+                                                <Link
+                                                    to="/login"
+                                                    className="text-decoration-none text-dark"
+                                                    style={{paddingTop: "10px"}}>
+                                                    Login
+                                                </Link>
+                                                <Link
+                                                    to="/register"
+                                                    className="text-decoration-none text-dark"
+                                                    style={{paddingTop: "10px"}}>
+                                                    Register
+                                                </Link>
                                             </>
                                     }
-                                    <Nav.Link href="#action2">Link</Nav.Link>
+                                    <Link
+                                        to="/users"
+                                        className="text-decoration-none text-dark"
+                                        style={{paddingTop: "10px"}}>
+                                        Users
+                                    </Link>
                                 </Nav>
                             </Offcanvas.Body>
                         </Navbar.Offcanvas>
