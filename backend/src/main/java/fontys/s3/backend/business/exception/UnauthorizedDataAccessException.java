@@ -5,6 +5,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class UnauthorizedDataAccessException extends ResponseStatusException {
     public UnauthorizedDataAccessException(String errorCause) {
-        super(HttpStatus.UNAUTHORIZED, errorCause);
+        super(HttpStatus.FORBIDDEN, errorCause);
     }
 }

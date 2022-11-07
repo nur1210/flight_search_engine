@@ -21,8 +21,16 @@ const useAxiosPrivate = () => {
         const responseInterceptor = axiosPrivate.interceptors.response.use(
             response => response,
             async (error) => {
+                console.log('error status', error.response.status)
                 const prevRequest = error?.config;
                 if (error?.response.status === 403 && !prevRequest.retry) {
+                    prevRequest.retry = true;
+                    const newAccessToken = await refresh();
+                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
+                    console.log('newAccessToken', newAccessToken);
+                    return axiosPrivate(prevRequest);
+                }
+                else if (error?.response.status === 0 && !prevRequest.retry) {
                     prevRequest.retry = true;
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
