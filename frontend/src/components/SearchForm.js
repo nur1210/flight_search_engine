@@ -6,6 +6,7 @@ import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {z} from 'zod';
 import {createSearchParams, Link, useNavigate} from "react-router-dom";
+import Container from "react-bootstrap/Container";
 
 
 
@@ -59,21 +60,19 @@ const SearchForm = () => {
     }
 
     return (
-        <div>
+        <Container>
         <form onSubmit={handleSubmit}>
             <div className="container-sm">
                 <LocationsCard setOrigin={setOrigin} setDestination={setDestination}/>
                 <div className="row">
                     <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate}/>
-                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults} setChildren={setChildren} children={children} setInfants={setInfants} indants={infants}/>
+                    <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults}
+                                 setChildren={setChildren} children={children} setInfants={setInfants} indants={infants}/>
                 </div>
                 <button id="search-button" onClick={post} className="w-100 btn btn-dark" type="submit">Search</button>
             </div>
         </form>
-{/*    <div>
-        <FlightsList flights={flights}/>
-    </div>*/}
-    </div>
+    </Container>
     )   };
 
 export default SearchForm;

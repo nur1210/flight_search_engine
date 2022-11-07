@@ -12,7 +12,6 @@ function SearchResults() {
     const [returnDate, setReturnDate] = useState(params.returnDate);
     const [flights, setFlights] = useState();
 
-
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
@@ -34,9 +33,6 @@ function SearchResults() {
         console.log(params);
         params.departureDate = departureDate;
         setSearchParams(params);
-/*        getFlights().then(r => {
-            setFlights(r);
-        });*/
     }, [departureDate]);
 
 
@@ -44,9 +40,6 @@ function SearchResults() {
         console.log(params);
         params.returnDate = returnDate;
         setSearchParams(params);
-/*        getFlights().then(r => {
-            setFlights(r);
-        });*/
     }, [returnDate]);
 
 
@@ -79,14 +72,18 @@ function SearchResults() {
                     <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
                 </Col>
                 <Col xs lg="2">
-                    <DepartureDateInput onChange={setReturnDate} title={"Arrival date"}/>
+                    {
+                        !params.flightType === "oneway"
+                            ? <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={true}/>
+                            : <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={false}/>
+                    }
                 </Col>
             </Row>
             <h2>Search Results</h2>
             {
                 flights?.length
                     ? <FlightsList flights={flights}/>
-                    : <p>Loading...</p>
+                    : <p>No flights</p>
             }
         </article>
     );

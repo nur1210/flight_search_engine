@@ -23,19 +23,20 @@ const useAxiosPrivate = () => {
             async (error) => {
                 console.log('error status', error.response.status)
                 const prevRequest = error?.config;
-                if (error?.response.status === 403 && !prevRequest.retry) {
-                    prevRequest.retry = true;
+
+                const generateAccessToken = async () => {
                     const newAccessToken = await refresh();
                     prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                    console.log('newAccessToken', newAccessToken);
                     return axiosPrivate(prevRequest);
+                }
+
+                if (error?.response.status === 403 && !prevRequest.retry) {
+                    prevRequest.retry = true;
+                    generateAccessToken();
                 }
                 else if (error?.response.status === 0 && !prevRequest.retry) {
                     prevRequest.retry = true;
-                    const newAccessToken = await refresh();
-                    prevRequest.headers['Authorization'] = `Bearer ${newAccessToken}`;
-                    console.log('newAccessToken', newAccessToken);
-                    return axiosPrivate(prevRequest);
+                    generateAccessToken();
                 }
                 return Promise.reject(error);
             }
