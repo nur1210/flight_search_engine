@@ -19,7 +19,12 @@ public class PriceAlertEntity {
     @Column(name = "id")
     private long id;
 
-    @ManyToMany(mappedBy = "priceAlerts")
+    @ManyToMany
+    @JoinTable(
+            name = "user_price_alert",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "price_alert_id")
+    )
     private List<UserEntity> users;
 
     @Column(name = "fly_from")

@@ -71,12 +71,7 @@ public class UserEntity {
     @JoinColumn(name = "user_id")
     private Set<UserRoleEntity> userRoles;
 
-    @ManyToMany
-    @JoinTable(
-            name = "user_price_alert",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "price_alert_id")
-    )
+    @ManyToMany(mappedBy = "users")
     private List<PriceAlertEntity> priceAlerts;
 
 /*    @ManyToMany

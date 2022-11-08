@@ -1,13 +1,31 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
+import PriceAlertService from "../services/PriceAlertService";
+import useAxiosPrivate from "../hooks/useAxiosPrivate";
 
 function Popup(props) {
     const params = props.props;
     const [show, setShow] = useState(false);
+    const axiosPrivate = useAxiosPrivate();
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const handleSubmit = async () => {
+        console.log(params);
+        try {
+            const response = await axiosPrivate.post(`/alerts`,(params));
+            if(isNaN(response.data)){
+                console.log("Success");
+                setShow(false);
+                return;
+            }
+            console.log("Error");
+        } catch (error) {
+            console.log(error);
+        }
+    }
 
     return (
         <>
@@ -29,7 +47,7 @@ function Popup(props) {
                     <Button variant="outline-dark" onClick={handleClose}>
                         Close
                     </Button>
-                    <Button variant="dark" onClick={handleClose}>
+                    <Button variant="dark" onClick={handleSubmit}>
                         Notify Me
                     </Button>
                 </Modal.Footer>
