@@ -56,8 +56,8 @@ public class FlightEntity {
     )
     private String deepLink;
 
-    @ManyToMany(mappedBy = "userFlights")
-    private List<UserEntity> passengers;
+/*    @ManyToMany(mappedBy = "userFlights")
+    private List<UserEntity> passengers;*/
 
     public long getId() {
         return id;
@@ -99,11 +99,11 @@ public class FlightEntity {
         this.deepLink = deepLink;
     }
 
-    public List<UserEntity> getPassengers() {
+   /* public List<UserEntity> getPassengers() {
         return passengers;
     }
 
     public void setPassengers(List<UserEntity> passengers) {
         this.passengers = passengers;
-    }
+    }*/
 }

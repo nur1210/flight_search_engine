@@ -4,10 +4,12 @@ import FlightsList from "./FlightsList";
 import {useSearchParams} from "react-router-dom";
 import DepartureDateInput from "./DepartureDateInput";
 import {Col, Row} from "react-bootstrap";
+import Popup from "./Popup";
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
+    console.log(params);
     const [departureDate, setDepartureDate] = useState(params.departureDate);
     const [returnDate, setReturnDate] = useState(params.returnDate);
     const [flights, setFlights] = useState();
@@ -67,6 +69,11 @@ function SearchResults() {
 
     return (
         <article>
+            <Row>
+                <Col md={4}>
+                    <Popup props={params}/>
+                </Col>
+            </Row>
             <Row className={"justify-content-md-center"}>
                 <Col xs lg="2">
                     <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>

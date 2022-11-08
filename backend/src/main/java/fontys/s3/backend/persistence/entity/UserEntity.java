@@ -73,11 +73,19 @@ public class UserEntity {
 
     @ManyToMany
     @JoinTable(
+            name = "user_price_alert",
+            joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "price_alert_id")
+    )
+    private List<PriceAlertEntity> priceAlerts;
+
+/*    @ManyToMany
+    @JoinTable(
             name = "user_flight",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "flight_id")
     )
-    private List<FlightEntity> userFlights;
+    private List<FlightEntity> userFlights;*/
 
     public long getId() {
         return id;
@@ -123,11 +131,19 @@ public class UserEntity {
         this.userRoles = userRoles;
     }
 
-    public List<FlightEntity> getUserFlights() {
+    public List<PriceAlertEntity> getPriceAlerts() {
+        return priceAlerts;
+    }
+
+    public void setPriceAlerts(List<PriceAlertEntity> priceAlerts) {
+        this.priceAlerts = priceAlerts;
+    }
+
+    /*    public List<FlightEntity> getUserFlights() {
         return userFlights;
     }
 
     public void setUserFlights(List<FlightEntity> flights) {
         this.userFlights = flights;
-    }
+    }*/
 }

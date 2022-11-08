@@ -1,3 +1,4 @@
+/*
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.RefreshTokenDecoder;
@@ -16,7 +17,7 @@ import java.security.Key;
 import java.time.Instant;
 
 @Service
-public class RefreshTokenEncoderDecoderImpl implements RefreshTokenDecoder {
+public class RefreshTokenEncoderDecoderImpl implements   RefreshTokenDecoder {
     private final Key key;
 
     public RefreshTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
@@ -50,3 +51,4 @@ public class RefreshTokenEncoderDecoderImpl implements RefreshTokenDecoder {
         }
     }
 }
+*/
