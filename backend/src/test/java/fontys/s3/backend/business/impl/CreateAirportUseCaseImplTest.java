@@ -4,8 +4,8 @@ import fontys.s3.backend.domain.CreateAirportRequest;
 import fontys.s3.backend.domain.CreateAirportResponse;
 import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -24,7 +24,7 @@ class CreateAirportUseCaseImplTest {
     @InjectMocks
     CreateAirportUseCaseImpl useCase;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         airportRepository = Mockito.mock(AirportRepository.class);
         useCase = new CreateAirportUseCaseImpl(airportRepository);

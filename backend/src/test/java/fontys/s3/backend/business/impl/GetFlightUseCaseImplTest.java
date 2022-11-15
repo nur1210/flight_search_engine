@@ -4,7 +4,7 @@ import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,7 +28,7 @@ class GetFlightUseCaseImplTest {
     @InjectMocks
     private GetFlightUseCaseImpl useCase;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         flightRepository = Mockito.mock(FlightRepository.class);
         useCase = new GetFlightUseCaseImpl(flightRepository);

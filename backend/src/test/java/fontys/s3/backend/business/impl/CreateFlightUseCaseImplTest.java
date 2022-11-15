@@ -6,8 +6,8 @@ import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
-import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -28,9 +28,8 @@ class CreateFlightUseCaseImplTest {
     FlightRepository flightRepository;
     @InjectMocks
     private CreateFlightUseCaseImpl useCase;
-    private FlightEntity flightEntity;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         flightRepository = Mockito.mock(FlightRepository.class);
         useCase = new CreateFlightUseCaseImpl(flightRepository);
@@ -60,7 +59,7 @@ class CreateFlightUseCaseImplTest {
         List<RouteEntity> routes = new ArrayList<>();
         routes.add(route);
 
-        flightEntity = FlightEntity.builder()
+        FlightEntity flightEntity = FlightEntity.builder()
                 .route(routes)
                 .price(100)
                 .availableSeats(2)

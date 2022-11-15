@@ -1,6 +1,5 @@
 package fontys.s3.backend.business.impl;
 
-import fontys.s3.backend.business.AccessTokenEncoder;
 import fontys.s3.backend.business.LoginUseCase;
 import fontys.s3.backend.business.exception.InvalidCredentialsException;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
@@ -26,7 +25,6 @@ import java.util.Optional;
 public class LoginUseCaseImpl implements LoginUseCase {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
-    private final AccessTokenEncoder accessTokenEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
 

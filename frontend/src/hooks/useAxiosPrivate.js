@@ -35,7 +35,7 @@ const useAxiosPrivate = () => {
                     generateAccessToken();
                 }
                 else if (error?.response.status === 0 && !prevRequest.retry) {
-                    prevRequest.retry = true;
+                    //prevRequest.retry = true;
                     generateAccessToken();
                 }
                 return Promise.reject(error);

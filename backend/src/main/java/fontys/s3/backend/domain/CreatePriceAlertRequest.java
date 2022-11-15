@@ -37,6 +37,6 @@ public class CreatePriceAlertRequest {
     @NotNull
     @JsonProperty("travelClass")
     private String cabinClass;
-    private String currency;
-    private String locale;
+    private String currency = "EUR";
+    private String locale = "en";
 }
