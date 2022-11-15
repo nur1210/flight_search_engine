@@ -7,8 +7,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.List;
 
-import static javax.persistence.GenerationType.SEQUENCE;
-
 
 //@Data
 @Builder
@@ -17,7 +15,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 @Entity(name = "flight")
 @Table(name = "flights")
 public class FlightEntity {
-    @SequenceGenerator(
+/*    @SequenceGenerator(
             name = "flight_sequence",
             sequenceName = "flight_sequence",
             allocationSize = 1
@@ -25,14 +23,18 @@ public class FlightEntity {
     @GeneratedValue(
             strategy = SEQUENCE,
             generator = "flight_sequence"
-    )
-    @Id
-    @Column(
-            name = "id",
-            updatable = false
-    )
-    private long id;
+    )*/
 
+    /*    @Id
+        @Column(
+                name = "id",
+                updatable = false
+        )
+        private long id;*/
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private long id;
     @OneToMany(targetEntity = RouteEntity.class,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_id")
@@ -55,6 +57,7 @@ public class FlightEntity {
             columnDefinition = "text"
     )
     private String deepLink;
+
 
 /*    @ManyToMany(mappedBy = "userFlights")
     private List<UserEntity> passengers;*/
@@ -99,7 +102,7 @@ public class FlightEntity {
         this.deepLink = deepLink;
     }
 
-   /* public List<UserEntity> getPassengers() {
+    /* public List<UserEntity> getPassengers() {
         return passengers;
     }
 

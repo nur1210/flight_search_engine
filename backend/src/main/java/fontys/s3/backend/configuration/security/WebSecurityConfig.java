@@ -20,9 +20,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig {
-    //private final UserDetailsService userDetailsService;
-    //private final BCryptPasswordEncoder bCryptPasswordEncoder;
-
     @Autowired
     UserDetailsServiceImpl userDetailsService;
 
@@ -33,17 +30,6 @@ public class WebSecurityConfig {
     public AuthTokenFilter authenticationJwtTokenFilter() {
         return new AuthTokenFilter();
     }
-
-
-/*    @Bean
-    public AuthorizationRequestFilter authorizationRequestFilter() {
-        return new AuthorizationRequestFilter();
-    }*/
-/*    @Bean
-    public void configure(AuthenticationManagerBuilder authenticationManagerBuilder) throws Exception {
-        authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    }*/
-
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
@@ -82,11 +68,4 @@ public class WebSecurityConfig {
 
         return httpSecurity.build();
     }
-
-/*
-    @Bean
-    public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService).passwordEncoder(bCryptPasswordEncoder);
-    }
-*/
 }
