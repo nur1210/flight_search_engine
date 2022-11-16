@@ -25,11 +25,11 @@ public class RouteEntity {
     )
     private String airline;
 
-@ManyToOne
-@JoinColumn(name = "departure_airport_iata")
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "departure_airport_iata")
     private AirportEntity departureAirport;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "arrival_airport_iata")
     private AirportEntity arrivalAirport;
 

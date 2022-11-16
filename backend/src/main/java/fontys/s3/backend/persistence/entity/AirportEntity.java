@@ -24,7 +24,7 @@ public class AirportEntity {
 
     @Column(
             name = "name",
-            nullable = false,
+            nullable = true,
             columnDefinition = "TEXT"
     )
     private String name;

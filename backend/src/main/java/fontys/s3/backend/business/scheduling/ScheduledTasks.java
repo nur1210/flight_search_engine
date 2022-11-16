@@ -41,9 +41,6 @@ public class ScheduledTasks {
             }
 
             var cheapestFlight = getCheapestFlight(priceAlert);
-/*            if (priceAlert.getCurrentFlight() ==  null) {
-                priceAlert.setCurrentFlight(cheapestFlight);
-            }*/
 
             if (priceAlert.getCurrentFlight() ==  null) {
                 updatePriceAlert(priceAlert, cheapestFlight);
@@ -63,8 +60,8 @@ public class ScheduledTasks {
                 .fly_to(priceAlert.getFlyTo())
                 .date_from(dateFormat.format(priceAlert.getDateFrom()))
                 .date_to(dateFormat.format(priceAlert.getDateFrom()))
-                .return_from(dateFormat.format(priceAlert.getDateTo()))
-                .return_to(dateFormat.format(priceAlert.getDateTo()))
+                .return_from(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
+                .return_to(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
                 .flight_type(priceAlert.getFlightType())
                 .adults(priceAlert.getPassengers())
                 .selected_cabins(priceAlert.getCabinClass())
