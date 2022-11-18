@@ -64,8 +64,8 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const AirportInput = ({onChange, title}) => {
-
+const AirportInput = ({onChange, title, register}) => {
+    const { ref } = register(title);
     const searchInput = useRef(null);
     const [airport, setAirport] = useState({});
 
@@ -95,7 +95,7 @@ const AirportInput = ({onChange, title}) => {
     }
 
     // init autocomplete
-    const initAutocomplete = () => {
+    const initAutocomplete = (e) => {
         if (!searchInput.current) return;
 
         const autocomplete = new window.google.maps.places.Autocomplete(searchInput.current);
@@ -158,8 +158,14 @@ const AirportInput = ({onChange, title}) => {
                     id="Airport-input"
                     placeholder="Location"
                     aria-describedby="Airport-label"
-                    ref={searchInput}
-                    onChange={initAutocomplete}
+                    {...register(title, {
+                        onChange:() => initAutocomplete(),
+                        required: 'Please fill in the location'
+                    })}
+                    ref={(e) => {
+                        ref(e)
+                        searchInput.current = e
+                    }}
                 />
                 <button className={"btn"} onClick={findMyLocation}><GpsFixedIcon/></button>
                 <datalist id={`Airport-options-${title}`}></datalist>

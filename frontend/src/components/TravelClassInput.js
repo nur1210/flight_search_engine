@@ -1,6 +1,6 @@
 import {useState} from "react";
 
-const TravelClassInput = ({ travelClass, setTravelClass }) => {
+const TravelClassInput = ({ setTravelClass, register }) => {
     const options = [
         { value: '', text: 'Select flight class'},
         { value: 'M', text: 'Economy' },
@@ -30,8 +30,11 @@ const TravelClassInput = ({ travelClass, setTravelClass }) => {
                 className="form-select"
                 id="travel-class-select"
                 aria-describedby="travel-class-label"
-                value={selectedOption}
-                onChange={handleChange}>
+                {...register("flightType", {
+                    onChange:(e) => handleChange(e),
+                    value: selectedOption,
+                    validate: (value) => value !== ""
+                })}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.text}

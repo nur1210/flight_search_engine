@@ -1,4 +1,4 @@
-const DepartureDateInput = ({onChange, title, disabled}) => {
+const DepartureDateInput = ({ onChange, title, disabled, register }) => {
 
     return (
         <div id="departure-date" className="mb-2">
@@ -17,8 +17,15 @@ const DepartureDateInput = ({onChange, title, disabled}) => {
                     className="form-control"
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
-                    onChange={(e) => onChange(e.target.value)}
-                    disabled={disabled}
+                    {...register(title, {
+                        onChange:() => (e) => onChange(e.target.value),
+                        disabled: disabled,
+                        validate: (value) => {
+                            const today = new Date();
+                            const date = new Date(value);
+                            return date > today;
+                        }
+                    })}
                 />
             </div>
         </div>

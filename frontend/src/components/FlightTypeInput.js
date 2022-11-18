@@ -1,10 +1,6 @@
 import { useState } from "react";
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select from '@mui/material/Select';
 
-const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate }) => {
+const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate, register }) => {
     const options = [
         { value: '', text: "Select Flight Type" },
         { value: 'oneway', text: 'One Way' },
@@ -46,30 +42,17 @@ const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate 
                 id="flight-type-select"
                 className="form-select"
                 aria-describedby="flight-type-label"
-                value={selectedOption}
-                onChange={handleChange}>
+                {...register("flightType", {
+                    onChange:(e) => handleChange(e),
+                    value: selectedOption,
+                    validate: (value) => value !== ""
+                })}>
                 {options.map((option) => (
                     <option key={option.value} value={option.value}>
                         {option.text}
                     </option>
                 ))}
             </select>
-           {/* <FormControl sx={{ m: 1, minWidth: 300 }}>
-                <InputLabel id="demo-simple-select-autowidth-label">Flight type</InputLabel>
-                <Select
-                    labelId="flight-type-label"
-                    value={selectedOption}
-                    onChange={handleChange}
-                    autoWidth
-                    label="Flight Type"
-                >
-                    <MenuItem value="">
-                        <em>select type</em>
-                    </MenuItem>
-                    <MenuItem value={"oneway"}>One way</MenuItem>
-                    <MenuItem value={"round"}>Round trip</MenuItem>
-                </Select>
-            </FormControl>*/}
         </div>
     )}
 export default FlightTypeInput;

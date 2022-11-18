@@ -3,6 +3,10 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css';
+//import '../src/assets/scss/paper-dashboard.scss';
+//import "./assets/css/paper-dashboard.css";
+//import "./assets/demo/demo.css";
+//import "perfect-scrollbar/css/perfect-scrollbar.css";
 import {AuthProvider} from "./context/AuthProvider";
 import {BrowserRouter, Route, Routes} from "react-router-dom";
 
