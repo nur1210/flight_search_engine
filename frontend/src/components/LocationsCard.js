@@ -1,21 +1,25 @@
 import AirportInput from "./AirportInput";
+import Card from "@mui/material/Card";
+import SoftTypography from "./SoftTypography";
+import SoftBox from "./SoftBox";
 
-const LocationsCard = ({ setOrigin, setDestination, register }) => {
-
+const LocationsCard = ({ register, errors, value }) => {
     return(
-        <div className="my-2 card">
-            <div className="card-body">
-                <h5 className="card-title">Locations</h5>
-                <div className="row">
-                    <div className="col-sm">
-                        <AirportInput onChange={setOrigin} title={"Origin"} register={register}/>
-                    </div>
-                    <div className="col-sm">
-                        <AirportInput onChange={setDestination} title={"Destination"} register={register}/>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <Card className="my-2 card">
+            <SoftBox className="card-body">
+                <SoftTypography component="label" fontWeight="bold" varient="caption">Locations</SoftTypography>
+                <SoftBox className="row">
+                    <SoftBox className="col-sm">
+                        <AirportInput title={"Origin"} register={register} value={value}/>
+                        {errors.Origin && <SoftTypography componant="label" variant="caption">{errors.Origin.message}</SoftTypography>}
+                    </SoftBox>
+                    <SoftBox className="col-sm">
+                        <AirportInput title={"Destination"} register={register} value={value}/>
+                        {errors.Destination && <SoftTypography componant="label" variant="caption">{errors.Destination.message}</SoftTypography>}
+                    </SoftBox>
+                </SoftBox>
+            </SoftBox>
+        </Card>
     )
 }
 export default LocationsCard;

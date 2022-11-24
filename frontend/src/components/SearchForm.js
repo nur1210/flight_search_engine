@@ -3,14 +3,14 @@ import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {createSearchParams, useNavigate} from "react-router-dom";
-import Container from "react-bootstrap/Container";
-import {useForm} from "react-hook-form";
-
+import {useForm, useFormState} from "react-hook-form";
+import SoftBox from "./SoftBox";
+import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import Grid from "@mui/material/Grid";
+import SoftButton from "./SoftButton";
 
 
 const SearchForm = () => {
-    const [origin, setOrigin] = useState('');
-    const [destination, setDestination] = useState('');
     const [flightType, setFlightType] = useState('');
     const [departureDate, setDepartureDate] = useState('');
     const [returnDate, setReturnDate] = useState('');
@@ -18,17 +18,17 @@ const SearchForm = () => {
     const [adults, setAdults] = useState(1);
     const [children, setChildren] = useState(0);
     const [infants, setInfants] = useState(0);
-    const { register, handleSubmit, errors } = useForm();
+    const {register, handleSubmit, formState: {errors}, getValues, setValue} = useForm();
 
 
     const navigate = useNavigate();
     const params = {
-        origin: origin,
-        destination: destination,
-        flightType: flightType,
-        departureDate: departureDate,
-        returnDate: returnDate,
-        travelClass: travelClass,
+        origin: getValues('Origin'),
+        destination: getValues('Destination'),
+        flightType: getValues('flightType'),
+        departureDate: getValues('Departure date'),
+        returnDate: getValues('Arrival date'),
+        travelClass: getValues('travelClass'),
         adults: adults,
         children: children,
         infants: infants
@@ -42,24 +42,38 @@ const SearchForm = () => {
 
     const onSubmit = (data) => {
         console.log(errors);
-        alert(JSON.stringify(data));
+        console.log(JSON.stringify(getValues))
+        console.log(JSON.stringify(data));
+        console.log(params);
         post();
     };
 
     return (
-        <Container>
-            <form onSubmit={handleSubmit(onSubmit)}>
-                <div className="container-sm">
-                    <LocationsCard setOrigin={setOrigin} setDestination={setDestination} register={register}/>
-                    <div className="row">
-                        <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate} setReturnDate={setReturnDate} register={register}/>
-                        <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults} adults={adults}
-                                     setChildren={setChildren} children={children} setInfants={setInfants} infants={infants} register={register}/>
-                    </div>
-                    <button id="search-button" className="w-100 btn btn-dark" type="submit">Search</button>
-                </div>
-            </form>
-        </Container>
-    )   };
+        <BasicLayout
+            title={"Flight Search"}
+            description={"Let the journey begin"}
+        >
+            <Grid>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <SoftBox>
+                        <SoftBox mt={4} mb={2}>
+                            <LocationsCard register={register} value={setValue} errors={errors}/>
+                        </SoftBox>
+                        <SoftBox className="row">
+                            <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate}
+                                       setReturnDate={setReturnDate} register={register}/>
+                            <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults}
+                                         adults={adults}
+                                         setChildren={setChildren} children={children} setInfants={setInfants}
+                                         infants={infants} register={register}/>
+                        </SoftBox>
+                        <SoftButton id="search-button" className="w-100" color={"dark"}
+                                    type="submit">Search</SoftButton>
+                    </SoftBox>
+                </form>
+            </Grid>
+        </BasicLayout>
+    )
+};
 
 export default SearchForm;

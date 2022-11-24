@@ -51,7 +51,7 @@ public class JwtUtils {
         return Jwts.builder()
                 .setSubject((user.getEmail()))
                 .setIssuedAt(Date.from(now))
-                .setExpiration(Date.from(now.plus(+ 30, ChronoUnit.SECONDS)))
+                .setExpiration(Date.from(now.plus(+ 10, ChronoUnit.MINUTES)))
                 .addClaims(claimsMap)
                 .signWith(key)
                 .compact();

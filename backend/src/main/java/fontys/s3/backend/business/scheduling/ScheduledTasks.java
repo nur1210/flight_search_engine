@@ -30,7 +30,7 @@ public class ScheduledTasks {
     @Autowired
     private UpdatePriceAlertUseCase updatePriceAlertUseCase;
 
-    @Scheduled(fixedRate = 10000)
+    @Scheduled(fixedRate = 360000)
     public void checkForChangeInFlightPrice() {
         List<PriceAlertEntity> priceAlerts = priceAlertRepository.findAll();
 

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginResponse {
-    //private Map<String, String> tokens;
+
     private String accessToken;
     private long userId;
     private String email;

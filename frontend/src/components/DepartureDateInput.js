@@ -1,14 +1,19 @@
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
+
 const DepartureDateInput = ({ onChange, title, disabled, register }) => {
 
     return (
-        <div id="departure-date" className="mb-2">
-            <label
-                id="departure-date-label"
-                htmlFor="departure-date-input"
-                className="form-label">
+        <SoftBox mb={2}>
+            <SoftTypography
+                component="label"
+                vatiant="caption"
+                fontWeight="medium"
+                fontSize={12}
+            >
                 {title}
-            </label>
-            <div className="input-group">
+            </SoftTypography>
+            <SoftBox className="input-group">
                   <span className="input-group-text">
                       <i className="bi-calendar"></i>
                   </span>
@@ -18,7 +23,9 @@ const DepartureDateInput = ({ onChange, title, disabled, register }) => {
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
                     {...register(title, {
+/*
                         onChange:() => (e) => onChange(e.target.value),
+*/
                         disabled: disabled,
                         validate: (value) => {
                             const today = new Date();
@@ -27,8 +34,8 @@ const DepartureDateInput = ({ onChange, title, disabled, register }) => {
                         }
                     })}
                 />
-            </div>
-        </div>
+            </SoftBox>
+        </SoftBox>
     )
 }
 export default DepartureDateInput;

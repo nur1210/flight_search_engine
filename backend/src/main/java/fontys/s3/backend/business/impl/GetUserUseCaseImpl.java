@@ -21,10 +21,8 @@ public class GetUserUseCaseImpl implements GetUserUseCase {
 
     @Override
     public Optional<User> getUser(long userId) {
-        if (!requestToken.hasRole(RoleEnum.ADMIN.name())) {
-            if (requestToken.getUserId() != userId) {
-                throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
-            }
+        if (!requestToken.hasRole(RoleEnum.ADMIN.name()) && requestToken.getUserId() != userId) {
+            throw new UnauthorizedDataAccessException("USER_ID_NOT_FROM_LOGGED_IN_USER");
         }
         return userRepository.findById(userId).map(UserConverter::convert);
     }

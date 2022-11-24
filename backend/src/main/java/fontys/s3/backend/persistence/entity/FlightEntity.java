@@ -15,22 +15,6 @@ import java.util.List;
 @Entity(name = "flight")
 @Table(name = "flights")
 public class FlightEntity {
-/*    @SequenceGenerator(
-            name = "flight_sequence",
-            sequenceName = "flight_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "flight_sequence"
-    )*/
-
-    /*    @Id
-        @Column(
-                name = "id",
-                updatable = false
-        )
-        private long id;*/
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -57,10 +41,6 @@ public class FlightEntity {
             columnDefinition = "text"
     )
     private String deepLink;
-
-
-/*    @ManyToMany(mappedBy = "userFlights")
-    private List<UserEntity> passengers;*/
 
     public long getId() {
         return id;
@@ -101,12 +81,5 @@ public class FlightEntity {
     public void setDeepLink(String deepLink) {
         this.deepLink = deepLink;
     }
-
-    /* public List<UserEntity> getPassengers() {
-        return passengers;
-    }
-
-    public void setPassengers(List<UserEntity> passengers) {
-        this.passengers = passengers;
-    }*/
+    
 }

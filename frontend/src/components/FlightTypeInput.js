@@ -1,4 +1,6 @@
 import { useState } from "react";
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
 
 const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate, register }) => {
     const options = [
@@ -7,7 +9,7 @@ const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate,
         { value: 'round', text: 'Round Trip' }
     ];
 
-    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [selectedOption, setSelectedOption] = useState();
 
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
@@ -31,13 +33,15 @@ const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate,
 
 
     return (
-        <div className="mb-2">
-            <label
-                id="flight-type-label"
-                htmlFor="flight-type-select"
-                className="form-label">
-                Flight
-            </label>
+        <SoftBox mb={2}>
+            <SoftTypography
+                component="label"
+                vatiant="caption"
+                fontWeight="medium"
+                fontSize={12}
+            >
+                Flight Type
+            </SoftTypography>
             <select
                 id="flight-type-select"
                 className="form-select"
@@ -53,6 +57,6 @@ const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate,
                     </option>
                 ))}
             </select>
-        </div>
+        </SoftBox>
     )}
 export default FlightTypeInput;

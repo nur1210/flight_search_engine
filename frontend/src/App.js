@@ -9,6 +9,9 @@ import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Unauthorized from "./components/Unauthorized";
 import Missing from "./components/Missing";
+import SignUp from "./layouts/authentication/sign-up";
+import BasicLayout from "./layouts/authentication/components/BasicLayout";
+import PageLayout from "./examples/LayoutContainers/PageLayout";
 
 const ROLES = {
     'User': "USER",
@@ -22,9 +25,7 @@ function App() {
                     <Route path="/login" element={<Login/>}/>
                     <Route path="/" element={<SearchForm/>}/>
                     <Route path="/search-results" element={<SearchResults/>}/>
-{/*
-                    <Route path="register" element={<Register />} />
-*/}
+                    <Route path="/sign-up" element={<SignUp/>} />
                     <Route path="unauthorized" element={<Unauthorized />} />
 
                     <Route element={<PersistLogin/>}>

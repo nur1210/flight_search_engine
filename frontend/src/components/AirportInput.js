@@ -1,6 +1,9 @@
 import {useEffect, useRef, useState} from "react";
 import tequilaService from "../services/TequilaService";
 import GpsFixedIcon from '@mui/icons-material/GpsFixed';
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
+import SoftButton from "./SoftButton";
 
 const apiKey = 'AIzaSyAkKp4RUwFXPYyslYaxYSxbRVCiSdhw78E';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
@@ -64,10 +67,8 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const AirportInput = ({onChange, title, register}) => {
-    const { ref } = register(title);
+const AirportInput = ({title, register, value}) => {
     const searchInput = useRef(null);
-    const [airport, setAirport] = useState({});
 
 
     // init gmap script
@@ -86,11 +87,9 @@ const AirportInput = ({onChange, title, register}) => {
         const place = autocomplete.getPlace();
         console.log(place);
         const _airport = extractAirport(place);
-        setAirport(extractAirport(place));
-        console.log(airport);
         tequilaService.getAirportByCords(_airport.lat, _airport.lng).then((data) => {
             console.log(data);
-            onChange(data.data.airport.iata);
+            value(title, data.data.airport.iata);
         })
     }
 
@@ -114,12 +113,11 @@ const AirportInput = ({onChange, title, register}) => {
                 const place = location.results[0];
                 console.log(place);
                 const _airport = extractAirport(place);
-                setAirport(_airport);
-                searchInput.current.value = _airport.plain();
                 console.log(_airport);
+                searchInput.current.value = _airport.plain();
                 tequilaService.getAirportByCity(_airport.city).then(airport => {
                     console.log(airport);
-                    onChange(airport.data.airport.iata);
+                    value(title, airport.data.airport.iata);
                 });
             })
     }
@@ -140,17 +138,16 @@ const AirportInput = ({onChange, title, register}) => {
     }, []);
 
     return (
-        <div className="mb-2">
-            <label
-                id="Airport-label"
-                htmlFor="Airport-input"
-                className="form-label">
+        <SoftBox mb={2}>
+            <SoftTypography
+                component="label"
+                vatiant="caption"
+                fontWeight="medium"
+                fontSize={12}
+            >
                 {title}
-            </label>
-            <div className="input-group">
-                  <span className="input-group-text">
-                      <i className="bi-pin-map"></i>
-                  </span>
+            </SoftTypography>
+            <SoftBox>
                 <input
                     type="text"
                     className="form-control"
@@ -158,19 +155,21 @@ const AirportInput = ({onChange, title, register}) => {
                     id="Airport-input"
                     placeholder="Location"
                     aria-describedby="Airport-label"
-                    {...register(title, {
-                        onChange:() => initAutocomplete(),
-                        required: 'Please fill in the location'
-                    })}
-                    ref={(e) => {
-                        ref(e)
-                        searchInput.current = e
-                    }}
+                    ref={searchInput}
+                    onChange={initAutocomplete}
                 />
-                <button className={"btn"} onClick={findMyLocation}><GpsFixedIcon/></button>
+                <input
+                type={"hidden"}
+                {...register(title, {
+                    validate: value => value !== "",
+                    required: 'Please fill in the location'
+                })}
+                />
+                <SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>
                 <datalist id={`Airport-options-${title}`}></datalist>
-            </div>
-        </div>
+            </SoftBox>
+        </SoftBox>
+
     )
 }
 export default AirportInput;

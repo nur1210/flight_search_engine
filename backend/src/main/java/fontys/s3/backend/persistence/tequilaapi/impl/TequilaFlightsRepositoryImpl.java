@@ -25,6 +25,12 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
 
     @Override
     public List<FlightEntity> getFlightsInfo(Map<String, Object> params) {
+        if (new Date().after((Date)params.get("date_from"))) {
+            throw new IllegalArgumentException("DATE_IS_IN_THE_PAST");
+        }
+        else if (((Date) params.get("date_from")).before((Date)params.get("return_from"))) {
+            throw new IllegalArgumentException("RETURN_DATE_IS_BEFORE_DEPARTURE_DATE");
+        }
         RestTemplate restTemplate = new RestTemplate();
         try {
             List<FlightEntity> flights = new ArrayList<>();

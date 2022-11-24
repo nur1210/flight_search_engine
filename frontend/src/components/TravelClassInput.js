@@ -1,4 +1,6 @@
 import {useState} from "react";
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
 
 const TravelClassInput = ({ setTravelClass, register }) => {
     const options = [
@@ -9,7 +11,7 @@ const TravelClassInput = ({ setTravelClass, register }) => {
         { value: 'F', text: 'First Class' },
     ];
 
-    const [selectedOption, setSelectedOption] = useState(options[0]);
+    const [selectedOption, setSelectedOption] = useState();
 
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
@@ -19,18 +21,20 @@ const TravelClassInput = ({ setTravelClass, register }) => {
 
 
     return (
-        <div className="mb-2">
-            <label
-                id="travel-class-label"
-                htmlFor="travel-class-select"
-                className="form-label">
-                Travel class
-            </label>
+        <SoftBox mb={2}>
+            <SoftTypography
+                component="label"
+                vatiant="caption"
+                fontWeight="medium"
+                fontSize={12}
+            >
+                Travel Class
+            </SoftTypography>
             <select
                 className="form-select"
                 id="travel-class-select"
                 aria-describedby="travel-class-label"
-                {...register("flightType", {
+                {...register("travelClass", {
                     onChange:(e) => handleChange(e),
                     value: selectedOption,
                     validate: (value) => value !== ""
@@ -41,7 +45,7 @@ const TravelClassInput = ({ setTravelClass, register }) => {
                     </option>
                 ))}
             </select>
-        </div>
+        </SoftBox>
     )
 }
 export default TravelClassInput;

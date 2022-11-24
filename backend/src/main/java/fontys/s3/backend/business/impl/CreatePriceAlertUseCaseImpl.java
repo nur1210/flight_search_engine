@@ -51,8 +51,6 @@ public class CreatePriceAlertUseCaseImpl implements CreatePriceAlertUseCase {
                 .locale(request.getLocale())
                 .build();
 
-        //newPriceAlert.setUsers(users);
-
         return priceAlertRepository.save(newPriceAlert);
     }
 }

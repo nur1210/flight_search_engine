@@ -22,8 +22,10 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
 
     @Override
     public GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
+
         List<FlightEntity> results;
         Map<String, Object> params = new HashMap<>();
+
         //TODO move to own class
         ReflectionUtils.doWithFields(request.getClass(), field -> {
             params.put(field.getName(), field.get(request));

@@ -7,10 +7,11 @@ import fontys.s3.backend.domain.LoginResponse;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.UserEntity;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -18,8 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.List;
 
@@ -30,8 +29,13 @@ import static org.mockito.Mockito.when;
 
 /*@RunWith(SpringRunner.class)
 @SpringBootTest*/
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration*/
+/*@ExtendWith(SpringExtension.class)
+@SpringBootTest
+@AutoConfigureMockMvc
+@AutoConfigureTestDatabase*/
+@ExtendWith(MockitoExtension.class)
 class LoginUseCaseImplTest {
     @Mock
     private UserRepository userRepository;
@@ -42,7 +46,7 @@ class LoginUseCaseImplTest {
     @Mock
     private AuthenticationManager authenticationManager;
 
-    @Mock
+    @InjectMocks
     private UserDetailsImpl userDetails;
 
     @Spy
@@ -55,7 +59,7 @@ class LoginUseCaseImplTest {
 
 
     @Test
-    @WithMockUser(username = "john@gmail.com")
+    @WithMockUser(username = "john@gmail.com", password = "1234")
     void login() {
         //arrange
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

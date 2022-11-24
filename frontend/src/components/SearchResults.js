@@ -5,6 +5,12 @@ import {useSearchParams} from "react-router-dom";
 import DepartureDateInput from "./DepartureDateInput";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
+import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import Table from "../examples/Tables/Table";
+import SoftBox from "./SoftBox";
+import SoftBadge from "./SoftBadge";
+import BasicTable from "./RouteRow";
+
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
@@ -68,13 +74,13 @@ function SearchResults() {
 
 
     return (
-        <article>
+        <BasicLayout>
             <Row>
                 <Col md={4}>
                     <Popup props={params}/>
                 </Col>
             </Row>
-            <Row className={"justify-content-md-center"}>
+            {/*            <Row className={"justify-content-md-center"}>
                 <Col xs lg="2">
                     <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
                 </Col>
@@ -85,14 +91,59 @@ function SearchResults() {
                             : <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={false}/>
                     }
                 </Col>
-            </Row>
+            </Row>*/}
             <h2>Search Results</h2>
             {
                 flights?.length
                     ? <FlightsList flights={flights}/>
                     : <p>No flights</p>
             }
-        </article>
+            {
+                flights?.length
+                    ?   <Table
+                        columns={[
+                            {name: "Outbound", align: "left"},
+                            {name: "Return", align: "left"},
+                            {name: "Dates", align: "left"},
+                            {name: "Price", align: "center"},
+                        ]}
+                        rows={[
+                                flights.map((flight, i) => {
+                                    {
+                                        return(
+                                            {
+                                                name: ["https://bit.ly/3I3pbe6", "John Micheal"],
+                                                function: "Manager",
+                                                review: (
+                                                    <SoftBox ml={-1.325}>
+                                                        <SoftBadge size="small" badgeContent="positive"/>
+                                                    </SoftBox>
+                                                ),
+                                                email: "john@user.com",
+                                                employed: "23/04/18",
+                                            }
+                                        )
+                                    }
+                            })
+                        ,
+                        {
+                            name: ["https://bit.ly/3I3pbe6", "John Micheal"],
+                            function: "Manager",
+                            review: (
+                            <SoftBox ml={-1.325}>
+                            <SoftBadge size="small" badgeContent="positive"/>
+                            </SoftBox>
+                            ),
+                            email: "john@user.com",
+                            employed: "23/04/18",
+                        }
+
+                            ]}
+                    />
+                    : <p>No flights</p>
+            }
+
+        </BasicLayout>
     );
 }
 

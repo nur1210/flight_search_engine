@@ -1,9 +1,19 @@
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
+
 const AdultsInput = ({ onChange, passengers, title }) => {
 
     return(
-        <div className="mb-2">
-            <div className="input-group">
-                <label htmlFor="adults-input" className="input-group-text">{title}</label>
+        <SoftBox mb={2} >
+            <SoftBox>
+                <SoftTypography
+                    component="label"
+                    vatiant="caption"
+                    fontWeight="medium"
+                    fontSize={12}
+                >
+                    {title}
+                </SoftTypography>
                 <input
                     type="number"
                     min="0"
@@ -14,9 +24,16 @@ const AdultsInput = ({ onChange, passengers, title }) => {
                     aria-describedby="adults-label"
                     onChange={(e) => onChange(e.target.value)}
                 />
-            </div>
-            <span id="adults-label" className="form-text">12 years old and older</span>
-        </div>
+            </SoftBox>
+            <SoftTypography
+                component="span"
+                vatiant="caption"
+                fontWeight="light"
+                fontSize={10}
+            >
+                12 years old and older
+            </SoftTypography>
+        </SoftBox>
     )
 }
 export default AdultsInput;
