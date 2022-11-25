@@ -21,6 +21,15 @@ repositories {
     mavenCentral()
 }
 
+jacocoTestReport {
+    reports {
+        xml.enabled true
+        csv.enabled false
+        html.enabled false
+    }
+}
+test.finalizedBy jacocoTestReport
+
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.boot:spring-boot-starter-web'
@@ -70,8 +79,6 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
-    finalizedBy jacocoTestReport // report is always generated after tests run
-
 }
 
 jacoco{
