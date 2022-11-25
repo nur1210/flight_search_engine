@@ -11,7 +11,7 @@ build:
 docker_build:
   stage: build
   script:
-    - docker-compose -f docker-compose-ci.yml build --pull
+    - docker-compose -f Docker-compose.yml build --pull
 test:
   stage: test
   script:
