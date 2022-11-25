@@ -54,7 +54,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                 List<RouteEntity> routes = new ArrayList<>();
                 for (var route : flight.getRoute()) {
                     routes.add(RouteEntity.builder()
-                            .flightNumber(route.getFlight_no())
+                            .flightNumber(route.getFlightNumber())
                             .airline(route.getAirline())
                             .departureAirport(AirportEntity.builder()
                                     .iata(route.getFlyFrom())
@@ -70,17 +70,17 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                                     .country(flight.getCountryTo().getName())
                                     .countryCode(flight.getCountryTo().getCode())
                                     .build())
-                            .localDepartureTime(route.getLocal_departure())
-                            .utcDepartureTime(route.getUtc_departure())
-                            .localArrivalTime(route.getLocal_arrival())
-                            .utcArrivalTime(route.getUtc_arrival())
+                            .localDepartureTime(route.getLocalDeparture())
+                            .utcDepartureTime(route.getUtcDeparture())
+                            .localArrivalTime(route.getLocalArrival())
+                            .utcArrivalTime(route.getUtcArrival())
                             .build());
                 }
                 flights.add(FlightEntity.builder()
                         .route(routes)
                         .price(flight.getFare().getAdults())
                         .availableSeats(flight.getAvailability().getSeats())
-                        .deepLink(flight.getDeep_link())
+                        .deepLink(flight.getDeepLink())
                         .build());
             }
             return flights;

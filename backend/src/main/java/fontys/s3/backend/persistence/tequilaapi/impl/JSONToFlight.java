@@ -1,6 +1,7 @@
 package fontys.s3.backend.persistence.tequilaapi.impl;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
@@ -25,7 +26,8 @@ public class JSONToFlight {
         private CountryTo countryTo;
         private Fare fare;
         private Availability availability;
-        private String deep_link;
+        @JsonProperty("deep_link")
+        private String deepLink;
     }
 
     @Setter
@@ -37,12 +39,17 @@ public class JSONToFlight {
         private String flyTo;
         private String cityTo;
         private String cityCodeTo;
-        private Timestamp local_departure;
-        private Timestamp utc_departure;
-        private Timestamp local_arrival;
-        private Timestamp utc_arrival;
+        @JsonProperty("local_departure")
+        private Timestamp localDeparture;
+        @JsonProperty("utc_departure")
+        private Timestamp utcDeparture;
+        @JsonProperty("local_arrival")
+        private Timestamp localArrival;
+        @JsonProperty("utc_arrival")
+        private Timestamp utcArrival;
         private String airline;
-        private long flight_no;
+        @JsonProperty("flight_no")
+        private long flightNumber;
     }
 
     @Setter
@@ -74,6 +81,7 @@ public class JSONToFlight {
     @Setter
     @Getter
     static class DeepLink {
-        private String deep_link;
+        @JsonProperty("deep_link")
+        private String link;
     }
 }

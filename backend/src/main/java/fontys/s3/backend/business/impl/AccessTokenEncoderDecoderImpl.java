@@ -4,15 +4,11 @@ import fontys.s3.backend.business.AccessTokenDecoder;
 import fontys.s3.backend.business.AccessTokenEncoder;
 import fontys.s3.backend.business.exception.InvalidAccessTokenException;
 import fontys.s3.backend.domain.AccessToken;
-import fontys.s3.backend.persistence.RefreshTokenRepository;
-import fontys.s3.backend.persistence.UserRepository;
 import io.jsonwebtoken.Claims;
-import io.jsonwebtoken.Jwt;
 import io.jsonwebtoken.JwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
@@ -28,12 +24,6 @@ import java.util.Map;
 @Service
 public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, AccessTokenDecoder {
     private final Key key;
-
-    @Autowired
-    private UserRepository userRepository;
-    @Autowired
-    private RefreshTokenRepository refreshTokenRepository;
-
 
     public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
         byte[] keyBytes = Decoders.BASE64.decode(secretKey);
@@ -63,7 +53,7 @@ public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, Access
     @Override
     public AccessToken decode(String accessTokenEncoded) {
         try {
-            Jwt jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
+            var jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
             Claims claims = (Claims) jwt.getBody();
 
             List<String> roles = claims.get("roles", List.class);

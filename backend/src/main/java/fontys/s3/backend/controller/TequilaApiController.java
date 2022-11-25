@@ -33,19 +33,19 @@ public class TequilaApiController {
                                                                                                              @RequestParam(value = "max_stopovers", required = false) long maxStopovers,
                                                                                                              @RequestParam(value = "max_sector_stopovers", required = false) long maxSectorStopovers) {
         GetAllFlightsFromOriginToDestinationRequest request = GetAllFlightsFromOriginToDestinationRequest.builder()
-                .fly_from(flyFrom)
-                .fly_to(flyTo)
-                .date_from(dateFrom)
-                .date_to(dateTo)
-                .return_from(returnFrom)
-                .return_to(returnTo)
-                .flight_type(flightType)
+                .flyFrom(flyFrom)
+                .flyTo(flyTo)
+                .dateFrom(dateFrom)
+                .dateTo(dateTo)
+                .returnFrom(returnFrom)
+                .returnTo(returnTo)
+                .flightType(flightType)
                 .adults(adults)
-                .selected_cabins(selectedCabins)
-                .curr(curr)
-                .locale(locale)
-                .max_stopovers(maxStopovers)
-                .max_sector_stopovers(maxSectorStopovers)
+                .selectedCabins(selectedCabins)
+                .currency(curr)
+                .language(locale)
+                .maxSectorStopovers(maxStopovers)
+                .maxSectorStopovers(maxSectorStopovers)
                 .build();
         GetAllFlightsFromOriginToDestinationResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
         return ResponseEntity.ok(response);

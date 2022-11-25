@@ -31,19 +31,19 @@ class GetAllFlightsFromOriginToDestinationUseCaseImplTest {
     public void setUp() {
         tequilaFlightsRepository = mock(TequilaFlightsRepository.class);
         request = GetAllFlightsFromOriginToDestinationRequest.builder()
-                .fly_from("AMS")
-                .fly_to("LHR")
-                .date_from("01/01/2021")
-                .date_to("01/01/2021")
-                .return_from("01/01/2021")
-                .return_to("01/01/2021")
-                .flight_type("round")
+                .flyFrom("AMS")
+                .flyTo("LHR")
+                .dateFrom("01/01/2021")
+                .dateTo("01/01/2021")
+                .returnFrom("01/01/2021")
+                .returnTo("01/01/2021")
+                .flightType("round")
                 .adults(1)
-                .selected_cabins("M")
-                .curr("EUR")
-                .locale("en")
-                .max_stopovers(0)
-                .max_sector_stopovers(0)
+                .selectedCabins("M")
+                .currency("EUR")
+                .language("en")
+                .maxStopovers(0)
+                .maxSectorStopovers(0)
                 .build();
     }
 

@@ -22,7 +22,6 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 public class WebSecurityConfig {
     @Autowired
     UserDetailsServiceImpl userDetailsService;
-
     @Autowired
     private AuthEntryPointJwt unauthorizedHandler;
 

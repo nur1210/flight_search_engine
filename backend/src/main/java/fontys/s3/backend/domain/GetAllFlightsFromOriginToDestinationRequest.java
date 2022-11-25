@@ -1,5 +1,6 @@
 package fontys.s3.backend.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 
 import javax.validation.constraints.Max;
@@ -12,41 +13,53 @@ import javax.validation.constraints.Min;
 public class GetAllFlightsFromOriginToDestinationRequest {
     @Min(3)
     @Max(3)
-    public String fly_from;
+    @JsonProperty("fly_from")
+    public String flyFrom;
     @Min(3)
     @Max(3)
-    public String fly_to;
+    @JsonProperty("fly_to")
+    public String flyTo;
     @Min(10)
     @Max(10)
-    public String date_from;
+    @JsonProperty("date_from")
+    public String dateFrom;
     @Min(10)
     @Max(10)
-    public String date_to;
+    @JsonProperty("date_to")
+    public String dateTo;
     @Min(10)
     @Max(10)
-    public String return_from;
+    @JsonProperty("return_from")
+    public String returnFrom;
     @Min(10)
     @Max(10)
-    public String return_to;
+    @JsonProperty("return_to")
+    public String returnTo;
     @Min(1)
     @Max(1)
-    public String flight_type;
+    @JsonProperty("flight_type")
+    public String flightType;
     @Min(1)
     @Max(1)
     public long adults;
     @Min(1)
     @Max(1)
-    public String selected_cabins;
+    @JsonProperty("selected_cabins")
+    public String selectedCabins;
     @Min(3)
     @Max(3)
-    public String curr;
+    @JsonProperty("curr")
+    public String currency;
     @Min(2)
     @Max(2)
-    public String locale;
+    @JsonProperty("locale")
+    public String language;
     @Min(1)
     @Max(1)
-    public long max_stopovers;
+    @JsonProperty("max_stopovers")
+    public long maxStopovers;
     @Min(1)
     @Max(1)
-    public long max_sector_stopovers;
+    @JsonProperty("max_sector_stopovers")
+    public long maxSectorStopovers;
 }

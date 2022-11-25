@@ -56,19 +56,19 @@ public class ScheduledTasks {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         GetAllFlightsFromOriginToDestinationRequest request = GetAllFlightsFromOriginToDestinationRequest.builder()
-                .fly_from(priceAlert.getFlyFrom())
-                .fly_to(priceAlert.getFlyTo())
-                .date_from(dateFormat.format(priceAlert.getDateFrom()))
-                .date_to(dateFormat.format(priceAlert.getDateFrom()))
-                .return_from(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
-                .return_to(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
-                .flight_type(priceAlert.getFlightType())
+                .flyFrom(priceAlert.getFlyFrom())
+                .flyTo(priceAlert.getFlyTo())
+                .dateFrom(dateFormat.format(priceAlert.getDateFrom()))
+                .dateTo(dateFormat.format(priceAlert.getDateFrom()))
+                .returnFrom(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
+                .returnTo(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
+                .flightType(priceAlert.getFlightType())
                 .adults(priceAlert.getPassengers())
-                .selected_cabins(priceAlert.getCabinClass())
-                .curr(priceAlert.getCurrency())
-                .locale(priceAlert.getLocale())
-                .max_stopovers(0)
-                .max_sector_stopovers(0)
+                .selectedCabins(priceAlert.getCabinClass())
+                .currency(priceAlert.getCurrency())
+                .language(priceAlert.getLocale())
+                .maxStopovers(0)
+                .maxSectorStopovers(0)
                 .build();
 
         Map<String, Object> params = new HashMap<>();

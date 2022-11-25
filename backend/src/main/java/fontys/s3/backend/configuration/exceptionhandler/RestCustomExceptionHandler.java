@@ -23,8 +23,6 @@ import java.util.List;
 @Slf4j
 public class RestCustomExceptionHandler extends ResponseEntityExceptionHandler {
     private static final String INTERNAL_SERVER_ERROR_MESSAGE = "Internal server error.";
-    private static final String ERROR_LOG_FIELD = "error";
-    private static final String STATUS_LOG_FIELD = "status";
 
     @Override
     protected ResponseEntity<Object> handleMethodArgumentNotValid(final MethodArgumentNotValidException error, final HttpHeaders headers, final HttpStatus status, final WebRequest request) {
@@ -46,7 +44,7 @@ public class RestCustomExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(value = {RuntimeException.class})
     public ResponseEntity<Object> handleUnknownRuntimeError(final RuntimeException error) {
-        log.error("Internal server error occurred {}", error);
+        log.error("Internal server error occurred {0}", error);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(INTERNAL_SERVER_ERROR_MESSAGE);
     }
 
@@ -63,7 +61,7 @@ public class RestCustomExceptionHandler extends ResponseEntityExceptionHandler {
                         }
                     });
         } else {
-            log.warn("MethodArgumentNotValidException without binding result errors {}", error);
+            log.warn("MethodArgumentNotValidException without binding result errors {0}", error);
         }
         return result;
     }
