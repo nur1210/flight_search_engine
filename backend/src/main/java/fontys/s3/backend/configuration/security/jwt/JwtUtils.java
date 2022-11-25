@@ -35,9 +35,9 @@ public class JwtUtils {
     public String generateAccessToken(UserEntity user) {
 
         Collection<String> roles = new ArrayList<>();
-        user.getUserRoles().forEach(role -> {
-            roles.add(new SimpleGrantedAuthority(role.getRole().name()).getAuthority());
-        });
+        user.getUserRoles().forEach(role ->
+                roles.add(new SimpleGrantedAuthority(role.getRole().name())
+                        .getAuthority()));
 
 
         Map<String, Object> claimsMap = new HashMap<>();
