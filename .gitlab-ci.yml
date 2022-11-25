@@ -2,16 +2,13 @@ stages:
   - build
   - test
   - sonarqube_stage
+  - docker_stage
 build:
   stage: build
   script:
     - cd backend
     - ./gradlew build -x test
     - ./gradlew.bat --stop
-docker_build:
-  stage: build
-  script:
-    - docker-compose -f Docker-compose.yml build --pull
 test:
   stage: test
   script:
@@ -24,3 +21,7 @@ sonarqube_ci_stanza:
     - cd backend
     - ./gradlew sonarqube
     - ./gradlew.bat --stop
+docker_build:
+  stage: docker_stage
+  script:
+    - docker-compose -f Docker-compose.yml build --pull
