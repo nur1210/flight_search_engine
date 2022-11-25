@@ -110,6 +110,7 @@ const AirportInput = ({title, register, value}) => {
         fetch(url)
             .then(response => response.json())
             .then(location => {
+                console.log(location);
                 const place = location.results[0];
                 console.log(place);
                 const _airport = extractAirport(place);

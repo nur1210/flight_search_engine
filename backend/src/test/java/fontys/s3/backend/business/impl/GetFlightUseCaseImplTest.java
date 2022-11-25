@@ -4,6 +4,7 @@ import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -65,8 +66,8 @@ class GetFlightUseCaseImplTest {
 
         when(flightRepository.findById(any())).thenReturn(Optional.of(flightEntity));
         //Act
-        long flightId = 1;
+        var actual = useCase.getFlight(1);
         //Assert
-        //Assertions.assertEquals(flightEntity.getId(), useCase.getFlight(flightId));
+        Assertions.assertEquals(flightEntity.getId(), actual.get().getId());
     }
 }
