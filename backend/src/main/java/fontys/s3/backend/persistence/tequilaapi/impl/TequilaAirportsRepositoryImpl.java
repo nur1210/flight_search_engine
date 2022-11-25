@@ -4,6 +4,7 @@ import fontys.s3.backend.business.exception.InvalidAirportException;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -18,7 +19,8 @@ import java.util.Arrays;
 public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository {
 
     private static final String BASE_URL = "https://api.tequila.kiwi.com/locations";
-    private static final String API_KEY = "91DK_D7GvsoeTQ8fUDHwIV8jaBfOr5kP";
+    @Value("${tequila.api.key}")
+    private String apiKey;
 
 
     @Override
@@ -36,7 +38,7 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
     private AirportEntity getAirportEntity(String url) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
-        headers.add("apikey", API_KEY);
+        headers.add("apikey", apiKey);
         HttpEntity<JSONToAirport> entity = new HttpEntity<>(headers);
         ResponseEntity<JSONToAirport> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, JSONToAirport.class);
         JSONToAirport airportInfo = responseEntity.getBody();
