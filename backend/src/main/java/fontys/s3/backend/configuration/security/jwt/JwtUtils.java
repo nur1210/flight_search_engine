@@ -23,7 +23,6 @@ import java.util.*;
 public class JwtUtils {
     private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
     private final Key key;
-
     @Value("${refreshCookieName}")
     private String refreshCookieName;
 
