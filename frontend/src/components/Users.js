@@ -1,5 +1,8 @@
 import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
+import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import {TableRow, TableBody, Paper, Table, TableCell, TableContainer, TableHead} from "@mui/material";
+
 
 const Users = () => {
     const [users, setUsers] = useState();
@@ -12,7 +15,7 @@ const Users = () => {
 
         const getUsers = async () => {
             try {
-                const response = await axiosPrivate.get('/users',{signal: controller.signal});
+                const response = await axiosPrivate.get('/users', {signal: controller.signal});
                 console.log(response.data.users);
                 isMounted && setUsers(response.data.users);
             } catch (error) {
@@ -28,9 +31,31 @@ const Users = () => {
     }, []);
 
     return (
-        <article>
-            <h2>Users</h2>
-            {users?.length
+        <BasicLayout title="Users">
+            <TableContainer component={Paper}>
+                    <Table sx={{minWidth: 650}}>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell align="right">First Name</TableCell>
+                                <TableCell align="right">Last Name</TableCell>
+                                <TableCell align="right">Email</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {users && users?.map((user) => (
+                                <TableRow
+                                    key={user?.id}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">{user?.firstName}</TableCell>
+                                    <TableCell component="th" scope="row">{user?.lastName}</TableCell>
+                                    <TableCell component="th" scope="row">{user?.email}</TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+            </TableContainer>
+{/*            {users?.length
                 ? (
                     <ul>
                         {users.map((user, i) => (
@@ -40,8 +65,8 @@ const Users = () => {
                 ) : (
                     <p>No users found</p>
                 )
-            }
-        </article>
+            }*/}
+        </BasicLayout>
     );
 };
 

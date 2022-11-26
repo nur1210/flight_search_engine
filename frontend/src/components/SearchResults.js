@@ -74,7 +74,7 @@ function SearchResults() {
 
 
     return (
-        <BasicLayout>
+        <BasicLayout title={"Search Results"}>
             <Row>
                 <Col md={4}>
                     <Popup props={params}/>
@@ -92,13 +92,12 @@ function SearchResults() {
                     }
                 </Col>
             </Row>*/}
-            <h2>Search Results</h2>
             {
                 flights?.length
                     ? <FlightsList flights={flights}/>
                     : <p>No flights</p>
             }
-            {
+          {/*  {
                 flights?.length
                     ?   <Table
                         columns={[
@@ -141,7 +140,7 @@ function SearchResults() {
                             ]}
                     />
                     : <p>No flights</p>
-            }
+            }*/}
 
         </BasicLayout>
     );
