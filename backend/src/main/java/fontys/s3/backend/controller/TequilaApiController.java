@@ -47,7 +47,7 @@ public class TequilaApiController {
                 .maxSectorStopovers(maxStopovers)
                 .maxSectorStopovers(maxSectorStopovers)
                 .build();
-        GetAllFlightsFromOriginToDestinationResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
+            GetAllFlightsFromOriginToDestinationResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
         return ResponseEntity.ok(response);
     }
 

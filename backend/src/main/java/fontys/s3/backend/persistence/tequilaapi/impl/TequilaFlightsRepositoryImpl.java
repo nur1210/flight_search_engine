@@ -1,20 +1,26 @@
 package fontys.s3.backend.persistence.tequilaapi.impl;
 
+import fontys.s3.backend.domain.FlightParams;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ReflectionUtils;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Component
@@ -23,17 +29,34 @@ import java.util.*;
 public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
     @Value("${tequila.api.key}")
     private String apiKey;
-    private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={fly_from}&fly_to={fly_to}&date_from={date_from}&date_to={date_to}&return_from={return_from}&return_to={return_to}&flight_type={flight_type}&adults={adults}&selected_cabins={selected_cabins}&curr={curr}&locale={locale}&max_stopovers={max_stopovers}&max_sector_stopovers={max_sector_stopovers}";
+    private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&flight_type={flightType}&adults={adults}&selected_cabins={selectedCabins}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}";
 
+    private static final Logger log = LoggerFactory.getLogger(TequilaFlightsRepositoryImpl.class);
     @Override
-    public List<FlightEntity> getFlightsInfo(Map<String, Object> params) {
-        if (new Date().after((Date)params.get("date_from"))) {
-            throw new IllegalArgumentException("DATE_IS_IN_THE_PAST");
+    public List<FlightEntity> getFlightsInfo(FlightParams params) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            var dateFrom = dateFormat.parse(params.getDateFrom());
+            var dateTo = dateFormat.parse(params.getDateTo());
+
+            if (new Date().after(dateFrom)) {
+                throw new IllegalArgumentException("DATE_IS_IN_THE_PAST");
+            }
+            else if (dateFrom.after(dateTo)) {
+                throw new IllegalArgumentException("RETURN_DATE_IS_BEFORE_DEPARTURE_DATE");
+            }
         }
-        else if (((Date) params.get("date_from")).before((Date)params.get("return_from"))) {
-            throw new IllegalArgumentException("RETURN_DATE_IS_BEFORE_DEPARTURE_DATE");
+        catch (ParseException e) {
+            log.error("DateFrom is not in the correct format");
+            return Collections.emptyList();
         }
+
         RestTemplate restTemplate = new RestTemplate();
+
+                Map<String, Object> map = new HashMap<>();
+
+        ReflectionUtils.doWithFields(params.getClass(), field ->
+                map.put(field.getName(), field.get(params)));
         try {
             List<FlightEntity> flights = new ArrayList<>();
 
@@ -45,7 +68,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                     HttpMethod.GET,
                     entity,
                     JSONToFlight.class,
-                    params);
+                    map);
 
             JSONToFlight flightInfo = responseEntity.getBody();
 

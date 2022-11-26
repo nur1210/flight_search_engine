@@ -2,6 +2,7 @@ package fontys.s3.backend.business.scheduling;
 
 import fontys.s3.backend.business.UpdatePriceAlertUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
+import fontys.s3.backend.domain.FlightParams;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.UpdatePriceAlertRequest;
 import fontys.s3.backend.persistence.PriceAlertRepository;
@@ -12,13 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Component
 @Slf4j
@@ -71,13 +69,24 @@ public class ScheduledTasks {
                 .maxSectorStopovers(0)
                 .build();
 
-        Map<String, Object> params = new HashMap<>();
-        ReflectionUtils.doWithFields(request.getClass(), field -> {
-            params.put(field.getName(), field.get(request));
-            field.setAccessible(true);
-        });
 
-        FlightEntity cheapestFlight = flightInfoRepository.getFlightsInfo(params)
+        FlightParams flightParams = FlightParams.builder()
+                .flyFrom(request.getFlyFrom())
+                .flyTo(request.getFlyTo())
+                .dateFrom(request.getDateFrom())
+                .dateTo(request.getDateTo())
+                .returnFrom(request.getReturnFrom())
+                .returnTo(request.getReturnTo())
+                .flightType(request.getFlightType())
+                .adults(String.valueOf(request.getAdults()))
+                .selectedCabins(request.getSelectedCabins())
+                .currency(request.getCurrency())
+                .language(request.getLanguage())
+                .maxStopovers(String.valueOf(request.getMaxStopovers()))
+                .maxSectorStopovers(String.valueOf(request.getMaxSectorStopovers()))
+                .build();
+
+        FlightEntity cheapestFlight = flightInfoRepository.getFlightsInfo(flightParams)
                 .stream().filter(f ->
                         f.getAvailableSeats() >= request.adults)
                 .findFirst().orElse(null);

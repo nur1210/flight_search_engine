@@ -3,17 +3,15 @@ package fontys.s3.backend.business.impl;
 import fontys.s3.backend.business.GetAllFlightsFromOriginToDestinationUseCase;
 import fontys.s3.backend.business.impl.converter.FlightConverter;
 import fontys.s3.backend.domain.Flight;
+import fontys.s3.backend.domain.FlightParams;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationResponse;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ReflectionUtils;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @AllArgsConstructor
@@ -24,15 +22,25 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
     public GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
 
         List<FlightEntity> results;
-        Map<String, Object> params = new HashMap<>();
 
-        //TODO move to own class
-        ReflectionUtils.doWithFields(request.getClass(), field -> {
-            params.put(field.getName(), field.get(request));
-            field.setAccessible(true);
-        });
+        FlightParams flightParams = FlightParams.builder()
+                .flyFrom(request.getFlyFrom())
+                .flyTo(request.getFlyTo())
+                .dateFrom(request.getDateFrom())
+                .dateTo(request.getDateTo())
+                .returnFrom(request.getReturnFrom())
+                .returnTo(request.getReturnTo())
+                .flightType(request.getFlightType())
+                .adults(String.valueOf(request.getAdults()))
+                .selectedCabins(request.getSelectedCabins())
+                .currency(request.getCurrency())
+                .language(request.getLanguage())
+                .maxStopovers(String.valueOf(request.getMaxStopovers()))
+                .maxSectorStopovers(String.valueOf(request.getMaxSectorStopovers()))
+                .build();
 
-        results = flightInfoRepository.getFlightsInfo(params);
+            results = flightInfoRepository.getFlightsInfo(flightParams);
+
 
         final GetAllFlightsFromOriginToDestinationResponse response = new GetAllFlightsFromOriginToDestinationResponse();
         List<Flight> flights = results
