@@ -2,14 +2,11 @@ import React, {useEffect, useState} from 'react';
 import tequilaService from "../services/TequilaService";
 import FlightsList from "./FlightsList";
 import {useSearchParams} from "react-router-dom";
-import DepartureDateInput from "./DepartureDateInput";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import Table from "../examples/Tables/Table";
-import SoftBox from "./SoftBox";
-import SoftBadge from "./SoftBadge";
-import BasicTable from "./RouteRow";
+
 
 
 function SearchResults() {
@@ -61,10 +58,10 @@ function SearchResults() {
 
     const getFlights = async () => {
         try {
-            const response = await tequilaService.getAllFlights(params.origin, params.destination,
-                params.departureDate, params.returnDate,
-                params.flightType, params.adults,
-                params.children, params.infants,
+            const response = await tequilaService.getAllFlights(params.Origin, params.Destination,
+                params.Departure, params.Return,
+                params.flightType, params.Adults,
+                params.Children, params.Infants,
                 params.travelClass);
             return response.data.flights;
         } catch (e) {
@@ -97,51 +94,30 @@ function SearchResults() {
                     ? <FlightsList flights={flights}/>
                     : <p>No flights</p>
             }
-          {/*  {
+            {
                 flights?.length
-                    ?   <Table
+                    ? <Table
                         columns={[
-                            {name: "Outbound", align: "left"},
-                            {name: "Return", align: "left"},
-                            {name: "Dates", align: "left"},
-                            {name: "Price", align: "center"},
+                            {name: "outbound", align: "left"},
+                            {name: "return", align: "left"},
+                            {name: "dates", align: "left"},
+                            {name: "price", align: "center"},
                         ]}
                         rows={[
-                                flights.map((flight, i) => {
+                            flights.map((flight) => {
+                                return (
                                     {
-                                        return(
-                                            {
-                                                name: ["https://bit.ly/3I3pbe6", "John Micheal"],
-                                                function: "Manager",
-                                                review: (
-                                                    <SoftBox ml={-1.325}>
-                                                        <SoftBadge size="small" badgeContent="positive"/>
-                                                    </SoftBox>
-                                                ),
-                                                email: "john@user.com",
-                                                employed: "23/04/18",
-                                            }
-                                        )
+                                        outbound: flight.route[0].arrivalAirport.iata,
+                                        return: flight.route[0].arrivalAirport.iata,
+                                        dates: flight.route[0].utcDepartureTime + " - " + flight.route[0].utcArrivalTime,
+                                        price: flight.price,
                                     }
+                                )
                             })
-                        ,
-                        {
-                            name: ["https://bit.ly/3I3pbe6", "John Micheal"],
-                            function: "Manager",
-                            review: (
-                            <SoftBox ml={-1.325}>
-                            <SoftBadge size="small" badgeContent="positive"/>
-                            </SoftBox>
-                            ),
-                            email: "john@user.com",
-                            employed: "23/04/18",
-                        }
-
-                            ]}
+                        ]}
                     />
                     : <p>No flights</p>
-            }*/}
-
+            }
         </BasicLayout>
     );
 }
