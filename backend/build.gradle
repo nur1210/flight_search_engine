@@ -93,7 +93,7 @@ sonarqube {
     }
 }
 test {
-    maxParallelForks 2
+    maxParallelForks 1
     useJUnitPlatform()
     finalizedBy jacocoTestReport // report is always generated after tests run
 
