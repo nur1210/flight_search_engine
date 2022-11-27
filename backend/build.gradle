@@ -92,3 +92,9 @@ sonarqube {
         property "sonar.login", System.getenv("sqp_7cdcf9351bce2b5b07cb9d0abfe32c93826c4dae")
     }
 }
+test {
+    maxParallelForks 2
+    useJUnitPlatform()
+    finalizedBy jacocoTestReport // report is always generated after tests run
+
+}
