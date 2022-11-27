@@ -1,52 +1,62 @@
-import {useState} from "react";
 import LocationsCard from "./LocationsCard";
 import DatesCard from "./DatesCard";
 import DetailsCard from "./DetailsCard";
 import {createSearchParams, useNavigate} from "react-router-dom";
-import {useForm, useFormState} from "react-hook-form";
+import {useForm} from "react-hook-form";
 import SoftBox from "./SoftBox";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import Grid from "@mui/material/Grid";
 import SoftButton from "./SoftButton";
+import {useEffect} from "react";
 
 
 const SearchForm = () => {
-    const [flightType, setFlightType] = useState('');
-    const [departureDate, setDepartureDate] = useState('');
-    const [returnDate, setReturnDate] = useState('');
-    const [travelClass, setTravelClass] = useState('');
-    const [adults, setAdults] = useState(1);
-    const [children, setChildren] = useState(0);
-    const [infants, setInfants] = useState(0);
-    const {register, handleSubmit, formState: {errors}, getValues, setValue} = useForm();
-
-
     const navigate = useNavigate();
-    const params = {
-        origin: getValues('Origin'),
-        destination: getValues('Destination'),
-        flightType: getValues('flightType'),
-        departureDate: getValues('Departure date'),
-        returnDate: getValues('Arrival date'),
-        travelClass: getValues('travelClass'),
-        adults: adults,
-        children: children,
-        infants: infants
-    }
+    const {register, handleSubmit, formState, formState: {errors, isSubmitSuccessful}, getValues, setValue, reset} = useForm({
+        defaultValues: {
+            Origin: '',
+            Destination: '',
+            flightType: '',
+            Departure: '',
+            Return: '',
+            travelClass: '',
+            Adults: 1,
+            Children: 0,
+            Infants: 0
+        }
+    });
 
-    const post = () => navigate({
+
+    const post = (data) => navigate({
         pathname: '/search-results',
-        search: `?${createSearchParams(params)}`
+        search: `?${createSearchParams(data)}`
     });
 
 
     const onSubmit = (data) => {
-        console.log(errors);
-        console.log(JSON.stringify(getValues))
+        console.log(data);
         console.log(JSON.stringify(data));
-        console.log(params);
-        post();
+        post(data);
     };
+
+    useEffect(() => {
+        if (formState.isSubmitSuccessful) {
+            console.log("add")
+            reset({
+                ...getValues(),
+                Origin: '',
+                Destination: '',
+                flightType: '',
+                Departure: '',
+                Return: '',
+                travelClass: '',
+                Adults: 1,
+                Children: 0,
+                Infants: 0
+            });
+        }
+    }, [isSubmitSuccessful, reset]);
+
 
     return (
         <BasicLayout
@@ -57,15 +67,11 @@ const SearchForm = () => {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <SoftBox>
                         <SoftBox mt={4} mb={2}>
-                            <LocationsCard register={register} value={setValue} errors={errors}/>
+                            <LocationsCard register={register} setValue={setValue} errors={errors}/>
                         </SoftBox>
                         <SoftBox className="row">
-                            <DatesCard setFlightType={setFlightType} setDepartureDate={setDepartureDate}
-                                       setReturnDate={setReturnDate} register={register}/>
-                            <DetailsCard travelClass={travelClass} setTravelClass={setTravelClass} setAdults={setAdults}
-                                         adults={adults}
-                                         setChildren={setChildren} children={children} setInfants={setInfants}
-                                         infants={infants} register={register}/>
+                            <DatesCard register={register}/>
+                            <DetailsCard register={register}/>
                         </SoftBox>
                         <SoftButton id="search-button" className="w-100" color={"dark"}
                                     type="submit">Search</SoftButton>

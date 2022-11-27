@@ -2,7 +2,7 @@ import { useState } from "react";
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate, register }) => {
+const FlightTypeInput = ({ setHasDepartureDate, setHasReturnDate, register }) => {
     const options = [
         { value: '', text: "Select Flight Type" },
         { value: 'oneway', text: 'One Way' },
@@ -14,7 +14,7 @@ const FlightTypeInput = ({ setFlightType, setHasDepartureDate, setHasReturnDate,
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
         console.log(e.target.value);
-        setFlightType(e.target.value);
+        //setFlightType(e.target.value);
         switch (e.target.value) {
             case 'oneway':
                 setHasDepartureDate(false);

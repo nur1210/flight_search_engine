@@ -1,7 +1,7 @@
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const DepartureDateInput = ({ onChange, title, disabled, register }) => {
+const DepartureDateInput = ({ title, disabled, register }) => {
 
     return (
         <SoftBox mb={2}>
@@ -23,9 +23,6 @@ const DepartureDateInput = ({ onChange, title, disabled, register }) => {
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
                     {...register(title, {
-/*
-                        onChange:() => (e) => onChange(e.target.value),
-*/
                         disabled: disabled,
                         validate: (value) => {
                             const today = new Date();

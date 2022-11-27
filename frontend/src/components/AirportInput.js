@@ -67,7 +67,7 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const AirportInput = ({title, register, value}) => {
+const AirportInput = ({title, register, setValue}) => {
     const searchInput = useRef(null);
 
 
@@ -89,7 +89,7 @@ const AirportInput = ({title, register, value}) => {
         const _airport = extractAirport(place);
         tequilaService.getAirportByCords(_airport.lat, _airport.lng).then((data) => {
             console.log(data);
-            value(title, data.data.airport.iata);
+            setValue(title, data.data.airport.iata);
         })
     }
 
@@ -118,7 +118,7 @@ const AirportInput = ({title, register, value}) => {
                 searchInput.current.value = _airport.plain();
                 tequilaService.getAirportByCity(_airport.city).then(airport => {
                     console.log(airport);
-                    value(title, airport.data.airport.iata);
+                    setValue(title, airport.data.airport.iata);
                 });
             })
     }

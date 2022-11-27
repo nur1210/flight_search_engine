@@ -1,8 +1,8 @@
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const AdultsInput = ({ onChange, passengers, title }) => {
-
+const AdultsInput = ({ defaultValue, title, register }) => {
+    console.log(defaultValue);
     return(
         <SoftBox mb={2} >
             <SoftBox>
@@ -16,13 +16,15 @@ const AdultsInput = ({ onChange, passengers, title }) => {
                 </SoftTypography>
                 <input
                     type="number"
-                    min="0"
-                    max="9"
-                    value={passengers}
                     className="form-control"
                     id="adults-input"
                     aria-describedby="adults-label"
-                    onChange={(e) => onChange(e.target.value)}
+                    {...register(title, {
+                        required: true,
+                        min: 0,
+                        max: 9,
+                        pattern: /^[0-9]+$/i
+                    })}
                 />
             </SoftBox>
             <SoftTypography

@@ -2,7 +2,7 @@ import {useState} from "react";
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const TravelClassInput = ({ setTravelClass, register }) => {
+const TravelClassInput = ({ register }) => {
     const options = [
         { value: '', text: 'Select flight class'},
         { value: 'M', text: 'Economy' },
@@ -16,7 +16,7 @@ const TravelClassInput = ({ setTravelClass, register }) => {
     const handleChange = (e) => {
         setSelectedOption(e.target.value);
         console.log(e.target.value);
-        setTravelClass(e.target.value);
+        //setTravelClass(e.target.value);
     }
 
 
