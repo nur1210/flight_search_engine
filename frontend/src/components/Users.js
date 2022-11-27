@@ -2,6 +2,7 @@ import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import {TableRow, TableBody, Paper, Table, TableCell, TableContainer, TableHead} from "@mui/material";
+import SoftTypography from "./SoftTypography";
 
 
 const Users = () => {
@@ -32,12 +33,24 @@ const Users = () => {
 
     return (
         <BasicLayout title="Users">
-            <TableContainer component={Paper}>
+            <TableContainer sx={{mt: 5}}>
                     <Table sx={{minWidth: 650}}>
                             <TableRow>
-                                <TableCell align="center">First Name</TableCell>
-                                <TableCell align="center">Last Name</TableCell>
-                                <TableCell align="center">Email</TableCell>
+                                <TableCell align="center">
+                                    <SoftTypography fontWeight="bold" fontSize={18}>
+                                    First Name
+                                    </SoftTypography>
+                                </TableCell>
+                                <TableCell align="center">
+                                    <SoftTypography fontWeight="bold" fontSize={18}>
+                                        Last Name
+                                    </SoftTypography>
+                                </TableCell>
+                                <TableCell align="center">
+                                    <SoftTypography fontWeight="bold" fontSize={18}>
+                                        Email
+                                    </SoftTypography>
+                                    </TableCell>
                             </TableRow>
                         <TableBody>
                             {users && users?.map((user) => (

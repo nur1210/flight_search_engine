@@ -63,8 +63,14 @@ const SearchForm = () => {
             title={"Flight Search"}
             description={"Let the journey begin"}
         >
-            <Grid>
-                <form onSubmit={handleSubmit(onSubmit)}>
+            <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justifyContent="center"
+            >
+                <form onSubmit={handleSubmit(onSubmit)} className={"w-75"}>
                     <SoftBox>
                         <SoftBox mt={4} mb={2}>
                             <LocationsCard register={register} setValue={setValue} errors={errors}/>

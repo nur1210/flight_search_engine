@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
-import PriceAlertService from "../services/PriceAlertService";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import SoftTypography from "./SoftTypography";
 import SoftButton from "./SoftButton";
@@ -19,10 +18,21 @@ function Popup(props) {
     const handleSubmit = async () => {
         console.log(params);
         try {
-            const response = await axiosPrivate.post(`/alerts`, (params));
+            const data = {
+                origin: params.Origin,
+                destination: params.Destination,
+                departureDate: params.Departure,
+                returnDate: params.Return,
+                travelClass: params.travelClass,
+                flightType: params.flightType,
+                adults: params.Adults,
+                children: params.Children,
+                infants: params.Infants,
+            }
+            const response = await axiosPrivate.post(`/alerts`, (data));
             if (isNaN(response.data)) {
                 console.log("Success");
-                setShow(false);
+                handleClose();
                 return;
             }
             console.log("Error");
@@ -54,16 +64,19 @@ function Popup(props) {
                         </SoftTypography>
                         <br/>
                         <SoftBox>
-                            <SoftTypography varient="h6" fontWeight="medium" fontSize={14}>Trip
-                                details:</SoftTypography>
+                            <SoftTypography varient="h6" fontWeight="medium" fontSize={14}>
+                                Trip details:
+                            </SoftTypography>
                         </SoftBox>
                         <SoftBox>
                             <SoftTypography varient="h6" fontSize={14}>Fly
-                                from {params.origin} to {params.destination}</SoftTypography>
+                                from {params.Origin} to {params.Destination}
+                            </SoftTypography>
                         </SoftBox>
                         <SoftBox>
                             <SoftTypography varient="h6"
-                                            fontSize={14}>From {params.departureDate} to {params.returnDate}</SoftTypography>
+                                            fontSize={14}>From {params.Departure} to {params.Return}
+                            </SoftTypography>
                         </SoftBox>
                     </Grid>
                 </Modal.Body>

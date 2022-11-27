@@ -13,8 +13,8 @@ function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
     console.log(params);
-    const [departureDate, setDepartureDate] = useState(params.departureDate);
-    const [returnDate, setReturnDate] = useState(params.returnDate);
+    const [departureDate, setDepartureDate] = useState(params.Departure);
+    const [returnDate, setReturnDate] = useState(params.Return);
     const [flights, setFlights] = useState();
 
     useEffect(() => {
@@ -36,14 +36,14 @@ function SearchResults() {
 
     useEffect(() => {
         console.log(params);
-        params.departureDate = departureDate;
+        params.Departure = departureDate;
         setSearchParams(params);
     }, [departureDate]);
 
 
     useEffect(() => {
         console.log(params);
-        params.returnDate = returnDate;
+        params.Return = returnDate;
         setSearchParams(params);
     }, [returnDate]);
 
@@ -94,7 +94,7 @@ function SearchResults() {
                     ? <FlightsList flights={flights}/>
                     : <p>No flights</p>
             }
-            {
+{/*            {
                 flights?.length
                     ? <Table
                         columns={[
@@ -117,7 +117,7 @@ function SearchResults() {
                         ]}
                     />
                     : <p>No flights</p>
-            }
+            }*/}
         </BasicLayout>
     );
 }
