@@ -34,22 +34,20 @@ const Users = () => {
         <BasicLayout title="Users">
             <TableContainer component={Paper}>
                     <Table sx={{minWidth: 650}}>
-                        <TableHead>
                             <TableRow>
-                                <TableCell align="right">First Name</TableCell>
-                                <TableCell align="right">Last Name</TableCell>
-                                <TableCell align="right">Email</TableCell>
+                                <TableCell align="center">First Name</TableCell>
+                                <TableCell align="center">Last Name</TableCell>
+                                <TableCell align="center">Email</TableCell>
                             </TableRow>
-                        </TableHead>
                         <TableBody>
                             {users && users?.map((user) => (
                                 <TableRow
                                     key={user?.id}
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                                 >
-                                    <TableCell component="th" scope="row">{user?.firstName}</TableCell>
-                                    <TableCell component="th" scope="row">{user?.lastName}</TableCell>
-                                    <TableCell component="th" scope="row">{user?.email}</TableCell>
+                                    <TableCell component="th" scope="row" align="center">{user?.firstName}</TableCell>
+                                    <TableCell component="th" scope="row" align="center">{user?.lastName}</TableCell>
+                                    <TableCell component="th" scope="row" align="center">{user?.email}</TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
