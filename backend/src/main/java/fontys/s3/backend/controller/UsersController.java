@@ -38,14 +38,20 @@ public class UsersController {
         }
         return ResponseEntity.ok().body(userOptional.get());
     }
+
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
     @GetMapping()
     public ResponseEntity<GetAllUsersResponse> getAllUsers() {
-        GetAllUsersResponse response = GetAllUsersResponse.builder()
-                .users(getAllUsersUseCase.getAllUsers())
-                .build();
-        return ResponseEntity.ok(response);
+        try {
+            GetAllUsersResponse response = GetAllUsersResponse.builder()
+                    .users(getAllUsersUseCase.getAllUsers())
+                    .build();
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
 /*    @DeleteMapping("{userId}")

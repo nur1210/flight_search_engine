@@ -1,6 +1,7 @@
 package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.*;
+import fontys.s3.backend.business.exception.InvalidFlightException;
 import fontys.s3.backend.domain.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -45,7 +46,11 @@ public class FlightsController {
     public ResponseEntity<Void> updateFlight(@PathVariable("flightId") long flightId,
                                              @RequestBody @Valid UpdateFlightRequest request) {
         request.setFlightId(flightId);
-        updateFlightUseCase.updateFlight(request);
+        try {
+            updateFlightUseCase.updateFlight(request);
+        } catch (InvalidFlightException e) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.noContent().build();
     }
 }

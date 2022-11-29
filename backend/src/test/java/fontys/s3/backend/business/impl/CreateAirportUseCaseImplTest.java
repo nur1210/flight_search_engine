@@ -12,10 +12,12 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.test.context.ContextConfiguration;
 
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
+@ContextConfiguration(classes = {CreateAirportUseCaseImpl.class})
 @ExtendWith(MockitoExtension.class)
 class CreateAirportUseCaseImplTest {
 
@@ -23,6 +25,7 @@ class CreateAirportUseCaseImplTest {
     AirportRepository airportRepository;
     @InjectMocks
     CreateAirportUseCaseImpl useCase;
+
 
     @BeforeEach
     public void setUp() {
