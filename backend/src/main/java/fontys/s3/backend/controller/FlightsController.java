@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.webjars.NotFoundException;
 
 import javax.validation.Valid;
 import java.util.Optional;
@@ -32,8 +33,12 @@ public class FlightsController {
 
     @DeleteMapping("{flightId}")
     public ResponseEntity<Void> deleteFlight(@PathVariable long flightId) {
-        deleteFlightUseCase.deleteFlight(flightId);
-        return ResponseEntity.noContent().build();
+        try {
+            deleteFlightUseCase.deleteFlight(flightId);
+            return ResponseEntity.noContent().build();
+        } catch (NotFoundException e){
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping()

@@ -3,6 +3,7 @@ package fontys.s3.backend.controller;
 import fontys.s3.backend.business.CreateUserUseCase;
 import fontys.s3.backend.business.GetAllUsersUseCase;
 import fontys.s3.backend.business.GetUserUseCase;
+import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
 import fontys.s3.backend.domain.CreateUserRequest;
 import fontys.s3.backend.domain.CreateUserResponse;
@@ -47,9 +48,8 @@ public class UsersController {
             GetAllUsersResponse response = GetAllUsersResponse.builder()
                     .users(getAllUsersUseCase.getAllUsers())
                     .build();
-
             return ResponseEntity.ok(response);
-        } catch (Exception e) {
+        } catch (UnauthorizedDataAccessException e) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }

@@ -1,10 +1,14 @@
 package fontys.s3.backend.controller;
 
+import fontys.s3.backend.business.CreateFlightUseCase;
+import fontys.s3.backend.business.DeleteFlightUseCase;
 import fontys.s3.backend.business.GetFlightUseCase;
 import fontys.s3.backend.business.UpdateFlightUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
+import fontys.s3.backend.domain.CreateFlightResponse;
 import fontys.s3.backend.domain.Flight;
 import fontys.s3.backend.domain.UpdateFlightRequest;
+import fontys.s3.backend.persistence.FlightRepository;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -14,10 +18,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
+import org.webjars.NotFoundException;
 
 import java.util.Optional;
 
@@ -32,13 +38,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 class FlightsControllerTest extends TestCase {
-
     @Autowired
     private MockMvc mockMvc;
     @MockBean
     private GetFlightUseCase getFlightUseCase;
     @MockBean
     private UpdateFlightUseCase updateFlightUseCase;
+    @MockBean
+    private DeleteFlightUseCase deleteFlightUseCase;
+    @MockBean
+    private CreateFlightUseCase createFlightUseCase;
     @Autowired
     private FlightsController flightsController;
     @Mock
@@ -85,11 +94,39 @@ class FlightsControllerTest extends TestCase {
     }
 
     @Test
-    void deleteFlight() {
+    void deleteFlightWithInvalidIdThrowsException() {
+        //TODO how to throw exception when a methode returns void
+        doThrow(NotFoundException.class).when(deleteFlightUseCase).deleteFlight(anyLong());
+
+        ResponseEntity<Void> response = flightsController.deleteFlight(anyLong());
+
+        assertThrows(NotFoundException.class, () -> deleteFlightUseCase.deleteFlight(anyLong()));
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    void deleteFlightWithValidIdReturn204() {
+        FlightRepository repository = mock(FlightRepository.class);
+        doNothing().when(deleteFlightUseCase).deleteFlight(anyLong());
+
+        ResponseEntity<Void> response = flightsController.deleteFlight(anyLong());
+
+        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        verify(repository, never()).existsById(anyLong());
+        verify(repository, never()).deleteById(anyLong());
     }
 
     @Test
     void createFlight() {
+        CreateFlightResponse response = CreateFlightResponse.builder().flightId(1L).build();
+        when(createFlightUseCase.createFlight(any())).thenReturn(response);
+
+        long expected = 1L;
+        ResponseEntity<CreateFlightResponse> actual = flightsController.createFlight(any());
+
+        assertEquals(actual.getBody().getFlightId(), expected);
+        assertEquals(actual.getStatusCode(), HttpStatus.CREATED);
+
     }
 
     @Test
