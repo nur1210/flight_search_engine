@@ -53,7 +53,7 @@ const SearchForm = () => {
                 Adults: 1,
                 Children: 0,
                 Infants: 0
-            });
+            }, {});
         }
     }, [isSubmitSuccessful, reset]);
 

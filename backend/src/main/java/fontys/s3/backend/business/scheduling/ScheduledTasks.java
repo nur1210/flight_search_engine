@@ -50,7 +50,7 @@ public class ScheduledTasks {
         }
     }
 
-    private FlightEntity getCheapestFlight(PriceAlertEntity priceAlert) {
+    FlightEntity getCheapestFlight(PriceAlertEntity priceAlert) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         GetAllFlightsFromOriginToDestinationRequest request = GetAllFlightsFromOriginToDestinationRequest.builder()
@@ -98,7 +98,7 @@ public class ScheduledTasks {
         return cheapestFlight;
     }
 
-    private void updatePriceAlert(PriceAlertEntity priceAlert, FlightEntity cheapestFlight) {
+    void updatePriceAlert(PriceAlertEntity priceAlert, FlightEntity cheapestFlight) {
         UpdatePriceAlertRequest request = UpdatePriceAlertRequest.builder()
                 .priceAlertId(priceAlert.getId())
                 .flight(cheapestFlight)
