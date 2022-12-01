@@ -7,7 +7,6 @@ import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -33,7 +32,7 @@ class ScheduledTasksTest {
     @Mock
     private UpdatePriceAlertUseCase updatePriceAlertUseCase;
     @Mock
-    private PriceAlertEntity priceAlert;
+    private static PriceAlertEntity priceAlert;
 
     @InjectMocks
     private ScheduledTasks scheduledTasks;
@@ -58,7 +57,6 @@ class ScheduledTasksTest {
 
 
     @Test
-    @DisplayName("Should not update the price alert when the flight price has not changed")
     void updatePriceAlertWhenFlightPriceHasNotChanged() {
 
         when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlert));
@@ -70,8 +68,12 @@ class ScheduledTasksTest {
 
     @Test
     void deletePriceAlertWhenFlightDateHasExpired() {
+        PriceAlertEntity priceAlertEntity =
+                PriceAlertEntity.builder()
+                        .dateFrom(new Date(System.currentTimeMillis() - 100000))
+                        .build();
 
-        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlert));
+        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlertEntity));
 
         scheduledTasks.checkForChangeInFlightPrice();
 
@@ -117,7 +119,6 @@ class ScheduledTasksTest {
     }
 
     @Test
-    @DisplayName("Should update the price alert when the current flight is null")
     void checkForChangeInFlightPriceWhenCurrentFlightIsNullThenUpdateThePriceAlert() {
 
         FlightEntity cheapestFlight = FlightEntity.builder().id(1).price(100).build();
@@ -131,8 +132,6 @@ class ScheduledTasksTest {
     }
 
     @Test
-    @DisplayName(
-            "Should update the price alert when the cheapest flight has a different price than the current flight")
     void
     checkForChangeInFlightPriceWhenCheapestFlightHasADifferentPriceThanCurrentFlightThenUpdateThePriceAlert() {
 

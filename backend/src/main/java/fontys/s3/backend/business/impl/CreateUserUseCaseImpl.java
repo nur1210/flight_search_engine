@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.CreateUserUseCase;
+import fontys.s3.backend.business.exception.InvalidCredentialsException;
 import fontys.s3.backend.domain.CreateUserRequest;
 import fontys.s3.backend.domain.CreateUserResponse;
 import fontys.s3.backend.persistence.UserRepository;
@@ -22,14 +23,16 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     @Override
     public CreateUserResponse createUser(CreateUserRequest request) {
-
+        if (Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))) {
+            throw new InvalidCredentialsException();
+        }
         UserEntity saveUser = saveNewUser(request);
         return CreateUserResponse.builder()
                 .userId(saveUser.getId())
                 .build();
     }
 
-    private UserEntity saveNewUser(CreateUserRequest request) {
+    UserEntity saveNewUser(CreateUserRequest request) {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         UserEntity newUser = UserEntity.builder()
                 .firstName(request.getFirstName())

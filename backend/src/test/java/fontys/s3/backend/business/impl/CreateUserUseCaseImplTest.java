@@ -1,6 +1,21 @@
 package fontys.s3.backend.business.impl;
 
-/*
+import fontys.s3.backend.business.exception.InvalidCredentialsException;
+import fontys.s3.backend.domain.CreateUserRequest;
+import fontys.s3.backend.domain.CreateUserResponse;
+import fontys.s3.backend.persistence.UserRepository;
+import fontys.s3.backend.persistence.entity.UserEntity;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 @ExtendWith(MockitoExtension.class)
 class CreateUserUseCaseImplTest {
 
@@ -14,22 +29,28 @@ class CreateUserUseCaseImplTest {
     private CreateUserUseCaseImpl createUserUseCase;
 
     @Test
-    @DisplayName("Should throw an exception when the email is already taken")
     void createUserWhenEmailIsAlreadyTakenThenThrowException() {
         CreateUserRequest request = CreateUserRequest.builder().email("test@test.com").build();
 
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(true);
 
-        ResponseStatusException exception =
+        InvalidCredentialsException exception =
                 assertThrows(
-                        ResponseStatusException.class, () -> createUserUseCase.createUser(request));
+                        InvalidCredentialsException.class, () -> createUserUseCase.createUser(request));
 
-        assertEquals("400 BAD_REQUEST \"Email already taken\"", exception.getMessage());
+        assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
     }
 
     @Test
-    @DisplayName("Should save the user when the email is not taken")
     void createUserWhenEmailIsNotTaken() {
+        UserEntity userEntity = UserEntity.builder()
+                .id(1L)
+                .firstName("firstName")
+                .lastName("lastName")
+                .email("email@email.com")
+                .password("password")
+                .build();
+
         CreateUserRequest request =
                 CreateUserRequest.builder()
                         .firstName("firstName")
@@ -39,13 +60,13 @@ class CreateUserUseCaseImplTest {
                         .build();
 
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(false);
+        when(userRepository.save(any())).thenReturn(userEntity);
 
         CreateUserResponse response = createUserUseCase.createUser(request);
 
         assertNotNull(response);
         assertEquals(1, response.getUserId());
 
-        verify(userRepository, times(1)).existsByEmail(request.getEmail());
         verify(userRepository, times(1)).save(any());
     }
-}*/
+}
