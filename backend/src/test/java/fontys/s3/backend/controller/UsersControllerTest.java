@@ -6,7 +6,7 @@ import fontys.s3.backend.business.impl.GetAllUsersUseCaseImpl;
 import fontys.s3.backend.domain.AccessToken;
 import fontys.s3.backend.domain.GetAllUsersResponse;
 import fontys.s3.backend.domain.User;
-import org.junit.jupiter.api.DisplayName;
+import fontys.s3.backend.persistence.entity.RoleEnum;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -19,20 +19,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.anyLong;
 import static org.mockito.ArgumentMatchers.anyString;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @SpringBootTest
 @AutoConfigureMockMvc
 class UsersControllerTest {
-@MockBean
-private AccessToken accessToken;
-
+    @MockBean
+    private AccessToken accessToken;
     @Mock
     private GetUserUseCase getUserUseCase;
     @Mock
@@ -41,20 +41,9 @@ private AccessToken accessToken;
     private UsersController usersController;
 
     @Test
-    @DisplayName("Should return 403 when the user is authenticated but does not have role admin")
-    void getAllUsersWhenUserIsAuthenticatedButDoesNotHaveRoleAdminThenReturn403() {
-    }
-
-    @Test
-    @DisplayName("Should return all users when the user is authenticated and has role admin")
-    void getAllUsersWhenUserIsAuthenticatedAndHasRoleAdminThenReturnAllUsers() {
-    }
-
-    @Test
     @WithMockUser(username = "test")
     void getAllUsersWhenUserIsNotAuthorized() {
         when(accessToken.hasRole(anyString())).thenReturn(false);
-        //TODO ask for help
         when(getAllUsersUseCase.getAllUsers()).thenThrow(new UnauthorizedDataAccessException("USER_IS_NOT_ADMIN"));
 
         ResponseEntity<GetAllUsersResponse> response = usersController.getAllUsers();
@@ -65,11 +54,15 @@ private AccessToken accessToken;
     @Test
     @WithMockUser(username = "test", roles = "{ADMIN}")
     void getAllUsersWhenUserIsAuthorized() {
-        when(accessToken.hasRole(anyString())).thenReturn(false);
+        //TODO help
+        List<User> users = mock(List.class);
+        when(accessToken.hasRole(RoleEnum.ADMIN.name())).thenReturn(true);
+        when(getAllUsersUseCase.getAllUsers()).thenReturn(users);
 
         ResponseEntity<GetAllUsersResponse> response = usersController.getAllUsers();
 
         assertEquals(HttpStatus.OK, response.getStatusCode());
+        verify(getAllUsersUseCase, times(1)).getAllUsers();
     }
 
     @Test

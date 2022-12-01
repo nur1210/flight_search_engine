@@ -33,6 +33,7 @@ public class UpdatePriceAlertUseCaseImpl implements UpdatePriceAlertUseCase {
         priceAlert.setCurrentFlight(flight);
         if (flight.getPrice() < priceAlert.getLowestPrice() || priceAlert.getLowestPrice() == 0) {
             priceAlert.setLowestPrice(flight.getPrice());
+            priceAlert.setCurrentFlight(flight);
         }
 
         priceAlertRepository.save(priceAlert);

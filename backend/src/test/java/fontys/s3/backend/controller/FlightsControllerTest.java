@@ -94,8 +94,8 @@ class FlightsControllerTest extends TestCase {
     }
 
     @Test
-    void deleteFlightWithInvalidIdThrowsException() {
-        //TODO how to throw exception when a methode returns void
+    void deleteFlightWithInvalidIdThrowsException() throws NotFoundException {
+
         doThrow(NotFoundException.class).when(deleteFlightUseCase).deleteFlight(anyLong());
 
         ResponseEntity<Void> response = flightsController.deleteFlight(anyLong());
