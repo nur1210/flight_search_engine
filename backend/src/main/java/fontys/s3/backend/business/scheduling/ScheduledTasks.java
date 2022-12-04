@@ -2,6 +2,7 @@ package fontys.s3.backend.business.scheduling;
 
 import fontys.s3.backend.business.exception.InvalidFlightException;
 import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
+import fontys.s3.backend.configuration.websocket.NotificationService;
 import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
@@ -21,12 +22,18 @@ import java.util.List;
 @Component
 @Slf4j
 public class ScheduledTasks {
+    private final PriceAlertRepository priceAlertRepository;
+    private final TequilaFlightsRepository flightInfoRepository;
+    private final UpdatePriceAlertUseCase updatePriceAlertUseCase;
+    private final NotificationService notificationService;
+
     @Autowired
-    private PriceAlertRepository priceAlertRepository;
-    @Autowired
-    private TequilaFlightsRepository flightInfoRepository;
-    @Autowired
-    private UpdatePriceAlertUseCase updatePriceAlertUseCase;
+    public ScheduledTasks(PriceAlertRepository priceAlertRepository, TequilaFlightsRepository flightInfoRepository, UpdatePriceAlertUseCase updatePriceAlertUseCase, NotificationService notificationService) {
+        this.priceAlertRepository = priceAlertRepository;
+        this.flightInfoRepository = flightInfoRepository;
+        this.updatePriceAlertUseCase = updatePriceAlertUseCase;
+        this.notificationService = notificationService;
+    }
 
     @Scheduled(fixedRate = 36000)
     public void checkForChangeInFlightPrice() {
@@ -45,7 +52,11 @@ public class ScheduledTasks {
             }
             else if (cheapestFlight.getPrice() != priceAlert.getCurrentFlight().getPrice()) {
                 updatePriceAlert(priceAlert, cheapestFlight);
-                //send email
+                for (var user : priceAlert.getUsers()) {
+                    notificationService.sendPrivateNotification(user.getEmail(),
+                            "Price alert for flight " + priceAlert.getFlyFrom() + " - " + priceAlert.getFlyTo() + " has changed!"
+                    );
+                }
             }
         }
     }

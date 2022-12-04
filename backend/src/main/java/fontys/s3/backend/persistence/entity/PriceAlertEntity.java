@@ -19,7 +19,7 @@ public class PriceAlertEntity {
     @Column(name = "id")
     private long id;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_price_alert",
             joinColumns = @JoinColumn(name = "user_id"),

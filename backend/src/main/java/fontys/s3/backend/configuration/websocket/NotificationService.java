@@ -19,7 +19,7 @@ public class NotificationService {
                 .text(text)
                 .build();
 
-        messagingTemplate.convertAndSend("/all/notification", notification);
+        messagingTemplate.convertAndSend("/topic/notifications", notification);
     }
 
     public void sendPrivateNotification(final String email, final String text) {
@@ -28,6 +28,6 @@ public class NotificationService {
                 .to(email)
                 .build();
 
-        messagingTemplate.convertAndSendToUser(email,"/specific/notification", notification);
+        messagingTemplate.convertAndSendToUser(email,"/topic/specific-notifications", notification);
     }
 }
