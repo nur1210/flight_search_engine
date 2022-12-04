@@ -1,5 +1,6 @@
 package fontys.s3.backend.business.impl;
 
+import fontys.s3.backend.business.impl.flight.DeleteFlightUseCaseImpl;
 import fontys.s3.backend.persistence.FlightRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

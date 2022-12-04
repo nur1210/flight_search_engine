@@ -1,9 +1,13 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.GetAirportByCityUseCase;
-import fontys.s3.backend.business.GetAirportByCordsUseCase;
-import fontys.s3.backend.business.GetAllFlightsFromOriginToDestinationUseCase;
-import fontys.s3.backend.domain.*;
+import fontys.s3.backend.business.usecase.airport.GetAirportByCityUseCase;
+import fontys.s3.backend.business.usecase.airport.GetAirportByCordsUseCase;
+import fontys.s3.backend.business.usecase.flight.GetAllFlightsFromOriginToDestinationUseCase;
+import fontys.s3.backend.domain.request.GetAirportByCityRequest;
+import fontys.s3.backend.domain.request.GetAirportByCordsRequest;
+import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
+import fontys.s3.backend.domain.response.GetAirportResponse;
+import fontys.s3.backend.domain.response.GetAllFlightsFromOriginToDestinationResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

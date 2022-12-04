@@ -1,8 +1,9 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.exception.InvalidCredentialsException;
-import fontys.s3.backend.domain.CreateUserRequest;
-import fontys.s3.backend.domain.CreateUserResponse;
+import fontys.s3.backend.business.impl.user.CreateUserUseCaseImpl;
+import fontys.s3.backend.domain.request.CreateUserRequest;
+import fontys.s3.backend.domain.response.CreateUserResponse;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.UserEntity;
 import org.junit.jupiter.api.Test;

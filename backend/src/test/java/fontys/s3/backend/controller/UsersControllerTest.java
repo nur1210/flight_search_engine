@@ -1,11 +1,11 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.GetUserUseCase;
+import fontys.s3.backend.business.usecase.user.GetUserUseCase;
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
-import fontys.s3.backend.business.impl.GetAllUsersUseCaseImpl;
-import fontys.s3.backend.domain.AccessToken;
-import fontys.s3.backend.domain.GetAllUsersResponse;
-import fontys.s3.backend.domain.User;
+import fontys.s3.backend.business.impl.user.GetAllUsersUseCaseImpl;
+import fontys.s3.backend.domain.model.AccessToken;
+import fontys.s3.backend.domain.response.GetAllUsersResponse;
+import fontys.s3.backend.domain.model.User;
 import fontys.s3.backend.persistence.entity.RoleEnum;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

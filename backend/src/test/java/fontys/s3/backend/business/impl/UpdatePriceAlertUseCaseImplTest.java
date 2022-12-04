@@ -1,7 +1,8 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.exception.InvalidPriceAlertException;
-import fontys.s3.backend.domain.UpdatePriceAlertRequest;
+import fontys.s3.backend.business.impl.pricealert.UpdatePriceAlertUseCaseImpl;
+import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;

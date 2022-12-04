@@ -1,13 +1,13 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.CreateFlightUseCase;
-import fontys.s3.backend.business.DeleteFlightUseCase;
-import fontys.s3.backend.business.GetFlightUseCase;
-import fontys.s3.backend.business.UpdateFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.CreateFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.DeleteFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.GetFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.UpdateFlightUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
-import fontys.s3.backend.domain.CreateFlightResponse;
-import fontys.s3.backend.domain.Flight;
-import fontys.s3.backend.domain.UpdateFlightRequest;
+import fontys.s3.backend.domain.response.CreateFlightResponse;
+import fontys.s3.backend.domain.model.Flight;
+import fontys.s3.backend.domain.request.UpdateFlightRequest;
 import fontys.s3.backend.persistence.FlightRepository;
 import junit.framework.TestCase;
 import org.junit.jupiter.api.BeforeEach;

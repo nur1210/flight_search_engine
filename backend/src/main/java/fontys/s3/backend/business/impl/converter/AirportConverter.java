@@ -1,6 +1,6 @@
 package fontys.s3.backend.business.impl.converter;
 
-import fontys.s3.backend.domain.Airport;
+import fontys.s3.backend.domain.model.Airport;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 
 public final class AirportConverter {

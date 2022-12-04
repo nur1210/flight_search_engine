@@ -1,8 +1,9 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
-import fontys.s3.backend.domain.AccessToken;
-import fontys.s3.backend.domain.User;
+import fontys.s3.backend.business.impl.user.GetUserUseCaseImpl;
+import fontys.s3.backend.domain.model.AccessToken;
+import fontys.s3.backend.domain.model.User;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;
 import fontys.s3.backend.persistence.entity.UserEntity;

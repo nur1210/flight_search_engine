@@ -1,6 +1,6 @@
 package fontys.s3.backend.business.scheduling;
 
-import fontys.s3.backend.business.UpdatePriceAlertUseCase;
+import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
@@ -123,7 +123,12 @@ class ScheduledTasksTest {
 
         FlightEntity cheapestFlight = FlightEntity.builder().id(1).price(100).build();
 
-        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlert));
+        PriceAlertEntity priceAlertEntity =
+                PriceAlertEntity.builder()
+                        .dateFrom(new Date(System.currentTimeMillis() + 100000))
+                        .build();
+
+        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlertEntity));
         when(flightInfoRepository.getFlightsInfo(any())).thenReturn(List.of(cheapestFlight));
 
         scheduledTasks.checkForChangeInFlightPrice();

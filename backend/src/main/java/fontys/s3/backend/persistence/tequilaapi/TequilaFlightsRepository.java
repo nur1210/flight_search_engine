@@ -1,6 +1,6 @@
 package fontys.s3.backend.persistence.tequilaapi;
 
-import fontys.s3.backend.domain.FlightParams;
+import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 
 import java.util.List;

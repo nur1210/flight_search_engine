@@ -1,6 +1,6 @@
 package fontys.s3.backend.persistence.tequilaapi.impl;
 
-import fontys.s3.backend.domain.FlightParams;
+import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;

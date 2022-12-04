@@ -1,7 +1,8 @@
 package fontys.s3.backend.business.impl;
 
-import fontys.s3.backend.domain.CreateAirportRequest;
-import fontys.s3.backend.domain.CreateAirportResponse;
+import fontys.s3.backend.business.impl.airport.CreateAirportUseCaseImpl;
+import fontys.s3.backend.domain.request.CreateAirportRequest;
+import fontys.s3.backend.domain.response.CreateAirportResponse;
 import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import org.junit.jupiter.api.Assertions;

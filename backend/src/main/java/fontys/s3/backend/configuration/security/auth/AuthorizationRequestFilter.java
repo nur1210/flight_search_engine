@@ -1,8 +1,8 @@
 package fontys.s3.backend.configuration.security.auth;
 
-import fontys.s3.backend.business.AccessTokenDecoder;
+import fontys.s3.backend.business.usecase.token.AccessTokenDecoder;
 import fontys.s3.backend.business.exception.InvalidAccessTokenException;
-import fontys.s3.backend.domain.AccessToken;
+import fontys.s3.backend.domain.model.AccessToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

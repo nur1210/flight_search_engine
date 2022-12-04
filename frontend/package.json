@@ -15,6 +15,7 @@
     "bootstrap": "^5.2.2",
     "chart.js": "^4.0.1",
     "chroma-js": "^2.4.2",
+    "net": "^1.0.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-bootstrap": "^2.5.0",
@@ -26,6 +27,8 @@
     "react-router-dom": "^6.4.1",
     "react-scripts": "^5.0.1",
     "reactstrap": "^9.1.4",
+    "sockjs-client": "^1.6.1",
+    "stompjs": "^2.3.3",
     "web-vitals": "^2.1.4",
     "zod": "^3.19.1"
   },

@@ -1,6 +1,6 @@
 package fontys.s3.backend.business.impl.converter;
 
-import fontys.s3.backend.domain.Flight;
+import fontys.s3.backend.domain.model.Flight;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 
 public final class FlightConverter {

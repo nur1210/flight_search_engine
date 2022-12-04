@@ -1,7 +1,8 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.exception.InvalidAccessTokenException;
-import fontys.s3.backend.domain.AccessToken;
+import fontys.s3.backend.business.impl.token.AccessTokenEncoderDecoderImpl;
+import fontys.s3.backend.domain.model.AccessToken;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

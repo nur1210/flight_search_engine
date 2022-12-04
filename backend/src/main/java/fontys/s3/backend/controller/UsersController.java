@@ -1,14 +1,14 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.CreateUserUseCase;
-import fontys.s3.backend.business.GetAllUsersUseCase;
-import fontys.s3.backend.business.GetUserUseCase;
+import fontys.s3.backend.business.usecase.user.CreateUserUseCase;
+import fontys.s3.backend.business.usecase.user.GetAllUsersUseCase;
+import fontys.s3.backend.business.usecase.user.GetUserUseCase;
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
-import fontys.s3.backend.domain.CreateUserRequest;
-import fontys.s3.backend.domain.CreateUserResponse;
-import fontys.s3.backend.domain.GetAllUsersResponse;
-import fontys.s3.backend.domain.User;
+import fontys.s3.backend.domain.request.CreateUserRequest;
+import fontys.s3.backend.domain.response.CreateUserResponse;
+import fontys.s3.backend.domain.response.GetAllUsersResponse;
+import fontys.s3.backend.domain.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

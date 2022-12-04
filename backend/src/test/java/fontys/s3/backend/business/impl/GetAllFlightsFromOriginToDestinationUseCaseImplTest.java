@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
-import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
+import fontys.s3.backend.business.impl.flight.GetAllFlightsFromOriginToDestinationUseCaseImpl;
+import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.extension.ExtendWith;

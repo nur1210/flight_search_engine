@@ -1,6 +1,6 @@
 package fontys.s3.backend.configuration.security.auth;
 
-import fontys.s3.backend.domain.AccessToken;
+import fontys.s3.backend.domain.model.AccessToken;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Scope;

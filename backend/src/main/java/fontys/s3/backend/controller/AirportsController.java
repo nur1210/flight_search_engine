@@ -1,7 +1,11 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.*;
-import fontys.s3.backend.domain.*;
+import fontys.s3.backend.business.usecase.airport.*;
+import fontys.s3.backend.domain.model.Airport;
+import fontys.s3.backend.domain.request.CreateAirportRequest;
+import fontys.s3.backend.domain.request.UpdateAirportRequest;
+import fontys.s3.backend.domain.response.CreateAirportResponse;
+import fontys.s3.backend.domain.response.GetAllAirportsResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

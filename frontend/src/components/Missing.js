@@ -1,13 +1,72 @@
 import SoftBox from "./SoftBox";
-import {Card, Grid, Menu, MenuItem, MenuList, Paper} from "@mui/material";
+import {Card, Grid, MenuItem, MenuList, Paper} from "@mui/material";
 import SoftButton from "./SoftButton";
 import SoftInput from "./SoftInput";
 import SoftTypography from "./SoftTypography";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
-import AdultsInput from "./AdultsInput";
+import SockJS from 'sockjs-client';
+import Stomp from 'stompjs';
+import {useEffect, useState} from "react";
+import SendMessagePlaceholder from "./SendMessagePlaceholder";
+import ChatMessagesPlaceholder from "./ChatMessagesPlaceholder";
+import useAuth from "../hooks/useAuth";
 
+const ENDPOINT = "http://localhost:8080/ws";
 
 const Missing = () => {
+    const [stompClient, setStompClient] = useState();
+    const [messagesReceived, setMessagesReceived] = useState([]);
+    const {auth} = useAuth();
+
+
+    useEffect(() => {
+        // use SockJS as the websocket client
+        const socket = SockJS(ENDPOINT);
+        // Set stomp to use websockets
+        const stompClient = Stomp.over(socket);
+        // connect to the backend
+        stompClient.connect({}, () => {
+            // subscribe to the backend
+            stompClient.subscribe('/topic/notifications', onMessageReceived, {id: auth.email}, (data) => {
+            });
+        });
+
+        const socketPrivate = SockJS(ENDPOINT);
+
+        const stompClientPrivate = Stomp.over(socketPrivate);
+        // connect to the backend
+        stompClientPrivate.connect({email: auth.email}, () => {
+            // subscribe to the backend
+            stompClientPrivate.subscribe(`/user/topic/specific-notifications`, onMessageReceivedPrivate, {id: auth.email}, (data) => {
+            });
+        });
+
+        // maintain the client for sending and receiving
+        setStompClient(stompClient);
+    }, []);
+
+    // send the data using Stomp
+    const sendMessage = (newMessage) => {
+        const payload = { 'to': newMessage.to, 'text': newMessage.text };
+        if (payload.to !== '') {
+            stompClient.send('/app/specific-notification', {}, JSON.stringify({'text':payload.text, 'to':payload.to}));
+        } else {
+            stompClient.send(`/app/notification`, {}, JSON.stringify({'text':payload.text}));
+        }
+    };
+
+    // display the received data
+    const onMessageReceived = (data) => {
+        const message = JSON.parse(data.body);
+        setMessagesReceived(messagesReceived => [...messagesReceived, message]);
+    };
+
+    const onMessageReceivedPrivate = (data) => {
+        const message = JSON.parse(data.body);
+        setMessagesReceived(messagesReceived => [...messagesReceived, message]);
+    };
+
+
     return (/*
         <article style={{ padding: "100px" }}>
             <h1>Oops!</h1>
@@ -22,6 +81,11 @@ const Missing = () => {
         <BasicLayout
             title={"Let the journey begin"}
         >
+            <div>
+                <SendMessagePlaceholder onMessageSend={sendMessage} />
+                <br></br>
+                <ChatMessagesPlaceholder messagesReceived={messagesReceived} />
+            </div>
             <Grid
                 container
                 direction="column"

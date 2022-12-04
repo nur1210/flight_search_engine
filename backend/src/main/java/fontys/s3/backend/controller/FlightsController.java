@@ -1,8 +1,14 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.*;
 import fontys.s3.backend.business.exception.InvalidFlightException;
-import fontys.s3.backend.domain.*;
+import fontys.s3.backend.business.usecase.flight.CreateFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.DeleteFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.GetFlightUseCase;
+import fontys.s3.backend.business.usecase.flight.UpdateFlightUseCase;
+import fontys.s3.backend.domain.model.Flight;
+import fontys.s3.backend.domain.request.CreateFlightRequest;
+import fontys.s3.backend.domain.request.UpdateFlightRequest;
+import fontys.s3.backend.domain.response.CreateFlightResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

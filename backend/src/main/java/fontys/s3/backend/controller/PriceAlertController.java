@@ -1,9 +1,9 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.CreatePriceAlertUseCase;
+import fontys.s3.backend.business.usecase.pricealert.CreatePriceAlertUseCase;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
-import fontys.s3.backend.domain.CreatePriceAlertRequest;
-import fontys.s3.backend.domain.CreatePriceAlertResponse;
+import fontys.s3.backend.domain.request.CreatePriceAlertRequest;
+import fontys.s3.backend.domain.response.CreatePriceAlertResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

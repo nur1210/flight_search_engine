@@ -1,9 +1,10 @@
 package fontys.s3.backend.business.impl;
 
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
-import fontys.s3.backend.domain.AccessToken;
-import fontys.s3.backend.domain.CreatePriceAlertRequest;
-import fontys.s3.backend.domain.CreatePriceAlertResponse;
+import fontys.s3.backend.business.impl.pricealert.CreatePriceAlertUseCaseImpl;
+import fontys.s3.backend.domain.model.AccessToken;
+import fontys.s3.backend.domain.request.CreatePriceAlertRequest;
+import fontys.s3.backend.domain.response.CreatePriceAlertResponse;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.UserRepository;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;

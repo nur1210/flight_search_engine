@@ -1,6 +1,6 @@
 package fontys.s3.backend.business.impl.converter;
 
-import fontys.s3.backend.domain.User;
+import fontys.s3.backend.domain.model.User;
 import fontys.s3.backend.persistence.entity.UserEntity;
 
 public final class UserConverter {

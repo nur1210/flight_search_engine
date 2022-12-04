@@ -1,10 +1,10 @@
 package fontys.s3.backend.business.scheduling;
 
-import fontys.s3.backend.business.UpdatePriceAlertUseCase;
 import fontys.s3.backend.business.exception.InvalidFlightException;
-import fontys.s3.backend.domain.FlightParams;
-import fontys.s3.backend.domain.GetAllFlightsFromOriginToDestinationRequest;
-import fontys.s3.backend.domain.UpdatePriceAlertRequest;
+import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
+import fontys.s3.backend.domain.model.FlightParams;
+import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
+import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;

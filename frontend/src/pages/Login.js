@@ -47,6 +47,7 @@ const Login = () => {
             setPwd('');
             navigate(from, { replace: true });
         } catch (err) {
+            console.log(err);
             if (err.response.status === 400) {
                 setErrMsg('Incorrect Email or Password');
             } else if (err.response.status === 401) {

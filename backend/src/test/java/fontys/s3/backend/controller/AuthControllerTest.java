@@ -1,12 +1,12 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.LoginUseCase;
-import fontys.s3.backend.business.LogoutUseCase;
-import fontys.s3.backend.business.RefreshTokenUseCase;
+import fontys.s3.backend.business.usecase.auth.LoginUseCase;
+import fontys.s3.backend.business.usecase.auth.LogoutUseCase;
+import fontys.s3.backend.business.usecase.token.RefreshTokenUseCase;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.RefreshTokenService;
-import fontys.s3.backend.domain.LoginRequest;
-import fontys.s3.backend.domain.LoginResponse;
+import fontys.s3.backend.domain.request.LoginRequest;
+import fontys.s3.backend.domain.response.LoginResponse;
 import fontys.s3.backend.persistence.entity.RefreshTokenEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

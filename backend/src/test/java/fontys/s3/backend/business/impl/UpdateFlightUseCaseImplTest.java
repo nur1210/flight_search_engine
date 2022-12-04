@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl;
 
-import fontys.s3.backend.domain.UpdateFlightRequest;
+import fontys.s3.backend.business.impl.flight.UpdateFlightUseCaseImpl;
+import fontys.s3.backend.domain.request.UpdateFlightRequest;
 import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
