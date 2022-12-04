@@ -18,22 +18,20 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class ScheduledTasksTest {
     @Mock
+    private static PriceAlertEntity priceAlert;
+    @Mock
     private PriceAlertRepository priceAlertRepository;
     @Mock
     private TequilaFlightsRepository flightInfoRepository;
     @Mock
     private UpdatePriceAlertUseCase updatePriceAlertUseCase;
-    @Mock
-    private static PriceAlertEntity priceAlert;
-
     @InjectMocks
     private ScheduledTasks scheduledTasks;
 
@@ -43,8 +41,8 @@ class ScheduledTasksTest {
                 .id(1)
                 .flyFrom("AMS")
                 .flyTo("BCN")
-                .dateFrom(new Date())
-                .dateTo(new Date())
+                .dateFrom(new Date(System.currentTimeMillis() + 100000))
+                .dateTo(new Date(System.currentTimeMillis() + 100001))
                 .flightType("oneway")
                 .passengers(1)
                 .cabinClass("economy")
@@ -59,7 +57,9 @@ class ScheduledTasksTest {
     @Test
     void updatePriceAlertWhenFlightPriceHasNotChanged() {
 
+        FlightEntity cheapestFlight = FlightEntity.builder().id(2).availableSeats(2).price(100).build();
         when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlert));
+        when(flightInfoRepository.getFlightsInfo(any())).thenReturn(List.of(cheapestFlight));
 
         scheduledTasks.checkForChangeInFlightPrice();
 
@@ -121,12 +121,22 @@ class ScheduledTasksTest {
     @Test
     void checkForChangeInFlightPriceWhenCurrentFlightIsNullThenUpdateThePriceAlert() {
 
-        FlightEntity cheapestFlight = FlightEntity.builder().id(1).price(100).build();
+        FlightEntity cheapestFlight = FlightEntity.builder().id(1).availableSeats(2).price(100).build();
 
-        PriceAlertEntity priceAlertEntity =
-                PriceAlertEntity.builder()
-                        .dateFrom(new Date(System.currentTimeMillis() + 100000))
-                        .build();
+        PriceAlertEntity priceAlertEntity = PriceAlertEntity.builder()
+                .id(1)
+                .flyFrom("AMS")
+                .flyTo("BCN")
+                .dateFrom(new Date(System.currentTimeMillis() + 100000))
+                .dateTo(new Date(System.currentTimeMillis() + 100001))
+                .flightType("oneway")
+                .passengers(1)
+                .cabinClass("economy")
+                .currency("EUR")
+                .locale("en")
+                .lowestPrice(0)
+                .currentFlight(null)
+                .build();
 
         when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlertEntity));
         when(flightInfoRepository.getFlightsInfo(any())).thenReturn(List.of(cheapestFlight));
@@ -140,14 +150,9 @@ class ScheduledTasksTest {
     void
     checkForChangeInFlightPriceWhenCheapestFlightHasADifferentPriceThanCurrentFlightThenUpdateThePriceAlert() {
 
-        PriceAlertEntity priceAlertEntity =
-                PriceAlertEntity.builder()
-                        .dateFrom(new Date(System.currentTimeMillis() + 100000))
-                        .build();
+        FlightEntity cheapestFlight = FlightEntity.builder().id(2).availableSeats(2).price(200).build();
 
-        FlightEntity cheapestFlight = FlightEntity.builder().id(2).price(200).build();
-
-        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlertEntity));
+        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlert));
 
         when(flightInfoRepository.getFlightsInfo(any())).thenReturn(List.of(cheapestFlight));
 
