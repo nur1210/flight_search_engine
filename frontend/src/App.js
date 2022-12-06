@@ -10,6 +10,7 @@ import RequireAuth from "./components/RequireAuth";
 import Unauthorized from "./components/Unauthorized";
 import Missing from "./components/Missing";
 import SignUp from "./layouts/authentication/sign-up";
+import Profile from "./components/Profile";
 
 const ROLES = {
     'User': "USER",
@@ -33,6 +34,7 @@ function App() {
                     </Route>
 
                     <Route path="/m" element={<Missing />} />
+                    <Route path="/p" element={<Profile />} />
                 </Route>
             </Routes>
     );

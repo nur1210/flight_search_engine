@@ -52,7 +52,7 @@ import {
   setTransparentNavbar,
   setMiniSidenav,
   setOpenConfigurator,
-} from "context";
+} from "context/UIProvider";
 
 // Images
 import team2 from "assets/images/team-2.jpg";

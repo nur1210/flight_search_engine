@@ -1,12 +1,13 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.usecase.user.*;
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
+import fontys.s3.backend.business.usecase.user.*;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
+import fontys.s3.backend.domain.model.User;
 import fontys.s3.backend.domain.request.CreateUserRequest;
+import fontys.s3.backend.domain.request.UpdateUserRequest;
 import fontys.s3.backend.domain.response.CreateUserResponse;
 import fontys.s3.backend.domain.response.GetAllUsersResponse;
-import fontys.s3.backend.domain.model.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -53,8 +54,8 @@ public class UsersController {
     }
     @IsAuthenticated
     @RolesAllowed({"ROLE_ADMIN"})
-    @DeleteMapping("{Id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable(value = "Id") long userId) {
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable(value = "id") long userId) {
         deleteUserUseCase.deleteUser(userId);
         return ResponseEntity.noContent().build();
     }
@@ -65,10 +66,9 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-/*    @PutMapping("{id}")
-    public ResponseEntity<User> updateUser(@PathVariable("id") long id, @RequestBody @Valid UpdateUserRequest request) {
-        request.setId(id);
-        updateUserUseCase.updateUser(request);
+    @PutMapping("{id}")
+    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody @Valid UpdateUserRequest request) {
+        updateUserUseCase.updateUser(id, request);
         return ResponseEntity.noContent().build();
-    }*/
+    }
 }

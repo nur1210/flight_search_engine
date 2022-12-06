@@ -108,7 +108,7 @@ function DefaultNavbar({transparent, light, action}) {
                                 <>
                                     <DefaultNavbarLink icon="donut_large" name="dashboard" route="/users"
                                                        light={light}/>
-                                    <DefaultNavbarLink icon="person" name="profile" route="/m" light={light}/>
+                                    <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
                                                        light={light}/>
                                 </> :
