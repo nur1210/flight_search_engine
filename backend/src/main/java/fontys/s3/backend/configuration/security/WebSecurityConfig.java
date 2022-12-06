@@ -25,8 +25,7 @@ import java.util.List;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig {
-    final
-    UserDetailsServiceImpl userDetailsService;
+    final UserDetailsServiceImpl userDetailsService;
     private final AuthEntryPointJwt unauthorizedHandler;
 
     @Autowired

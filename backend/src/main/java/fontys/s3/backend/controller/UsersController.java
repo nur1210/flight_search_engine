@@ -1,9 +1,6 @@
 package fontys.s3.backend.controller;
 
-import fontys.s3.backend.business.usecase.user.DeleteUserUseCase;
-import fontys.s3.backend.business.usecase.user.CreateUserUseCase;
-import fontys.s3.backend.business.usecase.user.GetAllUsersUseCase;
-import fontys.s3.backend.business.usecase.user.GetUserUseCase;
+import fontys.s3.backend.business.usecase.user.*;
 import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
 import fontys.s3.backend.configuration.security.isauthenticated.IsAuthenticated;
 import fontys.s3.backend.domain.request.CreateUserRequest;
@@ -28,7 +25,7 @@ public class UsersController {
     private final GetAllUsersUseCase getAllUsersUseCase;
     private final DeleteUserUseCase deleteUserUseCase;
     private final CreateUserUseCase createUserUseCase;
-    //private final UpdateUserUseCase updateUserUseCase;
+    private final UpdateUserUseCase updateUserUseCase;
 
     @IsAuthenticated
     @RolesAllowed({"ROLE_USER", "ROLE_ADMIN"})
