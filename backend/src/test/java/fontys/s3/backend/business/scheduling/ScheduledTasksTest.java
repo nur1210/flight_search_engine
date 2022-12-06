@@ -50,6 +50,7 @@ class ScheduledTasksTest {
                 .locale("en")
                 .lowestPrice(100)
                 .currentFlight(FlightEntity.builder().id(1).price(100).build())
+                .users(Collections.emptyList())
                 .build();
     }
 

@@ -42,9 +42,9 @@ public class WebSecurityConfig {
                 .exceptionHandling(ex -> ex.authenticationEntryPoint(unauthorizedHandler))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeRequests(auth -> auth
-                        .mvcMatchers("/", "/ws/**").permitAll()
+                        /*.mvcMatchers("/", "/ws/**").permitAll()
                         .antMatchers("/auth/login", "/auth/refresh, /tequila/**").permitAll()
-                        .antMatchers("/users").hasRole("ADMIN")
+                        .antMatchers("/users").hasRole("ADMIN")*/
                         .anyRequest().permitAll())
                 .formLogin(formLogin -> formLogin.loginPage("http://localhost:3000/Login"))
                 .authenticationProvider(authenticationProvider())

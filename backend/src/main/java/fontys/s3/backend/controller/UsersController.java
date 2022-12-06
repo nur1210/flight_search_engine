@@ -1,5 +1,6 @@
 package fontys.s3.backend.controller;
 
+import fontys.s3.backend.business.usecase.user.DeleteUserUseCase;
 import fontys.s3.backend.business.usecase.user.CreateUserUseCase;
 import fontys.s3.backend.business.usecase.user.GetAllUsersUseCase;
 import fontys.s3.backend.business.usecase.user.GetUserUseCase;
@@ -25,7 +26,7 @@ import java.util.Optional;
 public class UsersController {
     private final GetUserUseCase getUserUseCase;
     private final GetAllUsersUseCase getAllUsersUseCase;
-    //private final DeleteUserUseCase deleteUserUseCase;
+    private final DeleteUserUseCase deleteUserUseCase;
     private final CreateUserUseCase createUserUseCase;
     //private final UpdateUserUseCase updateUserUseCase;
 
@@ -53,12 +54,13 @@ public class UsersController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
     }
-
-/*    @DeleteMapping("{userId}")
-    public ResponseEntity<Void> deleteUser(@PathVariable int userId) {
+    @IsAuthenticated
+    @RolesAllowed({"ROLE_ADMIN"})
+    @DeleteMapping("{Id}")
+    public ResponseEntity<Void> deleteUser(@PathVariable(value = "Id") long userId) {
         deleteUserUseCase.deleteUser(userId);
         return ResponseEntity.noContent().build();
-    }*/
+    }
 
     @PostMapping()
     public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {

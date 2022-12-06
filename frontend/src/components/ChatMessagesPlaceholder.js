@@ -1,8 +1,19 @@
+import SoftAlert from "./SoftAlert";
+import {Grid} from "@mui/material";
+
 const MessageReceived = (props) => {
     return (
-        <div>
-            {props.text}
-        </div>
+            <div>
+                <Grid
+                    container
+                    direction="row"
+                    justifyContent="flex-end"
+                    alignItems="flex-end"
+                >
+                    <SoftAlert dismissible={true}>{props.text}</SoftAlert>
+                </Grid>
+{/*                {props.text}*/}
+            </div>
     );
 };
 
@@ -10,9 +21,12 @@ const ChatMessagesPlaceholder = (props) => {
     console.log(props);
     return (
         <>
-            <h2>Messages:</h2>
+{/*
+            <h2>Messages:</h2>props
+*/}
             {props.messagesReceived.map((message, i) => {
-                return <MessageReceived key={i} text={message.text} />
+                return <MessageReceived key={i} text={message.text}/>
+                
             })}
         </>
     );

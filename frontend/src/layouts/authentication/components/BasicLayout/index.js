@@ -29,6 +29,7 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
 import Footer from "layouts/authentication/components/Footer";
+import Notification from "../../../../components/Notification";
 
 function BasicLayout({ title, description, children }) {
   return (

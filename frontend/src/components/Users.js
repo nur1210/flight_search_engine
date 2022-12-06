@@ -1,8 +1,9 @@
 import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
-import {TableRow, TableBody, Paper, Table, TableCell, TableContainer, TableHead} from "@mui/material";
+import {TableRow, TableBody, Table, TableCell, TableContainer} from "@mui/material";
 import SoftTypography from "./SoftTypography";
+import SoftButton from "./SoftButton";
 
 
 const Users = () => {
@@ -31,6 +32,16 @@ const Users = () => {
         };
     }, []);
 
+    const handleDelete = async (id) => {
+        try {
+            await axiosPrivate.delete(`/users/${id}`).then(
+                setUsers(users.filter((user) => user.id !== id))
+            );
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
     return (
         <BasicLayout title="Users">
             <TableContainer sx={{mt: 5}}>
@@ -51,6 +62,11 @@ const Users = () => {
                                         Email
                                     </SoftTypography>
                                     </TableCell>
+                                <TableCell align="center">
+                                    <SoftTypography fontWeight="bold" fontSize={18}>
+                                        Action
+                                    </SoftTypography>
+                                </TableCell>
                             </TableRow>
                         <TableBody>
                             {users && users?.map((user) => (
@@ -61,6 +77,11 @@ const Users = () => {
                                     <TableCell component="th" scope="row" align="center">{user?.firstName}</TableCell>
                                     <TableCell component="th" scope="row" align="center">{user?.lastName}</TableCell>
                                     <TableCell component="th" scope="row" align="center">{user?.email}</TableCell>
+                                    <TableCell component="th" scope="row" align="center">
+                                        <SoftButton onClick={() => handleDelete(user?.id)}>
+                                            Delete
+                                        </SoftButton>
+                                    </TableCell>
                                 </TableRow>
                             ))}
                         </TableBody>
