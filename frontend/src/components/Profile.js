@@ -5,16 +5,8 @@ import useAuth from "../hooks/useAuth";
 import UseAxiosPrivate from "../hooks/useAxiosPrivate";
 import SoftButton from "./SoftButton";
 
-
-const getUser = async (id) => {
-    return {}
-}
-
-
 const Profile = () => {
     const [user, setUser] = useState(null);
-    const [currentPassword, setCurrentPassword] = useState(null);
-    const [newPassword, setNewPassword] = useState(null);
     const {auth} = useAuth();
     const axiosPrivate = UseAxiosPrivate();
 

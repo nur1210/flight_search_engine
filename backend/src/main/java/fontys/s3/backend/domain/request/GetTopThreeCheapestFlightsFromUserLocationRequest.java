@@ -1,58 +1,61 @@
 package fontys.s3.backend.domain.request;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
-
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class GetAllFlightsFromOriginToDestinationRequest {
+public class GetTopThreeCheapestFlightsFromUserLocationRequest {
 
-    @NotBlank
     @JsonProperty("fly_from")
     public String flyFrom;
 
-    @NotBlank
-    @JsonProperty("fly_to")
-    public String flyTo;
-
-    @NotBlank
     @JsonProperty("date_from")
     public String dateFrom;
 
-    @NotBlank
     @JsonProperty("date_to")
     public String dateTo;
 
-    @NotBlank
     @JsonProperty("return_from")
     public String returnFrom;
 
-    @NotBlank
     @JsonProperty("return_to")
     public String returnTo;
+    @Min(1)
+    @JsonProperty("nights_in_dst_from")
+    public long minNightsInDestination;
+    @Max(9)
+    @JsonProperty("nights_in_dst_to")
+    public long maxNightsInDestination;
 
-    @NotBlank
     @JsonProperty("flight_type")
     public String flightType;
+    @JsonProperty("ret_from_diff_city")
+    public boolean returnFromDifferentCity;
+    @JsonProperty("ret_to_diff_city")
+    public boolean returnToDifferentCity;
+    @JsonProperty("one_for_city")
+    public long resultsPerDestination;
 
     @Min(1)
     @Max(9)
     public long adults;
-
-    @NotBlank
     @JsonProperty("selected_cabins")
     public String selectedCabins;
+    @JsonProperty("only_working_days")
+    public boolean onlyWorkingDays;
+    @JsonProperty("only_weekends")
+    public boolean onlyWeekends;
 
-    @NotBlank
     @JsonProperty("curr")
     public String currency;
-    @NotBlank
     @JsonProperty("locale")
     public String language;
     @Min(0)
@@ -63,4 +66,7 @@ public class GetAllFlightsFromOriginToDestinationRequest {
     @Max(2)
     @JsonProperty("max_sector_stopovers")
     public long maxSectorStopovers;
+    @Min(1)
+    @Max(20)
+    public long limit;
 }

@@ -27,11 +27,15 @@ import java.util.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
+    private static final Logger log = LoggerFactory.getLogger(TequilaFlightsRepositoryImpl.class);
     @Value("${tequila.api.key}")
     private String apiKey;
     private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&flight_type={flightType}&adults={adults}&selected_cabins={selectedCabins}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}";
+    private String url2 = "https://api.tequila.kiwi.com/v2/search?fly_from={flyFrom}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&nights_in_dst_from={minNightsInDestination}&nights_in_dst_to={maxNightsInDestination}&flight_type={flightType}&ret_from_diff_city={returnFromDifferentCity}&ret_to_diff_city={returnToDifferentCity}&one_for_city={resultsPerDestination}&adults={adults}&selected_cabins={selectedCabins}&only_working_days={onlyWorkingDays}&only_weekends={onlyWeekends}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}&limit={limit}";
+    private String baseUrl = "https://tequila-api.kiwi.com/v2/search?";
+    private RestTemplate restTemplate;
+    private Map<String, String> map;
 
-    private static final Logger log = LoggerFactory.getLogger(TequilaFlightsRepositoryImpl.class);
     @Override
     public List<FlightEntity> getFlightsInfo(FlightParams params) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
@@ -41,22 +45,27 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
 
             if (new Date().after(dateFrom)) {
                 throw new IllegalArgumentException("DATE_IS_IN_THE_PAST");
-            }
-            else if (dateFrom.after(dateTo)) {
+            } else if (dateFrom.after(dateTo)) {
                 throw new IllegalArgumentException("RETURN_DATE_IS_BEFORE_DEPARTURE_DATE");
             }
-        }
-        catch (ParseException e) {
+        } catch (ParseException e) {
             log.error("DateFrom is not in the correct format");
             return Collections.emptyList();
         }
 
-        RestTemplate restTemplate = new RestTemplate();
+        restTemplate = new RestTemplate();
+        map = new HashMap<>();
 
-                Map<String, Object> map = new HashMap<>();
+/*        var uri = ToStringUtil.toStringWithAttributes(params, ToStringStyle.DEFAULT_STYLE);
+        uri = uri.substring(uri.indexOf("[") + 1, uri.indexOf("]")).replaceAll(",", "&");
+        var url = baseUrl + uri;*/
 
-        ReflectionUtils.doWithFields(params.getClass(), field ->
-                map.put(field.getName(), field.get(params)));
+        ReflectionUtils.doWithFields(params.getClass(), field -> {
+                    if (field.get(params) != null) {
+                        map.put(field.getName(), field.get(params).toString());
+                    }
+                });
+
         try {
             List<FlightEntity> flights = new ArrayList<>();
 
@@ -64,14 +73,13 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
             headers.add("apikey", apiKey);
             HttpEntity<JSONToFlight> entity = new HttpEntity<>(headers);
             ResponseEntity<JSONToFlight> responseEntity = restTemplate.exchange(
-                    url,
+                    map.get("resultsPerDestination") != null ? url2 : url,
                     HttpMethod.GET,
                     entity,
                     JSONToFlight.class,
                     map);
 
             JSONToFlight flightInfo = responseEntity.getBody();
-
 
             for (var flight : Objects.requireNonNull(flightInfo).getData()) {
                 List<RouteEntity> routes = new ArrayList<>();

@@ -1,7 +1,7 @@
 import http from "../api/axios";
 
 const getAllFlights = async (origin, destination, departureDate, returnDate, flightType, adults, children, infants, travelClass) => {
-    return await http.get(`/tequila/flights?fly_from=${origin}&fly_to=${destination}&date_from=${departureDate}&date_to=${departureDate}&return_from=${returnDate}&return_to=${returnDate}&flight_type=${flightType}&adults=${(parseInt(adults) + parseInt(children) + parseInt(infants))}&selected_cabins=${travelClass}&curr=EUR&locale=en&max_stopovers=0&max_sector_stopovers=0`);
+    return await http.get(`/tequila/flights?flyFrom=${origin}&flyTo=${destination}&dateFrom=${departureDate}&dateTo=${departureDate}&returnFrom=${returnDate}&returnTo=${returnDate}&flightType=${flightType}&adults=${(parseInt(adults) + parseInt(children) + parseInt(infants))}&selectedCabins=${travelClass}&currency=EUR&language=en&maxStopovers=0&maxSectorStopovers=0`);
 }
 
 const getAirportByCity = async (city) => {

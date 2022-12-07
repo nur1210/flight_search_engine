@@ -34,7 +34,7 @@ function SearchResults() {
     }, []);
 
 
-    useEffect(() => {
+/*    useEffect(() => {
         console.log(params);
         params.Departure = departureDate;
         setSearchParams(params);
@@ -53,7 +53,7 @@ function SearchResults() {
         getFlights().then(r => {
             setFlights(r);
         });
-    }, [searchParams]);
+    }, [searchParams]);*/
 
 
     const getFlights = async () => {

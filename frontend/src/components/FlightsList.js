@@ -13,7 +13,7 @@ const FlightsList = ({flights}) => {
                     <div className="card-body">
                         <div className={"justify-content-center align-content-center"}>
                             <TableContainer>
-                                <Table sx={{minWidth: 650}} aria-label="simple table">
+                                <Table sx={{minWidth: 600}} aria-label="simple table">
                                     <thead>
                                     <tr>
                                         <TableCell align={"center"}>Outbound</TableCell>
