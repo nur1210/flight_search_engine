@@ -55,7 +55,7 @@ public class TequilaApiController {
     }
 
     @GetMapping("/flights/cheapest")
-    public ResponseEntity<GetTopThreeCheapestFlightsFromUserLocationResponse> getTopThreeCheapestFlightsFromUserLocation(GetTopThreeCheapestFlightsFromUserLocationRequest request) {
+    public ResponseEntity<GetTopThreeCheapestFlightsFromUserLocationResponse> getTopThreeCheapestFlightsFromUserLocation(@Valid GetTopThreeCheapestFlightsFromUserLocationRequest request) {
         GetTopThreeCheapestFlightsFromUserLocationResponse response = getTopThreeCheapestFlightsFromUserLocationUseCase.getTopThreeCheapestFlightsFromUserLocation(request);
         return ResponseEntity.ok(response);
     }

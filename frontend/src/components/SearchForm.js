@@ -5,14 +5,15 @@ import {createSearchParams, useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import SoftBox from "./SoftBox";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
-import Grid from "@mui/material/Grid";
 import SoftButton from "./SoftButton";
-import {useEffect} from "react";
-
+import {useEffect, useState} from "react";
+import tequilaService from "../services/TequilaService";
+import DefaultInfoCard from "../examples/Cards/InfoCards/DefaultInfoCard";
 
 const SearchForm = () => {
+    const [flights, setFlights] = useState([]);
     const navigate = useNavigate();
-    const {register, handleSubmit, formState, formState: {errors, isSubmitSuccessful}, getValues, setValue, reset} = useForm({
+    const {register, handleSubmit, formState, formState: {errors}, getValues, setValue, reset} = useForm({
         defaultValues: {
             Origin: '',
             Destination: '',
@@ -25,6 +26,33 @@ const SearchForm = () => {
             Infants: 0
         }
     });
+
+    useEffect(() => {
+        const month = new Date().getMonth() + 1;
+        const day = new Date().getDate() + 1;
+        const firstDate = `${new Date().getFullYear()}-${month < 10 ? `0${month}` : `${month}`}-${day < 10 ? `0${day}` : `${day}`}`;
+        const lastDate = new Date().getFullYear() + '-' + month + '-' + new Date(new Date().getFullYear(), month, 0).getDate();
+        console.log(lastDate);
+        try {
+            const response = tequilaService.getTopThreeCheapestFlightsFromUserLocation(
+                'EIN',
+                firstDate,
+                lastDate,
+                firstDate,
+                lastDate,
+                1,
+                7,
+                'round',
+                1,
+                'M').then(response => {
+            console.log(response.data.cheapestFlights);
+            setFlights(response.data.cheapestFlights);
+        });
+        }
+        catch (e) {
+            console.log(e);
+        }
+    }, []);
 
 
     const post = (data) => navigate({
@@ -39,38 +67,39 @@ const SearchForm = () => {
         post(data);
     };
 
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-            console.log("add")
-            reset({
-                ...getValues(),
-                Origin: '',
-                Destination: '',
-                flightType: '',
-                Departure: '',
-                Return: '',
-                travelClass: '',
-                Adults: 1,
-                Children: 0,
-                Infants: 0
-            }, {});
-        }
-    }, [isSubmitSuccessful, reset]);
-
 
     return (
         <BasicLayout
             title={"Flight Search"}
             description={"Let the journey begin"}
         >
-            <Grid
-                container
-                spacing={0}
-                direction="column"
-                alignItems="center"
-                justifyContent="center"
-            >
-                <form onSubmit={handleSubmit(onSubmit)} className={"w-75"}>
+            <SoftBox
+                sx={{
+                    display: 'grid',
+                    gap: 1,
+                    gridTemplateColumns: 'repeat(8, 1fr)',
+                    gridTemplateRows: 'auto',
+                    gridTemplateAreas: `"header header header header header header herder"
+        "sidebar sidebar main main main main main"
+        "footer footer footer footer footer footer footer"`,
+                }}
+                >
+                    <SoftBox sx={{gridArea: 'sidebar'}}>
+                        <h2>Cheapest flights from EIN</h2>
+                        {flights.map((flight) => (
+                            <SoftBox mb={2} mr={1}>
+                                <DefaultInfoCard
+                                    icon={"paid"}
+                                    color={"secondary"}
+                                    title={`Fly to: ${flight.route[0].arrivalAirport.city}, ${flight.route[0].arrivalAirport.country}`}
+                                    description={`${(flight.route[0].localDepartureTime).split('T')[0].replaceAll('-', "/")} - ${(flight.route[1].localArrivalTime).split('T')[0].replaceAll('-', "/")}`}
+                                    value={`Price: ${flight.price}€`}>
+                                </DefaultInfoCard>
+                            </SoftBox>
+                        ))}
+                    </SoftBox>
+            <SoftBox sx={{gridArea: 'main'}}>
+                <form onSubmit={handleSubmit(onSubmit)} className={"w-100"}>
                     <SoftBox>
                         <SoftBox mt={4} mb={2}>
                             <LocationsCard register={register} setValue={setValue} errors={errors}/>
@@ -83,7 +112,8 @@ const SearchForm = () => {
                                     type="submit">Search</SoftButton>
                     </SoftBox>
                 </form>
-            </Grid>
+            </SoftBox>
+            </SoftBox>
         </BasicLayout>
     )
 };
