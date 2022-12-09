@@ -69,7 +69,6 @@ const extractAirport = (place) => {
 
 const AirportInput = ({title, register, setValue, setLocation}) => {
     const searchInput = useRef(null);
-    let isOnLoad = false;
 
 
     // init gmap script
@@ -107,6 +106,7 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
 
     const reverseGeocode = ({latitude: lat, longitude: lng}) => {
         const url = `${geocodeJson}?key=${apiKey}&latlng=${lat},${lng}`;
+        searchInput.current.value = "Getting your location...";
         fetch(url)
             .then(response => response.json())
             .then(location => {
@@ -114,17 +114,12 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
                 const place = location.results[0];
                 console.log(place);
                 const _airport = extractAirport(place);
+                searchInput.current.value = _airport.plain();
                 console.log(_airport);
                 tequilaService.getAirportByCity(_airport.city).then(airport => {
                     console.log(airport);
-                    if (isOnLoad) {
-                        setLocation(airport.data.airport);
-                    } else {
-                        searchInput.current.value = "Getting your location...";
-                        searchInput.current.value = _airport.plain();
-                        setValue(title, airport.data.airport.iata);
-                    }
-                });
+                    setValue(title, airport.data.airport.iata);
+                })
             })
     }
 
@@ -135,13 +130,16 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
                 reverseGeocode(position.coords);
             })
         }
-        isOnLoad = true;
     }
-
 
     // load map script after mounted
     useEffect(() => {
-        initMapScript().then(() => initAutocomplete()).then(() => findMyLocation());
+        initMapScript().then(() => initAutocomplete());
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(position => {
+                setLocation(position.coords);
+            })
+        }
     }, []);
 
     return (

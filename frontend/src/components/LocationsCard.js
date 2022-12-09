@@ -10,7 +10,7 @@ const LocationsCard = ({ register, errors, setValue, setLocation }) => {
                 <SoftTypography component="label" fontWeight="bold" varient="caption">Locations</SoftTypography>
                 <SoftBox className="row">
                     <SoftBox className="col-sm">
-                        <AirportInput title={"Origin"} register={register} setValue={setValue} setLocation={setLocation}/>
+                        <AirportInput title={"Origin"} register={register} setValue={setValue} setLocation={setLocation} />
                         {errors.Origin && <SoftTypography componant="label" variant="caption">{errors.Origin.message}</SoftTypography>}
                     </SoftBox>
                     <SoftBox className="col-sm">
