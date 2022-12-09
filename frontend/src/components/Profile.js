@@ -4,11 +4,13 @@ import SoftInput from "./SoftInput";
 import useAuth from "../hooks/useAuth";
 import UseAxiosPrivate from "../hooks/useAxiosPrivate";
 import SoftButton from "./SoftButton";
+import {useForm} from "react-hook-form";
 
 const Profile = () => {
     const [user, setUser] = useState(null);
     const {auth} = useAuth();
     const axiosPrivate = UseAxiosPrivate();
+    const {register, handleSubmit, formState: {errors}, setValue, reset, watch} = useForm();
 
 
     useEffect(() => {
@@ -34,10 +36,21 @@ const Profile = () => {
     }, []);
 
 
-    const handleSubmit = async () => {
+    useEffect(() => {
+        if (user) {
+            reset({
+                firstName: user.firstName,
+                lastName: user.lastName,
+                email: user.email,
+            });
+        }
+    }, [user]);
+
+    const onSubmit = async (data) => {
+        console.log(data);
         try {
             let userId = auth?.userId;
-            const response = await axiosPrivate.put(`/users/${userId}`, JSON.stringify(user));
+            const response = await axiosPrivate.put(`/users/${userId}`, JSON.stringify(data));
             console.log(response.data);
             setUser(response.data);
         } catch (error) {
@@ -47,38 +60,40 @@ const Profile = () => {
 
     return (
         <BasicLayout title="Profile">
-            <form>
-            <SoftInput
-                type="text"
-                label="FirstName"
-                value={user?.firstName}
-                onChange={(e) => setUser({...user, firstName: e.target.value})}
-            />
-            <SoftInput
-                type="text"
-                label="LastName"
-                value={user?.lastName}
-                onChange={(e) => setUser({...user, lastName: e.target.value})}
-            />
-            <SoftInput
-                type="email"
-                label="Email"
-                value={user?.email}
-                onChange={(e) => setUser({...user, email: e.target.value})}
-            />
-            <SoftInput
-                type="password"
-                label="currentPassword"
-                value={user?.currentPassword}
-                onChange={(e) => setUser({...user, currentPassword: e.target.value})}
-            />
-            <SoftInput
-                type="password"
-                label="newPassword"
-                value={user?.newPassword}
-                onChange={(e) => setUser({...user, newPassword: e.target.value})}
-            />
-                <SoftButton onClick={handleSubmit}>Submit</SoftButton>
+            <form onSubmit={handleSubmit(onSubmit)}>
+                <SoftInput
+                    type="text"
+                    {...register("firstName", {required: true})}
+                />
+                <SoftInput
+                    type="text"
+                    {...register("lastName", {required: true})}
+                />
+                <SoftInput
+                    type="email"
+                    {...register("email", {required: true})}
+                />
+                <SoftInput
+                    type="password"
+                    {...register("password",
+                        {
+                            required: !!watch("newPassword")
+                        })
+                    }
+                />
+                <SoftInput
+                    type="password"
+                    {...register("newPassword",
+                        {
+                            required: !!watch("password"),
+                            minLength: {
+                                value: 8,
+                                message: "Password must have at least 8 characters"
+                            }
+                        })
+                    }
+                />
+                <SoftButton type={"submit"}>Submit</SoftButton>
             </form>
         </BasicLayout>
     );

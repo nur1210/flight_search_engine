@@ -1,6 +1,7 @@
 import {Outlet} from "react-router-dom";
 import {CssBaseline, ThemeProvider} from "@mui/material";
 import theme from "assets/theme";
+import Notification from "./Notification";
 
 
 function Layout() {

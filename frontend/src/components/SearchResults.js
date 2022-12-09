@@ -5,7 +5,6 @@ import {useSearchParams} from "react-router-dom";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
-import Table from "../examples/Tables/Table";
 
 
 
@@ -94,30 +93,6 @@ function SearchResults() {
                     ? <FlightsList flights={flights}/>
                     : <p>No flights</p>
             }
-{/*            {
-                flights?.length
-                    ? <Table
-                        columns={[
-                            {name: "outbound", align: "left"},
-                            {name: "return", align: "left"},
-                            {name: "dates", align: "left"},
-                            {name: "price", align: "center"},
-                        ]}
-                        rows={[
-                            flights.map((flight) => {
-                                return (
-                                    {
-                                        outbound: flight.route[0].arrivalAirport.iata,
-                                        return: flight.route[0].arrivalAirport.iata,
-                                        dates: flight.route[0].utcDepartureTime + " - " + flight.route[0].utcArrivalTime,
-                                        price: flight.price,
-                                    }
-                                )
-                            })
-                        ]}
-                    />
-                    : <p>No flights</p>
-            }*/}
         </BasicLayout>
     );
 }

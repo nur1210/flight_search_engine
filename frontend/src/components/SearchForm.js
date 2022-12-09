@@ -11,8 +11,8 @@ const SearchForm = () => {
 
 
     useEffect(() => {
+
         try {
-            console.log(location)
             tequilaService.getAirportByCords(location.latitude, location.longitude).then(response => {
                 console.log(response.data.airport)
                 setAirport(response.data.airport);
@@ -22,10 +22,6 @@ const SearchForm = () => {
         }
 
     }, [location]);
-
-
-
-
 
 
     return (

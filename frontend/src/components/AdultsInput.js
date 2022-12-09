@@ -1,8 +1,7 @@
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const AdultsInput = ({ defaultValue, title, register }) => {
-    console.log(defaultValue);
+const AdultsInput = ({ title, register }) => {
     return(
         <SoftBox mb={2} >
             <SoftBox>

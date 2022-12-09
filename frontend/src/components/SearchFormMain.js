@@ -8,7 +8,7 @@ import {createSearchParams, useNavigate} from "react-router-dom";
 
 const SearchFormMain = ({setLocation}) => {
     const navigate = useNavigate();
-    const {register, handleSubmit, formState, formState: {errors}, getValues, setValue, reset} = useForm({
+    const {register, handleSubmit, formState: {errors}, setValue} = useForm({
         defaultValues: {
             Origin: '',
             Destination: '',

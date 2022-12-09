@@ -3,7 +3,6 @@ import {Table, TableCell, TableContainer } from "@mui/material";
 
 
 const FlightsList = ({flights}) => {
-    console.log(flights);
     if (flights.length === 0) {
         return null;
     } else {

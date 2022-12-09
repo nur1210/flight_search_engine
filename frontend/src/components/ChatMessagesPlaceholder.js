@@ -26,7 +26,6 @@ const ChatMessagesPlaceholder = (props) => {
 */}
             {props.messagesReceived.map((message, i) => {
                 return <MessageReceived key={i} text={message.text}/>
-                
             })}
         </>
     );
