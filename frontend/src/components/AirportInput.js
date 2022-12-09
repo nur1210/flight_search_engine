@@ -57,18 +57,19 @@ const extractAirport = (place) => {
 
     });
 
-        const cords = place.geometry.viewport;
-        airport.lng = Object.values(cords)[1].hi
-        console.log(airport.lng);
+    const cords = place.geometry.viewport;
+    airport.lng = Object.values(cords)[1].hi
+    console.log(airport.lng);
 
-        airport.lat = Object.values(cords)[0].hi
-        console.log(airport.lat);
+    airport.lat = Object.values(cords)[0].hi
+    console.log(airport.lat);
 
     return airport;
 }
 
-const AirportInput = ({title, register, setValue}) => {
+const AirportInput = ({title, register, setValue, setLocation}) => {
     const searchInput = useRef(null);
+    let isOnLoad = false;
 
 
     // init gmap script
@@ -106,7 +107,6 @@ const AirportInput = ({title, register, setValue}) => {
 
     const reverseGeocode = ({latitude: lat, longitude: lng}) => {
         const url = `${geocodeJson}?key=${apiKey}&latlng=${lat},${lng}`;
-        searchInput.current.value = "Getting your location...";
         fetch(url)
             .then(response => response.json())
             .then(location => {
@@ -115,10 +115,15 @@ const AirportInput = ({title, register, setValue}) => {
                 console.log(place);
                 const _airport = extractAirport(place);
                 console.log(_airport);
-                searchInput.current.value = _airport.plain();
                 tequilaService.getAirportByCity(_airport.city).then(airport => {
                     console.log(airport);
-                    setValue(title, airport.data.airport.iata);
+                    if (isOnLoad) {
+                        setLocation(airport.data.airport);
+                    } else {
+                        searchInput.current.value = "Getting your location...";
+                        searchInput.current.value = _airport.plain();
+                        setValue(title, airport.data.airport.iata);
+                    }
                 });
             })
     }
@@ -130,12 +135,13 @@ const AirportInput = ({title, register, setValue}) => {
                 reverseGeocode(position.coords);
             })
         }
+        isOnLoad = true;
     }
 
 
     // load map script after mounted
     useEffect(() => {
-        initMapScript().then(() => initAutocomplete())
+        initMapScript().then(() => initAutocomplete()).then(() => findMyLocation());
     }, []);
 
     return (
@@ -160,11 +166,11 @@ const AirportInput = ({title, register, setValue}) => {
                     onChange={initAutocomplete}
                 />
                 <input
-                type={"hidden"}
-                {...register(title, {
-                    validate: value => value !== "",
-                    required: 'Please fill in the location'
-                })}
+                    type={"hidden"}
+                    {...register(title, {
+                        validate: value => value !== "",
+                        required: 'Please fill in the location'
+                    })}
                 />
                 <SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>
                 <datalist id={`Airport-options-${title}`}></datalist>
