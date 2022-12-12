@@ -61,7 +61,7 @@ public class PriceAlertEntity {
 
     @OneToOne(targetEntity = FlightEntity.class,
             cascade = CascadeType.ALL)
-    @JoinColumn(name = "flight_id")
+    @JoinColumn(name = "flight_id", referencedColumnName = "id")
     private FlightEntity currentFlight;
 
     public long getId() {

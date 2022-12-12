@@ -43,9 +43,9 @@ function Popup(props) {
 
     return (
         <>
-            <Button variant="outline-dark" onClick={handleShow}>
+            <SoftButton color="dark" variant={"outlined"} onClick={handleShow} sx={{marginTop: 1}}>
                 Set price alert
-            </Button>
+            </SoftButton>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

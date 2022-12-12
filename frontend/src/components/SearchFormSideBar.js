@@ -2,6 +2,7 @@ import SoftBox from "./SoftBox";
 import FlightCard from "./FlightCard";
 import tequilaService from "../services/TequilaService";
 import {useEffect, useState} from "react";
+import SoftTypography from "./SoftTypography";
 
 const SearchFormSideBar = ({airport}) => {
     const [flights, setFlights] = useState([]);
@@ -34,10 +35,12 @@ const SearchFormSideBar = ({airport}) => {
     }, [airport]);
 
     return(
-        <SoftBox sx={{gridArea: 'sidebar'}}>
+        <SoftBox sx={{gridArea: 'sidebar', marginTop: 3}}>
             {flights.length !== 0 ?
                 <>
-                    <h2>Cheapest flights from {airport.city}</h2>
+                    <SoftTypography fontWeight={"medium"}>
+                        Cheapest flights from {airport.city}
+                    </SoftTypography>
                     {flights.map((flight, i) => (
                         <FlightCard key={i} flight={flight}/>
                     ))}
