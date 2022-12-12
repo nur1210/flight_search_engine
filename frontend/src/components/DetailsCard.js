@@ -13,9 +13,9 @@ const DetailsCard = ({register}) => {
                     <SoftTypography component="label" fontWeight="bold" varient="caption">Details</SoftTypography>
                     <TravelClassInput register={register}/>
                     <label className="form-label">Passengers</label>
-                    <AdultsInput title={"Adults"} register={register}/>
-                    <AdultsInput title={"Children"} register={register}/>
-                    <AdultsInput title={"Infants"} register={register}/>
+                    <AdultsInput title={"Adults"} name={"adults"} register={register}/>
+                    <AdultsInput title={"Children"} name={"children"} register={register}/>
+                    <AdultsInput title={"Infants"} name={"infants"} register={register}/>
                 </CardBody>
             </Card>
         </SoftBox>

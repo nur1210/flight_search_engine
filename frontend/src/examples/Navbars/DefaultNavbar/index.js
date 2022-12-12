@@ -38,16 +38,24 @@ import DefaultNavbarMobile from "examples/Navbars/DefaultNavbar/DefaultNavbarMob
 import breakpoints from "assets/theme/base/breakpoints";
 import useLogout from "../../../hooks/useLogout";
 import useAuth from "../../../hooks/useAuth";
+import Notification from "../../../components/Notification";
+import {IconButton} from "@mui/material";
+import {navbarIconButton} from "../DashboardNavbar/styles";
 
 function DefaultNavbar({transparent, light, action}) {
     const [mobileNavbar, setMobileNavbar] = useState(false);
     const [mobileView, setMobileView] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
+
     const signOut = useLogout();
     const {auth} = useAuth();
 
-
     const openMobileNavbar = ({currentTarget}) => setMobileNavbar(currentTarget.parentNode);
     const closeMobileNavbar = () => setMobileNavbar(false);
+
+    const handleOpenMenu = (event) => setOpenMenu(event.currentTarget);
+    const handleCloseMenu = () => setOpenMenu(false);
+
 
     useEffect(() => {
         // A function that sets the display state for the DefaultNavbarMobile.
@@ -61,6 +69,7 @@ function DefaultNavbar({transparent, light, action}) {
             }
         }
 
+
         /**
          The event listener that's calling the displayMobileNavbar function when
          resizing the window.
@@ -73,6 +82,25 @@ function DefaultNavbar({transparent, light, action}) {
         // Remove event listener on cleanup
         return () => window.removeEventListener("resize", displayMobileNavbar);
     }, []);
+
+/*    const renderMenu = () => {
+        return (
+            <Menu
+                anchorEl={openMenu}
+                anchorReference={null}
+                anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "left",
+                }}
+                open={Boolean(openMenu)}
+                onClose={handleCloseMenu}
+                sx={{mt: 2}}
+            >
+                <Notification/>
+            </Menu>
+        )
+    };*/
+
 
     return (
         <Container>
@@ -96,8 +124,8 @@ function DefaultNavbar({transparent, light, action}) {
                     backdropFilter: transparent ? "none" : `saturate(200%) blur(30px)`,
                 })}
             >
-                <SoftBox component={Link} to="/" py={transparent ? 1.5 : 0.75} lineHeight={1}>
-                    <SoftTypography variant="button" fontWeight="bold" color={light ? "white" : "dark"}>
+                <SoftBox component={Link} to="/"  lineHeight={1}>
+                    <SoftTypography variant="button" fontWeight="bold" fontSize={20} color={light ? "white" : "dark"}>
                         FlyAway
                     </SoftTypography>
                 </SoftBox>
@@ -111,11 +139,37 @@ function DefaultNavbar({transparent, light, action}) {
                                     <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
                                                        light={light}/>
+                                    <IconButton
+                                        size="small"
+                                        color="inherit"
+                                        sx={navbarIconButton}
+                                        aria-controls="notification-menu"
+                                        aria-haspopup="true"
+                                        variant="contained"
+                                        onClick={handleOpenMenu}
+                                    >
+                                        <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
+                                    </IconButton>
+                                    <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
+                                    {/*{renderMenu()}*/}
                                 </> :
                                 <>
                                     <DefaultNavbarLink icon="person" name="profile" route="/m" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
                                                        light={light}/>
+                                    <IconButton
+                                        size="small"
+                                        color="inherit"
+                                        sx={navbarIconButton}
+                                        aria-controls="notification-menu"
+                                        aria-haspopup="true"
+                                        variant="contained"
+                                        onClick={handleOpenMenu}
+                                    >
+                                        <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
+                                    </IconButton>
+                                    <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
+                                    {/*{renderMenu()}*/}
                                 </> :
                             <>
                                 <DefaultNavbarLink

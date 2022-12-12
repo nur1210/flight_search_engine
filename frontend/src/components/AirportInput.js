@@ -67,7 +67,7 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const AirportInput = ({title, register, setValue, setLocation}) => {
+const AirportInput = ({title, register, setValue, setLocation, name}) => {
     const searchInput = useRef(null);
 
 
@@ -89,7 +89,7 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
         const _airport = extractAirport(place);
         tequilaService.getAirportByCords(_airport.lat, _airport.lng).then((data) => {
             console.log(data);
-            setValue(title, data.data.airport.iata);
+            setValue(name, data.data.airport.iata);
         })
     }
 
@@ -118,7 +118,7 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
                 console.log(_airport);
                 tequilaService.getAirportByCity(_airport.city).then(airport => {
                     console.log(airport);
-                    setValue(title, airport.data.airport.iata);
+                    setValue(name, airport.data.airport.iata);
                 })
             })
     }
@@ -156,7 +156,7 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
                 <input
                     type="text"
                     className="form-control"
-                    list={`Airport-options-${title}`}
+                    list={`Airport-options-${name}`}
                     id="Airport-input"
                     placeholder="Location"
                     aria-describedby="Airport-label"
@@ -165,7 +165,7 @@ const AirportInput = ({title, register, setValue, setLocation}) => {
                 />
                 <input
                     type={"hidden"}
-                    {...register(title, {
+                    {...register(name, {
                         validate: value => value !== "",
                         required: 'Please fill in the location'
                     })}

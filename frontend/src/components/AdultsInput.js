@@ -1,7 +1,7 @@
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const AdultsInput = ({ title, register }) => {
+const AdultsInput = ({ title, register, name }) => {
     return(
         <SoftBox mb={2} >
             <SoftBox>
@@ -18,7 +18,7 @@ const AdultsInput = ({ title, register }) => {
                     className="form-control"
                     id="adults-input"
                     aria-describedby="adults-label"
-                    {...register(title, {
+                    {...register(name, {
                         required: true,
                         min: 0,
                         max: 9,

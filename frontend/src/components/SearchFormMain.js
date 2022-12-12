@@ -10,15 +10,15 @@ const SearchFormMain = ({setLocation}) => {
     const navigate = useNavigate();
     const {register, handleSubmit, formState: {errors}, setValue} = useForm({
         defaultValues: {
-            Origin: '',
-            Destination: '',
+            flyFrom: '',
+            flyTo: '',
             flightType: '',
-            Departure: '',
-            Return: '',
-            travelClass: '',
-            Adults: 1,
-            Children: 0,
-            Infants: 0
+            dateFrom: '',
+            returnFrom: '',
+            selectedCabins: '',
+            adults: 1,
+            children: 0,
+            infants: 0
         }
     });
 

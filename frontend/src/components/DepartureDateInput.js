@@ -1,7 +1,7 @@
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 
-const DepartureDateInput = ({ title, disabled, register }) => {
+const DepartureDateInput = ({ title, disabled, register, name }) => {
 
     return (
         <SoftBox mb={2}>
@@ -22,7 +22,7 @@ const DepartureDateInput = ({ title, disabled, register }) => {
                     className="form-control"
                     id="departure-date-input"
                     aria-describedby="departure-date-label"
-                    {...register(title, {
+                    {...register(name, {
                         disabled: disabled,
                         validate: (value) => {
                             const today = new Date();

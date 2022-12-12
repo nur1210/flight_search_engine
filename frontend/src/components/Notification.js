@@ -2,17 +2,18 @@ import {useEffect, useState} from "react";
 import useAuth from "../hooks/useAuth";
 import SockJS from "sockjs-client";
 import Stomp from "stompjs";
-import ChatMessagesPlaceholder from "./ChatMessagesPlaceholder";
-import SoftAlert from "./SoftAlert";
-import {Box} from "@mui/material";
+import {Menu} from "@mui/material";
+import NotificationItem from "../examples/Items/NotificationItem";
+import {createSearchParams, useNavigate} from "react-router-dom";
+
 
 const ENDPOINT = "http://localhost:8080/ws";
 
-const Notification = () => {
+const Notification = ({openMenu, handleCloseMenu}) => {
     const [stompClient, setStompClient] = useState();
     const [messagesReceived, setMessagesReceived] = useState([]);
     const {auth} = useAuth();
-
+    const navigate = useNavigate();
 
     useEffect(() => {
         // use SockJS as the websocket client
@@ -50,29 +51,57 @@ const Notification = () => {
         setMessagesReceived(messagesReceived => [...messagesReceived, message]);
     };
 
-    return(
-        messagesReceived.map((message, i) => {
-        return(
-            <Box
-                sx={{
-                    display: 'grid',
-                    gridAutoFlow: 'row',
-                    gridTemplateColumns: 'repeat(5, 1fr)',
-                    gridTemplateRows: 'repeat(2, 50px)',
-                    gap: 1,
-                    zIndex: 1000,
-                }}
-            >
-            <SoftAlert
-                key={i}
-                dismissible={true}
-                sx={{ gridColumn: '5', gridRow: '1 / 3' }}
-            >
-                {message.text}
-            </SoftAlert>
-            </Box>
-        )})
-    )
+    const post = (data) => navigate({
+        pathname: '/search-results',
+        search: `?${createSearchParams(data)}`
+    });
+
+    const handleClick = (event, data) => {
+        event.preventDefault();
+        post(data);
+    };
+
+    return (
+        <Menu
+            anchorEl={openMenu}
+            anchorReference={null}
+            anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+            }}
+            open={Boolean(openMenu)}
+            onClose={handleCloseMenu}
+            sx={{mt: 2}}
+        >
+            {
+                messagesReceived.map((message, i) => {
+                        return (
+                            <NotificationItem key={i} date={message.date} title={[message.title, message.text]} onClick={(e) => handleClick(e, message.queryParam)}/>
+                        )
+                    }
+                )}
+        </Menu>
+
+        /*            <Box
+                        sx={{
+                            display: 'grid',
+                            gridAutoFlow: 'row',
+                            gridTemplateColumns: 'repeat(5, 1fr)',
+                            gridTemplateRows: 'repeat(2, 50px)',
+                            gap: 1,
+                            zIndex: 1000,
+                        }}
+                    >
+                    <SoftAlert
+                        key={i}
+                        dismissible={true}
+                        sx={{ gridColumn: '5', gridRow: '1 / 3' }}
+                    >
+                        {message.text}
+                    </SoftAlert>
+                    </Box>
+                )})*/
+    );
 }
 
 export default Notification

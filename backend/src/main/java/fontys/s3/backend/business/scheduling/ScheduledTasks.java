@@ -2,6 +2,7 @@ package fontys.s3.backend.business.scheduling;
 
 import fontys.s3.backend.business.exception.InvalidFlightException;
 import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
+import fontys.s3.backend.business.util.ObjectToUri;
 import fontys.s3.backend.configuration.websocket.NotificationService;
 import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
@@ -35,7 +36,7 @@ public class ScheduledTasks {
         this.notificationService = notificationService;
     }
 
-    @Scheduled(fixedRate = 36000)
+    @Scheduled(fixedRate = 3600)
     public void checkForChangeInFlightPrice() {
         List<PriceAlertEntity> priceAlerts = priceAlertRepository.findAll();
 
@@ -45,17 +46,19 @@ public class ScheduledTasks {
                 return;
             }
 
+
             var cheapestFlight = getCheapestFlight(priceAlert);
 
-            if (priceAlert.getCurrentFlight() ==  null) {
+            if (priceAlert.getCurrentFlight() == null) {
                 updatePriceAlert(priceAlert, cheapestFlight);
-            }
-            else if (cheapestFlight.getPrice() != priceAlert.getCurrentFlight().getPrice()) {
+            } else if (cheapestFlight.getPrice() != priceAlert.getCurrentFlight().getPrice()) {
                 updatePriceAlert(priceAlert, cheapestFlight);
+/*                var param = ToStringUtil.toStringWithAttributes(priceAlert, ToStringStyle.NO_CLASS_NAME_STYLE).replace(",", "&");
+                param = param.substring(1, param.length() - 1);*/
                 for (var user : priceAlert.getUsers()) {
                     notificationService.sendPrivateNotification(user.getEmail(),
-                            "Price alert for flight " + priceAlert.getFlyFrom() + " - " + priceAlert.getFlyTo() + " has changed!"
-                    );
+                            "The price for flight " + priceAlert.getFlyFrom() + " - " + priceAlert.getFlyTo() + " has changed!",
+                            "Price changed", ObjectToUri.convert(convertPriceAlertToFlightParams(priceAlert)));
                 }
             }
         }
@@ -116,5 +119,25 @@ public class ScheduledTasks {
                 .build();
 
         updatePriceAlertUseCase.updatePriceAlert(request);
+    }
+
+    private FlightParams convertPriceAlertToFlightParams(PriceAlertEntity priceAlert) {
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        return FlightParams.builder()
+                .flyFrom(priceAlert.getFlyFrom())
+                .flyTo(priceAlert.getFlyTo())
+                .dateFrom(dateFormat.format(priceAlert.getDateFrom()))
+                .dateTo(dateFormat.format(priceAlert.getDateFrom()))
+                .returnFrom(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
+                .returnTo(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
+                .flightType(priceAlert.getFlightType())
+                .adults(String.valueOf(priceAlert.getPassengers()))
+                .selectedCabins(priceAlert.getCabinClass())
+                .currency(priceAlert.getCurrency())
+                .language(priceAlert.getLocale())
+                .maxStopovers("0")
+                .maxSectorStopovers("0")
+                .build();
     }
 }

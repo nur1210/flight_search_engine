@@ -19,15 +19,15 @@ function Popup(props) {
         console.log(params);
         try {
             const data = {
-                origin: params.Origin,
-                destination: params.Destination,
-                departureDate: params.Departure,
-                returnDate: params.Return,
-                travelClass: params.travelClass,
+                origin: params.flyFrom,
+                destination: params.flyTo,
+                departureDate: params.dateFrom,
+                returnDate: params.returnFrom,
+                travelClass: params.selectedCabins,
                 flightType: params.flightType,
-                adults: params.Adults,
-                children: params.Children,
-                infants: params.Infants,
+                adults: params.adults,
+                children: params.children,
+                infants: params.infants,
             }
             const response = await axiosPrivate.post(`/alerts`, (data));
             if (isNaN(response.data)) {
@@ -70,12 +70,12 @@ function Popup(props) {
                         </SoftBox>
                         <SoftBox>
                             <SoftTypography varient="h6" fontSize={14}>Fly
-                                from {params.Origin} to {params.Destination}
+                                from {params.flyFrom} to {params.flyTo}
                             </SoftTypography>
                         </SoftBox>
                         <SoftBox>
                             <SoftTypography varient="h6"
-                                            fontSize={14}>From {params.Departure} to {params.Return}
+                                            fontSize={14}>From {params.dateFrom} to {params.returnFrom}
                             </SoftTypography>
                         </SoftBox>
                     </Grid>

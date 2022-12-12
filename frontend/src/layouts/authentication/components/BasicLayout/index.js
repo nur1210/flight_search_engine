@@ -30,8 +30,13 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 // Authentication layout components
 import Footer from "layouts/authentication/components/Footer";
 import Notification from "../../../../components/Notification";
+import Menu from "@mui/material/Menu";
+import {useState} from "react";
+import NotificationItem from "../../../../examples/Items/NotificationItem";
 
 function BasicLayout({ title, description, children }) {
+
+
   return (
     <PageLayout>
       <DefaultNavbar

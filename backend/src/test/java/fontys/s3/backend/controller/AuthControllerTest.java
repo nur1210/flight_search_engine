@@ -19,6 +19,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseCookie;
 import org.springframework.security.test.context.support.WithAnonymousUser;
 import org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestBuilders;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
@@ -36,6 +37,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @ExtendWith(SpringExtension.class)
+@ActiveProfiles("test")
 @SpringBootTest
 @AutoConfigureMockMvc
 class AuthControllerTest {
@@ -124,16 +126,16 @@ class AuthControllerTest {
 
 /*    @Test
     @WithMockUser(username = "a@gmail.com", password = "1234", roles = {"USER", "ADMIN"})
-    void logout() throws Exception {
+    void logoutIntegrationTest() throws Exception {
 
-        cookie = ResponseCookie
+*//*        cookie = ResponseCookie
                 .from("refreshToken", null)
                 .httpOnly(true)
                 .path("/")
                 .maxAge(60 * 60 * 24 * 7)
                 .build();
         doCallRealMethod().when(jwtUtils).getCleanRefreshTokenCookie();
-        doNothing().when(logoutUseCase).logout(any());
+        doNothing().when(logoutUseCase).logout(any());*//*
 
         mockMvc.perform(post("/auth/logout"))
                 .andDo(print())

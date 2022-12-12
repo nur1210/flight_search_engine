@@ -44,10 +44,10 @@ function SearchResults() {
         console.log(params);
         params.Return = returnDate;
         setSearchParams(params);
-    }, [returnDate]);
+    }, [returnDate]);*/
 
 
-    useEffect(() => {
+/*    useEffect(() => {
         console.log(params)
         getFlights().then(r => {
             setFlights(r);
@@ -56,12 +56,19 @@ function SearchResults() {
 
 
     const getFlights = async () => {
+        console.log(params);
         try {
-            const response = await tequilaService.getAllFlights(params.Origin, params.Destination,
-                params.Departure, params.Return,
-                params.flightType, params.Adults,
-                params.Children, params.Infants,
-                params.travelClass);
+            const response = await tequilaService.getAllFlights(
+                params.flyFrom,
+                params.flyTo,
+                params.dateFrom,
+                params.returnFrom,
+                params.flightType,
+                params.adults,
+                params.children ? params.children : 0,
+                params.infants ? params.infants : 0,
+                params.selectedCabins);
+            console.log(response);
             return response.data.flights;
         } catch (e) {
             console.log(e);

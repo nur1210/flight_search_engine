@@ -17,9 +17,9 @@ const DatesCard = ({register}) => {
                     <SoftTypography component="label" fontWeight="bold" varient="caption">Dates</SoftTypography>
                     <FlightTypeInput setHasDepartureDate={setHasDepartureDate}
                                      setHasReturnDate={setHasReturnDate} register={register}/>
-                    <DepartureDateInput title={"Departure"} disabled={hasDepartureDate}
+                    <DepartureDateInput title={"Departure"} name={"dateFrom"} disabled={hasDepartureDate}
                                         register={register}/>
-                    <DepartureDateInput title={"Return"} disabled={hasReturnDate}
+                    <DepartureDateInput title={"Return"} name={"returnFrom"} disabled={hasReturnDate}
                                         register={register}/>
                 </CardBody>
             </Card>

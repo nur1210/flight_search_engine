@@ -33,10 +33,12 @@ public class PriceAlertEntity {
     @Column(name = "fly_to")
     private String flyTo;
 
-    @Column(name = "date_from")
+    @Column(name = "date_from",
+            columnDefinition = "DATE")
     private Date dateFrom;
 
-    @Column(name = "date_to")
+    @Column(name = "date_to",
+            columnDefinition = "DATE")
     private Date dateTo;
 
     @Column(name = "flight_type")

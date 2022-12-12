@@ -34,7 +34,7 @@ const TravelClassInput = ({ register }) => {
                 className="form-select"
                 id="travel-class-select"
                 aria-describedby="travel-class-label"
-                {...register("travelClass", {
+                {...register("selectedCabins", {
                     onChange:(e) => handleChange(e),
                     value: selectedOption,
                     validate: (value) => value !== ""
