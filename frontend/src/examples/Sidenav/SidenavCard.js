@@ -28,7 +28,7 @@ import SoftTypography from "components/SoftTypography";
 import { card, cardContent, cardIconBox, cardIcon } from "examples/Sidenav/styles/sidenavCard";
 
 // Soft UI Dashboard React context
-import { useSoftUIController } from "context";
+import { useSoftUIController } from "context/UIProvider";
 
 function SidenavCard() {
   const [controller] = useSoftUIController();

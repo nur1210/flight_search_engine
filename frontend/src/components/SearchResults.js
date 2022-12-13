@@ -7,16 +7,17 @@ import Popup from "./Popup";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import SoftBox from "./SoftBox";
 import SoftInput from "./SoftInput";
-import {FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGroup} from "@mui/material";
+import {Card, FormControl, FormControlLabel, FormLabel, Input, Radio, RadioGroup} from "@mui/material";
 import SoftTypography from "./SoftTypography";
+import SidenavCard from "../examples/Sidenav/SidenavCard";
 
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
     console.log(params);
-    const [departureDate, setDepartureDate] = useState(params.Departure);
-    const [returnDate, setReturnDate] = useState(params.Return);
+    const [departureDate, setDepartureDate] = useState(params.dateFrom);
+    const [returnDate, setReturnDate] = useState(params.returnFrom);
     const [flights, setFlights] = useState();
 
     useEffect(() => {
@@ -36,26 +37,24 @@ function SearchResults() {
     }, []);
 
 
-    /*    useEffect(() => {
-            console.log(params);
-            params.Departure = departureDate;
+        useEffect(() => {
+            params.dateFrom = departureDate;
             setSearchParams(params);
         }, [departureDate]);
 
 
         useEffect(() => {
-            console.log(params);
-            params.Return = returnDate;
+            params.returnFrom = returnDate;
             setSearchParams(params);
-        }, [returnDate]);*/
+        }, [returnDate]);
 
 
-    /*    useEffect(() => {
+        useEffect(() => {
             console.log(params)
             getFlights().then(r => {
                 setFlights(r);
             });
-        }, [searchParams]);*/
+        }, [searchParams]);
 
 
     const getFlights = async () => {
@@ -97,11 +96,23 @@ function SearchResults() {
                         <Col>
                             <Popup props={params}/>
                         </Col>
+                    <SoftBox sx={{marginTop: 4}}>
                         <Col>
-                            <FormControl sx={{marginTop: 4}}>
                                 <SoftTypography>
                                     Filters
                                 </SoftTypography>
+                                <SoftTypography fontSize={12}>Dates</SoftTypography>
+                                    <SoftInput
+                                    type="date"
+                                    value={departureDate}
+                                    onChange={(e) => setDepartureDate(e.target.value)}
+                                />
+                                <SoftInput
+                                    type="date"
+                                    value={returnDate}
+                                    onChange={(e) => setReturnDate(e.target.value)}
+                                />
+                            <FormControl sx={{marginTop: 2}}>
                                 <SoftTypography fontSize={12}>Stops</SoftTypography>
                                 <RadioGroup
                                     aria-labelledby="demo-radio-buttons-group-label"
@@ -115,7 +126,9 @@ function SearchResults() {
                                 </RadioGroup>
                             </FormControl>
                         </Col>
+                    </SoftBox>
                     </Row>
+
                 </SoftBox>
                 {/*            <Row className={"justify-content-md-center"}>
                 <Col xs lg="2">

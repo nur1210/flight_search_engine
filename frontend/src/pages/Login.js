@@ -9,9 +9,10 @@ import SoftBox from "../components/SoftBox";
 import SoftTypography from "../components/SoftTypography";
 import SoftInput from "../components/SoftInput";
 import SoftButton from "../components/SoftButton";
+import Switch from "@mui/material/Switch";
 
 const Login = () => {
-    const { setAuth } = useAuth();
+    const { setAuth, persist, setPersist } = useAuth();
 
     const navigate = useNavigate();
     const location = useLocation();
@@ -31,6 +32,10 @@ const Login = () => {
     useEffect(() => {
         setErrMsg('');
     }, [email, pwd])
+
+    useEffect(() => {
+        localStorage.setItem("persist", persist);
+    }, [persist])
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -58,6 +63,10 @@ const Login = () => {
             }
             errRef.current.focus();
         }
+    }
+
+    const togglePersist = () => {
+        setPersist(prev => !prev);
     }
 
     return (
@@ -96,6 +105,17 @@ const Login = () => {
                     value={pwd}
                     required
                 />
+                <SoftBox display="flex" alignItems="center">
+                    <Switch checked={persist} onChange={togglePersist} />
+                    <SoftTypography
+                        variant="button"
+                        fontWeight="regular"
+                        onClick={togglePersist}
+                        sx={{ cursor: "pointer", userSelect: "none" }}
+                    >
+                        &nbsp;&nbsp;Remember me
+                    </SoftTypography>
+                </SoftBox>
                 <SoftBox mt={4} mb={1}>
                 <SoftButton variant="gradient" color="info" fullWidth type={handleSubmit}>
                     Sign In
