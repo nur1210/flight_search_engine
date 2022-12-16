@@ -1,6 +1,7 @@
 package fontys.s3.backend.business.impl.auth;
 
 import fontys.s3.backend.business.exception.InvalidCredentialsException;
+import fontys.s3.backend.business.exception.NotVerifiedUserException;
 import fontys.s3.backend.business.usecase.auth.LoginUseCase;
 import fontys.s3.backend.configuration.security.jwt.JwtUtils;
 import fontys.s3.backend.configuration.security.services.UserDetailsImpl;
@@ -34,6 +35,10 @@ public class LoginUseCaseImpl implements LoginUseCase {
         UserEntity user = optional.orElse(null);
         if (user == null) {
             throw new InvalidCredentialsException();
+        }
+
+        if (!user.isVerified()){
+            throw new NotVerifiedUserException();
         }
 
         if (!matchesPassword(loginRequest.getPassword(), user.getPassword())) {

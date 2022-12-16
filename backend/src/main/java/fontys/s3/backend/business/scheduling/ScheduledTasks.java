@@ -5,7 +5,6 @@ import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
 import fontys.s3.backend.business.util.ObjectToUri;
 import fontys.s3.backend.configuration.websocket.NotificationService;
 import fontys.s3.backend.domain.model.FlightParams;
-import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
 import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
@@ -28,6 +27,7 @@ public class ScheduledTasks {
     private final UpdatePriceAlertUseCase updatePriceAlertUseCase;
     private final NotificationService notificationService;
 
+
     @Autowired
     public ScheduledTasks(PriceAlertRepository priceAlertRepository, TequilaFlightsRepository flightInfoRepository, UpdatePriceAlertUseCase updatePriceAlertUseCase, NotificationService notificationService) {
         this.priceAlertRepository = priceAlertRepository;
@@ -36,7 +36,7 @@ public class ScheduledTasks {
         this.notificationService = notificationService;
     }
 
-    @Scheduled(fixedRate = 3600)
+    @Scheduled(fixedRate = 36000)
     public void checkForChangeInFlightPrice() {
         List<PriceAlertEntity> priceAlerts = priceAlertRepository.findAll();
 
@@ -46,15 +46,12 @@ public class ScheduledTasks {
                 return;
             }
 
-
             var cheapestFlight = getCheapestFlight(priceAlert);
 
             if (priceAlert.getCurrentFlight() == null) {
                 updatePriceAlert(priceAlert, cheapestFlight);
             } else if (cheapestFlight.getPrice() != priceAlert.getCurrentFlight().getPrice()) {
                 updatePriceAlert(priceAlert, cheapestFlight);
-/*                var param = ToStringUtil.toStringWithAttributes(priceAlert, ToStringStyle.NO_CLASS_NAME_STYLE).replace(",", "&");
-                param = param.substring(1, param.length() - 1);*/
                 for (var user : priceAlert.getUsers()) {
                     notificationService.sendPrivateNotification(user.getEmail(),
                             "The price for flight " + priceAlert.getFlyFrom() + " - " + priceAlert.getFlyTo() + " has changed!",
@@ -65,44 +62,12 @@ public class ScheduledTasks {
     }
 
     FlightEntity getCheapestFlight(PriceAlertEntity priceAlert) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-        GetAllFlightsFromOriginToDestinationRequest request = GetAllFlightsFromOriginToDestinationRequest.builder()
-                .flyFrom(priceAlert.getFlyFrom())
-                .flyTo(priceAlert.getFlyTo())
-                .dateFrom(dateFormat.format(priceAlert.getDateFrom()))
-                .dateTo(dateFormat.format(priceAlert.getDateFrom()))
-                .returnFrom(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
-                .returnTo(priceAlert.getDateTo() == null ? null : dateFormat.format(priceAlert.getDateTo()))
-                .flightType(priceAlert.getFlightType())
-                .adults(priceAlert.getPassengers())
-                .selectedCabins(priceAlert.getCabinClass())
-                .currency(priceAlert.getCurrency())
-                .language(priceAlert.getLocale())
-                .maxStopovers(0)
-                .maxSectorStopovers(0)
-                .build();
-
-
-        FlightParams flightParams = FlightParams.builder()
-                .flyFrom(request.getFlyFrom())
-                .flyTo(request.getFlyTo())
-                .dateFrom(request.getDateFrom())
-                .dateTo(request.getDateTo())
-                .returnFrom(request.getReturnFrom())
-                .returnTo(request.getReturnTo())
-                .flightType(request.getFlightType())
-                .adults(String.valueOf(request.getAdults()))
-                .selectedCabins(request.getSelectedCabins())
-                .currency(request.getCurrency())
-                .language(request.getLanguage())
-                .maxStopovers(String.valueOf(request.getMaxStopovers()))
-                .maxSectorStopovers(String.valueOf(request.getMaxSectorStopovers()))
-                .build();
+        var flightParams = convertPriceAlertToFlightParams(priceAlert);
 
         FlightEntity cheapestFlight = flightInfoRepository.getFlightsInfo(flightParams)
                 .stream().filter(f ->
-                        f.getAvailableSeats() >= request.adults)
+                        f.getAvailableSeats() >= priceAlert.getPassengers())
                 .findFirst().orElse(null);
 
         if (cheapestFlight == null) {

@@ -30,9 +30,9 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
     private static final Logger log = LoggerFactory.getLogger(TequilaFlightsRepositoryImpl.class);
     @Value("${tequila.api.key}")
     private String apiKey;
-    private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&flight_type={flightType}&adults={adults}&selected_cabins={selectedCabins}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}";
-    private String url2 = "https://api.tequila.kiwi.com/v2/search?fly_from={flyFrom}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&nights_in_dst_from={minNightsInDestination}&nights_in_dst_to={maxNightsInDestination}&flight_type={flightType}&ret_from_diff_city={returnFromDifferentCity}&ret_to_diff_city={returnToDifferentCity}&one_for_city={resultsPerDestination}&adults={adults}&selected_cabins={selectedCabins}&only_working_days={onlyWorkingDays}&only_weekends={onlyWeekends}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}&limit={limit}";
-    private String baseUrl = "https://tequila-api.kiwi.com/v2/search?";
+    //private String url = "https://tequila-api.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&flight_type={flightType}&adults={adults}&selected_cabins={selectedCabins}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}";
+    private String url2 = "https://api.tequila.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&nights_in_dst_from={minNightsInDestination}&nights_in_dst_to={maxNightsInDestination}&flight_type={flightType}&ret_from_diff_city={returnFromDifferentCity}&ret_to_diff_city={returnToDifferentCity}&one_for_city={onePerDestination}&adults={adults}&selected_cabins={selectedCabins}&only_working_days={onlyWorkingDays}&only_weekends={onlyWeekends}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}&limit={limit}";
+   // private String baseUrl = "https://tequila-api.kiwi.com/v2/search?";
     private RestTemplate restTemplate;
     private Map<String, String> map;
 
@@ -63,6 +63,8 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
         ReflectionUtils.doWithFields(params.getClass(), field -> {
                     if (field.get(params) != null) {
                         map.put(field.getName(), field.get(params).toString());
+                    } else {
+                        map.put(field.getName(), "");
                     }
                 });
 
@@ -73,7 +75,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
             headers.add("apikey", apiKey);
             HttpEntity<JSONToFlight> entity = new HttpEntity<>(headers);
             ResponseEntity<JSONToFlight> responseEntity = restTemplate.exchange(
-                    map.get("resultsPerDestination") != null ? url2 : url,
+                     url2,
                     HttpMethod.GET,
                     entity,
                     JSONToFlight.class,

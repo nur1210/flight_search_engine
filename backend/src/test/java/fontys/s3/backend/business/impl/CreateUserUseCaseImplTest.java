@@ -37,7 +37,7 @@ class CreateUserUseCaseImplTest {
 
         InvalidCredentialsException exception =
                 assertThrows(
-                        InvalidCredentialsException.class, () -> createUserUseCase.createUser(request));
+                        InvalidCredentialsException.class, () -> createUserUseCase.createUser(request, null));
 
         assertEquals(HttpStatus.BAD_REQUEST, exception.getStatus());
     }
@@ -63,7 +63,7 @@ class CreateUserUseCaseImplTest {
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(false);
         when(userRepository.save(any())).thenReturn(userEntity);
 
-        CreateUserResponse response = createUserUseCase.createUser(request);
+        CreateUserResponse response = createUserUseCase.createUser(request, null);
 
         assertNotNull(response);
         assertEquals(1, response.getUserId());

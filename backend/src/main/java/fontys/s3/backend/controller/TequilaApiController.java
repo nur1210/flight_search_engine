@@ -2,15 +2,12 @@ package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.usecase.airport.GetAirportByCityUseCase;
 import fontys.s3.backend.business.usecase.airport.GetAirportByCordsUseCase;
+import fontys.s3.backend.business.usecase.flight.GetAdvanceSearchFlightsUseCase;
 import fontys.s3.backend.business.usecase.flight.GetAllFlightsFromOriginToDestinationUseCase;
 import fontys.s3.backend.business.usecase.flight.GetTopThreeCheapestFlightsFromUserLocationUseCase;
-import fontys.s3.backend.domain.request.GetAirportByCityRequest;
-import fontys.s3.backend.domain.request.GetAirportByCordsRequest;
-import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
-import fontys.s3.backend.domain.request.GetTopThreeCheapestFlightsFromUserLocationRequest;
+import fontys.s3.backend.domain.request.*;
 import fontys.s3.backend.domain.response.GetAirportResponse;
-import fontys.s3.backend.domain.response.GetAllFlightsFromOriginToDestinationResponse;
-import fontys.s3.backend.domain.response.GetTopThreeCheapestFlightsFromUserLocationResponse;
+import fontys.s3.backend.domain.response.GetFlightsResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,11 +23,12 @@ public class TequilaApiController {
     private final GetTopThreeCheapestFlightsFromUserLocationUseCase getTopThreeCheapestFlightsFromUserLocationUseCase;
     private final GetAirportByCityUseCase getAirportByCityUseCase;
     private final GetAirportByCordsUseCase getAirportByCordsUseCase;
+    private final GetAdvanceSearchFlightsUseCase getAdvanceSearchFlightsUseCase;
 
 
     @GetMapping("/flights")
-    public ResponseEntity<GetAllFlightsFromOriginToDestinationResponse> getAllFlightsFromOriginToDestination(@Valid GetAllFlightsFromOriginToDestinationRequest request) {
-            GetAllFlightsFromOriginToDestinationResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
+    public ResponseEntity<GetFlightsResponse> getAllFlightsFromOriginToDestination(@Valid GetAllFlightsFromOriginToDestinationRequest request) {
+            GetFlightsResponse response = getAllFlightsFromOriginToDestinationUseCase.getAllFlightsFromOriginToDestination(request);
         return ResponseEntity.ok(response);
     }
 
@@ -55,8 +53,14 @@ public class TequilaApiController {
     }
 
     @GetMapping("/flights/cheapest")
-    public ResponseEntity<GetTopThreeCheapestFlightsFromUserLocationResponse> getTopThreeCheapestFlightsFromUserLocation(@Valid GetTopThreeCheapestFlightsFromUserLocationRequest request) {
-        GetTopThreeCheapestFlightsFromUserLocationResponse response = getTopThreeCheapestFlightsFromUserLocationUseCase.getTopThreeCheapestFlightsFromUserLocation(request);
+    public ResponseEntity<GetFlightsResponse> getTopThreeCheapestFlightsFromUserLocation(@Valid GetTopThreeCheapestFlightsFromUserLocationRequest request) {
+        GetFlightsResponse response = getTopThreeCheapestFlightsFromUserLocationUseCase.getTopThreeCheapestFlightsFromUserLocation(request);
+        return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/flights/advance")
+    public ResponseEntity<GetFlightsResponse> getAdvanceSearchFlights(@Valid GetAdvanceSearchFlightsRequest request) {
+        GetFlightsResponse response = getAdvanceSearchFlightsUseCase.getAdvanceSearchFlights(request);
         return ResponseEntity.ok(response);
     }
 }
