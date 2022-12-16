@@ -12,7 +12,11 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.security.crypto.password.PasswordEncoder;
+
+import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
@@ -24,7 +28,12 @@ class CreateUserUseCaseImplTest {
     private UserRepository userRepository;
 
     @Mock
+    private HttpServletRequest httpServletRequest;
+    @Mock
     private PasswordEncoder passwordEncoder;
+
+    @Mock
+    private JavaMailSender mailSender;
 
     @InjectMocks
     private CreateUserUseCaseImpl createUserUseCase;
@@ -60,10 +69,16 @@ class CreateUserUseCaseImplTest {
                         .password("password")
                         .build();
 
+        MimeMessage mimeMessage = mock(MimeMessage.class);
+
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(false);
         when(userRepository.save(any())).thenReturn(userEntity);
+        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer("http://localhost:8080"));
+        when(httpServletRequest.getServletPath()).thenReturn("/api/v1/user");
+        when(mailSender.createMimeMessage()).thenReturn(mimeMessage);
+        doNothing().when(mailSender).send(mimeMessage);
 
-        CreateUserResponse response = createUserUseCase.createUser(request, null);
+        CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
 
         assertNotNull(response);
         assertEquals(1, response.getUserId());
