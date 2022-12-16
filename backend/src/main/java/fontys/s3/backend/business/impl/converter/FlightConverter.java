@@ -10,7 +10,8 @@ public final class FlightConverter {
     public static Flight convert(FlightEntity flight) {
         return Flight.builder()
                 .id(flight.getId())
-                .route(flight.getRoute().stream().map(RouteConverter::convert).toList())
+                .outboundRoutes(flight.getOutboundRoutes().stream().map(RouteConverter::convert).toList())
+                .returnRoutes(flight.getReturnRoutes().stream().map(RouteConverter::convert).toList())
                 .price(flight.getPrice())
                 .availableSeats(flight.getAvailableSeats())
                 .deepLink(flight.getDeepLink())

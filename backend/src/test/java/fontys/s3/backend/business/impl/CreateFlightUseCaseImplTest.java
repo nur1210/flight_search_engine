@@ -57,11 +57,12 @@ class CreateFlightUseCaseImplTest {
                 .localArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .utcArrivalTime(Timestamp.valueOf("2021-01-01 00:00:00"))
                 .build();
+
         List<RouteEntity> routes = new ArrayList<>();
         routes.add(route);
 
         FlightEntity flightEntity = FlightEntity.builder()
-                .route(routes)
+                .outboundRoutes(routes)
                 .price(100)
                 .availableSeats(2)
                 .build();
@@ -70,7 +71,7 @@ class CreateFlightUseCaseImplTest {
 
         //Act
         CreateFlightRequest request = CreateFlightRequest.builder()
-                .route(flightEntity.getRoute())
+                .outboundRoutes(flightEntity.getOutboundRoutes())
                 .price(flightEntity.getPrice())
                 .availableSeats(flightEntity.getAvailableSeats())
                 .build();

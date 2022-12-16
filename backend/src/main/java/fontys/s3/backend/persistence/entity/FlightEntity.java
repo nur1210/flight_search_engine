@@ -22,7 +22,12 @@ public class FlightEntity {
     @OneToMany(targetEntity = RouteEntity.class,
             cascade = CascadeType.ALL)
     @JoinColumn(name = "flight_id")
-    private List<RouteEntity> route;
+    private List<RouteEntity> outboundRoutes;
+
+    @OneToMany(targetEntity = RouteEntity.class,
+            cascade = CascadeType.ALL)
+    @JoinColumn(name = "flight_id")
+    private List<RouteEntity> returnRoutes;
     @Column(
             name = "price",
             columnDefinition = "double precision"
@@ -50,12 +55,20 @@ public class FlightEntity {
         this.id = id;
     }
 
-    public List<RouteEntity> getRoute() {
-        return route;
+    public List<RouteEntity> getOutboundRoutes() {
+        return outboundRoutes;
     }
 
-    public void setRoute(List<RouteEntity> route) {
-        this.route = route;
+    public void setOutboundRoutes(List<RouteEntity> outboundRoutes) {
+        this.outboundRoutes = outboundRoutes;
+    }
+
+    public List<RouteEntity> getReturnRoutes() {
+        return returnRoutes;
+    }
+
+    public void setReturnRoutes(List<RouteEntity> returnRoutes) {
+        this.returnRoutes = returnRoutes;
     }
 
     public double getPrice() {
