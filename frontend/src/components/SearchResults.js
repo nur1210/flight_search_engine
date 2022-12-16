@@ -37,24 +37,24 @@ function SearchResults() {
     }, []);
 
 
-        useEffect(() => {
-            params.dateFrom = departureDate;
-            setSearchParams(params);
-        }, [departureDate]);
+    useEffect(() => {
+        params.dateFrom = departureDate;
+        setSearchParams(params);
+    }, [departureDate]);
 
 
-        useEffect(() => {
-            params.returnFrom = returnDate;
-            setSearchParams(params);
-        }, [returnDate]);
+    useEffect(() => {
+        params.returnFrom = returnDate;
+        setSearchParams(params);
+    }, [returnDate]);
 
 
-        useEffect(() => {
-            console.log(params)
-            getFlights().then(r => {
-                setFlights(r);
-            });
-        }, [searchParams]);
+    useEffect(() => {
+        console.log(params)
+        getFlights().then(r => {
+            setFlights(r);
+        });
+    }, [searchParams]);
 
 
     const getFlights = async () => {
@@ -96,13 +96,13 @@ function SearchResults() {
                         <Col>
                             <Popup props={params}/>
                         </Col>
-                    <SoftBox sx={{marginTop: 4}}>
-                        <Col>
+                        <SoftBox sx={{marginTop: 4}}>
+                            <Col>
                                 <SoftTypography>
                                     Filters
                                 </SoftTypography>
                                 <SoftTypography fontSize={12}>Dates</SoftTypography>
-                                    <SoftInput
+                                <SoftInput
                                     type="date"
                                     value={departureDate}
                                     onChange={(e) => setDepartureDate(e.target.value)}
@@ -112,36 +112,23 @@ function SearchResults() {
                                     value={returnDate}
                                     onChange={(e) => setReturnDate(e.target.value)}
                                 />
-                            <FormControl sx={{marginTop: 2}}>
-                                <SoftTypography fontSize={12}>Stops</SoftTypography>
-                                <RadioGroup
-                                    aria-labelledby="demo-radio-buttons-group-label"
-                                    defaultValue="0"
-                                    name="radio-buttons-group"
-                                    sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}
-                                >
-                                    <FormControlLabel value="0" control={<Radio />} label="Direct" />
-                                    <FormControlLabel value="1" control={<Radio />} label="One stop" />
-                                    <FormControlLabel value="2" control={<Radio />} label="Two stops" />
-                                </RadioGroup>
-                            </FormControl>
-                        </Col>
-                    </SoftBox>
+                                <FormControl sx={{marginTop: 2}}>
+                                    <SoftTypography fontSize={12}>Stops</SoftTypography>
+                                    <RadioGroup
+                                        aria-labelledby="demo-radio-buttons-group-label"
+                                        defaultValue="0"
+                                        name="radio-buttons-group"
+                                        sx={{display: 'flex', flexDirection: 'column', alignItems: 'flex-start'}}
+                                    >
+                                        <FormControlLabel value="0" control={<Radio/>} label="Direct"/>
+                                        <FormControlLabel value="1" control={<Radio/>} label="One stop"/>
+                                        <FormControlLabel value="2" control={<Radio/>} label="Two stops"/>
+                                    </RadioGroup>
+                                </FormControl>
+                            </Col>
+                        </SoftBox>
                     </Row>
-
                 </SoftBox>
-                {/*            <Row className={"justify-content-md-center"}>
-                <Col xs lg="2">
-                    <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
-                </Col>
-                <Col xs lg="2">
-                    {
-                        !params.flightType === "oneway"
-                            ? <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={true}/>
-                            : <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={false}/>
-                    }
-                </Col>
-            </Row>*/}
                 <SoftBox sx={{gridArea: "main"}}>
                     {
                         flights?.length

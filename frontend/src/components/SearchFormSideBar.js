@@ -13,28 +13,31 @@ const SearchFormSideBar = ({airport}) => {
         const day = new Date().getDate() + 1;
         const firstDate = `${new Date().getFullYear()}-${month < 10 ? `0${month}` : `${month}`}-${day < 10 ? `0${day}` : `${day}`}`;
         const lastDate = new Date().getFullYear() + '-' + month + '-' + new Date(new Date().getFullYear(), month, 0).getDate();
-        console.log(lastDate);
-        try {
-            tequilaService.getTopThreeCheapestFlightsFromUserLocation(
-                airport.iata,
-                firstDate,
-                lastDate,
-                firstDate,
-                lastDate,
-                1,
-                7,
-                'round',
-                1,
-                'M').then(response => {
-                console.log(response.data.cheapestFlights);
-                setFlights(response.data.cheapestFlights);
-            });
-        } catch (e) {
-            console.log(e);
-        }
+
+        const getFlights = async () => {
+            try {
+                const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
+                    airport.iata,
+                    firstDate,
+                    lastDate,
+                    firstDate,
+                    lastDate,
+                    1,
+                    7,
+                    'round',
+                    1,
+                    'M');
+                    console.log(response.data.flights);
+                    setFlights(response.data.flights);
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        getFlights();
+
     }, [airport]);
 
-    return(
+    return (
         <SoftBox sx={{gridArea: 'sidebar', marginTop: 3}}>
             {flights.length !== 0 ?
                 <>
