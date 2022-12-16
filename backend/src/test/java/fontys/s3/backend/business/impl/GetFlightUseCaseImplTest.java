@@ -61,6 +61,7 @@ class GetFlightUseCaseImplTest {
 
         FlightEntity flightEntity = FlightEntity.builder()
                 .outboundRoutes(routes)
+                .returnRoutes(routes)
                 .price(100)
                 .availableSeats(2)
                 .build();
