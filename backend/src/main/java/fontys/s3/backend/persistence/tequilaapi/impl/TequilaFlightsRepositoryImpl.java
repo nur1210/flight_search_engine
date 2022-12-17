@@ -4,12 +4,13 @@ import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.RouteEntity;
+import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
-import lombok.NonNull;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -29,11 +30,17 @@ import java.util.*;
 @AllArgsConstructor
 public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
     private static final Logger log = LoggerFactory.getLogger(TequilaFlightsRepositoryImpl.class);
+    private TequilaAirportsRepository tequilaAirportsRepository;
     @Value("${tequila.api.key}")
     private String apiKey;
     private String url = "https://api.tequila.kiwi.com/v2/search?fly_from={flyFrom}&fly_to={flyTo}&date_from={dateFrom}&date_to={dateTo}&return_from={returnFrom}&return_to={returnTo}&nights_in_dst_from={minNightsInDestination}&nights_in_dst_to={maxNightsInDestination}&flight_type={flightType}&ret_from_diff_city={returnFromDifferentCity}&ret_to_diff_city={returnToDifferentCity}&one_for_city={onePerDestination}&adults={adults}&selected_cabins={selectedCabins}&only_working_days={onlyWorkingDays}&only_weekends={onlyWeekends}&curr={currency}&locale={language}&max_stopovers={maxStopovers}&max_sector_stopovers={maxSectorStopovers}&limit={limit}";
     private RestTemplate restTemplate;
     private Map<String, String> map;
+
+    @Autowired
+    public TequilaFlightsRepositoryImpl(TequilaAirportsRepository tequilaAirportsRepository) {
+        this.tequilaAirportsRepository = tequilaAirportsRepository;
+    }
 
     @Override
     public List<FlightEntity> getFlightsInfo(FlightParams params) {
@@ -79,26 +86,21 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
 
             JSONToFlight flightInfo = responseEntity.getBody();
 
-            //if flightParams.getFlightType() == "round" then add all flights until flightParams.getFlyTo() to outboundsRoutes and rest to returnRoutes
-            //if flightParams.getFlightType() == "oneway" then add all routs to outbounds
-
 
             for (var flight : Objects.requireNonNull(flightInfo).getData()) {
                 List<RouteEntity> outboundRoutes = new ArrayList<>();
                 List<RouteEntity> returnRoutes = new ArrayList<>();
                 List<RouteEntity> routes = outboundRoutes;
-                    for (var route : flight.getRoute()) {
-                        if (params.flightType.equals("round")) {
-                            extractRoutesFromJSON(flight, routes, route);
-
-                            if (route.getCityCodeTo().equals(params.getFlyTo()) || route.getFlyTo().equals(params.getFlyTo())) {
-                                routes = returnRoutes;
-                            }
-                        } else {
-                            extractRoutesFromJSON(flight, routes, route);
+                for (var route : flight.getRoute()) {
+                    if (params.flightType.equals("round")) {
+                        extractRoutesFromJSON(routes, route);
+                        if (route.getCityCodeTo().equals(params.getFlyTo()) || route.getFlyTo().equals(params.getFlyTo())) {
+                            routes = returnRoutes;
                         }
-
+                    } else {
+                        extractRoutesFromJSON(routes, route);
                     }
+                }
 
                 flights.add(FlightEntity.builder()
                         .outboundRoutes(outboundRoutes)
@@ -114,23 +116,27 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
         }
     }
 
-    private void extractRoutesFromJSON(JSONToFlight.@NonNull Data flight, List<RouteEntity> routes, JSONToFlight.Route route) {
+    private void extractRoutesFromJSON(List<RouteEntity> routes, JSONToFlight.Route route) {
+        var airportFrom = tequilaAirportsRepository.getAirportByIata(route.getFlyFrom());
+        var airportTo = tequilaAirportsRepository.getAirportByIata(route.getFlyTo());
         routes.add(RouteEntity.builder()
                 .flightNumber(route.getFlightNumber())
                 .airline(route.getAirline())
                 .departureAirport(AirportEntity.builder()
-                        .iata(route.getFlyFrom())
-                        .city(route.getCityFrom())
-                        .cityCode(route.getCityCodeFrom())
-                        .country(flight.getCountryFrom().getName())
-                        .countryCode(flight.getCountryFrom().getCode())
+                        .iata(airportFrom.getIata())
+                        .name(airportFrom.getName())
+                        .city(airportFrom.getCity())
+                        .cityCode(airportFrom.getCityCode())
+                        .country(airportFrom.getCountry())
+                        .countryCode(airportFrom.getCountryCode())
                         .build())
                 .arrivalAirport(AirportEntity.builder()
-                        .iata(route.getFlyTo())
-                        .city(route.getCityTo())
-                        .cityCode(route.getCityCodeTo())
-                        .country(flight.getCountryTo().getName())
-                        .countryCode(flight.getCountryTo().getCode())
+                        .iata(airportTo.getIata())
+                        .name(airportTo.getName())
+                        .city(airportTo.getCity())
+                        .cityCode(airportTo.getCityCode())
+                        .country(airportTo.getCountry())
+                        .countryCode(airportTo.getCountryCode())
                         .build())
                 .localDepartureTime(route.getLocalDeparture())
                 .utcDepartureTime(route.getUtcDeparture())

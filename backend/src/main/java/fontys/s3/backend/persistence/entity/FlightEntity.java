@@ -34,7 +34,6 @@ public class FlightEntity {
     )
     private double price;
 
-
     @Column(
             name = "available_seats",
             columnDefinition = "integer"

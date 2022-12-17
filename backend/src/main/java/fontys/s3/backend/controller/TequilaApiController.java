@@ -42,8 +42,8 @@ public class TequilaApiController {
     }
 
     @GetMapping("/locations/cords")
-    public ResponseEntity<GetAirportResponse> getAirportByCity(@RequestParam(value = "lat", required = false) String lat,
-                                                              @RequestParam(value = "lng", required = false) String lng) {
+    public ResponseEntity<GetAirportResponse> getAirportByCords(@RequestParam(value = "lat", required = false) String lat,
+                                                               @RequestParam(value = "lng", required = false) String lng) {
         GetAirportByCordsRequest request = GetAirportByCordsRequest.builder()
                 .latitude(lat)
                 .longitude(lng)

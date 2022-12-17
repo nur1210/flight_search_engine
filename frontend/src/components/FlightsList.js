@@ -12,7 +12,6 @@ import {
     TableRow
 } from "@mui/material";
 import SoftTypography from "./SoftTypography";
-import {CardBody} from "reactstrap";
 
 
 const FlightsList = ({flights}) => {
