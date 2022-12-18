@@ -165,7 +165,7 @@ const FlightsList = ({flights}) => {
                                             verticalAlign: "middle"
                                         }}
                                     >
-                                        <Grid item xs={6}>
+                                        <Grid item xs={8}>
                                             <SoftTypography variant="body" component="div" fontWeight={"bold"}>
                                                 {flight.price + '€'}
                                             </SoftTypography>

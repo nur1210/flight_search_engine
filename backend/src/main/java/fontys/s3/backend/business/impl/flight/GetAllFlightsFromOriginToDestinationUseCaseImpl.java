@@ -37,6 +37,7 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
                 .language(request.getLanguage())
                 .maxStopovers(String.valueOf(request.getMaxStopovers()))
                 .maxSectorStopovers(String.valueOf(request.getMaxSectorStopovers()))
+                .limit(String.valueOf(request.getLimit()))
                 .build();
 
             results = flightInfoRepository.getFlightsInfo(flightParams);
