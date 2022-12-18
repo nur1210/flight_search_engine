@@ -43,8 +43,10 @@ function Popup(props) {
 
     return (
         <>
-            <SoftButton color="dark" variant={"outlined"} onClick={handleShow} sx={{marginTop: 1}}>
-                Set price alert
+            <SoftButton color="dark" variant="outlined" onClick={handleShow} sx={{marginTop: 2, width: '100%'}}>
+                <SoftTypography variant="body1" color="dark" fontWeight="bold">
+                Get price alerts
+                </SoftTypography>
             </SoftButton>
 
             <Modal show={show} onHide={handleClose}>

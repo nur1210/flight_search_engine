@@ -11,7 +11,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
+@Entity(name = "PriceAlert")
 @Table(name = "price_alert")
 public class PriceAlertEntity {
     @Id
@@ -61,7 +61,7 @@ public class PriceAlertEntity {
 
     @OneToOne(targetEntity = FlightEntity.class,
             cascade = CascadeType.ALL)
-    @JoinColumn(name = "flight_id", referencedColumnName = "id")
+    @JoinColumn(name = "flight_id")
     private FlightEntity currentFlight;
 
     public long getId() {

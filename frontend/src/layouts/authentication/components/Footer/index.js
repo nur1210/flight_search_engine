@@ -26,8 +26,10 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 // Soft UI Dashboard React components
 import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
+import React from "react";
 
 function Footer() {
+
   return (
     <SoftBox component="footer" py={6}>
       <Grid container justifyContent="center">

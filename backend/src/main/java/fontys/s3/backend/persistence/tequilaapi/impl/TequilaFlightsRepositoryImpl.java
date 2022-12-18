@@ -94,7 +94,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                 for (var route : flight.getRoute()) {
                     if (params.flightType.equals("round")) {
                         extractRoutesFromJSON(routes, route);
-                        if (route.getCityCodeTo().equals(params.getFlyTo()) || route.getFlyTo().equals(params.getFlyTo())) {
+                        if (route.getFlyTo().equals(params.getFlyTo())) {
                             routes = returnRoutes;
                         }
                     } else {

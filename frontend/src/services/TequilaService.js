@@ -1,7 +1,7 @@
 import http from "../api/axios";
 
-const getAllFlights = async (flyFrom, flyTo, dateFrom, returnFrom, flightType, adults, children, infants, selectedCabins) => {
-    return await http.get(`/tequila/flights?flyFrom=${flyFrom}&flyTo=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateFrom}&returnFrom=${returnFrom}&returnTo=${returnFrom}&flightType=${flightType}&adults=${(parseInt(adults) + parseInt(children) + parseInt(infants))}&selectedCabins=${selectedCabins}&currency=EUR&language=en&maxStopovers=0&maxSectorStopovers=0`);
+const getAllFlights = async (flyFrom, flyTo, dateFrom, returnFrom, flightType, adults, children, infants, selectedCabins, stops) => {
+    return await http.get(`/tequila/flights?flyFrom=${flyFrom}&flyTo=${flyTo}&dateFrom=${dateFrom}&dateTo=${dateFrom}&returnFrom=${returnFrom}&returnTo=${returnFrom}&flightType=${flightType}&adults=${(parseInt(adults) + parseInt(children) + parseInt(infants))}&selectedCabins=${selectedCabins}&currency=EUR&language=en&maxStopovers=${parseInt(stops) * 2}&maxSectorStopovers=${parseInt(stops)}&limit=20`);
 }
 
 const getTopThreeCheapestFlightsFromUserLocation = async (origin, dateFrom, dateTo, returnFrom, returnTo, minNightsInDestination, maxNightsInDestination, flightType, adults, travelClass) => {
