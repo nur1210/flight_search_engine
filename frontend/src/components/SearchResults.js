@@ -17,7 +17,7 @@ function SearchResults() {
     console.log(params);
     const [departureDate, setDepartureDate] = useState(params.dateFrom);
     const [returnDate, setReturnDate] = useState(params.returnFrom);
-    const [stops, setStops] = useState(0);
+    const [stops, setStops] = useState(params.maxSectorStopovers);
     const [flights, setFlights] = useState();
 
     useEffect(() => {
@@ -50,7 +50,7 @@ function SearchResults() {
 
 
     useEffect(() => {
-        params.stops = stops;
+        params.maxSectorStopovers = stops;
         setSearchParams(params);
     }, [stops]);
 
@@ -76,7 +76,7 @@ function SearchResults() {
                 params.children ? params.children : 0,
                 params.infants ? params.infants : 0,
                 params.selectedCabins,
-                params.stops);
+                params.maxSectorStopovers);
             console.log(response);
             return response.data.flights;
         } catch (e) {
@@ -143,7 +143,7 @@ function SearchResults() {
                                             <SoftTypography fontSize={12}>Stops</SoftTypography>
                                             <RadioGroup
                                                 aria-labelledby="demo-radio-buttons-group-label"
-                                                defaultValue="0"
+                                                defaultValue={stops !== undefined ? stops : 0}
                                                 name="radio-buttons-group"
                                                 onChange={(e) => setStops(e.target.value)}
                                                 sx={{display: 'flex', alignItems: 'flex-start', marginLeft: 2}}

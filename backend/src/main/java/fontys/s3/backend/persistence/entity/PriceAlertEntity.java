@@ -50,6 +50,11 @@ public class PriceAlertEntity {
     @Column(name = "cabin")
     private String cabinClass;
 
+    @Column(name = "max_stopovers")
+    public long maxStopovers;
+
+    @Column(name = "max_sector_stopovers")
+    public long maxSectorStopovers;
     @Column(name = "curr")
     private String currency;
 
@@ -130,6 +135,22 @@ public class PriceAlertEntity {
 
     public void setCabinClass(String cabinClass) {
         this.cabinClass = cabinClass;
+    }
+
+    public long getMaxStopovers() {
+        return maxStopovers;
+    }
+
+    public void setMaxStopovers(long maxStopovers) {
+        this.maxStopovers = maxStopovers;
+    }
+
+    public long getMaxSectorStopovers() {
+        return maxSectorStopovers;
+    }
+
+    public void setMaxSectorStopovers(long maxSectorStopovers) {
+        this.maxSectorStopovers = maxSectorStopovers;
     }
 
     public String getCurrency() {

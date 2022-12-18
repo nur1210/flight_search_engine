@@ -28,6 +28,8 @@ function Popup(props) {
                 adults: params.adults,
                 children: params.children,
                 infants: params.infants,
+                maxSectorStopovers: params.maxSectorStopovers,
+                maxStopovers: parseInt(params.maxSectorStopovers) * 2
             }
             const response = await axiosPrivate.post(`/alerts`, (data));
             if (isNaN(response.data)) {
