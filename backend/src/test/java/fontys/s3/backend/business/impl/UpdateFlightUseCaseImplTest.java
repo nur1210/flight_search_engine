@@ -60,7 +60,7 @@ class UpdateFlightUseCaseImplTest {
 
         FlightEntity flightEntity = FlightEntity.builder()
                 .id(1)
-                .route(routes)
+                .outboundRoutes(routes)
                 .price(100)
                 .availableSeats(2)
                 .build();

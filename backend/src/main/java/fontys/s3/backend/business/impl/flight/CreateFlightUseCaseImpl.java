@@ -25,7 +25,8 @@ public class CreateFlightUseCaseImpl implements CreateFlightUseCase {
 
     private FlightEntity saveNewFlight(CreateFlightRequest request) {
         FlightEntity newFlight = FlightEntity.builder()
-                .route(request.getRoute())
+                .outboundRoutes(request.getOutboundRoutes())
+                .returnRoutes(request.getReturnRoutes())
                 .price(request.getPrice())
                 .availableSeats(request.getAvailableSeats())
                 .build();

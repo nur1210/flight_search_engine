@@ -12,7 +12,7 @@ import javax.persistence.Table;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name = "airport")
+@Entity(name = "Airport")
 @Table(name = "airports")
 public class AirportEntity {
     @Id
@@ -24,7 +24,6 @@ public class AirportEntity {
 
     @Column(
             name = "name",
-            nullable = true,
             columnDefinition = "TEXT"
     )
     private String name;
@@ -41,12 +40,10 @@ public class AirportEntity {
     private String cityCode;
 
     @Column(name = "country",
-            nullable = false,
             columnDefinition = "TEXT")
     private String country;
 
     @Column(name = "country_code",
-            nullable = false,
             columnDefinition = "TEXT",
             length = 2)
     private String countryCode;

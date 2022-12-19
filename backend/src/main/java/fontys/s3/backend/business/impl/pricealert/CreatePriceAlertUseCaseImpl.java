@@ -47,6 +47,8 @@ public class CreatePriceAlertUseCaseImpl implements CreatePriceAlertUseCase {
                 .flightType(request.getFlightType())
                 .passengers(request.getPassengers())
                 .cabinClass(request.getCabinClass())
+                .maxSectorStopovers(request.getMaxSectorStopovers())
+                .maxStopovers(request.getMaxStopovers())
                 .currency(request.getCurrency())
                 .locale(request.getLocale())
                 .build();

@@ -28,6 +28,8 @@ function Popup(props) {
                 adults: params.adults,
                 children: params.children,
                 infants: params.infants,
+                maxSectorStopovers: params.maxSectorStopovers,
+                maxStopovers: parseInt(params.maxSectorStopovers) * 2
             }
             const response = await axiosPrivate.post(`/alerts`, (data));
             if (isNaN(response.data)) {
@@ -43,9 +45,11 @@ function Popup(props) {
 
     return (
         <>
-            <Button variant="outline-dark" onClick={handleShow}>
-                Set price alert
-            </Button>
+            <SoftButton color="dark" variant="outlined" onClick={handleShow} sx={{marginTop: 2, width: '100%'}}>
+                <SoftTypography variant="body1" color="dark" fontWeight="bold">
+                Get price alerts
+                </SoftTypography>
+            </SoftButton>
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

@@ -1,9 +1,11 @@
 package fontys.s3.backend.persistence.tequilaapi.impl;
 
 import fontys.s3.backend.business.exception.InvalidAirportException;
+import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -22,16 +24,39 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
     @Value("${tequila.api.key}")
     private String apiKey;
 
+    private AirportRepository airportRepository;
+
+    @Autowired
+    public TequilaAirportsRepositoryImpl(AirportRepository airportRepository) {
+        this.airportRepository = airportRepository;
+    }
+
 
     @Override
     public AirportEntity getAirportByCity(String city) {
+        var airport = airportRepository.findByCity(city);
+        if (airport.isPresent()) {
+            return airport.get();
+        }
+
         String url = BASE_URL + "/query?term=" + city + "&location_types=airport&limit=1&active_only=true";
-        return getAirportEntity(url);
+        return airportRepository.save(getAirportEntity(url));
+    }
+
+    @Override
+    public AirportEntity getAirportByIata(String iata) {
+        var airport = airportRepository.findById(iata);
+        if (airport.isPresent()) {
+            return airport.get();
+        }
+
+        String url = BASE_URL + "/query?term=" + iata + "&location_types=airport&limit=1&active_only=true";
+        return airportRepository.save(getAirportEntity(url));
     }
 
     @Override
     public AirportEntity getAirportByCords(String lat, String lon) {
-        String url = BASE_URL + "/radius?lat=" + lat + "&lon=" + lon + "&radius=250&locale=en-US&location_types=airport&limit=1&active_only=true" ;
+        String url = BASE_URL + "/radius?lat=" + lat + "&lon=" + lon + "&radius=250&locale=en-US&location_types=airport&limit=1&active_only=true";
         return getAirportEntity(url);
     }
 

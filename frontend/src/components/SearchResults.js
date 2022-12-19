@@ -5,15 +5,19 @@ import {useSearchParams} from "react-router-dom";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
-
+import SoftBox from "./SoftBox";
+import SoftInput from "./SoftInput";
+import {Card, CardContent, FormControl, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import SoftTypography from "./SoftTypography";
 
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
     console.log(params);
-    const [departureDate, setDepartureDate] = useState(params.Departure);
-    const [returnDate, setReturnDate] = useState(params.Return);
+    const [departureDate, setDepartureDate] = useState(params.dateFrom);
+    const [returnDate, setReturnDate] = useState(params.returnFrom);
+    const [stops, setStops] = useState(params.maxSectorStopovers);
     const [flights, setFlights] = useState();
 
     useEffect(() => {
@@ -33,26 +37,30 @@ function SearchResults() {
     }, []);
 
 
-/*    useEffect(() => {
-        console.log(params);
-        params.Departure = departureDate;
+    useEffect(() => {
+        params.dateFrom = departureDate;
         setSearchParams(params);
     }, [departureDate]);
 
 
     useEffect(() => {
-        console.log(params);
-        params.Return = returnDate;
+        params.returnFrom = returnDate;
         setSearchParams(params);
-    }, [returnDate]);*/
+    }, [returnDate]);
 
 
-/*    useEffect(() => {
+    useEffect(() => {
+        params.maxSectorStopovers = stops;
+        setSearchParams(params);
+    }, [stops]);
+
+
+    useEffect(() => {
         console.log(params)
         getFlights().then(r => {
             setFlights(r);
         });
-    }, [searchParams]);*/
+    }, [searchParams]);
 
 
     const getFlights = async () => {
@@ -67,7 +75,8 @@ function SearchResults() {
                 params.adults,
                 params.children ? params.children : 0,
                 params.infants ? params.infants : 0,
-                params.selectedCabins);
+                params.selectedCabins,
+                params.maxSectorStopovers);
             console.log(response);
             return response.data.flights;
         } catch (e) {
@@ -78,28 +87,86 @@ function SearchResults() {
 
     return (
         <BasicLayout title={"Search Results"}>
-            <Row>
-                <Col md={4}>
-                    <Popup props={params}/>
-                </Col>
-            </Row>
-            {/*            <Row className={"justify-content-md-center"}>
-                <Col xs lg="2">
-                    <DepartureDateInput onChange={setDepartureDate} title={"Departure date"}/>
-                </Col>
-                <Col xs lg="2">
+            <SoftBox
+                sx={{
+                    display: 'grid',
+                    gap: 1,
+                    gridTemplateColumns: 'repeat(6, 1fr)',
+                    gridTemplateRows: 'auto',
+                    gridTemplateAreas: `"header header header header header"
+                                        "sidebar main main main main"
+                                        "footer footer footer footer footer"`,
+                }}
+            >
+                <SoftBox
+                    sx={{
+                        gridArea: "sidebar",
+                        display: 'flex',
+                        flexDirection: 'column',
+                    }}
+                >
+                    <Row>
+                        <Col>
+                            <Popup props={params}/>
+                        </Col>
+                        <SoftBox
+                            sx={{
+                                marginTop: 3,
+                                display: 'flex',
+                                alignContent: 'right',
+                            }}
+                        >
+                            <Col>
+                                <Card sx={{
+                                    backgroundColor: '#ffffff',
+                                }}>
+                                    <SoftTypography>
+                                        Filters
+                                    </SoftTypography>
+                                    <CardContent>
+                                        <SoftTypography fontSize={12}>Dates</SoftTypography>
+                                        <SoftInput
+                                            type="date"
+                                            value={departureDate}
+                                            onChange={(e) => setDepartureDate(e.target.value)}
+                                            sx={{marginTop: 1}}
+                                        />
+                                        <SoftInput
+                                            type="date"
+                                            value={returnDate}
+                                            onChange={(e) => setReturnDate(e.target.value)}
+                                            sx={{marginTop: 2}}
+                                        />
+                                    </CardContent>
+                                    <CardContent>
+                                        <FormControl sx={{marginTop: 2, width: '100%'}}>
+                                            <SoftTypography fontSize={12}>Stops</SoftTypography>
+                                            <RadioGroup
+                                                aria-labelledby="demo-radio-buttons-group-label"
+                                                defaultValue={stops !== undefined ? stops : 0}
+                                                name="radio-buttons-group"
+                                                onChange={(e) => setStops(e.target.value)}
+                                                sx={{display: 'flex', alignItems: 'flex-start', marginLeft: 2}}
+                                            >
+                                                <FormControlLabel value="0" control={<Radio/>} label="Direct"/>
+                                                <FormControlLabel value="1" control={<Radio/>} label="One stop"/>
+                                                <FormControlLabel value="2" control={<Radio/>} label="Two stops"/>
+                                            </RadioGroup>
+                                        </FormControl>
+                                    </CardContent>
+                                </Card>
+                            </Col>
+                        </SoftBox>
+                    </Row>
+                </SoftBox>
+                <SoftBox sx={{gridArea: "main"}}>
                     {
-                        !params.flightType === "oneway"
-                            ? <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={true}/>
-                            : <DepartureDateInput onChange={setReturnDate} title={"Arrival date"} disabled={false}/>
+                        flights?.length
+                            ? <FlightsList flights={flights}/>
+                            : <p>No flights</p>
                     }
-                </Col>
-            </Row>*/}
-            {
-                flights?.length
-                    ? <FlightsList flights={flights}/>
-                    : <p>No flights</p>
-            }
+                </SoftBox>
+            </SoftBox>
         </BasicLayout>
     );
 }

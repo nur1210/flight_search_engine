@@ -1,8 +1,10 @@
+import SoftTypography from "./SoftTypography";
+
 const FlightDurationLabel = ({ departureUTC, arrivalUTC }) => {
     return (
-        <label>
+        <SoftTypography fontSize={14} fontWeight={"medium"}>
             {TimeDifference(departureUTC, arrivalUTC)}
-        </label>
+        </SoftTypography>
     )
 }
 export default FlightDurationLabel;

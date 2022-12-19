@@ -42,7 +42,7 @@ public class GetTopThreeCheapestFlightsFromUserLocationRequest {
     @JsonProperty("ret_to_diff_city")
     public boolean returnToDifferentCity;
     @JsonProperty("one_for_city")
-    public long resultsPerDestination;
+    public long onePerDestination;
 
     @Min(1)
     @Max(9)

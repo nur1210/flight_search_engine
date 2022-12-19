@@ -12,11 +12,8 @@ import lombok.NoArgsConstructor;
 public class FlightParams {
 
     public String flyFrom;
-
     public String flyTo;
-
     public String dateFrom;
-
     public String dateTo;
     public String returnFrom;
     public String returnTo;
@@ -24,16 +21,13 @@ public class FlightParams {
     public String maxNightsInDestination;
     public String returnFromDifferentCity;
     public String returnToDifferentCity;
-    public String resultsPerDestination;
+    public String onePerDestination;
     public String onlyWorkingDays;
     public String onlyWeekends;
     public String limit;
-
     public String flightType;
-
     public String adults;
     public String selectedCabins;
-
     public String currency;
     public String language;
     public String maxStopovers;

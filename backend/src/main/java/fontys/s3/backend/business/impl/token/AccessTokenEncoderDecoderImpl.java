@@ -21,17 +21,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Service
-public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, AccessTokenDecoder {
-    private final Key key;
+        @Service
+        public class AccessTokenEncoderDecoderImpl implements AccessTokenEncoder, AccessTokenDecoder {
+            private final Key key;
 
-    public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
-        byte[] keyBytes = Decoders.BASE64.decode(secretKey);
-        key = Keys.hmacShaKeyFor(keyBytes);
-    }
+            public AccessTokenEncoderDecoderImpl(@Value("${jwt.secret}") String secretKey) {
+                byte[] keyBytes = Decoders.BASE64.decode(secretKey);
+                key = Keys.hmacShaKeyFor(keyBytes);
+            }
 
-    @Override
-    public String encode(AccessToken accessToken) {
+            @Override
+            public String encode(AccessToken accessToken) {
         Map<String, Object> claimsMap = new HashMap<>();
         if (!CollectionUtils.isEmpty(accessToken.getRoles())) {
             claimsMap.put("roles", accessToken.getRoles());

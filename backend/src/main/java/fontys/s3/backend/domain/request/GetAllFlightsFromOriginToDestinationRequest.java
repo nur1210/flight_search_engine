@@ -56,11 +56,14 @@ public class GetAllFlightsFromOriginToDestinationRequest {
     @JsonProperty("locale")
     public String language;
     @Min(0)
-    @Max(2)
+    @Max(4)
     @JsonProperty("max_stopovers")
     public long maxStopovers;
     @Min(0)
     @Max(2)
     @JsonProperty("max_sector_stopovers")
     public long maxSectorStopovers;
+    @Min(1)
+    @Max(200)
+    public long limit;
 }

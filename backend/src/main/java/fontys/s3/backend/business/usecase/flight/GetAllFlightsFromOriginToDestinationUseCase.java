@@ -1,8 +1,8 @@
 package fontys.s3.backend.business.usecase.flight;
 
 import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
-import fontys.s3.backend.domain.response.GetAllFlightsFromOriginToDestinationResponse;
+import fontys.s3.backend.domain.response.GetFlightsResponse;
 
 public interface GetAllFlightsFromOriginToDestinationUseCase {
-    GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(GetAllFlightsFromOriginToDestinationRequest request);
+    GetFlightsResponse getAllFlightsFromOriginToDestination(GetAllFlightsFromOriginToDestinationRequest request);
 }

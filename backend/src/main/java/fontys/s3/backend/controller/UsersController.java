@@ -14,6 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.security.RolesAllowed;
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
 
@@ -27,6 +28,7 @@ public class UsersController {
     private final DeleteUserUseCase deleteUserUseCase;
     private final CreateUserUseCase createUserUseCase;
     private final UpdateUserUseCase updateUserUseCase;
+    private final VerifyUserUseCase verifyUserUseCase;
 
     @IsAuthenticated
     @RolesAllowed({"ROLE_USER", "ROLE_ADMIN"})
@@ -61,9 +63,18 @@ public class UsersController {
     }
 
     @PostMapping()
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request) {
-        CreateUserResponse response = createUserUseCase.createUser(request);
+    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request, HttpServletRequest httpServletRequest) {
+        CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    @GetMapping("/verify")
+    public ResponseEntity<Void> verifyUser(@RequestParam("code") String code) {
+        if (verifyUserUseCase.verifyUser(code)) {
+            return ResponseEntity.ok().build();
+        } else {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
     @PutMapping("{id}")
