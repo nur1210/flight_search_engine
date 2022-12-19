@@ -83,25 +83,6 @@ function DefaultNavbar({transparent, light, action}) {
         return () => window.removeEventListener("resize", displayMobileNavbar);
     }, []);
 
-/*    const renderMenu = () => {
-        return (
-            <Menu
-                anchorEl={openMenu}
-                anchorReference={null}
-                anchorOrigin={{
-                    vertical: "bottom",
-                    horizontal: "left",
-                }}
-                open={Boolean(openMenu)}
-                onClose={handleCloseMenu}
-                sx={{mt: 2}}
-            >
-                <Notification/>
-            </Menu>
-        )
-    };*/
-
-
     return (
         <Container>
             <SoftBox
@@ -125,7 +106,7 @@ function DefaultNavbar({transparent, light, action}) {
                 })}
             >
                 <SoftBox component={Link} to="/"  lineHeight={1}>
-                    <SoftTypography variant="button" fontWeight="bold" fontSize={20} color={light ? "white" : "dark"}>
+                    <SoftTypography variant="button" fontWeight="bold" fontSize={20} color={light ? "white" : "dark"} data-cy="app-name">
                         FlyAway
                     </SoftTypography>
                 </SoftBox>

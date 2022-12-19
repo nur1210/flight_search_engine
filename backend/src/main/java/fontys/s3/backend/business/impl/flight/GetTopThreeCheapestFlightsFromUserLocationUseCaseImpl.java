@@ -5,7 +5,7 @@ import fontys.s3.backend.business.usecase.flight.GetTopThreeCheapestFlightsFromU
 import fontys.s3.backend.domain.model.Flight;
 import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.domain.request.GetTopThreeCheapestFlightsFromUserLocationRequest;
-import fontys.s3.backend.domain.response.GetTopThreeCheapestFlightsFromUserLocationResponse;
+import fontys.s3.backend.domain.response.GetFlightsResponse;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
@@ -18,7 +18,7 @@ public class GetTopThreeCheapestFlightsFromUserLocationUseCaseImpl implements Ge
     private TequilaFlightsRepository flightInfoRepository;
 
     @Override
-    public GetTopThreeCheapestFlightsFromUserLocationResponse getTopThreeCheapestFlightsFromUserLocation(GetTopThreeCheapestFlightsFromUserLocationRequest request) {
+    public GetFlightsResponse getTopThreeCheapestFlightsFromUserLocation(GetTopThreeCheapestFlightsFromUserLocationRequest request) {
         List<FlightEntity> results;
 
         FlightParams flightParams = FlightParams.builder()
@@ -31,7 +31,7 @@ public class GetTopThreeCheapestFlightsFromUserLocationUseCaseImpl implements Ge
                 .maxNightsInDestination(String.valueOf(request.getMaxNightsInDestination()))
                 .returnFromDifferentCity(String.valueOf(request.isReturnFromDifferentCity()))
                 .returnToDifferentCity(String.valueOf(request.isReturnToDifferentCity()))
-                .resultsPerDestination(String.valueOf(request.getResultsPerDestination()))
+                .onePerDestination(String.valueOf(request.getOnePerDestination()))
                 .onlyWorkingDays(String.valueOf(request.isOnlyWorkingDays()))
                 .onlyWeekends(String.valueOf(request.isOnlyWeekends()))
                 .limit(String.valueOf(request.getLimit()))
@@ -48,12 +48,12 @@ public class GetTopThreeCheapestFlightsFromUserLocationUseCaseImpl implements Ge
         results = flightInfoRepository.getFlightsInfo(flightParams);
 
 
-        final GetTopThreeCheapestFlightsFromUserLocationResponse response = new GetTopThreeCheapestFlightsFromUserLocationResponse();
+        final GetFlightsResponse response = new GetFlightsResponse();
         List<Flight> flights = results
                 .stream()
                 .map(FlightConverter::convert)
                 .toList();
-        response.setCheapestFlights(flights);
+        response.setFlights(flights);
 
         return response;
     }

@@ -8,8 +8,8 @@ const FlightCard = ({flight}) => {
             <DefaultInfoCard
                 icon={"paid"}
                 color={"secondary"}
-                title={`Fly to: ${flight.route[0].arrivalAirport.city}, ${flight.route[0].arrivalAirport.country}`}
-                description={`${(flight.route[0].localDepartureTime).split('T')[0].replaceAll('-', "/")} - ${(flight.route[1].localArrivalTime).split('T')[0].replaceAll('-', "/")}`}
+                title={`Fly to: ${flight.outboundRoutes[0].arrivalAirport.city}, ${flight.outboundRoutes[0].arrivalAirport.country}`}
+                description={`${(flight.outboundRoutes[0].localDepartureTime).split('T')[0].replaceAll('-', "/")} - ${(flight.outboundRoutes[1].localArrivalTime).split('T')[0].replaceAll('-', "/")}`}
                 value={`Price: ${flight.price}€`}>
             </DefaultInfoCard>
         </SoftBox>

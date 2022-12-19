@@ -5,7 +5,7 @@ import fontys.s3.backend.business.usecase.flight.GetAllFlightsFromOriginToDestin
 import fontys.s3.backend.domain.model.Flight;
 import fontys.s3.backend.domain.model.FlightParams;
 import fontys.s3.backend.domain.request.GetAllFlightsFromOriginToDestinationRequest;
-import fontys.s3.backend.domain.response.GetAllFlightsFromOriginToDestinationResponse;
+import fontys.s3.backend.domain.response.GetFlightsResponse;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
@@ -19,7 +19,7 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
     private TequilaFlightsRepository flightInfoRepository;
 
     @Override
-    public GetAllFlightsFromOriginToDestinationResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
+    public GetFlightsResponse getAllFlightsFromOriginToDestination(final GetAllFlightsFromOriginToDestinationRequest request) {
 
         List<FlightEntity> results;
 
@@ -37,12 +37,13 @@ public class GetAllFlightsFromOriginToDestinationUseCaseImpl implements GetAllFl
                 .language(request.getLanguage())
                 .maxStopovers(String.valueOf(request.getMaxStopovers()))
                 .maxSectorStopovers(String.valueOf(request.getMaxSectorStopovers()))
+                .limit(String.valueOf(request.getLimit()))
                 .build();
 
             results = flightInfoRepository.getFlightsInfo(flightParams);
 
 
-        final GetAllFlightsFromOriginToDestinationResponse response = new GetAllFlightsFromOriginToDestinationResponse();
+        final GetFlightsResponse response = new GetFlightsResponse();
         List<Flight> flights = results
                 .stream()
                 .map(FlightConverter::convert)

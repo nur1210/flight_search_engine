@@ -43,7 +43,14 @@ const Notification = ({openMenu, handleCloseMenu}) => {
     // display the received data
     const onMessageReceived = (data) => {
         const message = JSON.parse(data.body);
-        setMessagesReceived(messagesReceived => [...messagesReceived, message]);
+        let messages = JSON.parse(localStorage.getItem("messages"));
+        if (messages === null) {
+            messages = [];
+        }
+        messages.push(message);
+        localStorage.setItem("messages", JSON.stringify(messages));
+        setMessagesReceived(messages);
+        //setMessagesReceived(messagesReceived => [...messagesReceived, message]);
     };
 
     const onMessageReceivedPrivate = (data) => {

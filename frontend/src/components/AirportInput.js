@@ -158,6 +158,7 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
                     className="form-control"
                     list={`Airport-options-${name}`}
                     id="Airport-input"
+                    data-cy={`${name}-input`}
                     placeholder="Location"
                     aria-describedby="Airport-label"
                     ref={searchInput}

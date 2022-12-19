@@ -13,7 +13,10 @@ import java.util.List;
 @AllArgsConstructor
 public class Flight {
     private long id;
-    private List<Route> route;
+    private String flyFrom;
+    private String flyTo;
+    private List<Route> outboundRoutes;
+    private List<Route> returnRoutes;
     private double price;
     private long availableSeats;
     private String deepLink;

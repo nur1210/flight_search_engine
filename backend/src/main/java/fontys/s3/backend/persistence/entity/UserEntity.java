@@ -67,6 +67,15 @@ public class UserEntity {
     )
     private String password;
 
+    @Column(
+            name = "verified",
+            nullable = false
+    )
+    private boolean isVerified;
+
+    @Column(name = "verification_code")
+    private String verificationCode;
+
     @OneToMany(cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
@@ -109,6 +118,22 @@ public class UserEntity {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isVerified() {
+        return isVerified;
+    }
+
+    public void setVerified(boolean verified) {
+        isVerified = verified;
+    }
+
+    public String getVerificationCode() {
+        return verificationCode;
+    }
+
+    public void setVerificationCode(String verificationCode) {
+        this.verificationCode = verificationCode;
     }
 
     public Set<UserRoleEntity> getUserRoles() {
