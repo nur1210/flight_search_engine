@@ -101,8 +101,8 @@ public class ScheduledTasks {
                 .selectedCabins(priceAlert.getCabinClass())
                 .currency(priceAlert.getCurrency())
                 .language(priceAlert.getLocale())
-                .maxStopovers("0")
-                .maxSectorStopovers("0")
+                .maxStopovers(String.valueOf(priceAlert.getMaxStopovers()))
+                .maxSectorStopovers(String.valueOf(priceAlert.getMaxSectorStopovers()))
                 .build();
     }
 }

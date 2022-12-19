@@ -160,7 +160,7 @@ const FlightsList = ({flights}) => {
                                             gridRow: '1',
                                             gridColumn: '7 / 8',
                                             display: "flex",
-                                            justifyContent: "center",
+                                            justifyContent: "start",
                                             alignItems: "center",
                                             verticalAlign: "middle"
                                         }}

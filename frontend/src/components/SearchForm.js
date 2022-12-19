@@ -43,14 +43,14 @@ const SearchForm = () => {
             >
                     <SoftBox sx={{gridArea: "main"}}>
 
-                        <Tabs defaultActiveKey={"main"}>
-                            <Tab eventKey={"main"} title={"Main"}>
+{/*                        <Tabs defaultActiveKey={"main"}>
+                            <Tab eventKey={"main"} title={"Main"}>*/}
                                 <SearchFormMain setLocation={setLocation}/>
-                            </Tab>
+{/*                            </Tab>
                             <Tab eventKey={"advance"} title={"Advance"}>
                                 <SoftBox>hekki</SoftBox>
                             </Tab>
-                        </Tabs>
+                        </Tabs>*/}
                     </SoftBox>
                 <SearchFormSideBar airport={airport}/>
             </SoftBox>

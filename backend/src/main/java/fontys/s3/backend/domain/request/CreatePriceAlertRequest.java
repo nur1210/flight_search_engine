@@ -37,6 +37,16 @@ public class CreatePriceAlertRequest {
     @NotNull
     @JsonProperty("travelClass")
     private String cabinClass;
+
+    @Min(0)
+    @Max(4)
+    @JsonProperty("maxStopovers")
+    public long maxStopovers;
+
+    @Min(0)
+    @Max(2)
+    @JsonProperty("maxSectorStopovers")
+    public long maxSectorStopovers;
     @Builder.Default
     private String currency = "EUR";
     @Builder.Default
