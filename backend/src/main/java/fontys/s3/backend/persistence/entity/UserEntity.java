@@ -5,37 +5,23 @@ import lombok.Builder;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-
 import java.util.List;
 import java.util.Set;
-
-import static javax.persistence.GenerationType.SEQUENCE;
 
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "User")
-@Table(name = "users",
+@Table(name = "users")/*,
         uniqueConstraints = {
                 @UniqueConstraint(
                         name = "user_email_unique",
                         columnNames = "email")
-        })
+        })*/
 public class UserEntity {
-    @SequenceGenerator(
-            name = "user_sequence",
-            sequenceName = "user_sequence",
-            allocationSize = 1
-    )
-    @GeneratedValue(
-            strategy = SEQUENCE,
-            generator = "user_sequence"
-    )
     @Id
-    @Column(
-            name = "id",
-            updatable = false
-    )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private long id;
 
     @Column(
@@ -76,7 +62,8 @@ public class UserEntity {
     @Column(name = "verification_code")
     private String verificationCode;
 
-    @OneToMany(cascade = CascadeType.ALL,
+    @OneToMany(targetEntity = UserRoleEntity.class,
+            cascade = CascadeType.ALL,
             fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private Set<UserRoleEntity> userRoles;
@@ -86,6 +73,10 @@ public class UserEntity {
 
     public long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getFirstName() {

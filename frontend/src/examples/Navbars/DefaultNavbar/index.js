@@ -132,7 +132,6 @@ function DefaultNavbar({transparent, light, action}) {
                                         <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
                                     </IconButton>
                                     <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
-                                    {/*{renderMenu()}*/}
                                 </> :
                                 <>
                                     <DefaultNavbarLink icon="person" name="profile" route="/m" light={light}/>
@@ -150,13 +149,12 @@ function DefaultNavbar({transparent, light, action}) {
                                         <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
                                     </IconButton>
                                     <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
-                                    {/*{renderMenu()}*/}
                                 </> :
                             <>
                                 <DefaultNavbarLink
                                     icon="account_circle"
                                     name="sign up"
-                                    route="/authentication/sign-up"
+                                    route="/sign-up"
                                     light={light}
                                 />
                                 <DefaultNavbarLink

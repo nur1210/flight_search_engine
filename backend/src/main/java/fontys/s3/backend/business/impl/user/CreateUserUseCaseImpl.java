@@ -9,12 +9,12 @@ import fontys.s3.backend.persistence.entity.RoleEnum;
 import fontys.s3.backend.persistence.entity.UserEntity;
 import fontys.s3.backend.persistence.entity.UserRoleEntity;
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -30,7 +30,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
-    @SneakyThrows
     @Override
     public CreateUserResponse createUser(CreateUserRequest request, HttpServletRequest httpServletRequest){
         if (Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))) {
@@ -43,7 +42,8 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .build();
     }
 
-    UserEntity saveNewUser(CreateUserRequest request, String siteURL) throws MessagingException, UnsupportedEncodingException {
+    @Transactional
+    public UserEntity saveNewUser(CreateUserRequest request, String siteURL) {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         String randomCode = RandomString.make(64);
 
@@ -56,14 +56,20 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .verificationCode(randomCode)
                 .build();
 
-        newUser.setUserRoles(Set.of(
-                UserRoleEntity.builder()
-                        .user(newUser)
-                        .role(RoleEnum.USER)
-                        .build()));
+        UserRoleEntity userRole = UserRoleEntity.builder()
+                .user(newUser)
+                .role(RoleEnum.USER)
+                .build();
+        newUser.setUserRoles(Set.of(userRole));
 
-        sendVerificationEmail(newUser, siteURL);
-        return userRepository.save(newUser);
+        try {
+            userRepository.save(newUser);
+            sendVerificationEmail(newUser, siteURL);
+            return newUser;
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        throw new InvalidCredentialsException();
     }
 
     private void sendVerificationEmail(UserEntity user, String siteURL)

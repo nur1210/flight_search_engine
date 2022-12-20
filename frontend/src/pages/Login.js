@@ -9,7 +9,7 @@ import SoftBox from "../components/SoftBox";
 import SoftTypography from "../components/SoftTypography";
 import SoftInput from "../components/SoftInput";
 import SoftButton from "../components/SoftButton";
-import Switch from "@mui/material/Switch";
+import {toast, ToastContainer} from "react-toastify";
 
 const Login = () => {
     const { setAuth, persist, setPersist } = useAuth();
@@ -23,19 +23,18 @@ const Login = () => {
 
     const [email, setEmail] = useState('');
     const [pwd, setPwd] = useState('');
-    const [errMsg, setErrMsg] = useState('');
 
     useEffect(() => {
         userRef.current.focus();
     }, [])
 
-    useEffect(() => {
-        setErrMsg('');
-    }, [email, pwd])
 
     useEffect(() => {
         localStorage.setItem("persist", persist);
     }, [persist])
+
+    const notify = (message) => toast.error(message);
+
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,11 +54,11 @@ const Login = () => {
         } catch (err) {
             console.log(err);
             if (err.response.status === 400) {
-                setErrMsg('Incorrect Email or Password');
+                notify('Incorrect Email or Password');
             } else if (err.response.status === 401) {
-                setErrMsg('Unauthorized');
+                notify('Not Verified', 'Please verify your email');
             } else {
-                setErrMsg('Login Failed');
+                notify('Login Failed');
             }
             errRef.current.focus();
         }
@@ -76,7 +75,6 @@ const Login = () => {
             description="Enter your email and password to sign in"
             image={curved9}
         >
-            <SoftTypography ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</SoftTypography>
             <SoftBox component={"form"} role={"form"} onSubmit={handleSubmit}>
                 <SoftBox mt={2} mb={1} ml={0.5}>
                     <SoftTypography component="label" variant="caption" fontWeight="bold">
@@ -105,17 +103,6 @@ const Login = () => {
                     value={pwd}
                     required
                 />
-                <SoftBox display="flex" alignItems="center">
-                    <Switch checked={persist} onChange={togglePersist} />
-                    <SoftTypography
-                        variant="button"
-                        fontWeight="regular"
-                        onClick={togglePersist}
-                        sx={{ cursor: "pointer", userSelect: "none" }}
-                    >
-                        &nbsp;&nbsp;Remember me
-                    </SoftTypography>
-                </SoftBox>
                 <SoftBox mt={4} mb={1}>
                 <SoftButton variant="gradient" color="info" fullWidth type={handleSubmit}>
                     Sign In
@@ -137,8 +124,8 @@ const Login = () => {
                     </SoftTypography>
                 </SoftTypography>
             </SoftBox>
+            <ToastContainer position="bottom-right"/>
         </CoverLayout>
-
     )
 }
 

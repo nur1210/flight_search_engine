@@ -35,10 +35,8 @@ public class UsersController {
     @GetMapping("{id}")
     public ResponseEntity<User> getUser(@PathVariable(value = "id") final long id) {
         final Optional<User> userOptional = getUserUseCase.getUser(id);
-        if (userOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok().body(userOptional.get());
+        return userOptional.map(user -> ResponseEntity.ok().body(user))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @IsAuthenticated

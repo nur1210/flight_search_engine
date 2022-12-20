@@ -22,7 +22,7 @@ public class UserRoleEntity {
     private RoleEnum role;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(referencedColumnName = "id")
     private UserEntity user;
 
 
