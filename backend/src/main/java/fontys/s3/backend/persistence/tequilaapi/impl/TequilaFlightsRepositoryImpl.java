@@ -8,6 +8,7 @@ import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
 import fontys.s3.backend.persistence.tequilaapi.TequilaFlightsRepository;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
+import org.apache.commons.beanutils.BeanUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,10 +18,10 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ReflectionUtils;
 import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
+import java.lang.reflect.InvocationTargetException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
@@ -60,16 +61,13 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
         }
 
         restTemplate = new RestTemplate();
-        map = new HashMap<>();
 
-
-        ReflectionUtils.doWithFields(params.getClass(), field -> {
-            if (field.get(params) != null) {
-                map.put(field.getName(), field.get(params).toString());
-            } else {
-                map.put(field.getName(), "");
-            }
-        });
+        try {
+            map = BeanUtils.describe(params);
+        } catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {
+            log.error("Error while generating map from FlightParams object", e);
+            return Collections.emptyList();
+        }
 
         try {
             List<FlightEntity> flights = new ArrayList<>();

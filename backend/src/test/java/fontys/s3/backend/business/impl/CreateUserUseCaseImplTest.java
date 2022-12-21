@@ -81,8 +81,7 @@ class CreateUserUseCaseImplTest {
         CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
 
         assertNotNull(response);
-        assertEquals(1, response.getUserId());
-
         verify(userRepository, times(1)).save(any());
     }
+
 }

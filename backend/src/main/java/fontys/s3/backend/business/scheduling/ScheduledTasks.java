@@ -26,6 +26,7 @@ public class ScheduledTasks {
     private final TequilaFlightsRepository flightInfoRepository;
     private final UpdatePriceAlertUseCase updatePriceAlertUseCase;
     private final NotificationService notificationService;
+    private List<PriceAlertEntity> priceAlerts;
 
 
     @Autowired
@@ -35,15 +36,19 @@ public class ScheduledTasks {
         this.updatePriceAlertUseCase = updatePriceAlertUseCase;
         this.notificationService = notificationService;
     }
-
     @Scheduled(fixedRate = 36000)
     public void checkForChangeInFlightPrice() {
-        List<PriceAlertEntity> priceAlerts = priceAlertRepository.findAll();
+        // Fetch the list of price alerts from the repository if it is not already cached
+        if (priceAlerts == null) {
+            priceAlerts = priceAlertRepository.findAll();
+        }
 
+        // Iterate through the cached list of price alerts
         for (PriceAlertEntity priceAlert : priceAlerts) {
             if (priceAlert.getDateFrom().before(new Date())) {
                 priceAlertRepository.delete(priceAlert);
-                return;
+                priceAlerts.remove(priceAlert);
+                continue;
             }
 
             var cheapestFlight = getCheapestFlight(priceAlert);
@@ -59,22 +64,30 @@ public class ScheduledTasks {
                 }
             }
         }
+
+        // Check if any new price alerts have been added
+        List<PriceAlertEntity> newPriceAlerts = priceAlertRepository.findAll();
+        if (newPriceAlerts.size() > priceAlerts.size()) {
+            // Update the cached list of price alerts
+            priceAlerts = newPriceAlerts;
+        }
     }
 
     FlightEntity getCheapestFlight(PriceAlertEntity priceAlert) {
-
         var flightParams = convertPriceAlertToFlightParams(priceAlert);
 
-        FlightEntity cheapestFlight = flightInfoRepository.getFlightsInfo(flightParams)
-                .stream().filter(f ->
-                        f.getAvailableSeats() >= priceAlert.getPassengers())
-                .findFirst().orElse(null);
+        // Get the list of flights from the repository
+        List<FlightEntity> flights = flightInfoRepository.getFlightsInfo(flightParams);
 
-        if (cheapestFlight == null) {
-            throw new InvalidFlightException("NO_FLIGHTS_FOUND");
+        // Find the first flight that meets the criteria
+        for (var flight : flights) {
+            if (flight.getAvailableSeats() >= priceAlert.getPassengers()) {
+                return flight;
+            }
         }
 
-        return cheapestFlight;
+        // No flights found
+        throw new InvalidFlightException("NO_FLIGHTS_FOUND");
     }
 
     void updatePriceAlert(PriceAlertEntity priceAlert, FlightEntity cheapestFlight) {

@@ -13,13 +13,16 @@ import {toast, ToastContainer} from "react-toastify";
 function SignUp() {
     const {register, handleSubmit, watch} = useForm();
     const navigate = useNavigate();
-    const notify = (message) => toast.error(message);
+    const error = (message) => toast.error(message);
+    const success = (message) => toast.success(message);
 
     const onSubmit = async (data) => {
         console.log(data);
         try {
             const response = await userService.create(JSON.stringify(data));
             console.log(response.data);
+            success("User created successfully");
+            setTimeout(4000)
             navigate('/login');
         } catch (error) {
             console.log(error);
@@ -28,7 +31,7 @@ function SignUp() {
 
     const onError = async (errors) => {
         console.log(errors);
-        notify(errors[Object.keys(errors)[0]].message);
+        error(errors[Object.keys(errors)[0]].message);
     };
 
     return (

@@ -12,6 +12,7 @@ import Missing from "./components/Missing";
 import SignUp from "./layouts/authentication/sign-up";
 import Profile from "./components/Profile";
 import {lazy} from "react";
+import Verify from "./components/Verify";
 
 const ROLES = {
     'User': "USER",
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/" element={<SearchForm/>}/>
                     <Route path="/search-results" element={<SearchResults/>}/>
                     <Route path="/sign-up" element={<SignUp/>} />
+                    <Route path="/verify" element={<Verify/>} />
                     <Route path="unauthorized" element={<Unauthorized />} />
 
                     <Route element={<PersistLogin/>}>

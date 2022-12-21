@@ -46,6 +46,7 @@ dependencies {
     implementation 'org.junit.jupiter:junit-jupiter-engine:5.9.1'
     implementation 'org.mockito:mockito-core:4.8.1'
     implementation 'org.jetbrains:annotations:20.1.0'
+    implementation 'commons-beanutils:commons-beanutils:1.9.4'
     runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.11.2'
     runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.11.2'
     compileOnly 'org.projectlombok:lombok'
