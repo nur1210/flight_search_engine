@@ -92,7 +92,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.getFirstName());
-        String verifyURL = siteURL + "/users/verify?code=" + user.getVerificationCode();
+        String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
 
         content = content.replace("[[URL]]", verifyURL);
 
@@ -102,7 +102,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     private String getSiteURL(HttpServletRequest request) {
-        String siteURL = request.getRequestURL().toString();
-        return siteURL.replace(request.getServletPath(), "");
+        return request.getHeader("Origin");
     }
 }

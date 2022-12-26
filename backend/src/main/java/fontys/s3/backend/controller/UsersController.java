@@ -66,8 +66,8 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
-    @GetMapping("/verify")
-    public ResponseEntity<Void> verifyUser(@RequestParam("code") String code) {
+    @GetMapping("/verify/{code}")
+    public ResponseEntity<HttpStatus> verifyUser(@PathVariable(value = "code") String code) {
         if (verifyUserUseCase.verifyUser(code)) {
             return ResponseEntity.ok().build();
         } else {
