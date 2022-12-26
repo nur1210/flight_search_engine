@@ -73,8 +73,6 @@ class CreateUserUseCaseImplTest {
 
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(false);
         when(userRepository.save(any())).thenReturn(userEntity);
-        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer("http://localhost:8080"));
-        when(httpServletRequest.getServletPath()).thenReturn("/api/v1/user");
         when(mailSender.createMimeMessage()).thenReturn(mimeMessage);
         doNothing().when(mailSender).send(mimeMessage);
 

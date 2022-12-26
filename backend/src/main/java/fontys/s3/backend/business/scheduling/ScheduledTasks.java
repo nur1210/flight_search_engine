@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,7 +27,7 @@ public class ScheduledTasks {
     private final TequilaFlightsRepository flightInfoRepository;
     private final UpdatePriceAlertUseCase updatePriceAlertUseCase;
     private final NotificationService notificationService;
-    private List<PriceAlertEntity> priceAlerts;
+    private ArrayList<PriceAlertEntity> priceAlerts = new ArrayList<>();
 
 
     @Autowired
@@ -39,13 +40,17 @@ public class ScheduledTasks {
     @Scheduled(fixedRate = 36000)
     public void checkForChangeInFlightPrice() {
         // Fetch the list of price alerts from the repository if it is not already cached
-        if (priceAlerts == null) {
-            priceAlerts = priceAlertRepository.findAll();
+        if (priceAlerts.isEmpty()) {
+            priceAlerts.addAll(priceAlertRepository.findAll());
         }
 
-        // Iterate through the cached list of price alerts
-        for (PriceAlertEntity priceAlert : priceAlerts) {
+        // Create a copy of the list of price alerts
+        List<PriceAlertEntity> priceAlertsCopy = new ArrayList<>(priceAlerts);
+
+        // Iterate over the copy of the list of price alerts
+        for (PriceAlertEntity priceAlert : priceAlertsCopy) {
             if (priceAlert.getDateFrom().before(new Date())) {
+                // Delete the price alert from the repository and from the original list
                 priceAlertRepository.delete(priceAlert);
                 priceAlerts.remove(priceAlert);
                 continue;
@@ -67,9 +72,10 @@ public class ScheduledTasks {
 
         // Check if any new price alerts have been added
         List<PriceAlertEntity> newPriceAlerts = priceAlertRepository.findAll();
-        if (newPriceAlerts.size() > priceAlerts.size()) {
+        if (!newPriceAlerts.equals(priceAlerts)) {
             // Update the cached list of price alerts
-            priceAlerts = newPriceAlerts;
+            priceAlerts.clear();
+            priceAlerts.addAll(newPriceAlerts);
         }
     }
 
