@@ -12,6 +12,7 @@ import lombok.AllArgsConstructor;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,25 +22,28 @@ import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @AllArgsConstructor
+@Async
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
+
     @Override
-    public CreateUserResponse createUser(CreateUserRequest request, HttpServletRequest httpServletRequest){
+    public CompletableFuture<CreateUserResponse> createUser(CreateUserRequest request, HttpServletRequest httpServletRequest) {
         if (Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))) {
             throw new InvalidCredentialsException();
         }
         String siteURL = getSiteURL(httpServletRequest);
         UserEntity saveUser = saveNewUser(request, siteURL);
-        return CreateUserResponse.builder()
+        return CompletableFuture.completedFuture(CreateUserResponse.builder()
                 .userId(saveUser.getId())
-                .build();
+                .build());
     }
 
     @Transactional

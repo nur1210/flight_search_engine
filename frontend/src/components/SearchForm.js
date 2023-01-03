@@ -11,16 +11,16 @@ const SearchForm = () => {
 
 
     useEffect(() => {
-        const getAirport = async () => {
-            try {
-                const response = await tequilaService.getAirportByCords(location.latitude, location.longitude);
-                console.log(response.data.airport);
-                setAirport(response.data.airport);
-            } catch (e) {
-                console.log(e);
-            }
-        };
-        getAirport();
+            const getAirport = async () => {
+                try {
+                    const response = await tequilaService.getAirportByCords(location.latitude, location.longitude);
+                    console.log(response.data.airport);
+                    setAirport(response.data.airport);
+                } catch (e) {
+                    console.log(e);
+                }
+            };
+            getAirport();
 
     }, [location]);
 

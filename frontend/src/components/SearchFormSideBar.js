@@ -15,24 +15,25 @@ const SearchFormSideBar = ({airport}) => {
         const lastDate = new Date().getFullYear() + '-' + month + '-' + new Date(new Date().getFullYear(), month, 0).getDate();
 
         const getFlights = async () => {
-            try {
-                const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
-                    airport.iata,
-                    firstDate,
-                    lastDate,
-                    firstDate,
-                    lastDate,
-                    1,
-                    7,
-                    'round',
-                    1,
-                    'M');
+                try {
+                    const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
+                        airport.iata,
+                        firstDate,
+                        lastDate,
+                        firstDate,
+                        lastDate,
+                        1,
+                        7,
+                        'round',
+                        1,
+                        'M');
                     console.log(response.data.flights);
                     setFlights(response.data.flights);
-            } catch (e) {
-                console.log(e);
+                } catch (e) {
+                    console.log(e);
+                }
             }
-        };
+        ;
         getFlights();
 
     }, [airport]);

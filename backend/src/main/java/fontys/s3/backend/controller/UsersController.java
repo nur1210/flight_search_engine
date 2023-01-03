@@ -17,6 +17,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/users")
@@ -61,9 +62,9 @@ public class UsersController {
     }
 
     @PostMapping()
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request, HttpServletRequest httpServletRequest) {
-        CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    public CompletableFuture<ResponseEntity<CreateUserResponse>> createUser(@RequestBody @Valid CreateUserRequest request, HttpServletRequest httpServletRequest) {
+        CompletableFuture<CreateUserResponse> responseFuture = createUserUseCase.createUser(request, httpServletRequest);
+        return responseFuture.thenApply(response -> ResponseEntity.status(HttpStatus.CREATED).body(response));
     }
 
     @GetMapping("/verify/{code}")

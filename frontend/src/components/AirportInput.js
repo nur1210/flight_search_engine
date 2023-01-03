@@ -4,6 +4,7 @@ import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import SoftBox from "./SoftBox";
 import SoftTypography from "./SoftTypography";
 import SoftButton from "./SoftButton";
+import SoftInput from "./SoftInput";
 
 const apiKey = 'AIzaSyAkKp4RUwFXPYyslYaxYSxbRVCiSdhw78E';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
@@ -154,6 +155,7 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
             </SoftTypography>
             <SoftBox>
                 <input
+                    ref={searchInput}
                     type="text"
                     className="form-control"
                     list={`Airport-options-${name}`}
@@ -161,7 +163,6 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
                     data-cy={`${name}-input`}
                     placeholder="Location"
                     aria-describedby="Airport-label"
-                    ref={searchInput}
                     onChange={initAutocomplete}
                 />
                 <input
