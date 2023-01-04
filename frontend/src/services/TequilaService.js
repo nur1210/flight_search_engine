@@ -16,11 +16,16 @@ const getAirportByCords = async (lat, lon) => {
     return await http.get(`/tequila/locations/cords?lat=${lat}&lng=${lon}`);
 }
 
+const getTopTenDestinations = async (city) => {
+    return await http.get(`/tequila/locations/top-destinations?city=${city}`);
+}
+
 const TequilaService = {
     getAllFlights,
     getTopThreeCheapestFlightsFromUserLocation,
     getAirportByCity,
-    getAirportByCords
+    getAirportByCords,
+    getTopTenDestinations
 }
 
 export default TequilaService;

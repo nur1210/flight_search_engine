@@ -33,6 +33,8 @@ import Notification from "../../../../components/Notification";
 import Menu from "@mui/material/Menu";
 import {useState} from "react";
 import NotificationItem from "../../../../examples/Items/NotificationItem";
+import ChatBot from "../../../../ChatBot";
+import {Chat} from "@mui/icons-material";
 
 function BasicLayout({ title, description, children }) {
 
@@ -69,6 +71,7 @@ function BasicLayout({ title, description, children }) {
         </Grid>
       </SoftBox>
         <Notification/>
+        <ChatBot/>
         <Footer />
     </PageLayout>
   );

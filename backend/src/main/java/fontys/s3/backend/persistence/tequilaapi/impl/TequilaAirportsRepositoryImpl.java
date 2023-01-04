@@ -1,6 +1,7 @@
 package fontys.s3.backend.persistence.tequilaapi.impl;
 
 import fontys.s3.backend.business.exception.InvalidAirportException;
+import fontys.s3.backend.domain.model.Destination;
 import fontys.s3.backend.persistence.AirportRepository;
 import fontys.s3.backend.persistence.entity.AirportEntity;
 import fontys.s3.backend.persistence.tequilaapi.TequilaAirportsRepository;
@@ -14,7 +15,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @Component
 @NoArgsConstructor
@@ -60,6 +63,12 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
         return getAirportEntity(url);
     }
 
+    @Override
+    public List<Destination> getTopTenDestinationsFromOrigin(String city) {
+        String url = BASE_URL + "/topdestinations?term=" + city + "&locale=en-US&limit=10&sort=name&active_only=true&source_popularity=searches";
+        return getDestinetions(url);
+    }
+
     private AirportEntity getAirportEntity(String url) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
@@ -79,6 +88,26 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
                 .country(airport.getCity().getCountry().getName())
                 .countryCode(airport.getCity().getCountry().getCode())
                 .build();
+    }
+
+    private List<Destination> getDestinetions(String url) {
+        RestTemplate restTemplate = new RestTemplate();
+        HttpHeaders headers = new HttpHeaders();
+        headers.add("apikey", apiKey);
+        HttpEntity<JSONToLocation> entity = new HttpEntity<>(headers);
+        ResponseEntity<JSONToLocation> responseEntity = restTemplate.exchange(url, HttpMethod.GET, entity, JSONToLocation.class);
+        JSONToLocation locations = responseEntity.getBody();
+
+        List<Destination> destinations = new ArrayList<>();
+        for (var location : locations.getLocations()) {
+            destinations.add(Destination.builder()
+                    .city(location.getName())
+                    .cityCode(location.getCode())
+                    .country(location.getCountry().getName())
+                    .countryCode(location.getCountry().getCode())
+                    .build());
+        }
+        return destinations;
     }
 }
 
