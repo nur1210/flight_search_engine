@@ -145,14 +145,14 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
 
     return (
         <SoftBox mb={2}>
-            <SoftTypography
+{/*            <SoftTypography
                 component="label"
                 vatiant="caption"
                 fontWeight="medium"
                 fontSize={12}
             >
                 {title}
-            </SoftTypography>
+            </SoftTypography>*/}
             <SoftBox>
                 <input
                     ref={searchInput}
@@ -164,6 +164,7 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
                     placeholder="Location"
                     aria-describedby="Airport-label"
                     onChange={initAutocomplete}
+                    style={{borderRadius: 0, height: 39.5}}
                 />
                 <input
                     type={"hidden"}
@@ -172,7 +173,7 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
                         required: 'Please fill in the location'
                     })}
                 />
-                <SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>
+                {/*<SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>*/}
                 <datalist id={`Airport-options-${title}`}></datalist>
             </SoftBox>
         </SoftBox>

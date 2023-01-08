@@ -7,7 +7,10 @@ import SoftButton from "components/SoftButton";
 import BasicLayout from "layouts/authentication/components/BasicLayout";
 import {useForm} from "react-hook-form";
 import userService from "../../../services/UserService";
-import {toast, ToastContainer} from "react-toastify";
+import {toast, ToastContainer} from "react-toastify"
+import curved6 from "assets/images/curved-images/curved14.jpg";
+import {Grid} from "@mui/material";
+
 
 
 function SignUp() {
@@ -36,16 +39,22 @@ function SignUp() {
 
     return (
         <BasicLayout
-            title="Welcome!">
-            <SoftBox
+            light={true}
+            title="Welcome!"
+            description="Create an account to get started"
+            image={curved6}
+        >
+            <Grid
+                container
+                item xs={12} md={12} lg={12} xl={12}
                 mt={2}
                 display="flex"
                 flexDirection="column"
                 justifyContent="center"
                 alignItems="center"
             >
-                <Card sx={{width: "50%"}}>
-                    <SoftBox pt={2} pb={3} px={3}>
+                <Card sx={{ backgroundColor: "rgba(255,255,255,0.64)"}}>
+                    <SoftBox pt={3} pb={3} px={3}>
                         <SoftBox component="form" role="form" onSubmit={handleSubmit(onSubmit, onError)}>
                             <SoftBox mb={2}>
                                 <SoftInput placeholder="First name"
@@ -65,18 +74,21 @@ function SignUp() {
                             <SoftBox mb={2}>
                                 <SoftInput type="password" placeholder="Password"
                                            {...register("password", {
-                                               required: "Password has to be 8-20 characters",
-                                               minLength: 8,
-                                               maxLength: 20
+                                               required: "Password is required",
+                                               minLength: { value: 8, message: "Password must be at least 8 characters" },
+                                               maxLength: { value: 20, message: "Password must be no more than 20 characters" },
                                            })}
                                 />
                             </SoftBox>
                             <SoftBox mb={2}>
                                 <SoftInput type="password" placeholder="Repeat password"
                                            {...register("repeatPassword", {
-                                               required: true,
-                                               validate: (value) => value === watch('password') || "Passwords don't match"
-                                           })}
+                                               validate: value => {
+                                                   if (!value) return "Repeat password is required";
+                                                   if (value !== watch("password")) return "Passwords don't match";
+                                                   return true;
+                                               }
+                                             })}
                                 />
                             </SoftBox>
                             <SoftBox mt={4} mb={1}>
@@ -102,7 +114,7 @@ function SignUp() {
                         </SoftBox>
                     </SoftBox>
                 </Card>
-            </SoftBox>
+            </Grid>
             <ToastContainer position="bottom-right"/>
         </BasicLayout>
     );

@@ -33,7 +33,9 @@ import Footer from "layouts/authentication/components/Footer";
 function CoverLayout({ color, header, title, description, image, top, children }) {
   return (
     <PageLayout background="white">
-      <DefaultNavbar/>
+{/*
+      <DefaultNavbar />
+*/}
       <Grid
         container
         justifyContent="center"

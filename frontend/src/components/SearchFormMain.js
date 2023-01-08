@@ -6,7 +6,7 @@ import SoftButton from "./SoftButton";
 import {useForm} from "react-hook-form";
 import {createSearchParams, useNavigate} from "react-router-dom";
 import {
-    Card,
+    Card, CardContent,
     FormControl,
     FormControlLabel,
     Grid, IconButton,
@@ -40,8 +40,7 @@ const SearchFormMain = ({setLocation}) => {
         }
     });
     const [anchorEl, setAnchorEl] = useState(null);
-/*    const [passengers, setPassengers] = useState(1);
-    const [cabinClass, setCabinClass] = useState('M');*/
+
 
     const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -53,12 +52,11 @@ const SearchFormMain = ({setLocation}) => {
 
     const handlePassengersChange = (increment) => {
         const adults = getValues('adults');
-        setValue('adults', adults + increment);
+        if (adults + increment >= 0) {
+            setValue('adults', adults + increment);
+        }
     };
 
-    const handleCabinClassChange = (event) => {
-        //setCabinClass(event.target.value);
-    };
 
     const post = (data) => navigate({
         pathname: '/search-results',
@@ -68,12 +66,12 @@ const SearchFormMain = ({setLocation}) => {
 
     const onSubmit = (data) => {
         console.log(data);
-        //post(data);
+        post(data);
     };
 
     return (
         <SoftBox sx={{gridArea: 'main'}}>
-            <form onSubmit={handleSubmit(onSubmit)} className={"w-100"}>
+            <form onSubmit={handleSubmit(onSubmit)}>
                 {/*                <SoftBox>
                     <SoftBox mt={4} mb={2}>
                         <LocationsCard register={register} setLocation={setLocation} setValue={setValue}
@@ -88,17 +86,22 @@ const SearchFormMain = ({setLocation}) => {
                 </SoftBox>*/}
                 <Grid
                     container
+                    item={true}
                     direction="column"
                     alignContent={"center"}
+/*
                     sx={{minWidth: 650}}
+*/
                 >
-                    <Card className={"my-2 card"}>
-                        <SoftBox className={"card-body"}>
+                    <Card
+                        sx={{backgroundColor: "rgba(255,255,255,0.51)"}}
+                    >
+                        <CardContent>
                             <Grid
                                 display={"flex"}
                                 justifyContent={"start"}
                             >
-                                <SoftBox mt={2} ml={1}>
+                                <SoftBox mt={1} ml={2}>
                                     <Grid
                                         display={"flex"}
                                         flexDirection={"row"}
@@ -158,6 +161,7 @@ const SearchFormMain = ({setLocation}) => {
                                                     return date > today;
                                                 }
                                             })}
+                                            sx={{borderRadius: 0}}
                                         />
                                     </SoftBox>
                                     <SoftBox>
@@ -174,6 +178,7 @@ const SearchFormMain = ({setLocation}) => {
                                                     return date > dateFrom;
                                                 }
                                             })}
+                                            sx={{borderRadius: 0}}
                                         />
                                     </SoftBox>
                                     <SoftBox>
@@ -186,6 +191,7 @@ const SearchFormMain = ({setLocation}) => {
                                                 aria-controls="simple-menu"
                                                 onClick={handleClick}
                                                 value={`${getValues('adults')} passengers, ${getValues('selectedCabins')}`}
+                                                sx={{borderRadius: 0}}
                                             />
                                             <Menu
                                                 id="simple-menu"
@@ -201,7 +207,6 @@ const SearchFormMain = ({setLocation}) => {
                                                 }}>
                                                     <TextField
                                                         label="Passengers"
-                                                        //value={passengers}
                                                         onChange={handlePassengersChange}
                                                         InputProps={{
                                                             endAdornment: (
@@ -234,9 +239,7 @@ const SearchFormMain = ({setLocation}) => {
                                                 }}>
                                                     <Select
                                                         label="Cabin class"
-                                                        //value={cabinClass}
                                                         defaultValue="M"
-                                                        onChange={handleCabinClassChange}
                                                         style={{
                                                             display: 'flex',
                                                             alignItems: 'center',
@@ -261,16 +264,15 @@ const SearchFormMain = ({setLocation}) => {
                                     justifyContent={"end"}
                                 >
                                     <SoftBox mt={3}>
-                                        <SoftButton color={"dark"} size={"large"} type="submit">Search</SoftButton>
+                                        <SoftButton variant="gradient" color={"dark"} size={"large"} type="submit">Search</SoftButton>
                                     </SoftBox>
                                 </Grid>
                             </SoftBox>
-                        </SoftBox>
+                        </CardContent>
                     </Card>
                 </Grid>
             </form>
         </SoftBox>
-
     )
 }
 

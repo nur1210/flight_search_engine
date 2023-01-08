@@ -1,5 +1,7 @@
 import {useEffect, useState} from "react";
 import userService from "../services/UserService";
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
 
 const Verify = () => {
     const [status, setStatus] = useState(null);
@@ -14,16 +16,34 @@ const Verify = () => {
             });
         }
 
-        handleRedirect();
+        handleRedirect().then(
+            setTimeout(() => {
+                window.location.href = '/login';
+            }, 5000)
+        );
 
     }, []);
 
     return (
-        <div>
-            {status === 200 ? <h1>Account verified successfully</h1> : <h1>Account verification failed</h1>}
-        </div>
+        <SoftBox m={30}>
+            {status === 200 ?
+                <SoftTypography
+                    verticalAlign='middle'
+                    fontWeight='bold'
+                    component='h1'
+                >
+                    Your account has been verified. You will be redirected to the login page.
+                </SoftTypography>
+                :
+                <SoftTypography
+                    verticalAlign='middle'
+                    fontWeight='bold'
+                    component='h1'
+                >
+                    Account verification failed, your account could already been verified
+                </SoftTypography>}
+        </SoftBox>
     )
-
 }
 
 export default Verify

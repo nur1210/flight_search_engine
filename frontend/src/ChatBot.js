@@ -1,10 +1,14 @@
 import ChatBot from 'react-simple-chatbot';
 import {useEffect, useState} from "react";
 import TequilaService from "./services/TequilaService";
+import ChatResult from "./components/ChatResult";
+import {ThemeProvider} from 'styled-components';
+import FlightMessage from "./components/FlightMessage";
 
 const Chatbot = () => {
     const [destinations, setDestinations] = useState();
     const [steps, setSteps] = useState([]);
+    const [flights, setFlights] = useState([]);
 
     const config = {
         width: "300px",
@@ -12,20 +16,35 @@ const Chatbot = () => {
         floating: true
     };
 
+    const theme = {
+        background: '#f5f8fb',
+        headerBgColor: '#344767',
+        headerFontColor: '#fff',
+        headerFontSize: '15px',
+        botBubbleColor: '#ffffff',
+        botFontColor: '#344767',
+        userBubbleColor: '#fff',
+        userFontColor: '#344767',
+    };
+
     const months = [
-        {value: '1', label: 'January', trigger: '6'},
-        {value: '2', label: 'February', trigger: '6'},
-        {value: '3', label: 'March', trigger: '6'},
-        {value: '4', label: 'April', trigger: '6'},
-        {value: '5', label: 'May', trigger: '6'},
-        {value: '6', label: 'June', trigger: '6'},
-        {value: '7', label: 'July', trigger: '6'},
-        {value: '8', label: 'August', trigger: '6'},
-        {value: '9', label: 'September', trigger: '6'},
-        {value: '10', label: 'October', trigger: '6'},
-        {value: '11', label: 'November', trigger: '6'},
-        {value: '12', label: 'December', trigger: '6'}
+        {value: 0, label: 'January', trigger: '7'},
+        {value: 1, label: 'February', trigger: '7'},
+        {value: 2, label: 'March', trigger: '7'},
+        {value: 3, label: 'April', trigger: '7'},
+        {value: 4, label: 'May', trigger: '7'},
+        {value: 5, label: 'June', trigger: '7'},
+        {value: 6, label: 'July', trigger: '7'},
+        {value: 7, label: 'August', trigger: '7'},
+        {value: 8, label: 'September', trigger: '7'},
+        {value: 9, label: 'October', trigger: '7'},
+        {value: 10, label: 'November', trigger: '7'},
+        {value: 11, label: 'December', trigger: '7'}
     ];
+
+    const updateSteps = newSteps => {
+        setSteps(newSteps);
+    }
 
 
     useEffect(() => {
@@ -41,11 +60,10 @@ const Chatbot = () => {
     useEffect(() => {
         console.log(destinations);
         if (Array.isArray(destinations)) {
-            console.log('aa');
-            const options = destinations.map((destination, i) => ({
-                value: i,
+            const options = destinations.map(destination => ({
+                value: destination.cityCode,
                 label: `${destination.city}, ${destination.country}`,
-                trigger: '4',
+                trigger: '5',
             }));
 
             const steps = [
@@ -57,51 +75,53 @@ const Chatbot = () => {
                 },
                 {
                     id: '2',
-                    message: 'Where would you like to go?',
-                    delay: 1000,
-                    trigger: '3',
-                },
-                {
-                    id: '3',
-                    delay: 1500,
-                    options: options,
-                },
-                {
-                    id: '4',
-                    message: 'Select a month',
-                    delay: 1000,
-                    trigger: '5',
-                },
-                {
-                    id: '5',
-                    delay: 1500,
-                    options: months,
-                },
-                {
-                    id: '6',
-                    message: 'How many days would you like to stay?',
-                    delay: 1000,
-                    trigger: '7',
-                },
-                {
-                    id: '7',
-                    delay: 1500,
                     options: [
-                        {value: '1', label: '1-3', trigger: '8'},
-                        {value: '2', label: '3-7', trigger: '8'},
-                        {value: '2', label: '7-14', trigger: '8'},
-                        {value: '2', label: 'custom,', trigger: '8'},
+                        {value: '1', label: 'I am ready!', trigger: '3'},
+                        {value: '2', label: 'Not now', trigger: '14'},
                     ],
                 },
                 {
-                    id: '8',
-                    message: 'How many people are travelling?',
+                    id: '3',
+                    message: 'Where would you like to go?',
                     delay: 1000,
-                    trigger: '9',
+                    trigger: 'destination',
+                },
+                {
+                    id: 'destination',
+                    options: options,
+                },
+                {
+                    id: '5',
+                    message: 'Select a month',
+                    delay: 1000,
+                    trigger: 'month',
+                },
+                {
+                    id: 'month',
+                    options: months,
+                },
+                {
+                    id: '7',
+                    message: 'How many days would you like to stay?',
+                    delay: 1000,
+                    trigger: 'duration',
+                },
+                {
+                    id: 'duration',
+                    options: [
+                        {value: 1, label: '1-3', trigger: '9'},
+                        {value: 2, label: '3-7', trigger: '9'},
+                        {value: 3, label: '7-14', trigger: '9'},
+                    ],
                 },
                 {
                     id: '9',
-                    delay: 1500,
+                    message: 'How many people are travelling?',
+                    delay: 1000,
+                    trigger: 'passengers',
+                },
+                {
+                    id: 'passengers',
                     user: true,
                     validator: (value) => {
                         if (value.match(/^[1-9]$/)) {
@@ -110,43 +130,127 @@ const Chatbot = () => {
                             return 'Please enter a number 1-9';
                         }
                     },
-                    trigger: '10',
-                },
-                {
-                    id: '10',
-                    message: 'Do you want to have stopovers?',
-                    delay: 1000,
                     trigger: '11',
                 },
                 {
                     id: '11',
-                    delay: 1500,
+                    message: 'Do you want to have stopovers?',
+                    delay: 1000,
+                    trigger: 'maxStopovers',
+                },
+                {
+                    id: 'maxStopovers',
                     options: [
-                        {value: '0', label: 'Direct only', trigger: '12'},
-                        {value: '1', label: 'Max one stop', trigger: '12'},
-                        {value: '2', label: 'Max two stops', trigger: '12'},
+                        {value: '0', label: 'Direct only', trigger: '13'},
+                        {value: '1', label: 'Max one stop', trigger: '13'},
+                        {value: '2', label: 'Max two stops', trigger: '13'},
                     ],
                 },
                 {
-                    id: '12',
+                    id: '13',
                     message: 'Great! I will find you the best flight!',
+                    trigger: '14',
+                },
+                {
+                    id: '14',
+                    component: <ChatResult
+                        setFlights={setFlights}
+                        flights={flights}
+                        onSearchCompleted={onSearchCompleted}
+                    />,
+                    waitAction: true,
+                },
+                {
+                    id: '15',
+                    message: 'Here are your results!',
+                    trigger: '16',
+                },
+                {
+                    id: '16',
+                    options: [
+                        {value: '1', label: 'Yes', trigger: '3'},
+                        {value: '2', label: 'No', trigger: '17'},
+                    ],
+                },
+                {
+                    id: '17',
+                    message: 'Thank you for using our service!',
                     end: true,
                 },
             ];
 
-
-            console.log(options);
             setSteps(steps);
-
-        } else {
-            console.log("not array");
-            setSteps({options: []});
         }
     }, [destinations]);
 
+    useEffect(() => {
+        console.log(flights);
+        if (flights.length > 0) {
+            const steps = [
+                {
+                    id: '15',
+                    component: <FlightMessage flights={flights}/>,
+                    trigger: '16',
+                },
+                {
+                    id: '16',
+                    options: [
+                        {value: '1', label: 'Yes', trigger: '3'},
+                        {value: '2', label: 'No', trigger: '17'},
+                    ],
+                },
+                {
+                    id: '17',
+                    message: 'Thank you for using our service!',
+                    end: true,
+                },
+            ];
+            updateSteps(steps);
+        }
+    }, [flights]);
+
+    const onSearchCompleted = () => {
+        console.log("search completed");
+        const newSteps = [
+            ...steps,
+            {
+                id: '16',
+                message: 'Here are the flights that match your criteria:',
+                trigger: '18',
+            },
+/*            {
+                id: '17',
+                component: <ChatResult flights={flights} setFlights={setFlights}/>,
+                asMessage: true,
+                trigger: '18',
+            },*/
+            {
+                id: '18',
+                options: [
+                    {value: '1', label: 'Start over', trigger: '1'},
+                    {value: '2', label: 'Exit', trigger: '19'},
+                ],
+            },
+            {
+                id: '19',
+                message: 'Thank you for using our service!',
+                end: true,
+            },
+        ];
+
+        setSteps(newSteps);
+    };
+
 
     return steps.length > 0 ? (
-        <ChatBot steps={steps} {...config}/>
+        <ThemeProvider theme={theme}>
+            <ChatBot
+                headerTitle="Flight Finder"
+                steps={steps}
+                updateSteps={updateSteps}
+                {...config}
+            />
+        </ThemeProvider>
     ) : (
         <div></div>
     );

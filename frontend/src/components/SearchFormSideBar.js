@@ -3,6 +3,7 @@ import FlightCard from "./FlightCard";
 import tequilaService from "../services/TequilaService";
 import {useEffect, useState} from "react";
 import SoftTypography from "./SoftTypography";
+import {Grid} from "@mui/material";
 
 const SearchFormSideBar = ({airport}) => {
     const [flights, setFlights] = useState([]);
@@ -39,15 +40,23 @@ const SearchFormSideBar = ({airport}) => {
     }, [airport]);
 
     return (
-        <SoftBox sx={{gridArea: 'sidebar', marginTop: 3}}>
+        <SoftBox>
             {flights.length !== 0 ?
                 <>
-                    <SoftTypography fontWeight={"medium"}>
+                    <SoftTypography fontWeight={"bold"} textGradient>
                         Cheapest flights from {airport.city}
                     </SoftTypography>
-                    {flights.map((flight, i) => (
-                        <FlightCard key={i} flight={flight}/>
-                    ))}
+                    <Grid
+                        container
+                        item
+                        direction="row"
+                        justifyContent="space-evenly"
+                        alignItems="stretch"
+                    >
+                        {flights.map((flight, i) => (
+                            <FlightCard key={i} flight={flight}/>
+                        ))}
+                    </Grid>
                 </>
                 :
                 null

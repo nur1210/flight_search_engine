@@ -4,6 +4,10 @@ import {useEffect, useState} from "react";
 import tequilaService from "../services/TequilaService";
 import SearchFormSideBar from "./SearchFormSideBar";
 import SearchFormMain from "./SearchFormMain";
+import curved6 from "assets/images/curved-images/curved14.jpg";
+import {Grid} from "@mui/material";
+import ChatBot from "../ChatBot";
+
 
 const SearchForm = () => {
     const [airport, setAirport] = useState(null);
@@ -11,41 +15,56 @@ const SearchForm = () => {
 
 
     useEffect(() => {
-            const getAirport = async () => {
-                try {
-                    const response = await tequilaService.getAirportByCords(location.latitude, location.longitude);
-                    console.log(response.data.airport);
-                    setAirport(response.data.airport);
-                } catch (e) {
-                    console.log(e);
-                }
-            };
-            getAirport();
+        const getAirport = async () => {
+            try {
+                const response = await tequilaService.getAirportByCords(location.latitude, location.longitude);
+                console.log(response.data.airport);
+                setAirport(response.data.airport);
+            } catch (e) {
+                console.log(e);
+            }
+        };
+        getAirport();
 
     }, [location]);
 
 
-    return (<BasicLayout
-        title={"Flight Search"}
-        description={"Let the journey begin"}
-    >
-        <SoftBox
+    return (
+        <BasicLayout
+            title={"Flight Search"}
+            description={"Let the journey begin"}
+            image={curved6}
+        >
+            {/*        <SoftBox
             sx={{
                 display: 'grid',
                 gap: 1,
                 gridTemplateColumns: 'repeat(8, 1fr)',
                 gridTemplateRows: 'auto',
                 gridTemplateAreas: `"header header header header header header herder"
-                                        "sidebar sidebar main main main main main"
+                                        "main main main main main"
+                                        "sidebar sidebar sidebar sidebar sidebar"
                                         "footer footer footer footer footer footer footer"`,
             }}
-        >
-            <SoftBox sx={{gridArea: "main"}}>
-                <SearchFormMain setLocation={setLocation}/>
-            </SoftBox>
-            <SearchFormSideBar airport={airport}/>
-        </SoftBox>
-    </BasicLayout>)
+        >*/}
+
+            <Grid
+                container
+                direction="column"
+                justifyContent="center"
+                alignItems="center"
+            >
+
+                <SoftBox mb={20}>
+                    <SearchFormMain setLocation={setLocation}/>
+                </SoftBox>
+                <SoftBox>
+                    <SearchFormSideBar airport={airport}/>
+                </SoftBox>
+            <ChatBot/>
+            </Grid>
+        </BasicLayout>
+    )
 };
 
 export default SearchForm;

@@ -7,7 +7,7 @@ import Popup from "./Popup";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import SoftBox from "./SoftBox";
 import SoftInput from "./SoftInput";
-import {Card, CardContent, FormControl, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {Card, CardContent, FormControl, FormControlLabel, Grid, Radio, RadioGroup} from "@mui/material";
 import SoftTypography from "./SoftTypography";
 
 
@@ -86,8 +86,15 @@ function SearchResults() {
 
 
     return (
-        <BasicLayout title={"Search Results"}>
-            <SoftBox
+        <BasicLayout
+            light={false}
+            title={"Search Results"}
+            description={"Here you can find the best flights for your trip"}
+        >
+            <Grid
+                container
+                item xs={12} md={12} lg={12} xl={12}
+                mt={-2}
                 sx={{
                     display: 'grid',
                     gap: 1,
@@ -105,10 +112,10 @@ function SearchResults() {
                         flexDirection: 'column',
                     }}
                 >
-                    <Row>
-                        <Col>
+                    <Grid gridRow>
+                        <Grid gridColumn>
                             <Popup props={params}/>
-                        </Col>
+                        </Grid>
                         <SoftBox
                             sx={{
                                 marginTop: 3,
@@ -116,7 +123,7 @@ function SearchResults() {
                                 alignContent: 'right',
                             }}
                         >
-                            <Col>
+                            <Grid gridColumn sx={{width: '100%'}}>
                                 <Card sx={{
                                     backgroundColor: '#ffffff',
                                 }}>
@@ -155,9 +162,9 @@ function SearchResults() {
                                         </FormControl>
                                     </CardContent>
                                 </Card>
-                            </Col>
+                            </Grid>
                         </SoftBox>
-                    </Row>
+                    </Grid>
                 </SoftBox>
                 <SoftBox sx={{gridArea: "main"}}>
                     {
@@ -166,7 +173,7 @@ function SearchResults() {
                             : <p>No flights</p>
                     }
                 </SoftBox>
-            </SoftBox>
+            </Grid>
         </BasicLayout>
     );
 }

@@ -1,17 +1,17 @@
 /**
-=========================================================
-* Soft UI Dashboard React - v4.0.0
-=========================================================
+ =========================================================
+ * Soft UI Dashboard React - v4.0.0
+ =========================================================
 
-* Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
-* Copyright 2022 Creative Tim (https://www.creative-tim.com)
+ * Product Page: https://www.creative-tim.com/product/soft-ui-dashboard-react
+ * Copyright 2022 Creative Tim (https://www.creative-tim.com)
 
-Coded by www.creative-tim.com
+ Coded by www.creative-tim.com
 
  =========================================================
 
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-*/
+ * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ */
 
 // prop-types is a library for typechecking of props
 import PropTypes from "prop-types";
@@ -29,65 +29,83 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 
 // Authentication layout components
 import Footer from "layouts/authentication/components/Footer";
-import Notification from "../../../../components/Notification";
-import Menu from "@mui/material/Menu";
-import {useState} from "react";
-import NotificationItem from "../../../../examples/Items/NotificationItem";
+
 import ChatBot from "../../../../ChatBot";
-import {Chat} from "@mui/icons-material";
 
-function BasicLayout({ title, description, children }) {
+function BasicLayout({title, description, image, children, light}) {
 
 
-  return (
-    <PageLayout>
-      <DefaultNavbar
-        transparent
-        dark
-      />
-      <SoftBox
-        pt={5}
-        pb={28}
-      >
-        <Grid container spacing={3} justifyContent="center" sx={{ textAlign: "center" }}>
-          <Grid item={true} >
-            <SoftBox mt={6} mb={1}>
-              <SoftTypography variant="h1" color="dark" fontWeight="bold">
-                {title}
-              </SoftTypography>
+    return (
+        <PageLayout>
+            <DefaultNavbar
+                transparent
+                light={light}
+            />
+            <SoftBox
+                width="calc(100% - 2rem)"
+                //height="50vh"
+                borderRadius="lg"
+                mx={2}
+                my={2}
+                pt={6}
+                pb={35}
+                mb={2}
+                sx={{
+                    backgroundImage: ({functions: {linearGradient, rgba}, palette: {gradients}}) =>
+                        image &&
+                        `${linearGradient(
+                            rgba(gradients.dark.main, 0.6),
+                            rgba(gradients.dark.state, 0.6)
+                        )}, url(${image})`,
+                    backgroundSize: "cover",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                }}
+            >
+                <Grid container spacing={3} justifyContent="center" sx={{textAlign: "center"}}>
+                    <Grid item xs={10} lg={4}>
+                        <SoftBox mt={6} mb={1}>
+                            <SoftTypography variant="h1" color={light ? "white" : "dark"} fontWeight="bold">
+                                {title}
+                            </SoftTypography>
+                        </SoftBox>
+                        <SoftBox mb={2}>
+                            <SoftTypography variant="body2" color={light ? "white" : "dark"} fontWeight="regular">
+                                {description}
+                            </SoftTypography>
+                        </SoftBox>
+                    </Grid>
+                </Grid>
             </SoftBox>
-          </Grid>
-        </Grid>
-      </SoftBox>
-      <SoftBox
-          mt={{ xs: -26, lg: -30 }}
-          px={1}
-          width="calc(100% - 2rem)"
-          mx="auto">
-        <Grid container={true} spacing={1} justifyContent="center">
-          <Grid item={true} lg={8}>
-            {children}
-          </Grid>
-        </Grid>
-      </SoftBox>
-        <Notification/>
-        <ChatBot/>
-        <Footer />
-    </PageLayout>
-  );
+            <SoftBox
+                mt={{xs: -26, lg: -36}}
+                px={1}
+                width="calc(100% - 2rem)"
+                mx="auto">
+                <Grid container justifyContent="center" alignItems="center" alignContent="center">
+                    <Grid item xs={17} sm={15} md={10} lg={9} xl={9}>
+                        {children}
+                    </Grid>
+                </Grid>
+            </SoftBox>
+            <Footer/>
+        </PageLayout>
+    );
 }
 
 // Setting default values for the props of BasicLayout
 BasicLayout.defaultProps = {
-  title: "",
-  description: "",
+    title: "",
+    description: "",
+    light: true,
 };
 
 // Typechecking props for the BasicLayout
 BasicLayout.propTypes = {
-  title: PropTypes.string,
-  description: PropTypes.string,
-  children: PropTypes.node.isRequired,
+    light: PropTypes.bool,
+    title: PropTypes.string,
+    description: PropTypes.string,
+    children: PropTypes.node.isRequired,
 };
 
 export default BasicLayout;
