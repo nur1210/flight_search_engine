@@ -31,10 +31,10 @@ class TequilaFlightsRepositoryImplTest {
     void setUp() {
         params.put("fly_from", "AMS");
         params.put("fly_to", "FRA");
-        params.put("date_from", "01/01/2023");
-        params.put("date_to", "01/01/2023");
-        params.put("return_from", "04/01/2023");
-        params.put("return_to", "04/01/2023");
+        params.put("date_from", "2023-01-10");
+        params.put("date_to", "2023-01-10");
+        params.put("return_from", "2023-04-10");
+        params.put("return_to", "2023-04-10");
         params.put("flight_type", "round");
         params.put("adults", "1");
         params.put("selected_cabins", "M");
