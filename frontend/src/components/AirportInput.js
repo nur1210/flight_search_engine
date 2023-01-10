@@ -64,7 +64,7 @@ const extractAirport = (place) => {
     return airport;
 }
 
-const AirportInput = ({title, register, setValue, setLocation, name, error}) => {
+const AirportInput = ({title, register, setValue, setLocation, name}) => {
     const searchInput = useRef(null);
 
 

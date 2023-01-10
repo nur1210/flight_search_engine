@@ -30,7 +30,7 @@ import PageLayout from "examples/LayoutContainers/PageLayout";
 // Authentication layout components
 import Footer from "layouts/authentication/components/Footer";
 
-import ChatBot from "../../../../ChatBot";
+import ChatBot from "../../../../components/ChatBot";
 
 function BasicLayout({title, description, image, children, light}) {
 

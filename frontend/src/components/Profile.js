@@ -80,54 +80,6 @@ const Profile = () => {
             title="Profile"
             image={curved6}
         >
-{/*            <form onSubmit={handleSubmit(onSubmit)} className='d-flex align-content-center justify-content-center '>
-                <Card sx={{width: '25%'}}>
-                    <CardContent sx={{marginTop: 2}}>
-                        <SoftInput
-                            type="text"
-                            label="First Name"
-                            sx={{marginBottom: 2}}
-                            {...register("firstName", {required: true})}
-                        />
-                        <SoftInput
-                            type="text"
-                            sx={{marginBottom: 2}}
-                            {...register("lastName", {required: true})}
-                        />
-                        <SoftInput
-                            type="email"
-                            sx={{marginBottom: 2}}
-                            {...register("email", {required: true})}
-                        />
-                        <SoftInput
-                            type="password"
-                            label="Password"
-                            sx={{marginBottom: 2}}
-                            {...register("password",
-                                {
-                                    required: !!watch("newPassword")
-                                })
-                            }
-                        />
-                        <SoftInput
-                            type="password"
-                            {...register("newPassword",
-                                {
-                                    required: !!watch("password"),
-                                    minLength: {
-                                        value: 8,
-                                        message: "Password must have at least 8 characters"
-                                    }
-                                })
-                            }
-                        />
-                    </CardContent>
-                    <CardContent>
-                        <SoftButton type={"submit"}>Submit</SoftButton>
-                    </CardContent>
-                </Card>
-            </form>*/}
-
             <SoftBox mt={5} mb={3}>
                 <Grid container spacing={3}>
                     <Grid item xs={12} md={6} xl={4}>

@@ -1,4 +1,3 @@
-import BasicTable from "./RouteRow";
 import {
     Card, CardContent,
     Container,
@@ -7,7 +6,6 @@ import {
 import SoftTypography from "./SoftTypography";
 import FlightDurationLabel from "./FlightDurationLabel";
 import SoftBox from "./SoftBox";
-import SoftButton from "./SoftButton";
 
 
 const FlightsList = ({flights}) => {

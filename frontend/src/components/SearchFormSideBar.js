@@ -16,6 +16,7 @@ const SearchFormSideBar = ({airport}) => {
         const lastDate = new Date().getFullYear() + '-' + month + '-' + new Date(new Date().getFullYear(), month, 0).getDate();
 
         const getFlights = async () => {
+            if (airport === null) return;
                 try {
                     const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
                         airport.iata,

@@ -1,9 +1,9 @@
 import ChatBot from 'react-simple-chatbot';
 import {useEffect, useState} from "react";
-import TequilaService from "./services/TequilaService";
-import ChatResult from "./components/ChatResult";
+import TequilaService from "../services/TequilaService";
+import ChatResult from "./ChatResult";
 import {ThemeProvider} from 'styled-components';
-import FlightMessage from "./components/FlightMessage";
+import FlightMessage from "./FlightMessage";
 
 const Chatbot = ({airport}) => {
     const [destinations, setDestinations] = useState();
@@ -48,7 +48,7 @@ const Chatbot = ({airport}) => {
 
 
     useEffect(() => {
-        console.log(airport)
+        if (airport === null) return;
         const getDestination = async () => {
             const response = await TequilaService.getTopTenDestinations(airport.iata);
             console.log(response.data.destinations);

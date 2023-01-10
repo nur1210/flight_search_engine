@@ -2,8 +2,6 @@ import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
 import BasicLayout from "../layouts/authentication/components/BasicLayout";
 import SoftTypography from "./SoftTypography";
-import SoftButton from "./SoftButton";
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import SoftBox from "./SoftBox";
 import Card from "@mui/material/Card";
 import userTableData from "./userTableData";
@@ -63,10 +61,6 @@ const Users = () => {
             }
         });
         return updatedUsers;
-    }
-
-    const sendMessage = () => {
-
     }
 
 

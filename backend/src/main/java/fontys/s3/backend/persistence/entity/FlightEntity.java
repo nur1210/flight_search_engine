@@ -20,12 +20,12 @@ public class FlightEntity {
     @Column(name = "id")
     private long id;
     @OneToMany(targetEntity = RouteEntity.class,
-            cascade = CascadeType.REMOVE)
+            cascade = CascadeType.DETACH)
     @JoinColumn(name = "flight_id")
     private List<RouteEntity> outboundRoutes;
 
     @OneToMany(targetEntity = RouteEntity.class,
-            cascade = CascadeType.REMOVE)
+            cascade = CascadeType.DETACH)
     @JoinColumn(name = "flight_id")
     private List<RouteEntity> returnRoutes;
     @Column(

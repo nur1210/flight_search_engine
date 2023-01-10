@@ -6,7 +6,7 @@ import SearchFormSideBar from "./SearchFormSideBar";
 import SearchFormMain from "./SearchFormMain";
 import curved6 from "assets/images/curved-images/curved14.jpg";
 import {Grid} from "@mui/material";
-import ChatBot from "../ChatBot";
+import ChatBot from "./ChatBot";
 
 
 const SearchForm = () => {
@@ -15,6 +15,7 @@ const SearchForm = () => {
 
 
     useEffect(() => {
+        if (location === null) return;
         const getAirport = async () => {
             try {
                 const response = await tequilaService.getAirportByCords(location.latitude, location.longitude);
