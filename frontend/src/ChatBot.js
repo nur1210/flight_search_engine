@@ -5,7 +5,7 @@ import ChatResult from "./components/ChatResult";
 import {ThemeProvider} from 'styled-components';
 import FlightMessage from "./components/FlightMessage";
 
-const Chatbot = () => {
+const Chatbot = ({airport}) => {
     const [destinations, setDestinations] = useState();
     const [steps, setSteps] = useState([]);
     const [flights, setFlights] = useState([]);
@@ -48,14 +48,15 @@ const Chatbot = () => {
 
 
     useEffect(() => {
+        console.log(airport)
         const getDestination = async () => {
-            const response = await TequilaService.getTopTenDestinations("EIN");
+            const response = await TequilaService.getTopTenDestinations(airport.iata);
             console.log(response.data.destinations);
             setDestinations(response.data.destinations);
         };
         getDestination();
 
-    }, []);
+    }, [airport]);
 
     useEffect(() => {
         console.log(destinations);
@@ -154,6 +155,7 @@ const Chatbot = () => {
                 {
                     id: '14',
                     component: <ChatResult
+                        airport={airport}
                         setFlights={setFlights}
                         flights={flights}
                         onSearchCompleted={onSearchCompleted}

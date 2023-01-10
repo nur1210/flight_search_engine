@@ -1,19 +1,12 @@
-import {useEffect, useState} from "react";
-import useAuth from "../hooks/useAuth";
+import { useEffect, useState } from 'react';
+import Stomp from 'stompjs';
 import SockJS from "sockjs-client";
-import Stomp from "stompjs";
-import {Menu} from "@mui/material";
-import NotificationItem from "../examples/Items/NotificationItem";
-import {createSearchParams, useNavigate} from "react-router-dom";
-import useStompClient from "../hooks/useStompClient";
+import useAuth from "./useAuth";
 
-
-const ENDPOINT = "http://localhost:8080/ws";
-
-const Notification = ({openMenu, handleCloseMenu}) => {
-    const navigate = useNavigate();
-    const {messagesReceived} = useStompClient();
-    /*const [stompClient, setStompClient] = useState();
+const useClient = () => {
+    const ENDPOINT = "http://localhost:8080/ws";
+    const [client, setClient] = useState(null);
+    const [privateClient, setPrivateClient] = useState(null);
     const [messagesReceived, setMessagesReceived] = useState([]);
     const {auth} = useAuth();
 
@@ -39,7 +32,8 @@ const Notification = ({openMenu, handleCloseMenu}) => {
             });
         });
         // maintain the client for sending and receiving
-        setStompClient(stompClient);
+        setClient(stompClient);
+        setPrivateClient(stompClientPrivate);
     }, []);
 
     // display the received data
@@ -59,38 +53,8 @@ const Notification = ({openMenu, handleCloseMenu}) => {
         const message = JSON.parse(data.body);
         setMessagesReceived(messagesReceived => [...messagesReceived, message]);
     };
-*/
-    const post = (data) => navigate({
-        pathname: '/search-results',
-        search: `?${createSearchParams(data)}`
-    });
 
-    const handleClick = (event, data) => {
-        event.preventDefault();
-        post(data);
-    };
+    return { client, privateClient, messagesReceived };
+};
 
-    return (
-        <Menu
-            anchorEl={openMenu}
-            anchorReference={null}
-            anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-            }}
-            open={Boolean(openMenu)}
-            onClose={handleCloseMenu}
-            sx={{mt: 2}}
-        >
-            {
-                messagesReceived.map((message, i) => {
-                        return (
-                            <NotificationItem key={i} date={message.date} title={[message.title, message.text]} onClick={(e) => handleClick(e, message.queryParam)}/>
-                        )
-                    }
-                )}
-        </Menu>
-    );
-}
-
-export default Notification
+export default useClient;

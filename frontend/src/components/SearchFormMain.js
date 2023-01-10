@@ -22,9 +22,11 @@ import SoftInput from "./SoftInput";
 import {Add, Remove} from "@mui/icons-material";
 import React, {useState} from "react";
 import AirportInput from "./AirportInput";
+import {toast, ToastContainer} from "react-toastify";
 
 const SearchFormMain = ({setLocation}) => {
     const navigate = useNavigate();
+    const error = (message) => toast.info(message);
     const {register, handleSubmit, watch, formState: {errors}, setValue, getValues} = useForm({
         defaultValues: {
             flyFrom: '',
@@ -52,11 +54,17 @@ const SearchFormMain = ({setLocation}) => {
 
     const handlePassengersChange = (increment) => {
         const adults = getValues('adults');
-        if (adults + increment >= 0) {
+        if (adults + increment >= 1) {
             setValue('adults', adults + increment);
         }
     };
 
+    const cabinClasses = {
+        M: 'Economy',
+        W: 'Premium Economy',
+        C: 'Business',
+        F: 'First Class',
+    };
 
     const post = (data) => navigate({
         pathname: '/search-results',
@@ -69,9 +77,14 @@ const SearchFormMain = ({setLocation}) => {
         post(data);
     };
 
+    const onError = async (errors) => {
+        console.log(errors);
+        error(errors[Object.keys(errors)[0]].message);
+    };
+
     return (
         <SoftBox sx={{gridArea: 'main'}}>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form onSubmit={handleSubmit(onSubmit, onError)}>
                 {/*                <SoftBox>
                     <SoftBox mt={4} mb={2}>
                         <LocationsCard register={register} setLocation={setLocation} setValue={setValue}
@@ -89,9 +102,9 @@ const SearchFormMain = ({setLocation}) => {
                     item={true}
                     direction="column"
                     alignContent={"center"}
-/*
-                    sx={{minWidth: 650}}
-*/
+                    /*
+                                        sx={{minWidth: 650}}
+                    */
                 >
                     <Card
                         sx={{backgroundColor: "rgba(255,255,255,0.51)"}}
@@ -136,7 +149,8 @@ const SearchFormMain = ({setLocation}) => {
                                                         className={"text-start"}>
                                             From
                                         </SoftTypography>
-                                        <AirportInput name={"flyFrom"} register={register} setValue={setValue}
+                                        <AirportInput name={"flyFrom"} title={"Origin"} register={register} error={error}
+                                                      setValue={setValue}
                                                       setLocation={setLocation}/>
                                     </SoftBox>
                                     <SoftBox>
@@ -145,7 +159,8 @@ const SearchFormMain = ({setLocation}) => {
                                                         className={"text-start"}>
                                             To
                                         </SoftTypography>
-                                        <AirportInput name={"flyTo"} register={register} setValue={setValue}/>
+                                        <AirportInput name={"flyTo"} title={"Destination"} register={register} error={error}
+                                                      setValue={setValue}/>
                                     </SoftBox>
                                     <SoftBox>
                                         <SoftTypography fontWeight={"bold"} fontSize={10}
@@ -158,7 +173,7 @@ const SearchFormMain = ({setLocation}) => {
                                                 validate: (value) => {
                                                     const today = new Date();
                                                     const date = new Date(value);
-                                                    return date > today;
+                                                    return date > today || "Departure date must be in the future";
                                                 }
                                             })}
                                             sx={{borderRadius: 0}}
@@ -175,7 +190,7 @@ const SearchFormMain = ({setLocation}) => {
                                                 validate: (value) => {
                                                     const dateFrom = new Date(watch('dateFrom'));
                                                     const date = new Date(value);
-                                                    return date > dateFrom;
+                                                    return date > dateFrom || "Return date must be after departure date";
                                                 }
                                             })}
                                             sx={{borderRadius: 0}}
@@ -190,7 +205,7 @@ const SearchFormMain = ({setLocation}) => {
                                             <SoftInput
                                                 aria-controls="simple-menu"
                                                 onClick={handleClick}
-                                                value={`${getValues('adults')} passengers, ${getValues('selectedCabins')}`}
+                                                value={`${getValues('adults')} passengers, ${cabinClasses[getValues('selectedCabins')]}`}
                                                 sx={{borderRadius: 0}}
                                             />
                                             <Menu
@@ -264,7 +279,8 @@ const SearchFormMain = ({setLocation}) => {
                                     justifyContent={"end"}
                                 >
                                     <SoftBox mt={3}>
-                                        <SoftButton variant="gradient" color={"dark"} size={"large"} type="submit">Search</SoftButton>
+                                        <SoftButton variant="gradient" color={"dark"} size={"large"}
+                                                    type="submit">Search</SoftButton>
                                     </SoftBox>
                                 </Grid>
                             </SoftBox>
@@ -272,6 +288,7 @@ const SearchFormMain = ({setLocation}) => {
                     </Card>
                 </Grid>
             </form>
+            <ToastContainer position="bottom-center" autoClose={3000}/>
         </SoftBox>
     )
 }

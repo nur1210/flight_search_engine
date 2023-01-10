@@ -5,7 +5,7 @@ import FlightsList from "./FlightsList";
 import {Card, CardContent} from "@mui/material";
 import SoftTypography from "./SoftTypography";
 
-const ChatResult = ({steps, setFlights, triggerNextStep, flights}) => {
+const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
     const {destination, month, duration, passengers, maxStopovers} = steps;
 
     useEffect(() => {
@@ -23,7 +23,7 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights}) => {
         const durationRange = durationDictionary[duration.value];
 
         const response = await TequilaService.getAdvanceSearchFlights(
-            "EIN",
+            airport.iata,
             destination.value,
             monthRange.minDate,
             monthRange.maxDate,

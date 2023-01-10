@@ -35,19 +35,6 @@ const SearchForm = () => {
             description={"Let the journey begin"}
             image={curved6}
         >
-            {/*        <SoftBox
-            sx={{
-                display: 'grid',
-                gap: 1,
-                gridTemplateColumns: 'repeat(8, 1fr)',
-                gridTemplateRows: 'auto',
-                gridTemplateAreas: `"header header header header header header herder"
-                                        "main main main main main"
-                                        "sidebar sidebar sidebar sidebar sidebar"
-                                        "footer footer footer footer footer footer footer"`,
-            }}
-        >*/}
-
             <Grid
                 container
                 direction="column"
@@ -61,7 +48,7 @@ const SearchForm = () => {
                 <SoftBox>
                     <SearchFormSideBar airport={airport}/>
                 </SoftBox>
-            <ChatBot/>
+                <ChatBot airport={airport}/>
             </Grid>
         </BasicLayout>
     )

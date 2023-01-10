@@ -3,6 +3,7 @@ package fontys.s3.backend.business.impl.pricealert;
 import fontys.s3.backend.business.exception.InvalidPriceAlertException;
 import fontys.s3.backend.business.usecase.pricealert.UpdatePriceAlertUseCase;
 import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
+import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;
@@ -16,6 +17,7 @@ import java.util.Optional;
 public class UpdatePriceAlertUseCaseImpl implements UpdatePriceAlertUseCase {
 
     private final PriceAlertRepository priceAlertRepository;
+    private final FlightRepository flightRepository;
 
     @Override
     public void updatePriceAlert(UpdatePriceAlertRequest request) {
@@ -25,15 +27,17 @@ public class UpdatePriceAlertUseCaseImpl implements UpdatePriceAlertUseCase {
         }
 
         PriceAlertEntity priceAlert = priceAlertOptional.get();
-        updateFields(request, priceAlert);
+        var prevFlight = priceAlert.getCurrentFlight();
+        updateFields(request, priceAlert, prevFlight);
     }
 
-    private void updateFields(UpdatePriceAlertRequest request, PriceAlertEntity priceAlert) {
+    private void updateFields(UpdatePriceAlertRequest request, PriceAlertEntity priceAlert, FlightEntity prevFlight) {
         FlightEntity flight = request.getFlight();
         priceAlert.setCurrentFlight(flight);
         if (flight.getPrice() < priceAlert.getLowestPrice() || priceAlert.getLowestPrice() == 0) {
             priceAlert.setLowestPrice(flight.getPrice());
             priceAlert.setCurrentFlight(flight);
+            flightRepository.delete(prevFlight);
         }
 
         priceAlertRepository.save(priceAlert);
