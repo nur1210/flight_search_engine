@@ -4,8 +4,8 @@ import SoftTypography from "./SoftTypography";
 import SoftBox from "./SoftBox";
 import SoftAvatar from "./SoftAvatar";
 import DeleteForeverIcon from "@mui/icons-material/DeleteForever";
-import MessageIcon from '@mui/icons-material/Message';
 import SoftButton from "./SoftButton";
+import TextInputModal from "./TextInputModal";
 
 function User({ image, firstName, lastName, email }) {
     return (
@@ -25,9 +25,6 @@ function User({ image, firstName, lastName, email }) {
     );
 }
 
-const sendMessage = () => {
-    
-}
 
 const userTableData = {
     columns: [
@@ -58,8 +55,8 @@ const userTableData = {
                 />
             ),
             message: (
-                <SoftButton disabled={!user.online}  iconOnly>
-                    <MessageIcon/>
+                <SoftButton disabled={!user.online} iconOnly>
+                        <TextInputModal email={user.email}/>
                 </SoftButton>
             ),
             action: (
