@@ -8,7 +8,6 @@ import FlightMessage from "./FlightMessage";
 const Chatbot = ({airport}) => {
     const [destinations, setDestinations] = useState();
     const [steps, setSteps] = useState([]);
-    const [flights, setFlights] = useState([]);
 
     const config = {
         width: "300px",
@@ -41,10 +40,6 @@ const Chatbot = ({airport}) => {
         {value: 10, label: 'November', trigger: '7'},
         {value: 11, label: 'December', trigger: '7'}
     ];
-
-    const updateSteps = newSteps => {
-        setSteps(newSteps);
-    }
 
 
     useEffect(() => {
@@ -84,7 +79,7 @@ const Chatbot = ({airport}) => {
                 {
                     id: '3',
                     message: 'Where would you like to go?',
-                    delay: 1000,
+                    delay: 500,
                     trigger: 'destination',
                 },
                 {
@@ -94,7 +89,7 @@ const Chatbot = ({airport}) => {
                 {
                     id: '5',
                     message: 'Select a month',
-                    delay: 1000,
+                    delay: 500,
                     trigger: 'month',
                 },
                 {
@@ -104,7 +99,7 @@ const Chatbot = ({airport}) => {
                 {
                     id: '7',
                     message: 'How many days would you like to stay?',
-                    delay: 1000,
+                    delay: 500,
                     trigger: 'duration',
                 },
                 {
@@ -118,7 +113,7 @@ const Chatbot = ({airport}) => {
                 {
                     id: '9',
                     message: 'How many people are travelling?',
-                    delay: 1000,
+                    delay: 500,
                     trigger: 'passengers',
                 },
                 {
@@ -136,7 +131,7 @@ const Chatbot = ({airport}) => {
                 {
                     id: '11',
                     message: 'Do you want to have stopovers?',
-                    delay: 1000,
+                    delay: 500,
                     trigger: 'maxStopovers',
                 },
                 {
@@ -156,28 +151,8 @@ const Chatbot = ({airport}) => {
                     id: '14',
                     component: <ChatResult
                         airport={airport}
-                        setFlights={setFlights}
-                        flights={flights}
-                        onSearchCompleted={onSearchCompleted}
                     />,
                     waitAction: true,
-                },
-                {
-                    id: '15',
-                    message: 'Here are your results!',
-                    trigger: '16',
-                },
-                {
-                    id: '16',
-                    options: [
-                        {value: '1', label: 'Yes', trigger: '3'},
-                        {value: '2', label: 'No', trigger: '17'},
-                    ],
-                },
-                {
-                    id: '17',
-                    message: 'Thank you for using our service!',
-                    end: true,
                 },
             ];
 
@@ -185,63 +160,7 @@ const Chatbot = ({airport}) => {
         }
     }, [destinations]);
 
-    useEffect(() => {
-        console.log(flights);
-        if (flights.length > 0) {
-            const steps = [
-                {
-                    id: '15',
-                    component: <FlightMessage flights={flights}/>,
-                    trigger: '16',
-                },
-                {
-                    id: '16',
-                    options: [
-                        {value: '1', label: 'Yes', trigger: '3'},
-                        {value: '2', label: 'No', trigger: '17'},
-                    ],
-                },
-                {
-                    id: '17',
-                    message: 'Thank you for using our service!',
-                    end: true,
-                },
-            ];
-            updateSteps(steps);
-        }
-    }, [flights]);
 
-    const onSearchCompleted = () => {
-        console.log("search completed");
-        const newSteps = [
-            ...steps,
-            {
-                id: '16',
-                message: 'Here are the flights that match your criteria:',
-                trigger: '18',
-            },
-/*            {
-                id: '17',
-                component: <ChatResult flights={flights} setFlights={setFlights}/>,
-                asMessage: true,
-                trigger: '18',
-            },*/
-            {
-                id: '18',
-                options: [
-                    {value: '1', label: 'Start over', trigger: '1'},
-                    {value: '2', label: 'Exit', trigger: '19'},
-                ],
-            },
-            {
-                id: '19',
-                message: 'Thank you for using our service!',
-                end: true,
-            },
-        ];
-
-        setSteps(newSteps);
-    };
 
 
     return steps.length > 0 ? (
@@ -249,7 +168,6 @@ const Chatbot = ({airport}) => {
             <ChatBot
                 headerTitle="Flight Finder"
                 steps={steps}
-                updateSteps={updateSteps}
                 {...config}
             />
         </ThemeProvider>

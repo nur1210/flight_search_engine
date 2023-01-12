@@ -24,4 +24,6 @@ sonarqube_ci_stanza:
 docker_build:
   stage: docker_stage
   script:
+    - docker-compose -f Docker-compose.yml down
     - docker-compose -f Docker-compose.yml build --pull
+    - docker-compose -f Docker-compose.yml up -d --build

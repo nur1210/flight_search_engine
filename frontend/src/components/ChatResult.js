@@ -1,13 +1,11 @@
 import TequilaService from "../services/TequilaService";
 import {useEffect, useState} from "react";
-import SoftButton from "./SoftButton";
-import FlightsList from "./FlightsList";
+
 import {Card, CardContent, Grid} from "@mui/material";
 import SoftTypography from "./SoftTypography";
 import SoftBox from "./SoftBox";
-import FlightDurationLabel from "./FlightDurationLabel";
 
-const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
+const ChatResult = ({steps, airport}) => {
     const {destination, month, duration, passengers, maxStopovers} = steps;
     const [flightsList, setFlightsList] = useState([]);
 
@@ -15,11 +13,6 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
         getFlights();
     }, [])
 
-    useEffect(() => {
-        if (flights.length > 0) {
-            triggerNextStep({trigger: '15'})
-        }
-    }, [flights]);
 
     const getFlights = async () => {
         const monthRange = getMonthRange(month.value);
@@ -38,7 +31,6 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
             maxStopovers.value
         );
         setFlightsList(response.data.flights);
-        setFlights(response.data.flights);
     }
 
     const durationDictionary = {
@@ -105,7 +97,7 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
                                         gridColumn: '1 / 6'
                                     }}
                                 >
-                                    <CardContent sx={{ paddingTop: "24px"}}>
+                                    <CardContent sx={{paddingTop: "24px"}}>
                                         <Grid container direction="row">
                                             <Grid item xs={12}
                                                   sx={{
@@ -165,13 +157,11 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
             }
         </Grid>
     ) : (
-        <Card>
-            <CardContent>
-                <SoftTypography variant="h5" component="div" gutterBottom>
-                    No flights found
-                </SoftTypography>
-            </CardContent>
-        </Card>
+
+        <SoftTypography variant="h5" component="div" gutterBottom>
+            No flights found
+        </SoftTypography>
+
     );
 }
 
