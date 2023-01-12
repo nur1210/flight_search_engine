@@ -26,4 +26,4 @@ docker_build:
   script:
     - docker-compose -f Docker-compose.yml down
     - docker-compose -f Docker-compose.yml build --pull
-    - docker-compose -f Docker-compose.yml up -d --build
+    #- docker-compose -f Docker-compose.yml up -d --build
