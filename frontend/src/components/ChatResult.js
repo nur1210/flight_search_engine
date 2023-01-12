@@ -2,11 +2,14 @@ import TequilaService from "../services/TequilaService";
 import {useEffect, useState} from "react";
 import SoftButton from "./SoftButton";
 import FlightsList from "./FlightsList";
-import {Card, CardContent} from "@mui/material";
+import {Card, CardContent, Grid} from "@mui/material";
 import SoftTypography from "./SoftTypography";
+import SoftBox from "./SoftBox";
+import FlightDurationLabel from "./FlightDurationLabel";
 
 const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
     const {destination, month, duration, passengers, maxStopovers} = steps;
+    const [flightsList, setFlightsList] = useState([]);
 
     useEffect(() => {
         getFlights();
@@ -34,7 +37,7 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
             'M',
             maxStopovers.value
         );
-
+        setFlightsList(response.data.flights);
         setFlights(response.data.flights);
     }
 
@@ -58,9 +61,109 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
         };
     };
 
+    const redirectToBooking = url => {
+        window.open(url, "_blank");
+    }
 
-/*    return loading ? null : flights.length > 0 ? (
-        <FlightsList flights={flights} />
+    const timestampToFormattedTime = (timestamp) => {
+        return new Date(timestamp).toLocaleDateString(
+            navigator.language, {
+                day: '2-digit',
+                month: '2-digit',
+                year: '2-digit',
+            }
+        )
+    }
+
+
+    return flightsList.length > 0 ? (
+        <Grid>
+            {
+                flightsList.map((flight, i) => (
+                        <Card
+                            key={i}
+                            sx={{
+                                marginTop: 2,
+                                marginBottom: 2,
+                                backgroundColor: "#ffffff",
+                                ':hover': {
+                                    boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.2)',
+                                },
+                            }}
+                            onClick={() => redirectToBooking(flight.deepLink)}
+                        >
+                            <SoftBox
+                                sx={{
+                                    display: 'grid',
+                                    gridAutoColumns: '1fr',
+                                    gap: 1,
+                                }}
+                            >
+                                <SoftBox
+                                    sx={{
+                                        gridRow: '1',
+                                        gridColumn: '1 / 6'
+                                    }}
+                                >
+                                    <CardContent sx={{ paddingTop: "24px"}}>
+                                        <Grid container direction="row">
+                                            <Grid item xs={12}
+                                                  sx={{
+                                                      display: "flex",
+                                                      justifyContent: "space-between",
+                                                      alignItems: "center"
+                                                  }}
+                                            >
+                                                <Grid item xs={8} margin={1}>
+                                                    <SoftTypography variant="body2" component="div" fontSize={10}>
+                                                        From:
+                                                    </SoftTypography>
+                                                    <SoftTypography variant="body" component="div"
+                                                                    fontWeight={"medium"} fontSize={14}>
+                                                        {timestampToFormattedTime(flight.outboundRoutes[0].localDepartureTime)}
+                                                    </SoftTypography>
+                                                    <SoftTypography variant="body2" component="div" fontSize={10}>
+                                                        {flight.outboundRoutes[0].departureAirport.city}
+                                                    </SoftTypography>
+                                                </Grid>
+                                                <Grid item xs={8} margin={1}>
+                                                    <SoftTypography variant="body2" component="div" fontSize={10}>
+                                                        To:
+                                                    </SoftTypography>
+                                                    <SoftTypography variant="body" component="div"
+                                                                    fontWeight={"medium"} fontSize={14}>
+                                                        {timestampToFormattedTime(flight.returnRoutes[0].localArrivalTime)}
+                                                    </SoftTypography>
+                                                    <SoftTypography variant="body2" component="div" fontSize={10}>
+                                                        {flight.outboundRoutes.at(-1).arrivalAirport.city}
+                                                    </SoftTypography>
+                                                </Grid>
+                                            </Grid>
+                                        </Grid>
+                                    </CardContent>
+                                </SoftBox>
+                                <SoftBox
+                                    sx={{
+                                        gridRow: '1',
+                                        gridColumn: '6 / 8',
+                                        display: "flex",
+                                        justifyContent: "start",
+                                        alignItems: "center",
+                                        verticalAlign: "middle"
+                                    }}
+                                >
+                                    <Grid item xs={6}>
+                                        <SoftTypography variant="body" component="div" fontSize={14} fontWeight={"bold"}>
+                                            {flight.price + '€'}
+                                        </SoftTypography>
+                                    </Grid>
+                                </SoftBox>
+                            </SoftBox>
+                        </Card>
+                    )
+                )
+            }
+        </Grid>
     ) : (
         <Card>
             <CardContent>
@@ -69,18 +172,7 @@ const ChatResult = ({steps, setFlights, triggerNextStep, flights, airport}) => {
                 </SoftTypography>
             </CardContent>
         </Card>
-    );*/
-/*    return flights.length > 0 ? (
-        <FlightsList flights={flights}/>
-    ) : (
-        <Card>
-            <CardContent>
-                <SoftTypography variant="h5" component="div" gutterBottom>
-                    No flights found
-                </SoftTypography>
-            </CardContent>
-        </Card>
-    );*/
+    );
 }
 
 export default ChatResult

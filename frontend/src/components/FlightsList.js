@@ -1,7 +1,7 @@
 import {
     Card, CardContent,
     Container,
-    Grid,
+    Grid, useMediaQuery,
 } from "@mui/material";
 import SoftTypography from "./SoftTypography";
 import FlightDurationLabel from "./FlightDurationLabel";
@@ -9,6 +9,7 @@ import SoftBox from "./SoftBox";
 
 
 const FlightsList = ({flights}) => {
+    const isXsScreen = useMediaQuery('(max-width:600px)');
     console.log(flights);
 
     const stops = (stops) => {
@@ -38,7 +39,7 @@ const FlightsList = ({flights}) => {
     return flights.length === 0
         ? null
         : (
-            <Container>
+            <Grid>
                 {
                     flights.map((flight, i) => (
                             <Card
@@ -178,7 +179,7 @@ const FlightsList = ({flights}) => {
                         )
                     )
                 }
-            </Container>
+            </Grid>
         );
 }
 

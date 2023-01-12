@@ -110,6 +110,7 @@ function SearchResults() {
                         gridArea: "sidebar",
                         display: 'flex',
                         flexDirection: 'column',
+                        marginRight: 1,
                     }}
                 >
                     <Grid gridRow>
