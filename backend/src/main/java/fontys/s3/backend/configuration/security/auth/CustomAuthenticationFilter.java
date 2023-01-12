@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-@Slf4j
+/*@Slf4j
 @RequiredArgsConstructor
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -69,4 +69,4 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
         response.setContentType("application/json");
         new ObjectMapper().writeValue(response.getOutputStream(), tokens);
     }
-}
+}*/

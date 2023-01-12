@@ -35,6 +35,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
 
     @Override
+    @Transactional
     public CompletableFuture<CreateUserResponse> createUser(CreateUserRequest request, HttpServletRequest httpServletRequest) {
         if (Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))) {
             throw new InvalidCredentialsException();
@@ -46,7 +47,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .build());
     }
 
-    @Transactional
     public UserEntity saveNewUser(CreateUserRequest request, String siteURL) {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         String randomCode = RandomString.make(64);
@@ -71,9 +71,8 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
             sendVerificationEmail(newUser, siteURL);
             return newUser;
         } catch (MessagingException | UnsupportedEncodingException e) {
-            e.printStackTrace();
+            throw new InvalidCredentialsException();
         }
-        throw new InvalidCredentialsException();
     }
 
     private void sendVerificationEmail(UserEntity user, String siteURL)

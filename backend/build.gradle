@@ -21,10 +21,12 @@ repositories {
     mavenCentral()
 }
 
-jacocoTestReport {
+jacocoTestReport{
+    dependsOn test
     reports {
-        xml.enabled true
-        html.enabled true
+        xml.required = true
+        csv.required = false;
+        html.outputLocation = layout.buildDirectory.dir("jacocoHtml")
     }
 }
 
@@ -78,14 +80,15 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
+    finalizedBy jacocoTestReport
 }
 
-jacoco{
-    toolVersion = "0.8.8";
-    reportsDir = file("$buildDir/customJacocoReportDir")
+tasks.named("sonarqube").configure{
+    dependsOn jacocoTestReport //always generates jacoco report before sonarqube
 }
+
 
 sonarqube {
     properties {

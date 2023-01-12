@@ -19,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -54,8 +55,7 @@ class UsersControllerTest {
     @Test
     @WithMockUser(username = "test", roles = "{ADMIN}")
     void getAllUsersWhenUserIsAuthorized() {
-        //TODO help
-        List<User> users = mock(List.class);
+        List<User> users = Collections.emptyList();
         when(accessToken.hasRole(RoleEnum.ADMIN.name())).thenReturn(true);
         when(getAllUsersUseCase.getAllUsers()).thenReturn(users);
 

@@ -66,7 +66,7 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
     @Override
     public List<Destination> getTopTenDestinationsFromOrigin(String city) {
         String url = BASE_URL + "/topdestinations?term=" + city + "&locale=en-US&limit=10&sort=name&active_only=true&source_popularity=searches";
-        return getDestinetions(url);
+        return getDestinations(url);
     }
 
     private AirportEntity getAirportEntity(String url) {
@@ -90,7 +90,7 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
                 .build();
     }
 
-    private List<Destination> getDestinetions(String url) {
+    private List<Destination> getDestinations(String url) {
         RestTemplate restTemplate = new RestTemplate();
         HttpHeaders headers = new HttpHeaders();
         headers.add("apikey", apiKey);
@@ -99,13 +99,15 @@ public class TequilaAirportsRepositoryImpl implements TequilaAirportsRepository 
         JSONToLocation locations = responseEntity.getBody();
 
         List<Destination> destinations = new ArrayList<>();
-        for (var location : locations.getLocations()) {
-            destinations.add(Destination.builder()
-                    .city(location.getName())
-                    .cityCode(location.getCode())
-                    .country(location.getCountry().getName())
-                    .countryCode(location.getCountry().getCode())
-                    .build());
+        if (locations != null) {
+            for (var location : locations.getLocations()) {
+                destinations.add(Destination.builder()
+                        .city(location.getName())
+                        .cityCode(location.getCode())
+                        .country(location.getCountry().getName())
+                        .countryCode(location.getCountry().getCode())
+                        .build());
+            }
         }
         return destinations;
     }

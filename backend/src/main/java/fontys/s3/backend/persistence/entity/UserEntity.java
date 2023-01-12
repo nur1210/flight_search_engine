@@ -12,12 +12,7 @@ import java.util.Set;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity(name = "User")
-@Table(name = "users")/*,
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "user_email_unique",
-                        columnNames = "email")
-        })*/
+@Table(name = "users")
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

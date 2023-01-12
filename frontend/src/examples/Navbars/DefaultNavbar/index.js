@@ -135,7 +135,7 @@ function DefaultNavbar({transparent, light, action}) {
                                 </> :
                                 <>
                                     <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
-                                    <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
+                                    <DefaultNavbarLink icon="key" onClick={signOut} data-cy='sign-out-button' name="Sign out" route="/"
                                                        light={light}/>
                                     <IconButton
                                         size="small"
