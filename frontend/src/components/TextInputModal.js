@@ -54,7 +54,7 @@ const TextInputModal = ({email}) => {
     return (
         <>
             <SoftButton iconOnly onClick={handleOpen}>
-                <MessageIcon />
+                <MessageIcon color={"dark"} />
             </SoftButton>
             <Modal open={open} onClose={handleClose}>
                 <SoftBox  sx={{...style}}>

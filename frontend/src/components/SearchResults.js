@@ -14,11 +14,12 @@ import SoftTypography from "./SoftTypography";
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
-    console.log(params);
     const [departureDate, setDepartureDate] = useState(params.dateFrom);
     const [returnDate, setReturnDate] = useState(params.returnFrom);
     const [stops, setStops] = useState(params.maxSectorStopovers);
-    const [flights, setFlights] = useState();
+    const [flights, setFlights] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         let isMounted = true;
@@ -64,6 +65,7 @@ function SearchResults() {
 
 
     const getFlights = async () => {
+        setLoading(true);
         console.log(params);
         try {
             const response = await tequilaService.getAllFlights(
@@ -81,6 +83,8 @@ function SearchResults() {
             return response.data.flights;
         } catch (e) {
             console.log(e);
+        } finally {
+            setLoading(false);
         }
     }
 
@@ -169,9 +173,11 @@ function SearchResults() {
                 </SoftBox>
                 <SoftBox sx={{gridArea: "main"}}>
                     {
-                        flights?.length
-                            ? <FlightsList flights={flights}/>
-                            : <p>No flights</p>
+                        loading ?
+                            <SoftTypography>Loading...</SoftTypography>
+                            : !loading && flights.length > 0 ?
+                                <FlightsList flights={flights}/>
+                                : <SoftTypography>No flights</SoftTypography>
                     }
                 </SoftBox>
             </Grid>

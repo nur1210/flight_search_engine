@@ -29,6 +29,7 @@ function User({ image, firstName, lastName, email }) {
 const userTableData = {
     columns: [
         { name: "user", align: "left" },
+        { name: "verified", align: "center" },
         { name: "status", align: "center" },
         { name: "message", align: "center" },
         { name: "action", align: "center" },
@@ -43,6 +44,14 @@ const userTableData = {
                     firstName={user.firstName}
                     lastName={user.lastName}
                     email={user.email}
+                />
+            ),
+            verified: (
+                <SoftBadge
+                    badgeContent={user.verified ? "verified" : "unverified"}
+                    color={user.verified ? "light" : "warning"}
+                    size="xs"
+                    container
                 />
             ),
             status: (
@@ -61,7 +70,7 @@ const userTableData = {
             ),
             action: (
                 <SoftButton onClick={() => handleDelete(user?.id)} iconOnly>
-                    <DeleteForeverIcon/>
+                    <DeleteForeverIcon color={"dark"}/>
                 </SoftButton>
             ),
         }));

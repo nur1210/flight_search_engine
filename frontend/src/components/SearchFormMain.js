@@ -85,26 +85,11 @@ const SearchFormMain = ({setLocation}) => {
     return (
         <SoftBox sx={{gridArea: 'main'}}>
             <form onSubmit={handleSubmit(onSubmit, onError)}>
-                {/*                <SoftBox>
-                    <SoftBox mt={4} mb={2}>
-                        <LocationsCard register={register} setLocation={setLocation} setValue={setValue}
-                                       errors={errors}/>
-                    </SoftBox>
-                    <SoftBox className="row">
-                        <DatesCard register={register}/>
-                        <DetailsCard register={register}/>
-                    </SoftBox>
-                    <SoftButton id="search-button" className="w-100" color={"dark"}
-                                type="submit">Search</SoftButton>
-                </SoftBox>*/}
                 <Grid
                     container
                     item={true}
                     direction="column"
                     alignContent={"center"}
-                    /*
-                                        sx={{minWidth: 650}}
-                    */
                 >
                     <Card
                         sx={{backgroundColor: "rgba(255,255,255,0.51)"}}
@@ -126,7 +111,7 @@ const SearchFormMain = ({setLocation}) => {
                                                     defaultValue='round'
                                                     name="radio-buttons-group"
                                                     sx={{display: 'flex', flexDirection: 'row'}}
-                                                    {...register("flightType")}
+                                                    {...register("flightType", {required: "Please select a flight type"})}
                                                 >
                                                     <FormControlLabel value="round" control={<Radio/>}
                                                                       label="Round trip"/>
