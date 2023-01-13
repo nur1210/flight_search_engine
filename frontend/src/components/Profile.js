@@ -1,10 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import useAuth from "../hooks/useAuth";
 import UseAxiosPrivate from "../hooks/useAxiosPrivate";
-import {Card, CardContent, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import SoftBox from "./SoftBox";
-import PlatformSettings from "../layouts/profile/components/PlatformSettings";
 import curved6 from "assets/images/curved-images/curved14.jpg";
 import AccountSettings from "./AccountSettings";
 

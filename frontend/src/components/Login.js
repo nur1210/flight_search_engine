@@ -4,11 +4,11 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import AuthService from "../services/AuthService";
 import useAuth from "../hooks/useAuth";
 import curved9 from "../assets/images/curved-images/curved-6.jpg";
-import CoverLayout from "../layouts/authentication/components/CoverLayout";
-import SoftBox from "../components/SoftBox";
-import SoftTypography from "../components/SoftTypography";
-import SoftInput from "../components/SoftInput";
-import SoftButton from "../components/SoftButton";
+import CoverLayout from "./CoverLayout";
+import SoftBox from "./SoftBox";
+import SoftTypography from "./SoftTypography";
+import SoftInput from "./SoftInput";
+import SoftButton from "./SoftButton";
 import {toast, ToastContainer} from "react-toastify";
 
 const Login = () => {

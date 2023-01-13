@@ -1,5 +1,5 @@
 import SoftBox from "./SoftBox";
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import {useEffect, useState} from "react";
 import tequilaService from "../services/TequilaService";
 import SearchFormSideBar from "./SearchFormSideBar";

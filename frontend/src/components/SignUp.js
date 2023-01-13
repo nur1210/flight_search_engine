@@ -4,28 +4,26 @@ import SoftBox from "components/SoftBox";
 import SoftTypography from "components/SoftTypography";
 import SoftInput from "components/SoftInput";
 import SoftButton from "components/SoftButton";
-import BasicLayout from "layouts/authentication/components/BasicLayout";
+import BasicLayout from "components/BasicLayout";
 import {useForm} from "react-hook-form";
-import userService from "../../../services/UserService";
 import {toast, ToastContainer} from "react-toastify"
 import curved6 from "assets/images/curved-images/curved14.jpg";
 import {Grid} from "@mui/material";
+import userService from "../services/UserService";
 
 
 
 function SignUp() {
     const {register, handleSubmit, watch} = useForm();
     const navigate = useNavigate();
-    const error = (message) => toast.error(message);
-    const success = (message) => toast.success(message);
-
     const onSubmit = async (data) => {
         console.log(data);
         try {
-            const response = await userService.create(JSON.stringify(data));
+            const response = await userService.create(JSON.stringify(data)).then(
+                toast.success("Account created successfully, please check your email to verify your account")
+            );
             console.log(response.data);
-            success("User created successfully");
-            setTimeout(4000)
+            setTimeout(10000)
             navigate('/login');
         } catch (error) {
             console.log(error);
@@ -34,7 +32,7 @@ function SignUp() {
 
     const onError = async (errors) => {
         console.log(errors);
-        error(errors[Object.keys(errors)[0]].message);
+        toast.error(errors[Object.keys(errors)[0]].message);
     };
 
     return (
@@ -88,7 +86,7 @@ function SignUp() {
                                                    if (value !== watch("password")) return "Passwords don't match";
                                                    return true;
                                                }
-                                             })}
+                                           })}
                                 />
                             </SoftBox>
                             <SoftBox mt={4} mb={1}>

@@ -1,5 +1,5 @@
 import SoftBox from "./SoftBox";
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import {Link} from "react-router-dom";
 
 const Missing = () => {

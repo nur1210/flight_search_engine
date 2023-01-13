@@ -4,7 +4,7 @@ import FlightsList from "./FlightsList";
 import {useSearchParams} from "react-router-dom";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import SoftBox from "./SoftBox";
 import SoftInput from "./SoftInput";
 import {Card, CardContent, FormControl, FormControlLabel, Grid, Radio, RadioGroup} from "@mui/material";

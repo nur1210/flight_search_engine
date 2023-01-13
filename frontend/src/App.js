@@ -1,7 +1,7 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import SearchForm from "./components/SearchForm";
-import Login from "./pages/Login";
+import Login from "./components/Login";
 import Users from "./components/Users";
 import PersistLogin from "./components/PersistLogin";
 import SearchResults from "./components/SearchResults";
@@ -9,10 +9,10 @@ import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Unauthorized from "./components/Unauthorized";
 import Missing from "./components/Missing";
-import SignUp from "./layouts/authentication/sign-up";
 import Profile from "./components/Profile";
 import {lazy} from "react";
 import Verify from "./components/Verify";
+import SignUp from "./components/SignUp";
 
 const ROLES = {
     'User': "USER",

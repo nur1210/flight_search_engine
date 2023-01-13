@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import useAxiosPrivate from "../hooks/useAxiosPrivate";
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import SoftTypography from "./SoftTypography";
 import SoftBox from "./SoftBox";
 import Card from "@mui/material/Card";
