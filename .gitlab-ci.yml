@@ -28,8 +28,8 @@ docker_build:
   stage: docker_stage
   script:
     - docker build -t $REGISTRY_USER/flyaway-nur-nechushtan-backend:latest -f backend/Dockerfile backend
-    #- docker login -u $REGISTRY_USER -p $REGISTRY_TOKEN
-    - docker push nurnechushtan/backend:latest --password $REGISTRY_TOKEN
+    - docker login -u $REGISTRY_USER -p $REGISTRY_TOKEN
+    - docker push nurnechushtan/backend:latest
     #- docker push "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
     #- docker push nurnechushtan/flyaway:frontend
     #- docker-compose -f Docker-compose.yml down
