@@ -24,7 +24,7 @@ sonarqube_ci_stanza:
 docker_build:
   stage: docker_stage
   script:
-    - docker build -t "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
+    - docker build -t "$REGISTRY_USER"/flyaway-nur-nechushtan-backend:latest -f backend/Dockerfile backend
     - docker build -t "$REGISTRY_USER"/frontend:latest -f frontend/Dockerfile
     - docker push "$REGISTRY_USER"/backend:latest --password $REGISTRY_PASS
     #- docker push "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
