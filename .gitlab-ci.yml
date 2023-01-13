@@ -21,12 +21,15 @@ sonarqube_ci_stanza:
     - cd backend
     - ./gradlew test jacocoTestReport sonarqube
     - ./gradlew.bat --stop
+image: docker:latest
+services:
+  - docker:dind
 docker_build:
   stage: docker_stage
   script:
-    - docker build -t "$REGISTRY_USER"/flyaway-nur-nechushtan-backend:latest -f backend/Dockerfile backend
-    - docker build -t "$REGISTRY_USER"/frontend:latest -f frontend/Dockerfile
-    - docker push "$REGISTRY_USER"/backend:latest --password $REGISTRY_PASS
+    - docker build -t nurnechushtan/flyaway-nur-nechushtan-backend:latest -f backend/Dockerfile backend
+    - docker login -u $REGISTRY_USER -p $REGISTRY_PASS
+    - docker push nurnechushtan/backend:latest
     #- docker push "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
     #- docker push nurnechushtan/flyaway:frontend
     #- docker-compose -f Docker-compose.yml down
