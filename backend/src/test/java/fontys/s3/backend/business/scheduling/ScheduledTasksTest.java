@@ -74,11 +74,17 @@ class ScheduledTasksTest {
                         .dateFrom(new Date(System.currentTimeMillis() - 100000))
                         .build();
 
-        when(priceAlertRepository.findAll()).thenReturn(List.of(priceAlertEntity));
+        // Create a mock repository and configure it to return the price alert entity when the findAll method is called
+        PriceAlertRepository mockRepository = mock(PriceAlertRepository.class);
+        when(mockRepository.findAll()).thenReturn(List.of(priceAlertEntity));
+
+        // Inject the mock repository into the ScheduledTasks instance
+        ReflectionTestUtils.setField(scheduledTasks, "priceAlertRepository", mockRepository);
 
         scheduledTasks.checkForChangeInFlightPrice();
 
-        verify(priceAlertRepository, times(1)).delete(any());
+        // Verify that the delete method of the mock repository was called once
+        verify(mockRepository, times(1)).delete(any());
     }
 
     @Test

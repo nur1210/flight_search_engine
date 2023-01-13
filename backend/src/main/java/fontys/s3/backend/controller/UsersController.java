@@ -17,6 +17,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.Optional;
+import java.util.concurrent.CompletableFuture;
 
 @RestController
 @RequestMapping("/users")
@@ -35,10 +36,8 @@ public class UsersController {
     @GetMapping("{id}")
     public ResponseEntity<User> getUser(@PathVariable(value = "id") final long id) {
         final Optional<User> userOptional = getUserUseCase.getUser(id);
-        if (userOptional.isEmpty()) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok().body(userOptional.get());
+        return userOptional.map(user -> ResponseEntity.ok().body(user))
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @IsAuthenticated
@@ -63,13 +62,13 @@ public class UsersController {
     }
 
     @PostMapping()
-    public ResponseEntity<CreateUserResponse> createUser(@RequestBody @Valid CreateUserRequest request, HttpServletRequest httpServletRequest) {
-        CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
-        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    public CompletableFuture<ResponseEntity<CreateUserResponse>> createUser(@RequestBody @Valid CreateUserRequest request, HttpServletRequest httpServletRequest) {
+        CompletableFuture<CreateUserResponse> responseFuture = createUserUseCase.createUser(request, httpServletRequest);
+        return responseFuture.thenApply(response -> ResponseEntity.status(HttpStatus.CREATED).body(response));
     }
 
-    @GetMapping("/verify")
-    public ResponseEntity<Void> verifyUser(@RequestParam("code") String code) {
+    @GetMapping("/verify/{code}")
+    public ResponseEntity<HttpStatus> verifyUser(@PathVariable(value = "code") String code) {
         if (verifyUserUseCase.verifyUser(code)) {
             return ResponseEntity.ok().build();
         } else {

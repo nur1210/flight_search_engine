@@ -9,41 +9,45 @@ import fontys.s3.backend.persistence.entity.RoleEnum;
 import fontys.s3.backend.persistence.entity.UserEntity;
 import fontys.s3.backend.persistence.entity.UserRoleEntity;
 import lombok.AllArgsConstructor;
-import lombok.SneakyThrows;
 import net.bytebuddy.utility.RandomString;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import java.io.UnsupportedEncodingException;
 import java.util.Set;
+import java.util.concurrent.CompletableFuture;
 
 @Service
 @AllArgsConstructor
+@Async
 public class CreateUserUseCaseImpl implements CreateUserUseCase {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JavaMailSender mailSender;
 
-    @SneakyThrows
+
     @Override
-    public CreateUserResponse createUser(CreateUserRequest request, HttpServletRequest httpServletRequest){
+    @Transactional
+    public CompletableFuture<CreateUserResponse> createUser(CreateUserRequest request, HttpServletRequest httpServletRequest) {
         if (Boolean.TRUE.equals(userRepository.existsByEmail(request.getEmail()))) {
             throw new InvalidCredentialsException();
         }
         String siteURL = getSiteURL(httpServletRequest);
         UserEntity saveUser = saveNewUser(request, siteURL);
-        return CreateUserResponse.builder()
+        return CompletableFuture.completedFuture(CreateUserResponse.builder()
                 .userId(saveUser.getId())
-                .build();
+                .build());
     }
 
-    UserEntity saveNewUser(CreateUserRequest request, String siteURL) throws MessagingException, UnsupportedEncodingException {
+    public UserEntity saveNewUser(CreateUserRequest request, String siteURL) {
         String encodedPassword = passwordEncoder.encode(request.getPassword());
         String randomCode = RandomString.make(64);
 
@@ -56,14 +60,19 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
                 .verificationCode(randomCode)
                 .build();
 
-        newUser.setUserRoles(Set.of(
-                UserRoleEntity.builder()
-                        .user(newUser)
-                        .role(RoleEnum.USER)
-                        .build()));
+        UserRoleEntity userRole = UserRoleEntity.builder()
+                .user(newUser)
+                .role(RoleEnum.USER)
+                .build();
+        newUser.setUserRoles(Set.of(userRole));
 
-        sendVerificationEmail(newUser, siteURL);
-        return userRepository.save(newUser);
+        try {
+            userRepository.save(newUser);
+            sendVerificationEmail(newUser, siteURL);
+            return newUser;
+        } catch (MessagingException | UnsupportedEncodingException e) {
+            throw new InvalidCredentialsException();
+        }
     }
 
     private void sendVerificationEmail(UserEntity user, String siteURL)
@@ -86,7 +95,7 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
         helper.setSubject(subject);
 
         content = content.replace("[[name]]", user.getFirstName());
-        String verifyURL = siteURL + "/users/verify?code=" + user.getVerificationCode();
+        String verifyURL = siteURL + "/verify?code=" + user.getVerificationCode();
 
         content = content.replace("[[URL]]", verifyURL);
 
@@ -96,7 +105,6 @@ public class CreateUserUseCaseImpl implements CreateUserUseCase {
     }
 
     private String getSiteURL(HttpServletRequest request) {
-        String siteURL = request.getRequestURL().toString();
-        return siteURL.replace(request.getServletPath(), "");
+        return request.getHeader("Origin");
     }
 }

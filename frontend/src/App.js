@@ -1,7 +1,7 @@
 import './App.css';
 import {Route, Routes} from "react-router-dom";
 import SearchForm from "./components/SearchForm";
-import Login from "./pages/Login";
+import Login from "./components/Login";
 import Users from "./components/Users";
 import PersistLogin from "./components/PersistLogin";
 import SearchResults from "./components/SearchResults";
@@ -9,9 +9,10 @@ import Layout from "./components/Layout";
 import RequireAuth from "./components/RequireAuth";
 import Unauthorized from "./components/Unauthorized";
 import Missing from "./components/Missing";
-import SignUp from "./layouts/authentication/sign-up";
 import Profile from "./components/Profile";
 import {lazy} from "react";
+import Verify from "./components/Verify";
+import SignUp from "./components/SignUp";
 
 const ROLES = {
     'User': "USER",
@@ -35,6 +36,7 @@ function App() {
                     <Route path="/" element={<SearchForm/>}/>
                     <Route path="/search-results" element={<SearchResults/>}/>
                     <Route path="/sign-up" element={<SignUp/>} />
+                    <Route path="/verify" element={<Verify/>} />
                     <Route path="unauthorized" element={<Unauthorized />} />
 
                     <Route element={<PersistLogin/>}>
@@ -42,11 +44,11 @@ function App() {
                             <Route path="/users" element={<Users/>}/>
                         </Route>
                         <Route element={<RequireAuth allowedRoles={ROLES.User}/>}>
-                            <Route path="/p" element={<Profile/>}/>
+                            <Route path="/profile" element={<Profile/>}/>
                         </Route>
                     </Route>
 
-                    <Route path="/m" element={<Missing />} />
+                    <Route path="/" element={<Missing />} />
                 </Route>
             </Routes>
     );

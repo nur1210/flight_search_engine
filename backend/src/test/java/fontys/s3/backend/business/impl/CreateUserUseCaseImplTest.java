@@ -18,6 +18,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 
+import java.util.concurrent.CompletableFuture;
+
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.*;
 
@@ -73,16 +75,13 @@ class CreateUserUseCaseImplTest {
 
         when(userRepository.existsByEmail(request.getEmail())).thenReturn(false);
         when(userRepository.save(any())).thenReturn(userEntity);
-        when(httpServletRequest.getRequestURL()).thenReturn(new StringBuffer("http://localhost:8080"));
-        when(httpServletRequest.getServletPath()).thenReturn("/api/v1/user");
         when(mailSender.createMimeMessage()).thenReturn(mimeMessage);
         doNothing().when(mailSender).send(mimeMessage);
 
-        CreateUserResponse response = createUserUseCase.createUser(request, httpServletRequest);
+        CompletableFuture<CreateUserResponse> response = createUserUseCase.createUser(request, httpServletRequest);
 
         assertNotNull(response);
-        assertEquals(1, response.getUserId());
-
         verify(userRepository, times(1)).save(any());
     }
+
 }

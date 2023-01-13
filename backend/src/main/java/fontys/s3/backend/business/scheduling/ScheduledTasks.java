@@ -16,6 +16,7 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class ScheduledTasks {
     private final TequilaFlightsRepository flightInfoRepository;
     private final UpdatePriceAlertUseCase updatePriceAlertUseCase;
     private final NotificationService notificationService;
+    private ArrayList<PriceAlertEntity> priceAlerts = new ArrayList<>();
 
 
     @Autowired
@@ -35,15 +37,23 @@ public class ScheduledTasks {
         this.updatePriceAlertUseCase = updatePriceAlertUseCase;
         this.notificationService = notificationService;
     }
-
     @Scheduled(fixedRate = 36000)
     public void checkForChangeInFlightPrice() {
-        List<PriceAlertEntity> priceAlerts = priceAlertRepository.findAll();
+        // Fetch the list of price alerts from the repository if it is not already cached
+        if (priceAlerts.isEmpty()) {
+            priceAlerts.addAll(priceAlertRepository.findAll());
+        }
 
-        for (PriceAlertEntity priceAlert : priceAlerts) {
+        // Create a copy of the list of price alerts
+        List<PriceAlertEntity> priceAlertsCopy = new ArrayList<>(priceAlerts);
+
+        // Iterate over the copy of the list of price alerts
+        for (PriceAlertEntity priceAlert : priceAlertsCopy) {
             if (priceAlert.getDateFrom().before(new Date())) {
+                // Delete the price alert from the repository and from the original list
                 priceAlertRepository.delete(priceAlert);
-                return;
+                priceAlerts.remove(priceAlert);
+                continue;
             }
 
             var cheapestFlight = getCheapestFlight(priceAlert);
@@ -59,22 +69,31 @@ public class ScheduledTasks {
                 }
             }
         }
+
+        // Check if any new price alerts have been added
+        List<PriceAlertEntity> newPriceAlerts = priceAlertRepository.findAll();
+        if (!newPriceAlerts.equals(priceAlerts)) {
+            // Update the cached list of price alerts
+            priceAlerts.clear();
+            priceAlerts.addAll(newPriceAlerts);
+        }
     }
 
     FlightEntity getCheapestFlight(PriceAlertEntity priceAlert) {
-
         var flightParams = convertPriceAlertToFlightParams(priceAlert);
 
-        FlightEntity cheapestFlight = flightInfoRepository.getFlightsInfo(flightParams)
-                .stream().filter(f ->
-                        f.getAvailableSeats() >= priceAlert.getPassengers())
-                .findFirst().orElse(null);
+        // Get the list of flights from the repository
+        List<FlightEntity> flights = flightInfoRepository.getFlightsInfo(flightParams);
 
-        if (cheapestFlight == null) {
-            throw new InvalidFlightException("NO_FLIGHTS_FOUND");
+        // Find the first flight that meets the criteria
+        for (var flight : flights) {
+            if (flight.getAvailableSeats() >= priceAlert.getPassengers()) {
+                return flight;
+            }
         }
 
-        return cheapestFlight;
+        // No flights found
+        throw new InvalidFlightException("NO_FLIGHTS_FOUND");
     }
 
     void updatePriceAlert(PriceAlertEntity priceAlert, FlightEntity cheapestFlight) {

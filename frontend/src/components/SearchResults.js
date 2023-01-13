@@ -4,21 +4,22 @@ import FlightsList from "./FlightsList";
 import {useSearchParams} from "react-router-dom";
 import {Col, Row} from "react-bootstrap";
 import Popup from "./Popup";
-import BasicLayout from "../layouts/authentication/components/BasicLayout";
+import BasicLayout from "./BasicLayout";
 import SoftBox from "./SoftBox";
 import SoftInput from "./SoftInput";
-import {Card, CardContent, FormControl, FormControlLabel, Radio, RadioGroup} from "@mui/material";
+import {Card, CardContent, FormControl, FormControlLabel, Grid, Radio, RadioGroup} from "@mui/material";
 import SoftTypography from "./SoftTypography";
 
 
 function SearchResults() {
     const [searchParams, setSearchParams] = useSearchParams();
     const params = Object.fromEntries(searchParams.entries());
-    console.log(params);
     const [departureDate, setDepartureDate] = useState(params.dateFrom);
     const [returnDate, setReturnDate] = useState(params.returnFrom);
     const [stops, setStops] = useState(params.maxSectorStopovers);
-    const [flights, setFlights] = useState();
+    const [flights, setFlights] = useState([]);
+    const [loading, setLoading] = useState(true);
+
 
     useEffect(() => {
         let isMounted = true;
@@ -64,6 +65,7 @@ function SearchResults() {
 
 
     const getFlights = async () => {
+        setLoading(true);
         console.log(params);
         try {
             const response = await tequilaService.getAllFlights(
@@ -81,13 +83,22 @@ function SearchResults() {
             return response.data.flights;
         } catch (e) {
             console.log(e);
+        } finally {
+            setLoading(false);
         }
     }
 
 
     return (
-        <BasicLayout title={"Search Results"}>
-            <SoftBox
+        <BasicLayout
+            light={false}
+            title={"Search Results"}
+            description={"Here you can find the best flights for your trip"}
+        >
+            <Grid
+                container
+                item xs={12} md={12} lg={12} xl={12}
+                mt={-2}
                 sx={{
                     display: 'grid',
                     gap: 1,
@@ -103,12 +114,13 @@ function SearchResults() {
                         gridArea: "sidebar",
                         display: 'flex',
                         flexDirection: 'column',
+                        marginRight: 1,
                     }}
                 >
-                    <Row>
-                        <Col>
+                    <Grid gridRow>
+                        <Grid gridColumn>
                             <Popup props={params}/>
-                        </Col>
+                        </Grid>
                         <SoftBox
                             sx={{
                                 marginTop: 3,
@@ -116,7 +128,7 @@ function SearchResults() {
                                 alignContent: 'right',
                             }}
                         >
-                            <Col>
+                            <Grid gridColumn sx={{width: '100%'}}>
                                 <Card sx={{
                                     backgroundColor: '#ffffff',
                                 }}>
@@ -155,18 +167,20 @@ function SearchResults() {
                                         </FormControl>
                                     </CardContent>
                                 </Card>
-                            </Col>
+                            </Grid>
                         </SoftBox>
-                    </Row>
+                    </Grid>
                 </SoftBox>
                 <SoftBox sx={{gridArea: "main"}}>
                     {
-                        flights?.length
-                            ? <FlightsList flights={flights}/>
-                            : <p>No flights</p>
+                        loading ?
+                            <SoftTypography>Loading...</SoftTypography>
+                            : !loading && flights.length > 0 ?
+                                <FlightsList flights={flights}/>
+                                : <SoftTypography>No flights</SoftTypography>
                     }
                 </SoftBox>
-            </SoftBox>
+            </Grid>
         </BasicLayout>
     );
 }

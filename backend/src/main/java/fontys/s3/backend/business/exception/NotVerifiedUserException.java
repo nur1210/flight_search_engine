@@ -5,6 +5,6 @@ import org.springframework.web.server.ResponseStatusException;
 
 public class NotVerifiedUserException extends ResponseStatusException {
     public NotVerifiedUserException() {
-        super(HttpStatus.BAD_REQUEST, "NOT_VERIFIED_USER");
+        super(HttpStatus.UNAUTHORIZED, "NOT_VERIFIED_USER");
     }
 }

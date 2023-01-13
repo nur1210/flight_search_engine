@@ -1,52 +1,53 @@
 package fontys.s3.backend.controller;
 
+import fontys.s3.backend.business.exception.UnauthorizedDataAccessException;
 import fontys.s3.backend.configuration.websocket.NotificationService;
 import fontys.s3.backend.domain.model.Notification;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.messaging.simp.annotation.SendToUser;
-import org.springframework.messaging.simp.user.SimpUserRegistry;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 
-import java.security.Principal;
+import java.util.List;
 
 @Controller
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class NotificationController {
     private final SimpMessagingTemplate simpMessagingTemplate;
-    private final SimpUserRegistry simpUserRegistry;
     private final NotificationService notificationService;
 
     @Autowired
-    public NotificationController(SimpMessagingTemplate simpMessagingTemplate, SimpUserRegistry simpUserRegistry, NotificationService notificationService) {
+    public NotificationController(SimpMessagingTemplate simpMessagingTemplate, NotificationService notificationService ) {
         this.simpMessagingTemplate = simpMessagingTemplate;
-        this.simpUserRegistry = simpUserRegistry;
         this.notificationService = notificationService;
     }
 
-    // /app/application
     @MessageMapping("/notification")
-    @SendTo("/topic/notifications") //subscribe to /all/notification
+    @SendTo("/topic/notifications")
     public Notification send(final Notification notification) {
         return notification;
     }
 
-    // /app/notification
     @MessageMapping("/specific-notification")
-    @SendToUser("/topic/specific-notifications") //subscribe to /specific/notification
-    public void sendNotification(@Payload Notification notification, Principal principal) {
+    @SendToUser("/topic/specific-notifications")
+    public void sendNotification(@Payload Notification notification) {
         simpMessagingTemplate.convertAndSendToUser(notification.getTo(), "/topic/specific-notifications", notification);
     }
 
-/*    @PostMapping("/notification/specific")
-    public void sendPrivateNotification(@RequestBody final Notification notification) {
-        notificationService.sendPrivateNotification(notification.getTo(), notification.getText());
+    @GetMapping("/notifications/online-users")
+    public ResponseEntity<List<String>> getOnlineUsers() {
+        try {
+            var response = notificationService.getOnlineUsers();
+            return ResponseEntity.ok(response);
+        } catch (UnauthorizedDataAccessException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
-
-    @PostMapping("/notification/all")
-    public void sendGlobalNotification(@RequestBody final Notification notification) {
-        notificationService.sendGlobalNotification(notification.getText());
-    }*/
 }
