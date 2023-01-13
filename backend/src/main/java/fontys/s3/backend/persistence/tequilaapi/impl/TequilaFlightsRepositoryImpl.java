@@ -103,7 +103,7 @@ public class TequilaFlightsRepositoryImpl implements TequilaFlightsRepository {
                 flights.add(FlightEntity.builder()
                         .outboundRoutes(outboundRoutes)
                         .returnRoutes(returnRoutes)
-                        .price(flight.getFare().getAdults())
+                        .price(flight.getPrice())
                         .availableSeats(flight.getAvailability().getSeats())
                         .deepLink(flight.getDeepLink())
                         .build());
