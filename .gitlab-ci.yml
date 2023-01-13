@@ -23,7 +23,13 @@ sonarqube_ci_stanza:
     - ./gradlew.bat --stop
 docker_build:
   stage: docker_stage
+  before_script:
+    - docker login -u "$REGISTRY_USER" -p "$REGISTRY_PASS" docker.io
   script:
-    - docker-compose -f Docker-compose.yml down
-    - docker-compose -f Docker-compose.yml build --pull
+    - docker build -t "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
+    - docker build -t "$REGISTRY_USER"/frontend:latest -f frontend/Dockerfile
+    - docker push "$REGISTRY_USER"/backend:latest -f backend/Dockerfile
+    #- docker push nurnechushtan/flyaway:frontend
+    #- docker-compose -f Docker-compose.yml down
+    #- docker-compose -f Docker-compose.yml build --pull
     #- docker-compose -f Docker-compose.yml up -d --build
