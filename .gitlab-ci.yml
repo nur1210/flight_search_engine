@@ -19,9 +19,11 @@ test:
 cypress_stage:
   stage: cypress_stage
   script:
-    - cd frontend
-    #- npm install
-    - concurrently "cd backend && ./gradlew bootRun" "cd frontend && npm start" "cd frontend && npx cypress run"
+    - start cmd /c "cd backend && ./gradlew bootRun"
+    - timeout /t 10
+    - start cmd /c "cd frontend && npm start"
+    - start cmd /c "cd frontend && npx cypress run"
+    - taskkill /im cmd.exe /f
 sonarqube_ci_stanza:
   stage: sonarqube_stage
   script:
