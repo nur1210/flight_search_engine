@@ -117,7 +117,7 @@ function DefaultNavbar({transparent, light, action}) {
                                 <>
                                     <DefaultNavbarLink icon="donut_large" name="dashboard" route="/users"
                                                        light={light}/>
-                                    <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
+                                    <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
                                                        light={light}/>
                                     <IconButton
@@ -134,7 +134,7 @@ function DefaultNavbar({transparent, light, action}) {
                                     <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
                                 </> :
                                 <>
-                                    <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
+                                    <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} data-cy='sign-out-button' name="Sign out" route="/"
                                                        light={light}/>
                                     <IconButton
@@ -208,7 +208,13 @@ function DefaultNavbar({transparent, light, action}) {
                     <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
                 </SoftBox>
             </SoftBox>
-            {mobileView && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar}/>}
+            {mobileView && <DefaultNavbarMobile
+                open={mobileNavbar}
+                close={closeMobileNavbar}
+                light={light}
+                signOut={signOut}
+                auth={auth}
+            />}
         </Container>
     );
 }

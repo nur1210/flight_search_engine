@@ -6,6 +6,7 @@ import SoftBox from "./SoftBox";
 import Card from "@mui/material/Card";
 import userTableData from "./userTableData";
 import Table from "examples/Tables/Table";
+import curved6 from "assets/images/curved-images/curved14.jpg";
 
 
 const Users = () => {
@@ -66,8 +67,9 @@ const Users = () => {
 
     return (
         <BasicLayout
-            light={false}
+            light={true}
             title="Admin dashboard"
+            image={curved6}
         >
             {
                 users ?

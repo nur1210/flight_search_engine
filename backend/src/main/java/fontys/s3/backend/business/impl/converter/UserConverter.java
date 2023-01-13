@@ -16,5 +16,4 @@ public final class UserConverter {
                 .password(userEntity.getPassword())
                 .build();
     }
-
 }

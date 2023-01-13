@@ -74,6 +74,7 @@ const Login = () => {
             title="Welcome back"
             description="Enter your email and password to sign in"
             image={curved9}
+            color={"dark"}
         >
             <SoftBox component={"form"} role={"form"} onSubmit={handleSubmit}>
                 <SoftBox mt={2} mb={1} ml={0.5}>
@@ -104,19 +105,19 @@ const Login = () => {
                     required
                 />
                 <SoftBox mt={4} mb={1}>
-                <SoftButton variant="gradient" color="info" fullWidth type={handleSubmit}>
+                <SoftButton variant="gradient" color="dark" fullWidth type={handleSubmit}>
                     Sign In
                 </SoftButton>
                 </SoftBox>
             </SoftBox>
             <SoftBox mt={3} textAlign="center">
-                <SoftTypography variant="button" color="text" fontWeight="regular">
+                <SoftTypography variant="button" color="dark" fontWeight="regular">
                     Don&apos;t have an account?{" "}
                     <SoftTypography
                         component={Link}
                         to="/authentication/sign-up"
                         variant="button"
-                        color="info"
+                        color="dark"
                         fontWeight="medium"
                         textGradient
                     >

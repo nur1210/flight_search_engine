@@ -12,7 +12,7 @@ describe('Flight Search Test', () => {
     cy.get(':nth-child(4) > .MuiInputBase-root').type('2023-03-03')
     cy.get('.MuiBox-root > .MuiButtonBase-root').click()
     cy.get('.css-widufq > .MuiTypography-root').should('contain', 'Search Results')
-    cy.get('.css-tpvvv8 > .MuiContainer-root').should('contain', '€')
+    cy.get(':nth-child(1) > .css-v2lun0 > .css-zuyrli').should('contain', '€')
   })
 })
 

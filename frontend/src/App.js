@@ -44,11 +44,11 @@ function App() {
                             <Route path="/users" element={<Users/>}/>
                         </Route>
                         <Route element={<RequireAuth allowedRoles={ROLES.User}/>}>
-                            <Route path="/p" element={<Profile/>}/>
+                            <Route path="/profile" element={<Profile/>}/>
                         </Route>
                     </Route>
 
-                    <Route path="/m" element={<Missing />} />
+                    <Route path="/" element={<Missing />} />
                 </Route>
             </Routes>
     );
