@@ -10,8 +10,9 @@ import curved6 from "assets/images/curved-images/curved14.jpg";
 
 
 const Users = () => {
-    const [users, setUsers] = useState();
+    const [users, setUsers] = useState([]);
     const [online, setOnline] = useState([]);
+    const [loading, setLoading] = useState(false);
     const axiosPrivate = useAxiosPrivate();
 
 
@@ -39,8 +40,9 @@ const Users = () => {
     }, []);
 
     useEffect(() => {
-        if (users !== undefined) {
-            userTableData.createUserTableData(updatedUsers(users), handleDelete)
+        if (users.length > 0) {
+            userTableData.createUserTableData(updatedUsers(users), handleDelete);
+            setLoading(true);
         }
     }, [users]);
 
@@ -65,6 +67,7 @@ const Users = () => {
     }
 
 
+
     return (
         <BasicLayout
             light={true}
@@ -72,7 +75,7 @@ const Users = () => {
             image={curved6}
         >
             {
-                users ?
+                users.length > 0 && loading ?
                     <>
                         <SoftBox py={3}>
                             <SoftBox mb={3}>
