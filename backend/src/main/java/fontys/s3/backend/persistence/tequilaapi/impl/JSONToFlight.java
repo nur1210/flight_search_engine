@@ -24,7 +24,7 @@ public class JSONToFlight {
         private Route[] route;
         private CountryFrom countryFrom;
         private CountryTo countryTo;
-        private Fare fare;
+        private double price;
         private Availability availability;
         @JsonProperty("deep_link")
         private String deepLink;

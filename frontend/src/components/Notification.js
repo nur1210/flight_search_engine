@@ -5,15 +5,17 @@ import Stomp from "stompjs";
 import {Menu} from "@mui/material";
 import NotificationItem from "../examples/Items/NotificationItem";
 import {createSearchParams, useNavigate} from "react-router-dom";
+import useStompClient from "../hooks/useStompClient";
 
 
 const ENDPOINT = "http://localhost:8080/ws";
 
 const Notification = ({openMenu, handleCloseMenu}) => {
-    const [stompClient, setStompClient] = useState();
+    const navigate = useNavigate();
+    const {messagesReceived} = useStompClient();
+    /*const [stompClient, setStompClient] = useState();
     const [messagesReceived, setMessagesReceived] = useState([]);
     const {auth} = useAuth();
-    const navigate = useNavigate();
 
     useEffect(() => {
         // use SockJS as the websocket client
@@ -57,7 +59,7 @@ const Notification = ({openMenu, handleCloseMenu}) => {
         const message = JSON.parse(data.body);
         setMessagesReceived(messagesReceived => [...messagesReceived, message]);
     };
-
+*/
     const post = (data) => navigate({
         pathname: '/search-results',
         search: `?${createSearchParams(data)}`
@@ -88,26 +90,6 @@ const Notification = ({openMenu, handleCloseMenu}) => {
                     }
                 )}
         </Menu>
-
-        /*            <Box
-                        sx={{
-                            display: 'grid',
-                            gridAutoFlow: 'row',
-                            gridTemplateColumns: 'repeat(5, 1fr)',
-                            gridTemplateRows: 'repeat(2, 50px)',
-                            gap: 1,
-                            zIndex: 1000,
-                        }}
-                    >
-                    <SoftAlert
-                        key={i}
-                        dismissible={true}
-                        sx={{ gridColumn: '5', gridRow: '1 / 3' }}
-                    >
-                        {message.text}
-                    </SoftAlert>
-                    </Box>
-                )})*/
     );
 }
 

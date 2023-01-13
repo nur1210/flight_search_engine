@@ -1,9 +1,6 @@
-import {useEffect, useRef, useState} from "react";
+import {useEffect, useRef} from "react";
 import tequilaService from "../services/TequilaService";
-import GpsFixedIcon from '@mui/icons-material/GpsFixed';
 import SoftBox from "./SoftBox";
-import SoftTypography from "./SoftTypography";
-import SoftButton from "./SoftButton";
 
 const apiKey = 'AIzaSyAkKp4RUwFXPYyslYaxYSxbRVCiSdhw78E';
 const mapApiJs = 'https://maps.googleapis.com/maps/api/js';
@@ -144,36 +141,28 @@ const AirportInput = ({title, register, setValue, setLocation, name}) => {
 
     return (
         <SoftBox mb={2}>
-            <SoftTypography
-                component="label"
-                vatiant="caption"
-                fontWeight="medium"
-                fontSize={12}
-            >
-                {title}
-            </SoftTypography>
-            <SoftBox>
                 <input
+                    ref={searchInput}
                     type="text"
                     className="form-control"
                     list={`Airport-options-${name}`}
                     id="Airport-input"
                     data-cy={`${name}-input`}
-                    placeholder="Location"
+                    placeholder={title}
                     aria-describedby="Airport-label"
-                    ref={searchInput}
                     onChange={initAutocomplete}
+                    style={{borderRadius: 0, height: 39.5}}
                 />
                 <input
                     type={"hidden"}
                     {...register(name, {
-                        validate: value => value !== "",
-                        required: 'Please fill in the location'
+                        validate: value => {
+                            if (!value) return "Repeat password is required";
+                        }
                     })}
                 />
-                <SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>
+                {/*<SoftButton variant={"text"} color={"dark"} onClick={findMyLocation}><GpsFixedIcon/></SoftButton>*/}
                 <datalist id={`Airport-options-${title}`}></datalist>
-            </SoftBox>
         </SoftBox>
 
     )

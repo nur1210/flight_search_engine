@@ -1,0 +1,11 @@
+Here is what I made for the group project up to 13/01/2023
+
+1. Created relational tables with the entities
+2. Created the logic in the services and the communication with the controllers between backend and frontend (CRUD operations) for the followings:
+		a. Appointments
+		b. Applications
+		c. Users
+		d. Vacancies
+
+3. Unit tests for some of the controllers.
+4. Still need to implement 2 features :(

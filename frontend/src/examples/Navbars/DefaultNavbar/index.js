@@ -117,7 +117,7 @@ function DefaultNavbar({transparent, light, action}) {
                                 <>
                                     <DefaultNavbarLink icon="donut_large" name="dashboard" route="/users"
                                                        light={light}/>
-                                    <DefaultNavbarLink icon="person" name="profile" route="/p" light={light}/>
+                                    <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light}/>
                                     <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
                                                        light={light}/>
                                     <IconButton
@@ -132,11 +132,10 @@ function DefaultNavbar({transparent, light, action}) {
                                         <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
                                     </IconButton>
                                     <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
-                                    {/*{renderMenu()}*/}
                                 </> :
                                 <>
-                                    <DefaultNavbarLink icon="person" name="profile" route="/m" light={light}/>
-                                    <DefaultNavbarLink icon="key" onClick={signOut} name="Sign out" route="/"
+                                    <DefaultNavbarLink icon="person" name="profile" route="/profile" light={light}/>
+                                    <DefaultNavbarLink icon="key" onClick={signOut} data-cy='sign-out-button' name="Sign out" route="/"
                                                        light={light}/>
                                     <IconButton
                                         size="small"
@@ -150,13 +149,12 @@ function DefaultNavbar({transparent, light, action}) {
                                         <Icon className={light ? "text-white" : "text-dark"}>notifications</Icon>
                                     </IconButton>
                                     <Notification openMenu={openMenu} handleCloseMenu={handleCloseMenu}/>
-                                    {/*{renderMenu()}*/}
                                 </> :
                             <>
                                 <DefaultNavbarLink
                                     icon="account_circle"
                                     name="sign up"
-                                    route="/authentication/sign-up"
+                                    route="/sign-up"
                                     light={light}
                                 />
                                 <DefaultNavbarLink
@@ -210,7 +208,13 @@ function DefaultNavbar({transparent, light, action}) {
                     <Icon fontSize="default">{mobileNavbar ? "close" : "menu"}</Icon>
                 </SoftBox>
             </SoftBox>
-            {mobileView && <DefaultNavbarMobile open={mobileNavbar} close={closeMobileNavbar}/>}
+            {mobileView && <DefaultNavbarMobile
+                open={mobileNavbar}
+                close={closeMobileNavbar}
+                light={light}
+                signOut={signOut}
+                auth={auth}
+            />}
         </Container>
     );
 }

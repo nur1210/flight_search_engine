@@ -3,6 +3,7 @@ package fontys.s3.backend.business.impl;
 import fontys.s3.backend.business.exception.InvalidPriceAlertException;
 import fontys.s3.backend.business.impl.pricealert.UpdatePriceAlertUseCaseImpl;
 import fontys.s3.backend.domain.request.UpdatePriceAlertRequest;
+import fontys.s3.backend.persistence.FlightRepository;
 import fontys.s3.backend.persistence.PriceAlertRepository;
 import fontys.s3.backend.persistence.entity.FlightEntity;
 import fontys.s3.backend.persistence.entity.PriceAlertEntity;
@@ -23,6 +24,8 @@ class UpdatePriceAlertUseCaseImplTest {
 
     @Mock
     private PriceAlertRepository priceAlertRepository;
+    @Mock
+    private FlightRepository flightRepository;
 
     @InjectMocks
     private UpdatePriceAlertUseCaseImpl updatePriceAlertUseCase;
@@ -58,6 +61,7 @@ class UpdatePriceAlertUseCaseImplTest {
 
         when(priceAlertRepository.findById(priceAlert.getId()))
                 .thenReturn(Optional.of(priceAlert));
+        doNothing().when(flightRepository).delete(any());
 
         updatePriceAlertUseCase.updatePriceAlert(request);
 

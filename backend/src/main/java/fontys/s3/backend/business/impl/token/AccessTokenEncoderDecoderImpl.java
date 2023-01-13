@@ -59,8 +59,6 @@ import java.util.Map;
                     .build()
                     .parseClaimsJws(accessTokenEncoded)
                     .getBody();
-/*            var jwt = Jwts.parserBuilder().setSigningKey(key).build().parse(accessTokenEncoded);
-            Claims claims = (Claims) jwt.getBody();*/
 
             List<String> roles = claims.get("roles", List.class);
 

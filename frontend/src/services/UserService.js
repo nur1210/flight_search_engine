@@ -20,12 +20,17 @@ const remove = async id => {
     return await axios.delete(`/users/${id}`);
 }
 
+const verify = async (code) => {
+    return await axios.get(`/users/verify/${code}`);
+}
+
 const UserService = {
     getAll,
     get,
     create,
     update,
-    remove
+    remove,
+    verify
 }
 
 export default UserService;

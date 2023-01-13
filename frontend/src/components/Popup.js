@@ -45,8 +45,8 @@ function Popup(props) {
 
     return (
         <>
-            <SoftButton color="dark" variant="outlined" onClick={handleShow} sx={{marginTop: 2, width: '100%'}}>
-                <SoftTypography variant="body1" color="dark" fontWeight="bold">
+            <SoftButton color="dark" variant="gradient" onClick={handleShow} sx={{marginTop: 2, width: '100%'}}>
+                <SoftTypography variant="body1" color="light" fontWeight="bold">
                 Get price alerts
                 </SoftTypography>
             </SoftButton>

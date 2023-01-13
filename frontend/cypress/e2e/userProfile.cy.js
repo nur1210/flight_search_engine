@@ -1,0 +1,15 @@
+describe('Profile Test', () => {
+    it('Go to profile', () => {
+        cy.login('dumi@gmail.com', '123123123')
+        cy.get('[href="/profile"]').click()
+        cy.get(':nth-child(2) > .MuiInputBase-input').should('have.value', 'Dumi')
+        cy.get(':nth-child(2) > .MuiInputBase-input').clear().type('Dumy')
+        cy.get('.css-16f0y5w-MuiCardContent-root > .MuiButtonBase-root').click()
+        cy.get('.css-uujcwg').click()
+        cy.get('[href="/profile"]').click()
+        cy.get(':nth-child(2) > .MuiInputBase-input').should('have.value', 'Dumy')
+        cy.get(':nth-child(2) > .MuiInputBase-input').clear().type('Dumi')
+        cy.get('.css-16f0y5w-MuiCardContent-root > .MuiButtonBase-root').click()
+        cy.get('.css-1cqgw3v > [href="/"]').click()
+    })
+})

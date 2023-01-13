@@ -3,6 +3,7 @@ import FlightCard from "./FlightCard";
 import tequilaService from "../services/TequilaService";
 import {useEffect, useState} from "react";
 import SoftTypography from "./SoftTypography";
+import {Grid} from "@mui/material";
 
 const SearchFormSideBar = ({airport}) => {
     const [flights, setFlights] = useState([]);
@@ -15,38 +16,48 @@ const SearchFormSideBar = ({airport}) => {
         const lastDate = new Date().getFullYear() + '-' + month + '-' + new Date(new Date().getFullYear(), month, 0).getDate();
 
         const getFlights = async () => {
-            try {
-                const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
-                    airport.iata,
-                    firstDate,
-                    lastDate,
-                    firstDate,
-                    lastDate,
-                    1,
-                    7,
-                    'round',
-                    1,
-                    'M');
+            if (airport === null) return;
+                try {
+                    const response = await tequilaService.getTopThreeCheapestFlightsFromUserLocation(
+                        airport.iata,
+                        firstDate,
+                        lastDate,
+                        firstDate,
+                        lastDate,
+                        1,
+                        7,
+                        'round',
+                        1,
+                        'M');
                     console.log(response.data.flights);
                     setFlights(response.data.flights);
-            } catch (e) {
-                console.log(e);
+                } catch (e) {
+                    console.log(e);
+                }
             }
-        };
+        ;
         getFlights();
 
     }, [airport]);
 
     return (
-        <SoftBox sx={{gridArea: 'sidebar', marginTop: 3}}>
+        <SoftBox>
             {flights.length !== 0 ?
                 <>
-                    <SoftTypography fontWeight={"medium"}>
+                    <SoftTypography fontWeight={"bold"} textGradient>
                         Cheapest flights from {airport.city}
                     </SoftTypography>
-                    {flights.map((flight, i) => (
-                        <FlightCard key={i} flight={flight}/>
-                    ))}
+                    <Grid
+                        container
+                        item
+                        direction="row"
+                        justifyContent="space-evenly"
+                        alignItems="stretch"
+                    >
+                        {flights.map((flight, i) => (
+                            <FlightCard key={i} flight={flight}/>
+                        ))}
+                    </Grid>
                 </>
                 :
                 null

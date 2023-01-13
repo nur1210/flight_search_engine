@@ -10,6 +10,7 @@ import fontys.s3.backend.domain.model.Flight;
 import fontys.s3.backend.domain.request.UpdateFlightRequest;
 import fontys.s3.backend.persistence.FlightRepository;
 import junit.framework.TestCase;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -96,12 +97,12 @@ class FlightsControllerTest extends TestCase {
     @Test
     void deleteFlightWithInvalidIdThrowsException() throws NotFoundException {
 
-        doThrow(NotFoundException.class).when(deleteFlightUseCase).deleteFlight(anyLong());
+        doThrow(NotFoundException.class).when(deleteFlightUseCase).deleteFlight(100L);
 
-        ResponseEntity<Void> response = flightsController.deleteFlight(anyLong());
+        ResponseEntity<Void> response = flightsController.deleteFlight(100L);
 
-        assertThrows(NotFoundException.class, () -> deleteFlightUseCase.deleteFlight(anyLong()));
-        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+        assertThrows(NotFoundException.class, () -> deleteFlightUseCase.deleteFlight(100L));
+        Assertions.assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
@@ -111,7 +112,7 @@ class FlightsControllerTest extends TestCase {
 
         ResponseEntity<Void> response = flightsController.deleteFlight(anyLong());
 
-        assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
+        Assertions.assertEquals(HttpStatus.NO_CONTENT, response.getStatusCode());
         verify(repository, never()).existsById(anyLong());
         verify(repository, never()).deleteById(anyLong());
     }
@@ -124,8 +125,8 @@ class FlightsControllerTest extends TestCase {
         long expected = 1L;
         ResponseEntity<CreateFlightResponse> actual = flightsController.createFlight(any());
 
-        assertEquals(actual.getBody().getFlightId(), expected);
-        assertEquals(actual.getStatusCode(), HttpStatus.CREATED);
+        Assertions.assertEquals(actual.getBody().getFlightId(), expected);
+        Assertions.assertEquals(HttpStatus.CREATED, actual.getStatusCode());
 
     }
 
@@ -135,7 +136,7 @@ class FlightsControllerTest extends TestCase {
 
         ResponseEntity<Void> response = flightsController.updateFlight(1L, updateFlightRequest);
 
-        assertEquals(204, response.getStatusCodeValue());
+        Assertions.assertEquals(204, response.getStatusCodeValue());
         verify(updateFlightUseCase, times(1)).updateFlight(updateFlightRequest);
     }
 

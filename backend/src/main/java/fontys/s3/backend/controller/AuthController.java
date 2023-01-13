@@ -1,5 +1,6 @@
 package fontys.s3.backend.controller;
 
+import fontys.s3.backend.business.exception.NotVerifiedUserException;
 import fontys.s3.backend.business.usecase.auth.LoginUseCase;
 import fontys.s3.backend.business.usecase.auth.LogoutUseCase;
 import fontys.s3.backend.business.usecase.token.RefreshTokenUseCase;
@@ -10,6 +11,7 @@ import fontys.s3.backend.domain.response.LoginResponse;
 import fontys.s3.backend.domain.response.RefreshResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseCookie;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -31,12 +33,17 @@ public class AuthController {
 
     @PostMapping("/login")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
-        LoginResponse loginResponse = loginUseCase.login(loginRequest);
-        var refreshToken = refreshTokenService.createRefreshToken(loginRequest.getEmail());
-        ResponseCookie cookie = jwtUtils.generateRefreshTokenCookie(refreshToken.getToken());
-        return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, cookie.toString())
-                .body(loginResponse);
+        try{
+            LoginResponse loginResponse = loginUseCase.login(loginRequest);
+            var refreshToken = refreshTokenService.createRefreshToken(loginRequest.getEmail());
+            ResponseCookie cookie = jwtUtils.generateRefreshTokenCookie(refreshToken.getToken());
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.SET_COOKIE, cookie.toString())
+                    .body(loginResponse);
+        }
+        catch (NotVerifiedUserException e){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
     }
 
     @PostMapping("/logout")

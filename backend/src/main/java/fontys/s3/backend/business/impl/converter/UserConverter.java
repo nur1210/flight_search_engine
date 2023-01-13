@@ -14,7 +14,7 @@ public final class UserConverter {
                 .lastName(userEntity.getLastName())
                 .email(userEntity.getEmail())
                 .password(userEntity.getPassword())
+                .verified(userEntity.isVerified())
                 .build();
     }
-
 }

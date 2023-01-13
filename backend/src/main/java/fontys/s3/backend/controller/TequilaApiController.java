@@ -2,12 +2,14 @@ package fontys.s3.backend.controller;
 
 import fontys.s3.backend.business.usecase.airport.GetAirportByCityUseCase;
 import fontys.s3.backend.business.usecase.airport.GetAirportByCordsUseCase;
+import fontys.s3.backend.business.usecase.airport.GetTopTenDestinationsByCityUseCase;
 import fontys.s3.backend.business.usecase.flight.GetAdvanceSearchFlightsUseCase;
 import fontys.s3.backend.business.usecase.flight.GetAllFlightsFromOriginToDestinationUseCase;
 import fontys.s3.backend.business.usecase.flight.GetTopThreeCheapestFlightsFromUserLocationUseCase;
 import fontys.s3.backend.domain.request.*;
 import fontys.s3.backend.domain.response.GetAirportResponse;
 import fontys.s3.backend.domain.response.GetFlightsResponse;
+import fontys.s3.backend.domain.response.GetTopTenDestinationsResponse;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -24,6 +26,7 @@ public class TequilaApiController {
     private final GetAirportByCityUseCase getAirportByCityUseCase;
     private final GetAirportByCordsUseCase getAirportByCordsUseCase;
     private final GetAdvanceSearchFlightsUseCase getAdvanceSearchFlightsUseCase;
+    private final GetTopTenDestinationsByCityUseCase getTopTenDestinationsByCityUseCase;
 
 
     @GetMapping("/flights")
@@ -40,6 +43,13 @@ public class TequilaApiController {
         GetAirportResponse response = getAirportByCityUseCase.getAirportByCity(request);
         return ResponseEntity.ok(response);
     }
+
+    @GetMapping("/locations/top-destinations")
+    public ResponseEntity<GetTopTenDestinationsResponse> getTopTenDestinationsByCity(@RequestParam(value = "city", required = false) String city) {
+        GetTopTenDestinationsResponse response = getTopTenDestinationsByCityUseCase.getTopTenDestinationsByCity(city);
+        return ResponseEntity.ok(response);
+    }
+
 
     @GetMapping("/locations/cords")
     public ResponseEntity<GetAirportResponse> getAirportByCords(@RequestParam(value = "lat", required = false) String lat,
