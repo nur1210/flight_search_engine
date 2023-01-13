@@ -1,6 +1,7 @@
 stages:
   - build
   - test
+  - cypress_stage
   - sonarqube_stage
   - docker_stage
 build:
@@ -15,6 +16,12 @@ test:
     - cd backend
     - ./gradlew test
     - ./gradlew.bat --stop
+cypress_stage:
+  stage: cypress_stage
+  script:
+    - cd frontend
+    #- npm install
+    - concurrently "cd backend && ./gradlew bootRun" "cd frontend && npm start" "cd frontend && npx cypress run"
 sonarqube_ci_stanza:
   stage: sonarqube_stage
   script:
